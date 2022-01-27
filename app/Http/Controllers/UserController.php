@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -34,7 +35,10 @@ class UserController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user): RedirectResponse
     {
+        $user->delete();
+
+        return redirect()->route('admin.users.index');
     }
 }

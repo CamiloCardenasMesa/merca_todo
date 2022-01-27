@@ -7,6 +7,10 @@ Route::get('/admin/users', [UserController::class, 'index'])
     ->middleware('auth', 'verified')
     ->name('admin.users.index');
 
+Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])
+    ->middleware(['auth', 'verified'])
+    ->name('admin.users.destroy');
+
 Route::get('/admin/{user}/edit', [UserController::class, 'edit'])
     ->middleware('auth', 'verified')
     ->name('admin.users.edit');
