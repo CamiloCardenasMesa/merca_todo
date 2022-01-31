@@ -41,4 +41,13 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index');
     }
+
+    public function toggle(User $user): RedirectResponse
+    {
+        $user->enable = !$user->enable;
+
+        $user->save();
+
+        return redirect()->route('admin.users.index');
+    }
 }

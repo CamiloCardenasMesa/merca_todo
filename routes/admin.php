@@ -23,3 +23,7 @@ Route::put('/admin/{user}', [UserController::class, 'update'])
 Route::get('/admin/{user}/show', [UserController::class, 'show'])
     ->middleware('auth', 'verified', 'role:'.Roles::ADMIN)
     ->name('admin.users.show');
+
+Route::put('/admin/{user}/toggle', [UserController::class, 'toggle'])
+    ->middleware('auth', 'verified', 'role:'.Roles::ADMIN)
+    ->name('admin.users.toggle');
