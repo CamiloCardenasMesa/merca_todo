@@ -4,57 +4,38 @@
             {{ __($user->name) }}
         </h2>
     </x-slot>
-<body>
-   <table>
-       <thead>
-           <tr>
-                <th>
-                    <h3>Id</h3>
-                </th>
-               <th>
-                    <h3>Nombre</h3>
-               </th>
-               <th>
-                    <h3>Email</h3>
-               </th>
-               <th>
-                    <h3>Email verificado</h3>
-               </th>
-               <th>
-                    <h3>Creado en:</h3>
-               </th>
-               <th>
-                    <h3>Actualizado en:</h3>
-               </th>
-           </tr>
-       </thead>
-       <tbody>
-                <tr>
-                    <td>
-                        {{ $user['id'] }}
-                    </td>
-                    <td>
-                        {{ $user['name'] }}
-                    </td>
-                    <td>
-                        {{ $user['email'] }}
-                    </td>
-                    <td>
-                        {{ $user['email_verified_at'] }}
-                    </td>
-                    <td>
-                        {{ $user['created_at'] }}
-                    </td>
-                    <td>
-                        {{ $user['updated_at'] }}
-                    </td>
-                </tr>        
-       </tbody>
-   </table>
-   <br>
-   <a href="{{route('admin.users.index')}}" class="hover:text-gray-500">Volver</a>
-</body>
-<body>
-<br>
-</body>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-8 bg-white border-b border-gray-200">
+                    <table class="container">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="border border-gray-400 px-4 py-2">Id</th>
+                                <th class="border border-gray-400 px-4 py-2">Nombre</th>
+                                <th class="border border-gray-400 px-4 py-2">Email</th>
+                                <th class="border border-gray-400 px-4 py-2">Email verificado</th>
+                                <th class="border border-gray-400 px-4 py-2">Fecha de creación:</th>
+                                <th class="border border-gray-400 px-4 py-2">Fecha de actualización:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->id }}</th>
+                                <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->name }}</td>
+                                <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->email }}</td>
+                                <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->email_verified_at }}</td>
+                                <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->created_at }}</td>
+                                <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->updated_at }}</td>
+                            </tr>
+                        </tbody>
+                    </table><br>
+                        <div class="mx-auto">
+                            <a href="{{route('admin.users.index')}}" class="mx-auto"> <x-button>Volver</x-button>
+                        </div>                     
+                </div>
+            </div>
+        </div>
+    </div>  
 </x-app-layout>
