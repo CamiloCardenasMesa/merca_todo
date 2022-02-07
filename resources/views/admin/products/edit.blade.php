@@ -15,7 +15,7 @@
                     <div class="grid grid-cols-1 gap-2">
                         <div class="grid grid-rows-1 gap-1"><br>
                             <x-label for="image">Imagen: </x-label>
-                            <x-input id="image" type="file" name="image" value="{{ $product->image }}" required/><br>
+                            <x-input id="image" type="file" name="image" value="{{ $product->image }}"/><br>
                             <x-label for="name">Nombre: </x-label>
                             <x-input type="text" name="name" value="{{ $product->name }}" required/><br>                                
                             <x-label for="description">Descripción: </x-label>

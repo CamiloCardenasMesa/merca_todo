@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProductsController extends Controller
@@ -54,7 +55,6 @@ class ProductsController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        /*   dd($request); */
         $product = new Product();
 
         $product->image = $request->input('image');
@@ -64,10 +64,11 @@ class ProductsController extends Controller
         $product->stock = $request->input('stock');
         $product->category_id = $request->input('category_id');
 
-        if ($request->hasFile('image')) {
-            $fileName = time().'.'.$request->file('image')->extension();
-            $product->image = $request->file('image')->storeAs('images', $fileName, 'public');
-        }
+        $file = $request->file('image');
+
+        $fileName = $file->hashName();
+
+        $product->image = $file->storeAs('images', $fileName, 'public');
 
         $product->save();
 
@@ -77,6 +78,8 @@ class ProductsController extends Controller
     public function destroy(Product $product): RedirectResponse
     {
         $product->delete();
+
+        Storage::disk('public')->delete($product->image);
 
         return redirect()->route('admin.products.index');
     }

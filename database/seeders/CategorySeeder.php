@@ -10,12 +10,12 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        Category::factory()->has(Product::factory()->count(1))
+        Category::factory()->has(Product::factory()->count(8))
         ->create([
             'name' => 'Instrumentos de cuerda',
         ]);
 
-        Category::factory()->has(Product::factory()->count(1))
+        Category::factory()->has(Product::factory()->count(8))
         ->create([
             'name' => 'Instrumentos de percusión',
         ]);
