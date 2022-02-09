@@ -31,8 +31,8 @@
                             </tr>
                         </tbody>
                     </table><br>
-                        <div class="mx-auto">
-                            <a href="{{route('admin.users.index')}}" class="mx-auto"> <x-button>Volver</x-button>
+                        <div class="flex justify-center">
+                            <a href="{{route('admin.users.index')}}"> <x-button>Volver</x-button>
                         </div>                     
                 </div>
             </div>

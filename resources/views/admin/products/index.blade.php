@@ -1,16 +1,18 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Productos') }}
-        </h2>
+        <form action="{{ route('admin.products.index') }}" method="GET"> 
+            <x-input type="text" name="query" placeholder="Buscar instrumento" />
+            <x-button class="ml-2">Buscar</x-button>
+        </form>
     </x-slot>
 
     <div class="pt-6 pb-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div>
-                <a href="{{route('admin.products.create')}}"> <x-button>Crear nuevo producto</x-button>
-            </div><br>
+            <div class="mb-6">
+                <x-button-link href="{{route('admin.products.create')}}">Crear nuevo producto
+                </x-button>
+            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-8 bg-white border-b border-gray-200">
                     <table class="container">
@@ -35,25 +37,25 @@
                                     <td class="border border-gray-400 px-4 py-2 text-left">{{ $product->description }}</td>
                                     <td class="border border-gray-400 px-4 py-2 text-left">{{ $product->price }}</td> 
                                     <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->stock }}</td> 
-                                    <td class="border border-gray-400 px-4 py-2 text-center bg-white hover:bg-gray-100">
-                                        <a href="{{ route('admin.products.show', $product) }}">Ver</a>            
+                                    <td class="border border-gray-400 px-4 py-2 text-center">
+                                        <x-button-link href="{{ route('admin.products.show', $product) }}">Ver</x-button-link>
                                     </td>
-                                    <td class="border border-gray-400 px-4 py-2 text-center bg-white hover:bg-gray-100">
-                                        <a href="{{ route('admin.products.edit', $product) }}">Editar</a>
+                                    <td class="border border-gray-400 px-4 py-2 text-center">
+                                        <x-button-link href="{{ route('admin.products.edit', $product) }}">Editar</x-button-link>
                                     </td>
-                                    <td class="border border-gray-400 px-4 py-2 text-center bg-white hover:bg-gray-100">
+                                    <td class="border border-gray-400 px-4 py-2 text-center">
                                         <x-auth-validation-errors :errors="$errors"/>
                                         <form action="{{ route('admin.products.toggle', $product) }}" method="POST"> 
                                             @csrf   
                                             {{ method_field('PUT') }}                                     
-                                            <button type="submit" >{{ $product->enable ? 'Deshabilitar' : 'Habilitar' }}</button>
+                                            <x-button type="submit" >{{ $product->enable ? 'Deshabilitar' : 'Habilitar' }}</x-button>
                                         </form>                             
                                     </td> 
-                                    <td class="border border-gray-400 px-4 py-2 text-center bg-white hover:bg-gray-100">
+                                    <td class="border border-gray-400 px-4 py-2 text-center">
                                         <form action="{{ route('admin.products.destroy', $product) }}" method="POST"> 
                                             @csrf
                                             {{ method_field('DELETE') }}
-                                            <button href="{{ route('admin.products.index', $product) }}" onclick="return confirm ('¿Seguro que quieres eliminar este producto?')">Eliminar</button>
+                                            <x-button href="{{ route('admin.products.index', $product) }}" onclick="return confirm ('¿Seguro que quieres eliminar este producto?')">Eliminar</x-button>
                                         </form>                             
                                     </td> 
                                 </tr>                                              

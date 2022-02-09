@@ -27,17 +27,17 @@
                         <tr>
                             <td class="border border-gray-400 px-4 py-2 text-center"><img src="{{ asset('storage/' .$product->image) }}" alt="image"></td>
                             <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->id }}</th>
-                            <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->name }}</td>
-                            <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->description }}</td>
+                            <td class="border border-gray-400 px-4 py-2 text-left">{{ $product->name }}</td>
+                            <td class="border border-gray-400 px-4 py-2 text-left">{{ $product->description }}</td>
                             <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->price }}</td>
                             <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->stock }}</td>
                             <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->category->name }}</td>
-                            <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->created_at }}</td>
-                            <td class="border border-gray-400 px-4 py-2 text-center">{{ $product->updated_at }}</td>
+                            <td class="border border-gray-400 px-4 py-2 text-left">{{ $product->created_at }}</td>
+                            <td class="border border-gray-400 px-4 py-2 text-left">{{ $product->updated_at }}</td>
                         </tr>
                     </tbody>
                 </table><br>
-                    <div>
+                    <div class="flex justify-center">
                         <a href="{{route('admin.products.index')}}"> <x-button>Volver</x-button>
                     </div> 
             </div>

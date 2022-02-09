@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __( 'Crear nuevo producto') }}
+            {{ __( 'Crea un nuevo producto con este formulario') }}
         </h2>
     </x-slot>
 <div class="py-12">
@@ -27,7 +27,7 @@
                             <x-label for="stock">Stock: </x-label>
                             <x-input type="text" name="stock" required/>
                             <br>
-                            <x-label for="category">Categoría: </x-label>  
+                            <x-label for="category_id">Categoría: </x-label>  
                                 <select name="category_id" required>
                                     @foreach ($categories as $category)
                                     <option value={{ $category->id }}> {{ $category->name }} </option>    

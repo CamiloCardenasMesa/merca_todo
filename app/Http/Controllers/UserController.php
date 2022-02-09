@@ -9,9 +9,15 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $users = User::paginate(10);
+        if ($request->query('query')) {
+            $users = User::where('name', 'like', '%'.$request->query('query').'%')
+            ->orwhere('email', 'like', '%'.$request->query('query').'%')
+            ->paginate(10);
+        } else {
+            $users = User::paginate(10);
+        }
 
         return view('admin.users.index', compact('users'));
     }

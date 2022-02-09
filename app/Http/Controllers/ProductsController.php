@@ -11,9 +11,15 @@ use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
-    public function index()
+    public function index(Request $request): View
     {
-        $products = Product::paginate(4);
+        if ($request->query('query')) {
+            $products = Product::where('name', 'like', '%'.$request->query('query').'%')
+            ->orwhere('description', 'like', '%'.$request->query('query').'%')
+            ->paginate(8);
+        } else {
+            $products = Product::paginate(8);
+        }
 
         return view('admin.products.index', compact('products'));
     }
@@ -25,7 +31,9 @@ class ProductsController extends Controller
 
     public function edit(Product $product): View
     {
-        return view('admin.products.edit', compact('product'));
+        $categories = Category::all();
+
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, Product $product): RedirectResponse
@@ -34,11 +42,12 @@ class ProductsController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->stock = $request->input('stock');
-        $product->save();
+        $product->category_id = $request->input('category_id');
 
         if ($request->hasFile('image')) {
-            $fileName = time().'.'.$request->file('image')->extension();
-            $product->image = $request->file('image')->storeAs('images', $fileName, 'public');
+            $file = $request->file('image');
+            $fileName = $file->hashName();
+            $product->image = $file->storeAs('images', $fileName, 'public');
         }
 
         $product->save();
@@ -65,9 +74,7 @@ class ProductsController extends Controller
         $product->category_id = $request->input('category_id');
 
         $file = $request->file('image');
-
         $fileName = $file->hashName();
-
         $product->image = $file->storeAs('images', $fileName, 'public');
 
         $product->save();
