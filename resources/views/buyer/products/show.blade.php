@@ -8,32 +8,30 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="px-8 pb-8 pt-4 bg-white border-b border-gray-200">
+                <div class="p-8 bg-white border-b border-gray-200">
                     <div class="container">
-                        <div class="grid grid-cols-2 bg-gray-100 gap-10 pt-12 px-16 border">
-                            <div>
+                        <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 p-12 border">
+                            <div class="flex flex-col justify-center">
                                 <img  width="500px" src="{{ asset('storage/' .$product->image) }}" alt="image">
                             </div>
-                            <div class="grid grid-rows-3 content-evenly">  
-                                <div class="font-sans text-4xl">
+                            <div class="flex flex-col justify-center">  
+                                <div class="font-sans text-4xl my-2">
                                     {{ $product->name }}
                                 </div>
-                                <div  class="font-sans text-2xl pt-8 text-red-700 font-bold ">
+                                <div  class="font-sans text-red-700 font-bold text-2xl my-2 ">
                                     {{ $product->price }}
                                 </div>
-                                <div class="text tex">
+                                <div class="my-2">
                                     {{ $product->description }}
                                 </div>  
-                                <div class="grid grid-cols-1">
-                                    <div>
-                                        <a href="{{route('dashboard')}}"> <x-button>Volver</x-button>
-                                    </div>
+                                <div class="my-2">
+                                    <x-button-link href="{{route('dashboard')}}">Volver</x-button-link>
                                 </div>
                             </div> 
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
     </div>  
 </x-app-layout>

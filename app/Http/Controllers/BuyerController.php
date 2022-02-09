@@ -14,9 +14,10 @@ class BuyerController extends Controller
         if ($request->query('query')) {
             $products = Product::where('name', 'like', '%'.$request->query('query').'%')
                 ->orWhere('description', 'like', '%'.$request->query('query').'%')
-                ->paginate(4);
+                ->where('enable', true)
+                ->paginate(8);
         } else {
-            $products = Product::paginate(8);
+            $products = Product::where('enable', true)->paginate(8);
         }
 
         return view('dashboard', compact('products'));
@@ -24,10 +25,6 @@ class BuyerController extends Controller
 
     public function show(Product $product): View|RedirectResponse
     {
-        if ($product->enable) {
-            return view('buyer.products.show', compact('product'));
-        } else {
-            return redirect()->route('dashboard');
-        }
+        return view('buyer.products.show', compact('product'));
     }
 }
