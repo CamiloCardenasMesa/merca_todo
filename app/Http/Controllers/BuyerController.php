@@ -17,7 +17,7 @@ class BuyerController extends Controller
                 ->where('enable', true)
                 ->paginate(8);
         } else {
-            $products = Product::where('enable', true)->paginate(8);
+            $products = Product::where('enable', true)->orderBy('id', 'desc')->paginate(8);
         }
 
         return view('dashboard', compact('products'));
@@ -25,6 +25,10 @@ class BuyerController extends Controller
 
     public function show(Product $product): View|RedirectResponse
     {
+        if (!$product->enable) {
+            return back();
+        }
+
         return view('buyer.products.show', compact('product'));
     }
 }
