@@ -13,7 +13,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->string('name');
             $table->text('description');
-            $table->decimal('price', 10, 2);
+            $table->integer('price');
             $table->unsignedInteger('stock');
             $table->foreignId('category_id')->nullable();
             $table->timestamps();
