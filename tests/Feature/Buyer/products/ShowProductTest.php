@@ -34,4 +34,5 @@ class ShowProductTest extends TestCase
         $this->assertAuthenticated();
         $response->assertOk();
     }
+
 }
