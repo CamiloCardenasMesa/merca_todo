@@ -6,6 +6,4 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-import { createApp } from 'vue';
-import App from '../vue/App.vue';
-createApp(App).mount('#app');
+
