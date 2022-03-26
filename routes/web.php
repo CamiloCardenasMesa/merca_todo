@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuyerController;
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [GuestController::class, 'index'])
+    ->name('welcome');
+
+Route::get('guest/products/{product}', [GuestController::class, 'show'])
+    ->name('guest.products.show');
 
 Route::get('/dashboard', [BuyerController::class, 'index'])
     ->middleware(['auth', 'verified'])
