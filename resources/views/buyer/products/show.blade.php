@@ -1,12 +1,21 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __($product->name) }}
-        </h2>
+        <div class="flex justify-between">
+            <div class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ __($product->name) }} 
+            </div>
+            <div>
+                <x-button-link href="{{route('buyer.cart.index')}}">Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+            </div>
+        </div>
     </x-slot>
 
-    <div class="py-12">
+    
+    <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-8 bg-white border-b border-gray-200">
                     <div class="container">
@@ -23,9 +32,20 @@
                                 </div>
                                 <div class="my-2">
                                     {{ $product->description }}
-                                </div>  
-                                <div class="my-2">
-                                    <x-button-link href="{{route('dashboard')}}">Volver</x-button-link>
+                                </div>
+                                    <br> 
+                                <div>
+                                    <form action="{{route('buyer.cart.store')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ $product->id }}" name="product_id">
+                                        <x-label for="product_amount" :value="__('Cantidad')" />
+                                        <x-input class="w-16 h-9 mr-2" type="number" min="1" name="product_amount" required />
+                                        <x-button>{{  __('Añadir al carrito') }}</x-button>
+                                    </form>
+                                        <br>
+                                    <div class="my-2">
+                                        <x-button-link href="{{route('dashboard')}}">Volver</x-button-link>
+                                    </div>
                                 </div>
                             </div> 
                         </div>

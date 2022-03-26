@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Product extends Model
+class Product extends Model implements Buyable
 {
     use HasFactory;
 
@@ -22,5 +23,35 @@ class Product extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(category::class);
+    }
+
+    public function getBuyableIdentifier($options = null)
+    {
+        return $this->id;
+    }
+
+    public function getBuyableDescription($options = null)
+    {
+        return $this->name;
+    }
+
+    public function getBuyablePrice($options = null)
+    {
+        return $this->price;
+    }
+
+    public function getBuyableWeight($options = null)
+    {
+        return 1;
+    }
+
+    public function getImage($options = null)
+    {
+        return $this->image;
+    }
+
+    public function getDescription($options = null)
+    {
+        return $this->description;
     }
 }

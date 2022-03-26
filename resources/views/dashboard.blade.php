@@ -1,10 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Bienvenido a Mercatodo') }}
-        </h2>
+            <div class="flex justify-end">
+                <x-button-link href="{{route('buyer.cart.index')}}">Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+            </div>
     </x-slot>
-
+    
+    
     <div class="pt-8 pb-14">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
             <form action="{{ route('dashboard') }}" method="GET"> 
