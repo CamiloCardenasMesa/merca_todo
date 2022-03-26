@@ -12,12 +12,22 @@ class GuestController extends Controller
     {
         if ($request->query('query')) {
             $products = Product::where('name', 'like', '%'.$request->query('query').'%')
-            ->orwhere('description', 'like', '%'.$request->query('query').'%')
-            ->paginate(8);
+                ->orWhere('description', 'like', '%'.$request->query('query').'%')
+                ->where('enable', true)
+                ->paginate(8);
         } else {
-            $products = Product::orderBy('id', 'desc')->paginate(8);
+            $products = Product::where('enable', true)->orderBy('id', 'desc')->paginate(8);
         }
 
         return view('welcome', compact('products'));
+    }
+
+    public function show(Product $product): View
+    {
+        if (!$product->enable) {
+            return back();
+        }
+
+        return view('guest.products.show', compact('product'));
     }
 }
