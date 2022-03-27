@@ -11,12 +11,12 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('reference');
-            $table->text('description')->nullable();
             $table->string('currency');
             $table->enum('state', ['APPROVED', 'REJECTED', 'PENDING']);
             $table->string('process_url')->nullable();
             $table->string('session_id')->nullable();
             $table->foreignId('user_id')->constrained('users');
+            $table->bigInteger('total');
             $table->timestamps();
         });
     }

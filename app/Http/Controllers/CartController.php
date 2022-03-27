@@ -47,11 +47,4 @@ class CartController extends Controller
 
         return redirect()->back()->with('status', 'El producto ha sido actualizado correctamente');
     }
-
-    public function clear()
-    {
-        Cart::clear();
-
-        return back()->with('message', 'El Carrito está vacío');
-    }
 }

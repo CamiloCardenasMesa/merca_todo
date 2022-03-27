@@ -12,11 +12,11 @@ class Order extends Model
 
     protected $fillable = [
         'refence',
-        'description',
         'currency',
         'state',
         'process_url',
         'session_id',
+        'total',
     ];
 
     public function user(): BelongsTo
