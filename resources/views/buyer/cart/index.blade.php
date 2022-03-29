@@ -61,6 +61,9 @@
                             Subtotal: {{ Cart::pricetotal() }}
                         </div>
                         <p> This order is in USD. Applicable taxes, shipping, coupons or special offers will be applied at Checkout.</p><br>
+                        <div>
+                            <x-button-link class="text-center" >Finalizar compra</x-button-link>
+                        </div>
                     </div>
                 </div>
             </div>  
