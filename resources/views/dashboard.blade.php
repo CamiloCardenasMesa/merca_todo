@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
             <div class="flex justify-end">
-                <x-button-link href="{{route('buyer.cart.index')}}">Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+                <x-button-link href="{{route('buyer.cart.index')}}"> 🛒 Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
             </div>
     </x-slot>
     

@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between">
             <div class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Carrito de compras') }}
+                {{ __('Carrito de compras') }} 🛒
             </div>
             <div>
                 <x-button-link href="{{route('dashboard')}}">Continuar comprando</x-button-link>
@@ -58,11 +58,14 @@
                             @endforeach
                         </div>
                         <div class=" flex p-12 flex-row row-start-2 gap-4 text text-2xl font-bold text-red-700">
-                            Subtotal: {{ Cart::pricetotal() }}
+                            Subtotal: ${{  Cart::pricetotal() }}
                         </div>
-                        <p> This order is in USD. Applicable taxes, shipping, coupons or special offers will be applied at Checkout.</p><br>
-                        <div>
-                            <x-button-link class="text-center" >Finalizar compra</x-button-link>
+                        <p> Este pedido no tiene incluido impuestos aplicables, gastos de envío, cupones u ofertas.</p><br>
+                        <div class="pl-10">
+                            <form action="{{ route('buyer.orders.store') }}" method="POST" >
+                                @csrf
+                                <x-button>Finalizar Compra</x-button>
+                            </form>
                         </div>
                     </div>
                 </div>

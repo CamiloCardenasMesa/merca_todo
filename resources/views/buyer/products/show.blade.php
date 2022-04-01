@@ -5,7 +5,7 @@
                     {{ __($product->name) }} 
             </div>
             <div>
-                <x-button-link href="{{route('buyer.cart.index')}}">Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+                <x-button-link href="{{route('buyer.cart.index')}}"> 🛒 Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
             </div>
         </div>
     </x-slot>
