@@ -30,3 +30,15 @@ Route::patch('buyer/cart/update/{rowId}', [CartController::class, 'update'])
 Route::post('buyer/orders/store', [OrderController::class, 'store'])
     ->middleware('auth', 'verified')
     ->name('buyer.orders.store');
+
+Route::get('buyer/orders/{order}/show', [OrderController::class, 'show'])
+    ->middleware('auth', 'verified')
+    ->name('buyer.orders.show');
+
+Route::get('buyer/orders/{order}/retry', [OrderController::class, 'retry'])
+    ->middleware('auth', 'verified')
+    ->name('buyer.orders.retry');
+
+Route::get('buyer/orders/index', [OrderController::class, 'index'])
+    ->middleware('auth', 'verified')
+    ->name('buyer.orders.index');
