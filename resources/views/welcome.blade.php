@@ -70,7 +70,7 @@
                                     
                                     @foreach ($products as $product) 
                                     <div class="bg-gray-100 p-4 shadow-md hover:shadow-gray-500 ">
-                                        <div>
+                                        <div class="mb-8">
                                             <a href="{{ route('guest.products.show', $product) }}">  
                                                 <img width="500px" src="{{ asset('storage/' .$product->image) }}" alt="image">
                                             </a> 
@@ -79,7 +79,7 @@
                                             {{ $product->name }}
                                         </div>
                                         <div class="my-4 text-red-700 font-bold">
-                                            {{ $product->price }}
+                                            $ {{ $product->price }}
                                         </div>
                                         <div class="py-2">
                                             {{ $product->description }} 
