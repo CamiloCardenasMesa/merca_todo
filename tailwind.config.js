@@ -10,8 +10,8 @@ module.exports = {
     ],
 
     theme: {
-        container:{
-           center: true,
+        container: {
+            center: true,
         },
         extend: {
             fontFamily: {
