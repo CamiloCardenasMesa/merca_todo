@@ -52,10 +52,10 @@
                                         </form>                             
                                     </td> 
                                     <td class="border border-gray-400 px-4 py-2 text-center">
-                                        <form action="{{ route('buyer.cart.destroy', $product) }}" method="POST"> 
+                                        <form action="{{ route('admin.products.destroy', $product) }}" method="POST"> 
                                             @csrf
                                             {{ method_field('DELETE') }}
-                                            <x-button href="{{ route('buyer.cart.index', $product) }}" onclick="return confirm ('¿Seguro que quieres eliminar este producto?')">Eliminar</x-button>
+                                            <x-button onclick="return confirm ('¿Seguro que quieres eliminar este producto?')">Eliminar</x-button>
                                         </form>                             
                                     </td> 
                                 </tr>                                              
