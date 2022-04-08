@@ -3,10 +3,13 @@
 namespace Tests\Feature\Buyer\Cart;
 
 use App\Models\Product;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class StoreCartTest extends TestCase
 {
+    use RefreshDatabase;
+    
     public function testAddProductToCart(): void
     {
         $product = Product::factory()->create();
