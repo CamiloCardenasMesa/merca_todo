@@ -65,6 +65,7 @@ class OrderController extends Controller
             $webcheckoutService = new WebcheckoutService();
 
             $response = $webcheckoutService->getInformation($order->session_id);
+
             if ($response['status']['status'] !== 'PENDING') {
                 $order->state = $response['status']['status'];
 
