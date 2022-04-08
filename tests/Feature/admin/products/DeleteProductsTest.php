@@ -30,14 +30,12 @@ class DeleteProductsTest extends TestCase
         $productDeleted = Product::factory()->create();
 
         //Act or Request
-        /* dd(route('admin.products.destroy', $productDeleted)); */
         $response = $this->actingAs($admin)->delete(route('admin.products.destroy', $productDeleted));
 
-        $this->assertCount(0, Product::all());
-
         //Assert
-        $response->assertRedirect('/products'); //no sé por qué no se redirecciona
+        $response->assertRedirect('/products');
         $this->assertAuthenticated();
         $this->assertFalse(Storage::disk('public')->exists($productDeleted->product_image));
+        $this->assertCount(0, Product::all());
     }
 }

@@ -25,6 +25,6 @@ class GetInformationRequest implements WebCheckoutRequestContract
 
     public static function url(?int $session_id): string
     {
-        return config('webcheckout.url').'/api/session'.$session_id;
+        return config('webcheckout.url').'/api/session/'.$session_id;
     }
 }

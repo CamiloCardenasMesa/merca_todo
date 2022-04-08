@@ -6,6 +6,7 @@ use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model implements Buyable
 {
@@ -23,6 +24,11 @@ class Product extends Model implements Buyable
     public function category(): BelongsTo
     {
         return $this->belongsTo(category::class);
+    }
+
+    public function productOrder(): HasMany
+    {
+        return $this->hasMany(ProductOrder::class);
     }
 
     public function getBuyableIdentifier($options = null)

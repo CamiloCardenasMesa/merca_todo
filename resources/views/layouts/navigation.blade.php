@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
                         {{ __('Productos') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('buyer.orders.index')" :active="request()->routeIs('buyer.orders.index')">
+                        {{ __('Historial de compras') }}
+                    </x-nav-link>
                 </div>
             </div>
 

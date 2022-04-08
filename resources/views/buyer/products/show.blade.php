@@ -5,7 +5,7 @@
                     {{ __($product->name) }} 
             </div>
             <div>
-                <x-button-link href="{{route('buyer.cart.index')}}">Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+                <x-button-link href="{{route('buyer.cart.index')}}"> 🛒 Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
             </div>
         </div>
     </x-slot>
@@ -21,14 +21,14 @@
                     <div class="container">
                         <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 p-12 border">
                             <div class="flex flex-col justify-center">
-                                <img  width="500px" src="{{ asset('storage/' .$product->image) }}" alt="image">
+                                <img  width="500px" src="{{ asset('storage/'.$product->image) }}" alt="image">
                             </div>
                             <div class="flex flex-col justify-center">  
                                 <div class="font-sans text-4xl my-2">
                                     {{ $product->name }}
                                 </div>
                                 <div  class="font-sans text-red-700 font-bold text-2xl my-2 ">
-                                    {{ $product->price }}
+                                    $ {{ $product->price }}
                                 </div>
                                 <div class="my-2">
                                     {{ $product->description }}

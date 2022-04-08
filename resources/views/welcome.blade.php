@@ -46,7 +46,7 @@
                             width="200">
                         </a>
                     </div>
-                    <x-button-link class="h-9 my-auto" href="{{route('buyer.cart.index')}}">Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+                    <x-button-link class="h-9 my-auto" href="{{route('buyer.cart.index')}}">🛒 Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
                 </div>
             </div>
         </header>
@@ -69,8 +69,8 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
                                     
                                     @foreach ($products as $product) 
-                                    <div class="bg bg-gray-100 p-4 shadow-md hover:shadow-gray-500 ">
-                                        <div>
+                                    <div class="bg-gray-100 p-4 shadow-md hover:shadow-gray-500 ">
+                                        <div class="mb-8">
                                             <a href="{{ route('guest.products.show', $product) }}">  
                                                 <img width="500px" src="{{ asset('storage/' .$product->image) }}" alt="image">
                                             </a> 
@@ -79,7 +79,7 @@
                                             {{ $product->name }}
                                         </div>
                                         <div class="my-4 text-red-700 font-bold">
-                                            {{ $product->price }}
+                                            $ {{ $product->price }}
                                         </div>
                                         <div class="py-2">
                                             {{ $product->description }} 

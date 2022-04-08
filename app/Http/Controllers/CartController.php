@@ -13,7 +13,6 @@ class CartController extends Controller
     public function store(AddProductToCartRequest $request)
     {
         $product = Product::findOrFail($request->input('product_id'));
-        /*  dd($product->getImage()); */
 
         Cart::add($product, $request->input('product_amount'), ['image' => $product->image, 'description' => $product->getDescription()]);
 
@@ -36,7 +35,6 @@ class CartController extends Controller
 
     public function update(UpdateCartRequest $request, string $rowId): RedirectResponse
     {
-        /* dd($request->input('changeQuantity')); */
         $qty = Cart::get($rowId)->qty;
 
         if ($request->input('changeQuantity') == 'increase') {
