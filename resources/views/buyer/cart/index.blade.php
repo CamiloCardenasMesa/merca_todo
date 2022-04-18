@@ -12,7 +12,11 @@
  
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
+                <x-auth-session-status class="mb-4" :status="session('status')" />
+            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                @if (count($shoppingCart))
                 <div class="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 bg-white border-b border-gray-200">
                     <div class="gap-4 justify-between ">
                         @foreach ($shoppingCart as $cartItem ) 
@@ -71,6 +75,16 @@
                         </div>
                     </div>
                 </div>
+                @else
+                <div class="text text-center pt-6">
+                    <div class="text-2xl">
+                        El carrito está vacío
+                    </div>
+                    <div class="pt-2 mb-6">
+                        <x-button-link href="{{route('dashboard')}}">Agregar productos</x-button-link>
+                    </div>
+                </div> 
+                @endif
             </div>  
         </div>
     </div>  
