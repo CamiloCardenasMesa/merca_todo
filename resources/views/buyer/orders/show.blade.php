@@ -20,33 +20,27 @@
                     <div class="container">
                         <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 bg-gray-100 gap-10 p-12 border">
                             <div class="flex flex-col justify-center">  
-                                <div  class="font-sans font-bold text-2xl my-2 ">
-                                    @if ($order->state === 'PENDING')
-                                        <div class="text-yellow-500">
-                                            Estado de la transacción: {{ $order->state }}
-                                        </div>
-                                    @elseif ($order->state === 'REJECTED')
-                                        <div class="text-red-700">
-                                            Estado de la transacción: {{ $order->state }}
-                                        </div>
-                                    @else 
-                                        <div class="text-green-500">
-                                            Estado de la transacción: {{ $order->state }}
-                                        </div>
-                                    @endif
-                                </div>
                                 <div>
                                     @if ($order->state === 'PENDING')
+                                        <div class="text-yellow-500 font-sans font-semibold text-2xl my-2">
+                                            Estado de la transacción: {{ $order->state }}
+                                        </div>
                                         <span>Su pago está pendiente, le avisaremos cuando sea aprobada o puede reintentar el pago</span>
                                         <div class="mb-12 mt-4">
                                             <x-button-link href="{{ $order->process_url }}">Reintentar pago</x-button-link>
                                         </div>
                                     @elseif ($order->state === 'REJECTED')
+                                        <div class="text-red-700 font-sans font-semibold text-2xl my-2">
+                                            Estado de la transacción: {{ $order->state }}
+                                        </div>
                                         <span>Su pago fue rechazado, lo invitamos a reintentar el pago</span>
                                         <div class="mb-12 mt-4">
                                             <x-button-link href="{{ route('buyer.orders.retry', $order) }}">Reintentar pago</x-button-link>
                                         </div>
                                     @else 
+                                        <div class="text-green-400 font-sans font-semibold  text-2xl my-2">
+                                            Estado de la transacción: {{ $order->state }}
+                                        </div>
                                         <div class="text-2xl mb-6">
                                             Total: ${{ $order->total }}
                                         </div>
