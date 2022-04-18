@@ -12,7 +12,7 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'refence',
+        'reference',
         'currency',
         'state',
         'process_url',
