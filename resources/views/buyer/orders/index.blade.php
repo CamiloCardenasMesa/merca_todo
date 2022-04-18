@@ -23,7 +23,7 @@
                         @foreach ($orders as $order)
                             <tbody>
                                 <tr>
-                                    <td class="border border-gray-400 px-4 py-2 text-left">{{ $order->reference }}</td>
+                                    <td class="border border-gray-400 px-4 py-2 text-left">{{ $order->reference = str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</td>
                                     <td class="border border-gray-400 px-4 py-2 text-left">{{ $order->state }}</td>
                                     <td class="border border-gray-400 px-4 py-2 text-left">{{ $order->total }}</td>
                                     <td class="border border-gray-400 px-4 py-2 text-left">{{ $order->created_at }}</td>
