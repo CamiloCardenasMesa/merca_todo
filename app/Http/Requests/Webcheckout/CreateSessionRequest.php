@@ -22,7 +22,7 @@ class CreateSessionRequest extends GetInformationRequest
         return config('webcheckout.url').'/api/session';
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return array_merge(parent::auth(), [
             'locale' => 'es_CO',
