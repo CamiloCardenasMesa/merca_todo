@@ -26,6 +26,8 @@ class WebcheckoutTest extends TestCase
         $this->assertArrayHasKey('expiration', $request);
         $this->assertArrayHasKey('locale', $request);
         $this->assertArrayHasKey('returnUrl', $request);
+        $this->assertArrayHasKey('ipAddress', $request);
+        $this->assertArrayHasKey('userAgent', $request);
     }
 
     public function testItCanCreateSessionFromServiceCorrectly()
