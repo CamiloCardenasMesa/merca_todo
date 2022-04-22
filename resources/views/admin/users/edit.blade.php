@@ -14,13 +14,13 @@
                     @method('PUT')
                     <div class="grid grid-cols-1 gap-4">
                         <div class="grid grid-rows-1 gap-1 mb-2"><br>
-                            <x-label for="name">Nombre: </x-label>
+                            <x-label for="name">{{ trans('auth.name') }}</x-label>
                             <x-input type="text" name="name" value="{{ $user->name }}" required/><br>                                
-                            <x-label for="email">Email: </x-label>
+                            <x-label for="email">{{ trans('auth.email') }}</x-label>
                             <x-input type="text" name="email" value="{{ $user->email }}" required/>
                         </div>
                         <div class="mx-auto mb-4">
-                            <x-button>Guardar</x-button>
+                            <x-button>{{ trans('buttons.save') }}</x-button>
                         </div>
                     </div>      
                 </form>

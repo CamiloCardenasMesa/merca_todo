@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('ÓRDENES DE COMPRA') }}
+            {{ trans('order.purchase_orders') }}
         </h2>
     </x-slot>
 
@@ -12,12 +12,12 @@
                     <table class="container">
                         <thead>
                             <tr class="bg-gray-100 text-center">
-                                <th class="border border-gray-400 px-4 py-2">Referencia</th>
-                                <th class="border border-gray-400 px-4 py-2">Estado de la transacción</th>
-                                <th class="border border-gray-400 px-4 py-2">Total</th>
-                                <th class="border border-gray-400 px-4 py-2">Fecha de Creación</th>
-                                <th class="border border-gray-400 px-4 py-2">Fecha de actualización</th>
-                                <th class="border border-gray-400 px-4 py-2">Ver Orden</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('order.reference') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('order.transaction_status') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('order.total') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('order.created_at') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('order.updated_at') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('order.show') }}</th>
                             </tr>
                         </thead>  
                         @foreach ($orders as $order)
@@ -30,7 +30,7 @@
                                     <td class="border border-gray-400 px-4 py-2">{{ $order->updated_at }}</td>
 
                                     <td class="border border-gray-400 px-4 py-2 text-center">
-                                        <x-button-link href="{{ route('buyer.orders.show', $order) }}">Ver</x-button-link>
+                                        <x-button-link href="{{ route('buyer.orders.show', $order) }}">{{ trans('buttons.show') }}</x-button-link>
                                     </td>
                                 </tr>                                              
                             </tbody>

@@ -13,11 +13,11 @@
                         <thead>
                             <tr class="bg-gray-100">
                                 <th class="border border-gray-400 px-4 py-2">Id</th>
-                                <th class="border border-gray-400 px-4 py-2">Nombre</th>
-                                <th class="border border-gray-400 px-4 py-2">Email</th>
-                                <th class="border border-gray-400 px-4 py-2">Email verificado</th>
-                                <th class="border border-gray-400 px-4 py-2">Fecha de creación:</th>
-                                <th class="border border-gray-400 px-4 py-2">Fecha de actualización:</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('auth.name') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('auth.email') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('auth.verificated_at') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('auth.created_at') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('auth.updated_at') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,7 +32,7 @@
                         </tbody>
                     </table><br>
                         <div class="flex justify-center">
-                            <a href="{{route('admin.users.index')}}"> <x-button>Volver</x-button>
+                            <a href="{{route('admin.users.index')}}"> <x-button>{{ trans('buttons.back') }}</x-button>
                         </div>                     
                 </div>
             </div>

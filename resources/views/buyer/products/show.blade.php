@@ -5,7 +5,8 @@
                     {{ __($product->name) }} 
             </div>
             <div>
-                <x-button-link href="{{route('buyer.cart.index')}}"> 🛒 Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+                <x-button-link href="{{route('buyer.cart.index')}}"> 🛒{{ trans('buttons.cart') }}
+                     ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
             </div>
         </div>
     </x-slot>
@@ -38,13 +39,13 @@
                                     <form action="{{route('buyer.cart.store')}}" method="POST">
                                         @csrf
                                         <input type="hidden" value="{{ $product->id }}" name="product_id">
-                                        <x-label for="product_amount" :value="__('Cantidad')" />
+                                        <x-label for="product_amount" :value="__(trans('products.quantity'))" /> 
                                         <x-input class="w-16 h-9 mr-2" type="number" min="1" name="product_amount" required />
-                                        <x-button>{{  __('Añadir al carrito') }}</x-button>
+                                        <x-button>{{ trans('buttons.add_to_cart') }}</x-button>
                                     </form>
                                         <br>
                                     <div class="my-2">
-                                        <x-button-link href="{{route('dashboard')}}">Volver</x-button-link>
+                                        <x-button-link href="{{route('dashboard')}}">{{ trans('buttons.back') }}</x-button-link>
                                     </div>
                                 </div>
                             </div> 

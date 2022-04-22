@@ -2,10 +2,10 @@
     <x-slot name="header">
         <div class="flex justify-between">
             <div class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Historial de Compras') }} 
+                {{ trans('order.order_reference') }} {{ $order->reference = str_pad($order->id, 6, '0', STR_PAD_LEFT) }}
             </div>
             <div>
-                <x-button-link href="{{route('buyer.cart.index')}}"> 🛒 Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+                <x-button-link href="{{route('buyer.cart.index')}}"> 🛒{{ trans('buttons.cart') }} ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
             </div>
         </div>
     </x-slot>
@@ -50,7 +50,7 @@
                                     @endif
                                 </div>
                                     <div>
-                                        <x-button-link href="{{route('dashboard')}}">Ver más productos</x-button-link>
+                                        <x-button-link href="{{route('dashboard')}}">{{ trans('buttons.search_products') }}</x-button-link>
                                     </div>
                             </div> 
                         </div>
