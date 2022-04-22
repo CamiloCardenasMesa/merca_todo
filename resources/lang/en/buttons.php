@@ -14,7 +14,9 @@ return [
     'logOut' => 'Log Out',
     'signUp' => 'Sign Up',
     'cart' => 'Cart',
-    'add_to_cart' => 'Add to cart',
+    'add_to_cart' => 'Add to Cart',
     'search' => 'Search',
-    'create_product' => 'Create a product',
+    'create_product' => 'Create a Product',
+    'continue_shopping' => 'Continue Shopping',
+    'checkout' => 'Checkout',
 ];

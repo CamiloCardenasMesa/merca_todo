@@ -17,4 +17,6 @@ return [
     'add_to_cart' => 'Añadir al carrito',
     'search' => 'Buscar',
     'create_product' => 'Crear nuevo producto',
+    'continue_shopping' => 'Continuar comprando',
+    'checkout' => 'Finalizar compra',
 ];
