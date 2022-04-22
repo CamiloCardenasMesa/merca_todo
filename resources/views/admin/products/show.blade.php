@@ -12,15 +12,15 @@
                 <table class="container">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="border border-gray-400 px-4 py-2">imagen</th>
+                            <th class="border border-gray-400 px-4 py-2">{{ trans('products.image') }}</th>
                             <th class="border border-gray-400 px-4 py-2">Id</th>
-                            <th class="border border-gray-400 px-4 py-2">Nombre</th>
-                            <th class="border border-gray-400 px-4 py-2">Descripción</th>
-                            <th class="border border-gray-400 px-4 py-2">Precio</th>
-                            <th class="border border-gray-400 px-4 py-2">Stock</th>
-                            <th class="border border-gray-400 px-4 py-2">Categoría</th>
-                            <th class="border border-gray-400 px-4 py-2">Fecha de creación:</th>
-                            <th class="border border-gray-400 px-4 py-2">Fecha de actualización:</th>
+                            <th class="border border-gray-400 px-4 py-2">{{ trans('products.name') }}</th>
+                            <th class="border border-gray-400 px-4 py-2">{{ trans('products.description') }}</th>
+                            <th class="border border-gray-400 px-4 py-2">{{ trans('products.price') }}</th>
+                            <th class="border border-gray-400 px-4 py-2">{{ trans('products.stock') }}</th>
+                            <th class="border border-gray-400 px-4 py-2">{{ trans('products.category') }}</th>
+                            <th class="border border-gray-400 px-4 py-2">{{ trans('products.created_at') }}</th>
+                            <th class="border border-gray-400 px-4 py-2">{{ trans('products.updated_at') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,7 +38,7 @@
                     </tbody>
                 </table><br>
                     <div class="flex justify-center">
-                        <a href="{{route('admin.products.index')}}"> <x-button>Volver</x-button>
+                        <a href="{{route('admin.products.index')}}"> <x-button>{{ trans('buttons.back') }}</x-button>
                     </div> 
             </div>
         </div>

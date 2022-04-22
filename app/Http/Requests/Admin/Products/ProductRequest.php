@@ -22,15 +22,4 @@ class ProductRequest extends FormRequest
             'category' => 'name|exists:categories,id',
         ];
     }
-
-    public function attributes()
-    {
-        return [
-            'name' => 'nombre',
-            'image' => 'imagen',
-            'description' => 'descripción',
-            'price' => 'precio',
-            'category' => 'categoría',
-        ];
-    }
 }

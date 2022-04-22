@@ -25,10 +25,10 @@
                     </div>
                 @else
                     <div>
-                        <a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-white dark:text-gray-500 underline">{{ trans('auth.login') }}</a>
     
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-white dark:text-gray-500 underline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-white dark:text-gray-500 underline">{{ trans('auth.register') }}</a>
                         @endif
                     </div>
                 @endauth
@@ -46,7 +46,8 @@
                             width="200">
                         </a>
                     </div>
-                    <x-button-link class="h-9 my-auto" href="{{route('buyer.cart.index')}}">🛒 Carrito ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
+                    <x-button-link class="h-9 my-auto" href="{{route('buyer.cart.index')}}"> 🛒{{ trans('buttons.cart') }}
+                        ({{\Gloudemans\Shoppingcart\Facades\Cart::content()->count()}})</x-button-link>
                 </div>
             </div>
         </header>
@@ -55,8 +56,8 @@
             <div class="pt-8 pb-14">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
                     <form action="{{ route('welcome') }}" method="GET"> 
-                        <x-input type="text" name="query" placeholder="Busca aquí tu instrumento" />
-                        <x-button class="ml-2">Buscar</x-button>
+                        <x-input type="text" name="query" placeholder="{{ trans('placeholders.dashboard_search') }}" />
+                        <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
                     </form>
                 </div>
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

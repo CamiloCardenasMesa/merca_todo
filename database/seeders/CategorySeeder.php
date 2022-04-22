@@ -12,12 +12,12 @@ class CategorySeeder extends Seeder
     {
         Category::factory()->has(Product::factory()->count(8))
         ->create([
-            'name' => 'Instrumentos de cuerda',
+            'name' => trans('categories.strings'),
         ]);
 
         Category::factory()->has(Product::factory()->count(8))
         ->create([
-            'name' => 'Instrumentos de percusión',
+            'name' => trans('categories.drums'),
         ]);
     }
 }

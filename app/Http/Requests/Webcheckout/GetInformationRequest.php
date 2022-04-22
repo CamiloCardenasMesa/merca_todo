@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class GetInformationRequest implements WebCheckoutRequestContract
 {
-    public function auth()
+    public function auth(): array
     {
         $seed = date('c');
         $nonce = Str::random(8);

@@ -2,61 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CreateOrderAction;
+use App\Actions\CreateSessionAction;
 use App\Models\Order;
-use App\Models\ProductOrder;
 use App\Services\WebcheckoutService;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class OrderController extends Controller
 {
-    public function store(): RedirectResponse
+    public function index(): View
     {
-        $cart = Cart::content();
-        $order = new Order();
+        $orders = Order::where('user_id', auth()->user()->id)->get();
 
-        $order->reference = Str::uuid();
-        $order->currency = 'COP';
-        $order->state = 'PENDING';
-        $order->total = (int) Cart::priceTotalFloat();
-        $order->user_id = Auth::user()->id;
-
-        $order->save();
-
-        foreach ($cart as $cartItem) {
-            $productOrder = new ProductOrder();
-
-            $productOrder->quantity = $cartItem->qty;
-            $productOrder->order_id = $order->id;
-            $productOrder->product_id = $cartItem->id;
-        }
-
-        $webcheckoutService = new WebcheckoutService();
-
-        $response = $webcheckoutService->createSession([
-            'payment' => [
-                'amount' => [
-                    'currency' => $order->currency,
-                    'total' => $order->total,
-                ],
-                'reference' => $order->id,
-            ],
-            'expiration' => date('c', strtotime('+2 days')),
-            'returnUrl' => route('buyer.orders.show', $order->id),
-        ]);
-
-        $order->session_id = $response['requestId'];
-        $order->process_url = $response['processUrl'];
-
-        $order->save();
-
-        Cart::destroy();
-
-        return Redirect::to($order->process_url);
+        return view('buyer.orders.index', compact('orders'));
     }
 
     public function show(Order $order): View
@@ -76,53 +37,37 @@ class OrderController extends Controller
         return view('buyer.orders.show', compact('order'));
     }
 
-    public function retry(Order $order): RedirectResponse
+    public function store(): RedirectResponse
     {
-        /*  dd($order->productsOrder()); */
-        $newOrder = new Order();
-
-        $newOrder->reference = Str::uuid();
-        $newOrder->currency = 'COP';
-        $newOrder->state = 'PENDING';
-        $newOrder->total = $order->total;
-        $newOrder->user_id = Auth::user()->id;
-
-        $newOrder->save();
-
-        foreach ($order->productsOrder() as $productOrder) {
-            $productNewOrder = new ProductOrder();
-
-            $productNewOrder->quantity = $productOrder->qty;
-            $productNewOrder->newOrder_id = $newOrder->id;
-            $productNewOrder->product_id = $productOrder->product_id;
-        }
+        $order = CreateOrderAction::create();
 
         $webcheckoutService = new WebcheckoutService();
 
-        $response = $webcheckoutService->createSession([
-            'payment' => [
-                'amount' => [
-                    'currency' => $newOrder->currency,
-                    'total' => $newOrder->total,
-                ],
-                'reference' => $newOrder->id,
-            ],
-            'expiration' => date('c', strtotime('+2 days')),
-            'returnUrl' => route('buyer.orders.show', $newOrder->id),
-        ]);
+        $response = CreateSessionAction::execute($webcheckoutService, $order);
 
-        $newOrder->session_id = $response['requestId'];
-        $newOrder->process_url = $response['processUrl'];
+        $order->session_id = $response['requestId'];
+        $order->process_url = $response['processUrl'];
 
-        $newOrder->save();
+        $order->save();
 
-        return Redirect::to($newOrder->process_url);
+        Cart::destroy();
+
+        return Redirect::to($order->process_url);
     }
 
-    public function index(): View
+    public function retry(Order $order): RedirectResponse
     {
-        $orders = Order::where('user_id', auth()->user()->id)->get();
+        $order->load('productsOrder');
 
-        return view('buyer.orders.index', compact('orders'));
+        $webcheckoutService = new WebcheckoutService();
+
+        $response = CreateSessionAction::execute($webcheckoutService, $order);
+
+        $order->session_id = $response['requestId'];
+        $order->process_url = $response['processUrl'];
+
+        $order->save();
+
+        return Redirect::to($order->process_url);
     }
 }

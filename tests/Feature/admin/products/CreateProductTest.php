@@ -22,7 +22,7 @@ class CreateProductTest extends TestCase
         //Arrange
         $admin = User::factory()->create();
         $role = Role::create(['name' => 'admin']);
-        $admin->assignrole($role);
+        $admin->assignRole($role);
 
         //Act or Request
         $response = $this->actingAs($admin)->get(route('admin.products.create'));
@@ -66,6 +66,5 @@ class CreateProductTest extends TestCase
         $this->assertEquals(10, $product->stock);
         $this->assertEquals($category->id, $product->category->id);
         $this->assertEquals(1, Product::count());
-        /* $response->assertOk(); */ //status 200 no funciona porque estoy pidiendo una redireccion desde el controlador.
     }
 }
