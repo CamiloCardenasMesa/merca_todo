@@ -5,7 +5,7 @@
                 {{ __('Carrito de compras') }} 🛒
             </div>
             <div>
-                <x-button-link href="{{route('dashboard')}}">Continuar comprando</x-button-link>
+                <x-button-link href="{{route('dashboard')}}">{{ trans('buttons.continue_shopping') }}</x-button-link>
             </div>
         </div>
     </x-slot>
@@ -53,7 +53,7 @@
                                     <form action="{{ route('buyer.cart.destroy', $cartItem->rowId) }}" method="POST"> 
                                         @csrf
                                         {{ method_field('DELETE') }}
-                                        <x-button onclick="return confirm ('¿Seguro que quieres eliminar este producto?')">Eliminar</x-button>
+                                        <x-button onclick="return confirm ('¿Seguro que quieres eliminar este producto?')">{{ trans('buttons.delete') }}</x-button>
                                     </form> 
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                         <div>
                             <form action="{{ route('buyer.orders.store') }}" method="POST" >
                                 @csrf
-                                <x-button>Finalizar Compra</x-button>
+                                <x-button>{{ trans('buttons.checkout') }}</x-button>
                             </form>
                         </div>
                     </div>
