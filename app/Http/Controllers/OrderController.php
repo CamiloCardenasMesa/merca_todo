@@ -20,11 +20,9 @@ class OrderController extends Controller
         return view('buyer.orders.index', compact('orders'));
     }
 
-    public function show(Order $order): View
+    public function show(Order $order, WebcheckoutService $webcheckoutService): View
     {
         if ($order->state === 'PENDING' || $order->state === 'REJECTED') {
-            $webcheckoutService = new WebcheckoutService();
-
             $response = $webcheckoutService->getInformation($order->session_id);
 
             if ($response['status']['status'] !== 'PENDING') {
@@ -37,13 +35,11 @@ class OrderController extends Controller
         return view('buyer.orders.show', compact('order'));
     }
 
-    public function store(): RedirectResponse
+    public function store(WebcheckoutService $webcheckoutService, CreateSessionAction $createSessionAction): RedirectResponse
     {
         $order = CreateOrderAction::create();
 
-        $webcheckoutService = new WebcheckoutService();
-
-        $response = CreateSessionAction::execute($webcheckoutService, $order);
+        $response = $createSessionAction::execute($webcheckoutService, $order);
 
         $order->session_id = $response['requestId'];
         $order->process_url = $response['processUrl'];
@@ -55,13 +51,11 @@ class OrderController extends Controller
         return Redirect::to($order->process_url);
     }
 
-    public function retry(Order $order): RedirectResponse
+    public function retry(Order $order, WebcheckoutService $webcheckoutService, CreateSessionAction $createSessionAction): RedirectResponse
     {
         $order->load('productsOrder');
 
-        $webcheckoutService = new WebcheckoutService();
-
-        $response = CreateSessionAction::execute($webcheckoutService, $order);
+        $response = $createSessionAction::execute($webcheckoutService, $order);
 
         $order->session_id = $response['requestId'];
         $order->process_url = $response['processUrl'];

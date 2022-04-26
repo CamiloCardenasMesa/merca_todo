@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\States;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,7 +13,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('reference');
             $table->string('currency');
-            $table->enum('state', ['APPROVED', 'REJECTED', 'PENDING']);
+            $table->enum('state', [States::APPROVED, States::REJECTED, States::PENDING]);
             $table->string('process_url')->nullable();
             $table->string('session_id')->nullable();
             $table->foreignId('user_id')->constrained('users');

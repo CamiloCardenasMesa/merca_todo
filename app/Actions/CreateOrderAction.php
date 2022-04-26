@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Constants\States;
 use App\Models\Order;
 use App\Models\ProductOrder;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -17,7 +18,7 @@ class CreateOrderAction
 
         $order->reference = Str::uuid();
         $order->currency = 'COP';
-        $order->state = 'PENDING';
+        $order->state = States::PENDING;
         $order->total = (int) Cart::priceTotalFloat();
         $order->user_id = Auth::user()->id;
 
