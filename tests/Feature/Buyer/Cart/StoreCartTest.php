@@ -9,7 +9,7 @@ use Tests\TestCase;
 class StoreCartTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     public function testAddProductToCart(): void
     {
         $product = Product::factory()->create();
