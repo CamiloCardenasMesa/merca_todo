@@ -23,7 +23,7 @@ class GuestControllerTest extends TestCase
     public function testGuestBuyerProductShowViewCanBeRendered(): void
     {
         $this->withoutExceptionHandling();
-        //Arrange
+
         $product = Product::factory()->create();
 
         //Act or Request
@@ -34,6 +34,7 @@ class GuestControllerTest extends TestCase
         $response->assertViewHas('product');
         $this->assertDatabaseCount('products', 1);
         $this->assertGuest();
-        $response->assertOk();
+        $this->assertFalse(!$product->enable);
+        $this->assertTrue($product->enable);
     }
 }
