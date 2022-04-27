@@ -18,8 +18,6 @@ class ShowProductsTest extends TestCase
 
     public function testAdminUserCanRenderShowProductsScreen(): void
     {
-        $this->withoutExceptionHandling();
-
         //Arrange
         $showProductsPermission = Permission::create([
             'name' => Permissions::SHOW_PRODUCTS,
