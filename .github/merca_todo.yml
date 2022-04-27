@@ -32,7 +32,7 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: composer test-ci
+      run: composer test-dox
     - name: Excecute phpcs
       run: composer phpcs_validate
     - name: Prepare paths for SonarQube analysis
