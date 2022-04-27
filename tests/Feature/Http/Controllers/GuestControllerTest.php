@@ -22,8 +22,6 @@ class GuestControllerTest extends TestCase
 
     public function testGuestBuyerProductShowViewCanBeRendered(): void
     {
-        $this->withoutExceptionHandling();
-
         $product = Product::factory()->create();
 
         //Act or Request
