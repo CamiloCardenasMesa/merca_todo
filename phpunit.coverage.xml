@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651099462">
-  <project timestamp="1651099462">
+<coverage generated="1651100449">
+  <project timestamp="1651100449">
     <file name="D:\Camilo\Programación\merca_todo\app\Actions\CreateOrderAction.php">
       <class name="App\Actions\CreateOrderAction" namespace="global">
         <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="0" elements="15" coveredelements="0"/>
