@@ -12,6 +12,5 @@ class RoleHasPermissionsSeeder extends Seeder
     {
         $admin = Role::findByName('admin');
         $admin->syncPermissions(Permission::all());
-
     }
 }

@@ -15,3 +15,5 @@ yarn-error.log
 /.vscode
 .env.testing
 test/coverage
+.php-cs-fixer.cache
+.DS_Store
