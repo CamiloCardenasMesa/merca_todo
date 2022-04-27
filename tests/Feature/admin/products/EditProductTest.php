@@ -58,4 +58,31 @@ class EditProductTest extends TestCase
         $this->assertEquals(10, $product->stock);
         $this->assertEquals($category->id, $product->category->id);
     }
+
+    public function testAdminUserCanRenderedEditProductsView()
+    {
+        $this->withoutExceptionHandling();
+
+        //Arrange
+        $editProductsPermission = Permission::create([
+            'name' => Permissions::EDIT_PRODUCTS,
+        ]);
+
+        $adminRole = Role::create(['name' => Roles::ADMIN])
+        ->givePermissionTo($editProductsPermission);
+
+        $admin = User::factory()->create()->assignRole($adminRole);
+
+        /*   $category = Category::factory()->create(); */
+
+        $product = Product::factory()->create();
+
+        //Act or Request
+        $response = $this->actingAs($admin)->get(route('admin.products.edit', $product));
+
+        //Assert
+        $response->assertOk();
+        $this->assertAuthenticated();
+        $response->assertViewIs('admin.products.edit');
+    }
 }
