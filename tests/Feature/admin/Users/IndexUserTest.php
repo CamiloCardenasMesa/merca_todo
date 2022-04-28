@@ -17,7 +17,6 @@ class IndexUserTest extends TestCase
     public function testAdminUserCanRenderUsersListScreen(): void
     {
         //Arrange
-
         $UserPermission = Permission::create([
             'name' => Permissions::USER_INDEX,
         ]);

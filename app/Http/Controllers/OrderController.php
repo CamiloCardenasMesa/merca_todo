@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Actions\CreateOrderAction;
 use App\Actions\CreateSessionAction;
+use App\Constants\States;
 use App\Models\Order;
 use App\Services\WebcheckoutService;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -22,7 +23,7 @@ class OrderController extends Controller
 
     public function show(Order $order, WebcheckoutService $webcheckoutService): View
     {
-        if ($order->state === 'PENDING' || $order->state === 'REJECTED') {
+        if ($order->state === States::PENDING || $order->state === States::REJECTED) {
             $response = $webcheckoutService->getInformation($order->session_id);
 
             if ($response['status']['status'] !== 'PENDING') {

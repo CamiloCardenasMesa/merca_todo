@@ -9,7 +9,7 @@ class CreateSessionAction
 {
     public static function execute(WebcheckoutService $webcheckoutService, Order $order): array
     {
-        $response = $webcheckoutService->createSession([
+        return $webcheckoutService->createSession([
             'payment' => [
                 'amount' => [
                     'currency' => $order->currency,
@@ -20,7 +20,5 @@ class CreateSessionAction
             'expiration' => date('c', strtotime('+2 days')),
             'returnUrl' => route('buyer.orders.show', $order->id),
         ]);
-
-        return $response;
     }
 }
