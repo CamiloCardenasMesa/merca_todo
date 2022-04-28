@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651099462">
-  <project timestamp="1651099462">
+<coverage generated="1651121950">
+  <project timestamp="1651121950">
     <file name="D:\Camilo\Programación\merca_todo\app\Actions\CreateOrderAction.php">
       <class name="App\Actions\CreateOrderAction" namespace="global">
         <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="0" elements="15" coveredelements="0"/>
@@ -42,10 +42,10 @@
       </class>
       <line num="16" type="method" name="schedule" visibility="protected" complexity="1" crap="2" count="0"/>
       <line num="19" type="stmt" count="0"/>
-      <line num="26" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="46"/>
-      <line num="28" type="stmt" count="46"/>
-      <line num="30" type="stmt" count="46"/>
-      <line num="31" type="stmt" count="46"/>
+      <line num="26" type="method" name="commands" visibility="protected" complexity="1" crap="1" count="40"/>
+      <line num="28" type="stmt" count="40"/>
+      <line num="30" type="stmt" count="40"/>
+      <line num="31" type="stmt" count="40"/>
       <metrics loc="32" ncloc="21" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="3" elements="6" coveredelements="4"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Constants\Permissions.php">
@@ -80,10 +80,10 @@
       <class name="App\Exceptions\Handler" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </class>
-      <line num="35" type="method" name="register" visibility="public" complexity="1" crap="1" count="14"/>
-      <line num="37" type="stmt" count="14"/>
-      <line num="39" type="stmt" count="14"/>
-      <line num="40" type="stmt" count="14"/>
+      <line num="35" type="method" name="register" visibility="public" complexity="1" crap="1" count="11"/>
+      <line num="37" type="stmt" count="11"/>
+      <line num="39" type="stmt" count="11"/>
+      <line num="40" type="stmt" count="11"/>
       <metrics loc="41" ncloc="26" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Http\Controllers\Auth\AuthenticatedSessionController.php">
@@ -311,32 +311,32 @@
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Http\Controllers\ProductsController.php">
       <class name="App\Http\Controllers\ProductsController" namespace="global">
-        <metrics complexity="10" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="37" elements="48" coveredelements="44"/>
+        <metrics complexity="10" methods="8" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="17" elements="48" coveredelements="20"/>
       </class>
-      <line num="15" type="method" name="index" visibility="public" complexity="2" crap="2.50" count="1"/>
-      <line num="17" type="stmt" count="1"/>
+      <line num="15" type="method" name="index" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="17" type="stmt" count="0"/>
       <line num="18" type="stmt" count="0"/>
       <line num="19" type="stmt" count="0"/>
       <line num="20" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="1"/>
-      <line num="25" type="stmt" count="1"/>
-      <line num="28" type="method" name="show" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="30" type="stmt" count="1"/>
-      <line num="33" type="method" name="edit" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="35" type="stmt" count="1"/>
-      <line num="37" type="stmt" count="1"/>
-      <line num="40" type="method" name="update" visibility="public" complexity="2" crap="2" count="1"/>
-      <line num="42" type="stmt" count="1"/>
-      <line num="43" type="stmt" count="1"/>
-      <line num="44" type="stmt" count="1"/>
-      <line num="45" type="stmt" count="1"/>
-      <line num="46" type="stmt" count="1"/>
-      <line num="48" type="stmt" count="1"/>
-      <line num="49" type="stmt" count="1"/>
-      <line num="50" type="stmt" count="1"/>
-      <line num="51" type="stmt" count="1"/>
-      <line num="54" type="stmt" count="1"/>
-      <line num="56" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="28" type="method" name="show" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <line num="33" type="method" name="edit" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="35" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="40" type="method" name="update" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="42" type="stmt" count="0"/>
+      <line num="43" type="stmt" count="0"/>
+      <line num="44" type="stmt" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="48" type="stmt" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="50" type="stmt" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <line num="54" type="stmt" count="0"/>
+      <line num="56" type="stmt" count="0"/>
       <line num="59" type="method" name="create" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="61" type="stmt" count="1"/>
       <line num="63" type="stmt" count="1"/>
@@ -357,11 +357,11 @@
       <line num="88" type="stmt" count="1"/>
       <line num="90" type="stmt" count="1"/>
       <line num="92" type="stmt" count="1"/>
-      <line num="95" type="method" name="toggle" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="97" type="stmt" count="1"/>
-      <line num="99" type="stmt" count="1"/>
-      <line num="101" type="stmt" count="1"/>
-      <metrics loc="103" ncloc="103" classes="1" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="37" elements="48" coveredelements="44"/>
+      <line num="95" type="method" name="toggle" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="97" type="stmt" count="0"/>
+      <line num="99" type="stmt" count="0"/>
+      <line num="101" type="stmt" count="0"/>
+      <metrics loc="103" ncloc="103" classes="1" methods="8" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="17" elements="48" coveredelements="20"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Http\Controllers\UserController.php">
       <class name="App\Http\Controllers\UserController" namespace="global">
@@ -412,13 +412,13 @@
       <class name="App\Http\Middleware\Banned" namespace="global">
         <metrics complexity="3" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="2" elements="7" coveredelements="2"/>
       </class>
-      <line num="12" type="method" name="handle" visibility="public" complexity="3" crap="5.67" count="42"/>
-      <line num="14" type="stmt" count="42"/>
+      <line num="12" type="method" name="handle" visibility="public" complexity="3" crap="5.67" count="36"/>
+      <line num="14" type="stmt" count="36"/>
       <line num="15" type="stmt" count="0"/>
       <line num="16" type="stmt" count="0"/>
       <line num="17" type="stmt" count="0"/>
       <line num="19" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="42"/>
+      <line num="22" type="stmt" count="36"/>
       <metrics loc="24" ncloc="24" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="2" elements="7" coveredelements="2"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Http\Middleware\EncryptCookies.php">
@@ -475,10 +475,10 @@
       <class name="App\Http\Requests\Admin\Products\ProductRequest" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="9" type="method" name="authorize" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="11" type="stmt" count="2"/>
-      <line num="14" type="method" name="rules" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="17" type="stmt" count="2"/>
+      <line num="9" type="method" name="authorize" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="11" type="stmt" count="1"/>
+      <line num="14" type="method" name="rules" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="17" type="stmt" count="1"/>
       <metrics loc="25" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Http\Requests\Auth\LoginRequest.php">
@@ -589,8 +589,8 @@
       <class name="App\Models\Product" namespace="global">
         <metrics complexity="8" methods="8" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="6" elements="16" coveredelements="12"/>
       </class>
-      <line num="24" type="method" name="category" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="26" type="stmt" count="3"/>
+      <line num="24" type="method" name="category" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="26" type="stmt" count="1"/>
       <line num="29" type="method" name="productOrder" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="31" type="stmt" count="0"/>
       <line num="34" type="method" name="getBuyableIdentifier" visibility="public" complexity="1" crap="1" count="5"/>
@@ -629,20 +629,20 @@
       <class name="App\Providers\AppServiceProvider" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
       </class>
-      <line num="15" type="method" name="register" visibility="public" complexity="1" crap="1" count="46"/>
-      <line num="17" type="stmt" count="46"/>
-      <line num="24" type="method" name="boot" visibility="public" complexity="1" crap="1" count="46"/>
-      <line num="26" type="stmt" count="46"/>
-      <line num="27" type="stmt" count="46"/>
+      <line num="15" type="method" name="register" visibility="public" complexity="1" crap="1" count="40"/>
+      <line num="17" type="stmt" count="40"/>
+      <line num="24" type="method" name="boot" visibility="public" complexity="1" crap="1" count="40"/>
+      <line num="26" type="stmt" count="40"/>
+      <line num="27" type="stmt" count="40"/>
       <metrics loc="28" ncloc="18" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Providers\AuthServiceProvider.php">
       <class name="App\Providers\AuthServiceProvider" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </class>
-      <line num="23" type="method" name="boot" visibility="public" complexity="1" crap="1" count="46"/>
-      <line num="25" type="stmt" count="46"/>
-      <line num="28" type="stmt" count="46"/>
+      <line num="23" type="method" name="boot" visibility="public" complexity="1" crap="1" count="40"/>
+      <line num="25" type="stmt" count="40"/>
+      <line num="28" type="stmt" count="40"/>
       <metrics loc="29" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Providers\BroadcastServiceProvider.php">
@@ -659,31 +659,31 @@
       <class name="App\Providers\EventServiceProvider" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="28" type="method" name="boot" visibility="public" complexity="1" crap="1" count="46"/>
-      <line num="31" type="stmt" count="46"/>
+      <line num="28" type="method" name="boot" visibility="public" complexity="1" crap="1" count="40"/>
+      <line num="31" type="stmt" count="40"/>
       <metrics loc="32" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Providers\RouteServiceProvider.php">
       <class name="App\Providers\RouteServiceProvider" namespace="global">
         <metrics complexity="3" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="14" elements="17" coveredelements="15"/>
       </class>
-      <line num="36" type="method" name="boot" visibility="public" complexity="1" crap="1" count="46"/>
-      <line num="38" type="stmt" count="46"/>
-      <line num="40" type="stmt" count="46"/>
-      <line num="41" type="stmt" count="46"/>
-      <line num="42" type="stmt" count="46"/>
-      <line num="43" type="stmt" count="46"/>
-      <line num="44" type="stmt" count="46"/>
-      <line num="46" type="stmt" count="46"/>
-      <line num="47" type="stmt" count="46"/>
-      <line num="48" type="stmt" count="46"/>
-      <line num="49" type="stmt" count="46"/>
-      <line num="50" type="stmt" count="46"/>
-      <line num="57" type="method" name="configureRateLimiting" visibility="protected" complexity="2" crap="2.06" count="46"/>
-      <line num="59" type="stmt" count="46"/>
+      <line num="36" type="method" name="boot" visibility="public" complexity="1" crap="1" count="40"/>
+      <line num="38" type="stmt" count="40"/>
+      <line num="40" type="stmt" count="40"/>
+      <line num="41" type="stmt" count="40"/>
+      <line num="42" type="stmt" count="40"/>
+      <line num="43" type="stmt" count="40"/>
+      <line num="44" type="stmt" count="40"/>
+      <line num="46" type="stmt" count="40"/>
+      <line num="47" type="stmt" count="40"/>
+      <line num="48" type="stmt" count="40"/>
+      <line num="49" type="stmt" count="40"/>
+      <line num="50" type="stmt" count="40"/>
+      <line num="57" type="method" name="configureRateLimiting" visibility="protected" complexity="2" crap="2.06" count="40"/>
+      <line num="59" type="stmt" count="40"/>
       <line num="60" type="stmt" count="0"/>
-      <line num="61" type="stmt" count="46"/>
-      <line num="62" type="stmt" count="46"/>
+      <line num="61" type="stmt" count="40"/>
+      <line num="62" type="stmt" count="40"/>
       <metrics loc="63" ncloc="38" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="14" elements="17" coveredelements="15"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\Services\WebcheckoutService.php">
@@ -714,8 +714,8 @@
       <class name="App\View\Components\AppLayout" namespace="global">
         <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </class>
-      <line num="14" type="method" name="render" visibility="public" complexity="1" crap="1" count="10"/>
-      <line num="16" type="stmt" count="10"/>
+      <line num="14" type="method" name="render" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="16" type="stmt" count="7"/>
       <metrics loc="18" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
     <file name="D:\Camilo\Programación\merca_todo\app\View\Components\GuestLayout.php">
@@ -726,6 +726,6 @@
       <line num="16" type="stmt" count="6"/>
       <metrics loc="18" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
     </file>
-    <metrics files="53" loc="1880" ncloc="1563" classes="43" methods="94" coveredmethods="57" conditionals="0" coveredconditionals="0" statements="319" coveredstatements="215" elements="413" coveredelements="272"/>
+    <metrics files="53" loc="1880" ncloc="1563" classes="43" methods="94" coveredmethods="53" conditionals="0" coveredconditionals="0" statements="319" coveredstatements="195" elements="413" coveredelements="248"/>
   </project>
 </coverage>
