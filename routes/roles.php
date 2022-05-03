@@ -23,7 +23,7 @@ Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])
     ->middleware(['auth'])
     ->name('roles.edit');
 
-Route::put('/roles/{role}', [RoleController::class, 'update'])
+Route::patch('/roles/{role}', [RoleController::class, 'update'])
     ->middleware(['auth'])
     ->name('roles.update');
 
