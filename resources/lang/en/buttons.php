@@ -17,6 +17,8 @@ return [
     'add_to_cart' => 'Add to Cart',
     'search' => 'Search',
     'create_product' => 'Create a Product',
+    'create_user' => 'Create a User',
+    'create_role' => 'Create new role',
     'continue_shopping' => 'Continue Shopping',
     'checkout' => 'Checkout',
 ];

@@ -19,6 +19,8 @@ return [
     'name' => 'User name',
     'email' => 'Email Address',
     'password' => 'Password',
+    'role' => 'Role',
+    'header' => 'Create a new user with this form',
     'confirm_password' => 'Confirm Password',
     'remember_me' => 'Remember me',
     'forgot_password' => 'Forgot your password?',

@@ -17,6 +17,8 @@ return [
     'users' => 'Usuarios',
     'name' => 'Nombre de usuario',
     'password' => 'Contraseña',
+    'role' => 'Rol',
+    'header' => 'Crear un nuevo usuario',
     'confirm_password' => 'Confirmar contraseña',
     'remember_me' => 'Recordarme',
     'forgot_password' => 'Olvidaste tu contraseña?',
