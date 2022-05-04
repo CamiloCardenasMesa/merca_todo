@@ -15,6 +15,7 @@
                                 <th class="border border-gray-400 px-4 py-2">Id</th>
                                 <th class="border border-gray-400 px-4 py-2">{{ trans('auth.name') }}</th>
                                 <th class="border border-gray-400 px-4 py-2">{{ trans('auth.email') }}</th>
+                                <th class="border border-gray-400 px-4 py-2">{{ trans('auth.role') }}</th>
                                 <th class="border border-gray-400 px-4 py-2">{{ trans('auth.verificated_at') }}</th>
                                 <th class="border border-gray-400 px-4 py-2">{{ trans('auth.created_at') }}</th>
                                 <th class="border border-gray-400 px-4 py-2">{{ trans('auth.updated_at') }}</th>
@@ -25,6 +26,13 @@
                                 <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->id }}</th>
                                 <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->name }}</td>
                                 <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->email }}</td>
+                                <td class="border border-gray-400 px-4 py-2 text-center">
+                                    @if(!empty($user->getRoleNames()))
+                                    @foreach($user->getRoleNames() as $v)
+                                        <label class="badge badge-success">{{ $v }}</label>
+                                    @endforeach
+                                @endif
+                                </td>
                                 <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->email_verified_at }}</td>
                                 <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->created_at }}</td>
                                 <td class="border border-gray-400 px-4 py-2 text-center">{{ $user->updated_at }}</td>

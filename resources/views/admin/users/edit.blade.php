@@ -18,6 +18,24 @@
                             <x-input type="text" name="name" value="{{ $user->name }}" required/><br>                                
                             <x-label for="email">{{ trans('auth.email') }}</x-label>
                             <x-input type="text" name="email" value="{{ $user->email }}" required/>
+                            <div>
+                                <div class="form-group">
+                                    <strong>Password:</strong>
+                                    {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <strong>Confirm Password:</strong>
+                                    {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <strong>Role:</strong>
+                                    {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+                                </div>
+                            </div>
                         </div>
                         <div class="mx-auto mb-4">
                             <x-button>{{ trans('buttons.save') }}</x-button>

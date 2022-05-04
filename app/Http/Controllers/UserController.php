@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Admin\Users\UserRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 
@@ -36,40 +38,66 @@ class UserController extends Controller
         return view('admin.users.create', compact('roles'));
     }
 
-    public function store(UserRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        $user = new User();
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|same:confirm-password',
+            'roles' => 'required',
+        ]);
 
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $input = $request->all();
+        $input['password'] = Hash::make($input['password']);
+
+        $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
-        $user->save();
+        return redirect()->route('admin.users.index')
+                ->with('status', 'User created successfully');
+    }
+
+    public function edit($id): View
+    {
+        $user = User::find($id);
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
+
+        return view('admin.users.edit', compact('user', 'roles', 'userRole'));
+    }
+
+    public function update(Request $request, $id): RedirectResponse
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password',
+            'roles' => 'required',
+        ]);
+
+        $input = $request->all();
+        if (!empty($input['password'])) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            $input = Arr::except($input, ['password']);
+        }
+
+        $user = User::find($id);
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
+
+        $user->assignRole($request->input('roles'));
 
         return redirect()->route('admin.users.index')
-            ->with('success', 'User created successfully');
-    }
-
-    public function edit(User $user): View
-    {
-        return view('admin.users.edit', compact('user'));
-    }
-
-    public function update(Request $request, User $user)
-    {
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->save();
-
-        return redirect()->route('admin.users.index');
+                ->with('status', 'User updated successfully');
     }
 
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->back()
+            ->with('status', 'User deleted successfully');
     }
 
     public function toggle(User $user): RedirectResponse
