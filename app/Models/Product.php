@@ -13,6 +13,7 @@ class Product extends Model implements Buyable
     use HasFactory;
 
     protected $fillable = [
+        'name',
         'product',
         'description',
         'price',

@@ -19,7 +19,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomNumber(6),
             'stock' => $this->faker->numberBetween(2, 10),
             'enable' => true,
-            'image' => Storage::disk('public')->put('uploads/products', new File('public/images/imagen_de_muestra.jpg')),
+            'image' => Storage::disk('public')->put('uploads/products', new File('public/images/imagen_de_muestra2.jpg')),
         ];
     }
 }
