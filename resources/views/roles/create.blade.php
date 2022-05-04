@@ -6,6 +6,9 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div>
+                <x-auth-session-status :status="session('status')" />
+            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class=" py-8 bg-white border-b border-gray-200 px-12">
                     <form action="{{ route('roles.store') }}" method="POST">

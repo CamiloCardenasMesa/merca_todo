@@ -25,7 +25,7 @@ Route::get('/dashboard', [BuyerController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
-require __DIR__.'/buyer.php';
-require __DIR__.'/roles.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
+require __DIR__ . '/buyer.php';
+require __DIR__ . '/roles.php';
