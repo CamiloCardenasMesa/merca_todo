@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\admin\products;
 
-use App\Constants\Permissions;
-use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -19,13 +17,17 @@ class CreateProductTest extends TestCase
 
     public function testProductCreateViewCanRender(): void
     {
+        $this->withoutExceptionHandling();
         //Arrange
-        $admin = User::factory()->create();
-        $role = Role::create(['name' => 'admin']);
-        $admin->assignRole($role);
+        $user = User::factory()->create();
+        $role = Role::create(['name' => 'admin_1']);
+        $permissions = Permission::create([
+            'name' => 'product-create', ]);
+        $role->syncPermissions($permissions);
+        $user->assignRole([$role->id]);
 
         //Act or Request
-        $response = $this->actingAs($admin)->get(route('admin.products.create'));
+        $response = $this->actingAs($user)->get(route('admin.products.create'));
 
         //Assert
         $response->assertViewIs('admin.products.create');
@@ -34,24 +36,23 @@ class CreateProductTest extends TestCase
 
     public function testAdminUserCanCreateProducts(): void
     {
+        $this->withoutExceptionHandling();
         //Arrange
-        $productsPermission = Permission::create([
-            'name' => Permissions::CREATE_PRODUCTS,
-        ]);
-
-        $adminRole = Role::create(['name' => Roles::ADMIN])
-        ->givePermissionTo($productsPermission);
-
-        $admin = User::factory()->create()->assignRole($adminRole);
+        $user = User::factory()->create();
+        $role = Role::create(['name' => 'admin']);
+        $permissions = Permission::create([
+            'name' => 'product-create', ]);
+        $role->syncPermissions($permissions);
+        $user->assignRole([$role->id]);
 
         $category = Category::factory()->create();
 
         //Act or Request
-        $response = $this->actingAs($admin)->post('/products/store', [
+        $response = $this->actingAs($user)->post('/products/store', [
             'name' => 'Test name',
             'image' => UploadedFile::fake()->image('products.jpg'),
             'description' => 'Test description',
-            'price' => 1000,
+            'price' => 10000,
             'stock' => 10,
             'category_id' => $category->id,
         ]);
@@ -59,10 +60,10 @@ class CreateProductTest extends TestCase
         $product = Product::first();
 
         //Assert
-        $response->assertRedirect('/products'); //status302
+        $response->assertRedirect('/products');
         $this->assertEquals('Test name', $product->name);
         $this->assertEquals('Test description', $product->description);
-        $this->assertEquals(1000, $product->price);
+        $this->assertEquals(10000, $product->price);
         $this->assertEquals(10, $product->stock);
         $this->assertEquals($category->id, $product->category->id);
         $this->assertEquals(1, Product::count());

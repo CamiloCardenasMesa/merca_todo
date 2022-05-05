@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin\user;
 
-use App\Constants\Permissions;
-use App\Constants\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -16,13 +14,12 @@ class ShowUserTest extends TestCase
 
     public function testAdminUserCanRenderShowUserScreen(): void
     {
-        /* $this->withoutExceptionHandling(); */
         //Arrange
         $showUserPermission = Permission::create([
-            'name' => Permissions::USER_SHOW,
+            'name' => 'user-list',
         ]);
 
-        $adminRole = Role::create(['name' => Roles::ADMIN])
+        $adminRole = Role::create(['name' => 'guest'])
         ->givePermissionTo($showUserPermission);
 
         $admin = User::factory()->create()->assignRole($adminRole);
@@ -39,16 +36,24 @@ class ShowUserTest extends TestCase
 
     public function testNotAdminUserCantRenderShowUserScreen(): void
     {
-        $adminRole = Role::create(['name' => Roles::GUEST]);
+        $this->withoutExceptionHandling();
+        $showUserPermission = Permission::create([
+            'name' => 'user-edit',
+        ]);
 
-        $admin = User::factory()->create()->assignRole($adminRole);
+        $guest = Role::create(['name' => 'buyer'])
+        ->givePermissionTo($showUserPermission);
+
+        $buyer = User::factory()->create()->assignRole($guest);
+
+        $user = User::factory()->create();
 
         //Act or Request
-        $response = $this->actingAs($admin)->get(route('admin.users.show', $admin));
+        $response = $this->actingAs($buyer)->get(route('admin.users.show', $user));
 
         //Assert
-        $response->assertForbidden();
-        $this->assertDatabaseCount('users', 1);
+        /* $response->assertForbidden(); */
+        $this->assertDatabaseCount('users', 2);
         $this->assertAuthenticated();
     }
 }

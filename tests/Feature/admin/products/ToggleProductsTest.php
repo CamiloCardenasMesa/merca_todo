@@ -5,6 +5,7 @@ namespace Tests\Feature\admin\products;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
@@ -14,9 +15,15 @@ class ToggleProductsTest extends TestCase
 
     public function testAdminUserCanEnableProducts(): void
     {
-        $admin = User::factory()->create();
-        $role = Role::create(['name' => 'admin']);
-        $admin->assignrole($role);
+        //Arrange
+        $showUserPermission = Permission::create([
+            'name' => 'product-edit',
+        ]);
+
+        $adminRole = Role::create(['name' => 'admin'])
+        ->givePermissionTo($showUserPermission);
+
+        $admin = User::factory()->create()->assignRole($adminRole);
 
         $product = Product::factory()->create();
 
