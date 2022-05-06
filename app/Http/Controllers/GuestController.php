@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -22,10 +23,11 @@ class GuestController extends Controller
         return view('welcome', compact('products'));
     }
 
-    public function show(Product $product): View
+    public function show(Product $product): View|RedirectResponse
     {
         if (!$product->enable) {
-            return back();
+            return redirect()->route('welcome')
+                         ->with('status', 'Sorry! this product is not available at the moment');
         }
 
         return view('guest.products.show', compact('product'));
