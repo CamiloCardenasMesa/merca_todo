@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\ProductUpdateOrStoreActionContract;
 use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -16,7 +17,7 @@ class ProductsController extends Controller
     {
         $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index', 'show']]);
         $this->middleware('permission:product-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:product-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:product-edit', ['only' => ['edit', 'update', 'toggle']]);
         $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     }
 
@@ -47,19 +48,7 @@ class ProductsController extends Controller
 
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category_id');
-
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $fileName = $file->hashName();
-            $product->image = $file->storeAs('images', $fileName, 'public');
-        }
-
-        $product->save();
+        ProductUpdateOrStoreActionContract::execute($request, $product);
 
         return redirect()->route('admin.products.index')
                          ->with('status', 'Product updated successfully.');
@@ -74,20 +63,7 @@ class ProductsController extends Controller
 
     public function store(ProductRequest $request): RedirectResponse
     {
-        $product = new Product();
-
-        $product->image = $request->input('image');
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category_id');
-
-        $file = $request->file('image');
-        $fileName = $file->hashName();
-        $product->image = $file->storeAs('images', $fileName, 'public');
-
-        $product->save();
+        ProductUpdateOrStoreActionContract::execute($request);
 
         return redirect()->route('admin.products.index')
                          ->with('status', 'Product created successfully.');
