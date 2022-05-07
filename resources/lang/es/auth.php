@@ -34,4 +34,5 @@ return [
     'already_registered?' => '¿Ya se ha registrado?',
     'reset_password' => '¿Has olvidado tu contraseña? No hay problema. Sólo tienes que indicarnos tu dirección de correo electrónico y te enviaremos un enlace para restablecer la contraseña que te permitirá elegir una nueva.',
     'email_password_reset_link' => 'Enviar enlace para restablecer',
+    'error_message' => 'Whoops, Algo salió mal',
 ];

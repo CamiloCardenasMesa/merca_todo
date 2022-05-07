@@ -24,8 +24,8 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            /* 'roles' => 'required', */
+            'password' => 'required|same:confirm_password',
+            'roles' => 'name|exists:roles,id',
         ];
     }
 }

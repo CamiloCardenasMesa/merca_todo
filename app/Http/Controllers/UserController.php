@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\Users\StoreUserRequest;
+use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,6 +15,14 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit', 'update', 'toggle']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request): View
     {
         if ($request->query('query')) {
@@ -20,7 +30,7 @@ class UserController extends Controller
             ->orwhere('email', 'like', '%'.$request->query('query').'%')
             ->paginate(10);
         } else {
-            $users = User::paginate(10);
+            $users = User::orderBy('id', 'desc')->paginate(8);
         }
 
         return view('admin.users.index', compact('users'));
@@ -38,15 +48,8 @@ class UserController extends Controller
         return view('admin.users.create', compact('roles'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreUserRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required',
-        ]);
-
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
@@ -66,22 +69,14 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user', 'roles', 'userRole'));
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(UpdateUserRequest $request, $id): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required',
-        ]);
-
         $input = $request->all();
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
             $input = Arr::except($input, ['password']);
         }
-
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id', $id)->delete();
@@ -96,8 +91,8 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->back()
-            ->with('status', 'User deleted successfully');
+        return redirect()->route('admin.users.index')
+                        ->with('status', 'User deleted successfully');
     }
 
     public function toggle(User $user): RedirectResponse
