@@ -21,54 +21,54 @@
                     <table class="container">
                         <thead>
                             <tr class="bg-gray-100">
-                                <th class="border border-gray-400 px-4 py-2">ID</th>
-                                <th class="border border-gray-400 px-4 py-2">{{ trans('auth.role') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">ID</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ trans('auth.role') }}</th>
                                 @can('role-list')
-                                <th class="border border-gray-400 px-4 py-2">{{ trans('buttons.show') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                                 @endcan
                                 @can('role-edit')
-                                <th class="border border-gray-400 px-4 py-2">{{ trans('buttons.edit') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
                                 @endcan
                                 @can('role-delete')
-                                    <th class="border border-gray-400 px-4 py-2">{{ trans('buttons.delete') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.delete') }}</th>
                                 @endcan
                             </tr>
                         </thead>
                         @foreach ($roles as $role)
                         <tbody>
-                                <tr>
-                                    <td class="border border-gray-400 px-4 py-2 text-center">{{ $role->id }}</td>
-                                    <td class="border border-gray-400 px-4 py-2 text-center">{{ $role->name }}</td>
-                                    @can('role-list')
-                                    <td class="border border-gray-400 px-4 py-2 text-center">
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->id }}</td>
+                                <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->name }}</td>
+                                @can('role-list')
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
                                         <x-button-link href="{{ route('roles.show', $role->id) }}">
                                             {{ trans('buttons.show') }}</x-button-link>
-                                        </td>
-                                        @endcan
-                                        @can('role-edit')
-                                        <td class="border border-gray-400 px-4 py-2 text-center">
-                                            <x-button-link href="{{ route('roles.edit', $role->id) }}">
-                                                {{ trans('buttons.edit') }}</x-button-link>
-                                            </td>
-                                            @endcan
-                                    @can('role-delete')
-                                    <td class="border border-gray-400 px-4 py-2 text-center">
+                                    </td>
+                                @endcan
+                                @can('role-edit')
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
+                                        <x-button-link href="{{ route('roles.edit', $role->id) }}">
+                                            {{ trans('buttons.edit') }}</x-button-link>
+                                    </td>
+                                @endcan
+                                @can('role-delete')
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
                                         <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <x-button href="{{ route('roles.index', $role->id) }}"
                                                 onclick="return confirm ('¿Seguro que quieres eliminar este rol?')">
                                                 {{ trans('buttons.delete') }}</x-button>
-                                            </form>
-                                        </td>
-                                        @endcan
-                                    </tr>
-                                </tbody>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
-                    {{ $roles->links() }}
+                                        </form>
+                                    </td>
+                                @endcan
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
                 </div>
+            </div>
+            {{ $roles->links() }}
+        </div>
     </div>
 </x-app-layout>
