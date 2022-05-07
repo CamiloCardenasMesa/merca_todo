@@ -18,6 +18,9 @@
             <div class="mb-4">
                 {{ $products->links() }}
             </div>
+            <div>
+                <x-auth-session-status :status="session('status')" />
+            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-10 bg bg-white border border-gray-200 ">
                     <div class="container">

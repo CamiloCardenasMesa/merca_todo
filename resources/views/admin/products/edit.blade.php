@@ -40,9 +40,9 @@
                                         @endforeach
                                     </select> 
                             </div><br>
-                                <div class="mx-auto mb-4">
-                                    <x-button>{{ trans('buttons.save') }}</x-button>
-                                </div>
+                            <div class="mx-auto mb-4">
+                                <x-button>{{ trans('buttons.save') }}</x-button>
+                            </div>
                         </div>      
                     </form>
                 </div>
