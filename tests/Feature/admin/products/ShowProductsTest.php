@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin\products;
 
-use App\Constants\Permissions;
-use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
