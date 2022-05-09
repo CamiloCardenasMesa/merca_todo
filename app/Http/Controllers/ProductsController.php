@@ -25,10 +25,12 @@ class ProductsController extends Controller
     {
         if ($request->query('query')) {
             $products = Product::where('name', 'like', '%'.$request->query('query').'%')
-            ->orwhere('description', 'like', '%'.$request->query('query').'%')
-            ->paginate(8);
+                ->orwhere('description', 'like', '%'.$request->query('query').'%')
+                ->paginate(8);
         } else {
-            $products = Product::paginate(8);
+            $products = Product::where('enable', true)
+                ->orderBy('id', 'desc')
+                ->paginate(8);
         }
 
         return view('admin.products.index', compact('products'));

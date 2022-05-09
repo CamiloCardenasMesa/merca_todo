@@ -12,12 +12,14 @@ class BuyerController extends Controller
     public function index(Request $request): View
     {
         if ($request->query('query')) {
-            $products = Product::where('name', 'like', '%' . $request->query('query') . '%')
-                ->orWhere('description', 'like', '%' . $request->query('query') . '%')
+            $products = Product::where('name', 'like', '%'.$request->query('query').'%')
+                ->orWhere('description', 'like', '%'.$request->query('query').'%')
                 ->where('enable', true)
                 ->paginate(8);
         } else {
-            $products = Product::where('enable', true)->orderBy('id', 'asc')->paginate(8);
+            $products = Product::where('enable', true)
+                ->orderBy('id', 'desc')
+                ->paginate(8);
         }
 
         return view('dashboard', compact('products'));
