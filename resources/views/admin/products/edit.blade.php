@@ -25,7 +25,7 @@
                                 <x-input type="text" name="name" value="{{old('name', $product->name)}}"/><br>   
 
                                 <x-label for="description">{{ trans('products.description') }}</x-label>
-                                <textarea name="description" rows="5">{{ old('description', $product->description) }}</textarea>
+                                <textarea class="rounded-md border-gray-300" name="description" rows="5">{{ old('description', $product->description) }}</textarea>
 
                                 <x-label for="price">{{ trans('products.price') }}</x-label>
                                 <x-input type="text" name="price" value="{{ old('price', $product->price) }}"/><br>
@@ -34,7 +34,7 @@
                                 <x-input type="text" name="stock" value="{{ old('stock', $product->stock) }}"/><br>
 
                                 <x-label for="category_id">{{ trans('products.category') }}</x-label>  
-                                    <select name="category_id">
+                                    <select class="rounded-md border-gray-300" name="category_id">
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}"> {{$category->name }} </option>    
                                         @endforeach

@@ -28,7 +28,7 @@
                                 <br>
 
                                 <x-label for="roles">{{ trans('auth.role') }}</x-label>
-                                <select name="roles" id="roles" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <select class="rounded-md border-gray-300" name="roles" id="roles">
                                     @foreach ($roles as $userRole)
                                         <option value="{{ $userRole }}">{{ $userRole }}</option>
                                     @endforeach
