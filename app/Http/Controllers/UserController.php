@@ -26,8 +26,8 @@ class UserController extends Controller
     public function index(Request $request): View
     {
         if ($request->query('query')) {
-            $users = User::where('name', 'like', '%'.$request->query('query').'%')
-            ->orwhere('email', 'like', '%'.$request->query('query').'%')
+            $users = User::where('name', 'like', '%' . $request->query('query') . '%')
+            ->orwhere('email', 'like', '%' . $request->query('query') . '%')
             ->paginate(10);
         } else {
             $users = User::orderBy('id', 'desc')->paginate(8);
