@@ -17,7 +17,7 @@ yarn-error.log
 test/coverage
 .php-cs-fixer.cache
 .DS_Store
-/storage/debugbar
-/report
+storage/debugbar
+report
 .php-cs-fixer.cache
 app/Constants/Permissions.php
