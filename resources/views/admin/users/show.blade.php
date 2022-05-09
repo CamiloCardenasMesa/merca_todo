@@ -39,9 +39,12 @@
                             </tr>
                         </tbody>
                     </table><br>
-                        <div class="flex justify-center">
-                            <a href="{{route('admin.users.index')}}"> <x-button>{{ trans('buttons.back') }}</x-button>
-                        </div>                     
+                    <div class="flex justify-center gap-2">
+                        <x-button-link href="{{ route('admin.users.index') }}">{{ trans('buttons.back') }}</x-button-link>
+                        @can('user-edit')
+                        <x-button-link href="{{ route('admin.users.edit', $user) }}">{{ trans('buttons.edit') }}</x-button-link>
+                        @endcan
+                    </div>                    
                 </div>
             </div>
         </div>

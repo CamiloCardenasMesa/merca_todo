@@ -35,7 +35,7 @@
                                 </select>
                             </div>
                             <div class="mx-auto mb-4">
-                                <x-button-link href="{{ route('roles.index') }}">{{ trans('buttons.back') }}
+                                <x-button-link href="{{ route('admin.users.index') }}">{{ trans('buttons.back') }}
                                 </x-button-link>
                                 <x-button>{{ trans('buttons.save') }}</x-button>
                             </div>

@@ -15,15 +15,21 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
-                        {{ __(trans('navigation.roles')) }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
-                        {{ __(trans('navigation.users')) }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
-                        {{ __(trans('navigation.product_list')) }}
-                    </x-nav-link>
+                    @can('role-list', 'role-create', 'role-edit', 'role-delete')
+                        <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                            {{ __(trans('navigation.roles')) }}
+                        </x-nav-link>
+                    @endcan
+                    @can('user-list', 'user-create', 'user-edit', 'user-delete')
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                            {{ __(trans('navigation.users')) }}
+                        </x-nav-link>
+                    @endcan
+                    @can('product-list', 'product-create', 'product-edit', 'product-delete')
+                        <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
+                            {{ __(trans('navigation.product_list')) }}
+                        </x-nav-link>
+                    @endcan
                     <x-nav-link :href="route('buyer.orders.index')" :active="request()->routeIs('buyer.orders.index')">
                         {{ __(trans('navigation.orders')) }}
                     </x-nav-link>

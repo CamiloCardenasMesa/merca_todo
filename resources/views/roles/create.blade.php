@@ -11,30 +11,28 @@
             </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class=" py-8 bg-white border-b border-gray-200 px-12">
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <form action="{{ route('roles.store') }}" method="POST">
                         @csrf
                         <div class="grid grid-cols-1 gap-4">
-                            <div class="grid grid-rows-1 gap-1 mb-2">
-                                <br>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Name:</strong>
-                                        {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-                                    </div>
+                            <div class="grid gap-1"><br>
+                                <x-label for="name">{{ trans('auth.role') }}</x-label>
+                                <x-input type="text" name="name" placeholder="{{ trans('placeholders.create_role') }}"/><br>
+    
+                                <div class="mb-6">
+                                    <strong>{{ trans('auth.permissions') }}</strong>
                                 </div>
-                                <br>
-                                <div class="form-group">
-                                    <strong>Permission:</strong>
-                                    <br />
-                                    @foreach ($permission as $value)
+    
+                                @foreach($permission as $value)
+                                    <div>     
                                         <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
-                                            {{ $value->name }}</label>
-                                        <br />
-                                    @endforeach
+                                            {{ $value->description }}</label>
+                                    </div>
+                                @endforeach
+                                <div class="flex justify-center gap-2 mt-6">
+                                    <x-button-link href="{{ route('roles.index') }}">{{ trans('buttons.back') }}</x-button-link>
+                                    <x-button>{{ trans('buttons.save') }}</x-button>
                                 </div>
-                            </div>
-                            <div class="mx-auto mb-4">
-                                <x-button>{{ trans('buttons.save') }}</x-button>
                             </div>
                         </div>
                     </form>

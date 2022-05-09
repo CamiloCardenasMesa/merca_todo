@@ -21,4 +21,5 @@ return [
     'create_role' => 'Create new role',
     'continue_shopping' => 'Continue Shopping',
     'checkout' => 'Checkout',
+    'add_products' => 'Add Products',
 ];

@@ -21,4 +21,5 @@ return [
     'create_role' => 'Crear nuevo rol',
     'continue_shopping' => 'Continuar comprando',
     'checkout' => 'Finalizar compra',
+    'add_products' => 'Agregar productos',
 ];

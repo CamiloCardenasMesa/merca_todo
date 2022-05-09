@@ -57,7 +57,7 @@
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <x-button href="{{ route('roles.index', $role->id) }}"
-                                                onclick="return confirm ('¿Seguro que quieres eliminar este rol?')">
+                                                onclick="return confirm ('{{ trans('auth.delete_role') }}')">
                                                 {{ trans('buttons.delete') }}</x-button>
                                         </form>
                                     </td>

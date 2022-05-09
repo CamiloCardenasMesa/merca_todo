@@ -8,9 +8,12 @@
 
     <div class="pt-6 pb-14">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="mb-6">
-                <x-button-link href="{{ route('admin.users.create') }}">{{ trans('buttons.create_user') }}</x-button>
-            </div>
+            @can('user-create')
+                <div class="mb-6">
+                    <x-button-link href="{{ route('admin.users.create') }}">{{ trans('buttons.create_user') }}
+                        </x-button>
+                </div>
+            @endcan
             <div>
                 <x-auth-session-status :status="session('status')" />
             </div>
@@ -23,14 +26,14 @@
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('auth.email') }}</th>
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('auth.role') }}</th>
                                 @can('user-list')
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                                 @endcan
                                 @can('user-edit')
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.state') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.state') }}</th>
                                 @endcan
                                 @can('user-delete')
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.delete') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.delete') }}</th>
                                 @endcan
                             </tr>
                         </thead>
@@ -40,11 +43,11 @@
                                     <td class="border border-gray-300 px-4 py-2 text-left">{{ $user->name }}</td>
                                     <td class="border border-gray-300 px-4 py-2 text-left">{{ $user->email }}</td>
                                     <td class="border border-gray-300 px-4 py-2 text-left">
-                                      @if(!empty($user->getRoleNames()))
-                                        @foreach($user->getRoleNames() as $v)
-                                           <label class="badge badge-success">{{ $v }}</label>
-                                        @endforeach
-                                      @endif
+                                        @if (!empty($user->getRoleNames()))
+                                            @foreach ($user->getRoleNames() as $v)
+                                                <label class="badge badge-success">{{ $v }}</label>
+                                            @endforeach
+                                        @endif
                                     </td>
                                     @can('user-list')
                                         <td class="border border-gray-300 px-4 py-2 text-center">
@@ -74,7 +77,7 @@
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <x-button href="{{ route('admin.users.index', $user) }}"
-                                                    onclick="return confirm ('¿Seguro que quieres eliminar este usuario?')">
+                                                    onclick="return confirm ('{{ trans('auth.delete_user')}}')">
                                                     {{ trans('buttons.delete') }}</x-button>
                                             </form>
                                         </td>
@@ -89,4 +92,3 @@
         </div>
     </div>
 </x-app-layout>
-

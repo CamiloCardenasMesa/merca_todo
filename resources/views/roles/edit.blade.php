@@ -8,40 +8,36 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="px-12 py-8 bg-white border-b border-gray-200">
-                @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                    </ul>
-                </div>
-                @endif
-                {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
-                <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Name:</strong>
-                        {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-                    </div><br>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Permission:</strong>
-                        <br/>
-                        @foreach($permission as $value)
-                            <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                            {{ $value->name }}</label>
-                        <br/>
-                        @endforeach
-                    </div>
-                </div><br>
-                <div class="mx-auto mb-4">
-                    <x-button>{{ trans('buttons.save') }}</x-button>
-                </div>
-             </div>
-         </div>
+                <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                <form action="{{ route('roles.update', $role->id) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="grid gap-1"><br>
+                            <x-label for="name">{{ trans('auth.name') }}</x-label>
+                            <x-input type="text" name="name" value="{{ $role->name }}"/><br>
+
+                            <div class="mb-6">
+                                <strong>{{ trans('auth.permissions') }}</strong>
+                            </div>
+
+                            @foreach($permission as $value)
+                            {{-- <label type="checkbox" id="{{ $value->id }}" value="{{ $value->name }}" >{{ $value->description }}</label> --}}
+                           <div>     
+                                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                                    {{ $value->description }}</label>
+                                    <br/>
+                            @endforeach
+                            </div>
+                            <div class="flex justify-center gap-2 mt-6">
+                                <x-button-link href="{{ route('roles.index') }}">{{ trans('buttons.back') }}</x-button-link>
+                                <x-button>{{ trans('buttons.save') }}</x-button>
+                            </div>
+                        </div>
+                    </div>  
+                </form>
+            </div>
+        </div>
     </div>
-</div>  
+</div>
 </x-app-layout>
