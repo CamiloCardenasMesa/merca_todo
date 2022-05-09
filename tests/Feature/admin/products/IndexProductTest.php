@@ -5,6 +5,7 @@ namespace Tests\Feature\admin\products;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
@@ -14,10 +15,14 @@ class IndexProductsTest extends TestCase
 
     public function testProductsListCanBeRendered(): void
     {
+        $this->withoutExceptionHandling();
         //Arrange
         $admin = User::factory()->create();
-        $role = Role::create(['name' => 'admin']);
-        $admin->assignrole($role);
+        $role = Role::create(['name' => 'admin_1']);
+        $permissions = Permission::create([
+            'name' => 'product-list', ]);
+        $role->syncPermissions($permissions);
+        $admin->assignRole([$role->id]);
 
         $product = Product::factory()->create();
 

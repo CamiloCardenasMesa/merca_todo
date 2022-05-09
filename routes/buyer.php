@@ -5,6 +5,10 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/dashboard', [BuyerController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
 Route::get('buyer/products/{product}', [BuyerController::class, 'show'])
     ->name('buyer.products.show');
 

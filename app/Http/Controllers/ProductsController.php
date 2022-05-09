@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\ProductUpdateOrStoreActionContract;
 use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -12,14 +13,24 @@ use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:product-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:product-edit', ['only' => ['edit', 'update', 'toggle']]);
+        $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request): View
     {
         if ($request->query('query')) {
-            $products = Product::where('name', 'like', '%' . $request->query('query') . '%')
-            ->orwhere('description', 'like', '%' . $request->query('query') . '%')
-            ->paginate(8);
+            $products = Product::where('name', 'like', '%'.$request->query('query').'%')
+                ->orwhere('description', 'like', '%'.$request->query('query').'%')
+                ->paginate(8);
         } else {
-            $products = Product::paginate(8);
+            $products = Product::where('enable', true)
+                ->orderBy('id', 'desc')
+                ->paginate(8);
         }
 
         return view('admin.products.index', compact('products'));
@@ -39,21 +50,10 @@ class ProductsController extends Controller
 
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category_id');
+        ProductUpdateOrStoreActionContract::execute($request, $product);
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $fileName = $file->hashName();
-            $product->image = $file->storeAs('images', $fileName, 'public');
-        }
-
-        $product->save();
-
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')
+                         ->with('status', 'Product updated successfully.');
     }
 
     public function create()
@@ -65,22 +65,10 @@ class ProductsController extends Controller
 
     public function store(ProductRequest $request): RedirectResponse
     {
-        $product = new Product();
+        ProductUpdateOrStoreActionContract::execute($request);
 
-        $product->image = $request->input('image');
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->stock = $request->input('stock');
-        $product->category_id = $request->input('category_id');
-
-        $file = $request->file('image');
-        $fileName = $file->hashName();
-        $product->image = $file->storeAs('images', $fileName, 'public');
-
-        $product->save();
-
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')
+                         ->with('status', 'Product created successfully.');
     }
 
     public function destroy(Product $product): RedirectResponse
@@ -89,7 +77,8 @@ class ProductsController extends Controller
 
         Storage::disk('public')->delete($product->image);
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')
+                         ->with('status', 'Product deleted successfully.');
     }
 
     public function toggle(Product $product): RedirectResponse

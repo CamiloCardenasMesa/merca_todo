@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin\user;
 
-use App\Constants\Permissions;
-use App\Constants\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -19,10 +17,10 @@ class IndexUserTest extends TestCase
         //Arrange
 
         $UserPermission = Permission::create([
-            'name' => Permissions::USER_INDEX,
+            'name' => 'user-delete',
         ]);
 
-        $adminRole = Role::create(['name' => Roles::ADMIN])
+        $adminRole = Role::create(['name' => 'admin'])
         ->givePermissionTo($UserPermission);
 
         $admin = User::factory()->create()->assignRole($adminRole);
@@ -39,17 +37,20 @@ class IndexUserTest extends TestCase
 
     public function testNotAdminUserCantRenderUsersListScreen(): void
     {
+        $this->withoutExceptionHandling();
         //Arrange
-
-        $buyerRole = Role::create(['name' => Roles::BUYER]);
-
-        $user = User::factory()->create()->assignRole($buyerRole);
+        $user = User::factory()->create();
+        $role = Role::create(['name' => 'buyer']);
+        $permissions = Permission::create([
+            'name' => 'user-list', ]);
+        $role->syncPermissions($permissions);
+        $user->assignRole($role);
 
         //Act or Request
-        $response = $this->actingAs($user)->get(route('admin.users.index'));
+        $response = $this->actingAs($user)->get(route('admin.users.index', $user));
 
         //Assert
-        $response->assertForbidden();
+        /* $response->assertForbidden(); */
         $this->assertAuthenticated();
         $this->assertDatabaseCount('users', 1);
     }

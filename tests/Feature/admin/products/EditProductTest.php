@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Constants\Permissions;
-use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -20,16 +18,13 @@ class EditProductTest extends TestCase
     public function testAdminUserCanEditProducts(): void
     {
         $this->withoutExceptionHandling();
-
         //Arrange
-        $editProductsPermission = Permission::create([
-            'name' => Permissions::UPDATE_PRODUCTS,
-        ]);
-
-        $adminRole = Role::create(['name' => Roles::ADMIN])
-        ->givePermissionTo($editProductsPermission);
-
-        $admin = User::factory()->create()->assignRole($adminRole);
+        $admin = User::factory()->create();
+        $role = Role::create(['name' => 'admin_1']);
+        $permissions = Permission::create([
+            'name' => 'product-edit', ]);
+        $role->syncPermissions($permissions);
+        $admin->assignRole([$role->id]);
 
         $category = Category::factory()->create();
 
@@ -40,7 +35,7 @@ class EditProductTest extends TestCase
             'name' => 'Test name',
             'image' => UploadedFile::fake()->image('products.jpg'),
             'description' => 'Test description',
-            'price' => 1000,
+            'price' => 10000,
             'stock' => 10,
             'category_id' => $category->id,
         ]);
@@ -54,7 +49,7 @@ class EditProductTest extends TestCase
         $this->assertAuthenticated();
         $this->assertEquals('Test name', $product->name);
         $this->assertEquals('Test description', $product->description);
-        $this->assertEquals(1000, $product->price);
+        $this->assertEquals(10000, $product->price);
         $this->assertEquals(10, $product->stock);
         $this->assertEquals($category->id, $product->category->id);
     }
@@ -62,18 +57,13 @@ class EditProductTest extends TestCase
     public function testAdminUserCanRenderedEditProductsView()
     {
         $this->withoutExceptionHandling();
-
         //Arrange
-        $editProductsPermission = Permission::create([
-            'name' => Permissions::EDIT_PRODUCTS,
-        ]);
-
-        $adminRole = Role::create(['name' => Roles::ADMIN])
-        ->givePermissionTo($editProductsPermission);
-
-        $admin = User::factory()->create()->assignRole($adminRole);
-
-        /*   $category = Category::factory()->create(); */
+        $admin = User::factory()->create();
+        $role = Role::create(['name' => 'admin']);
+        $permissions = Permission::create([
+            'name' => 'product-edit', ]);
+        $role->syncPermissions($permissions);
+        $admin->assignRole([$role->id]);
 
         $product = Product::factory()->create();
 

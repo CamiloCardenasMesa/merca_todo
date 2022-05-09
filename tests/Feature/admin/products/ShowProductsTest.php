@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin\products;
 
-use App\Constants\Permissions;
-use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -18,15 +16,14 @@ class ShowProductsTest extends TestCase
 
     public function testAdminUserCanRenderShowProductsScreen(): void
     {
+        $this->withoutExceptionHandling();
         //Arrange
-        $showProductsPermission = Permission::create([
-            'name' => Permissions::SHOW_PRODUCTS,
-        ]);
-
-        $adminRole = Role::create(['name' => Roles::ADMIN])
-            ->givePermissionTo($showProductsPermission);
-
-        $admin = User::factory()->create()->assignRole($adminRole);
+        $admin = User::factory()->create();
+        $role = Role::create(['name' => 'admin_1']);
+        $permissions = Permission::create([
+            'name' => 'product-edit', ]);
+        $role->syncPermissions($permissions);
+        $admin->assignRole([$role->id]);
 
         $category = Category::factory()->create();
 
@@ -44,7 +41,7 @@ class ShowProductsTest extends TestCase
 
     public function testNotAdminUserCantRenderShowProductsScreen(): void
     {
-        $guestRole = Role::create(['name' => Roles::GUEST]);
+        $guestRole = Role::create(['name' => 'guest']);
 
         $guest = User::factory()->create()->assignRole($guestRole);
 

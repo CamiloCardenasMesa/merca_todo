@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\admin;
 
-use App\Constants\Permissions;
-use App\Constants\Roles;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,12 +18,12 @@ class DeleteProductsTest extends TestCase
     {
         $this->withoutExceptionHandling();
         //Arrange
-        $permissionToDeleteProducts = Permission::create(['name' => Permissions::DELETE_PRODUCTS]);
-
-        $adminRole = Role::create(['name' => Roles::ADMIN])
-        ->givePermissionTo($permissionToDeleteProducts);
-
-        $admin = User::factory()->create()->assignRole($adminRole);
+        $admin = User::factory()->create();
+        $role = Role::create(['name' => 'admin_1']);
+        $permissions = Permission::create([
+            'name' => 'product-delete', ]);
+        $role->syncPermissions($permissions);
+        $admin->assignRole([$role->id]);
 
         $productDeleted = Product::factory()->create();
 

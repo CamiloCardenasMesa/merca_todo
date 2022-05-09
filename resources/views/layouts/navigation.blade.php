@@ -15,12 +15,21 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
-                        {{ __(trans('navigation.users')) }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
-                        {{ __(trans('navigation.product_list')) }}
-                    </x-nav-link>
+                    @can('role-list', 'role-create', 'role-edit', 'role-delete')
+                        <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                            {{ __(trans('navigation.roles')) }}
+                        </x-nav-link>
+                    @endcan
+                    @can('user-list', 'user-create', 'user-edit', 'user-delete')
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                            {{ __(trans('navigation.users')) }}
+                        </x-nav-link>
+                    @endcan
+                    @can('product-list', 'product-create', 'product-edit', 'product-delete')
+                        <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
+                            {{ __(trans('navigation.product_list')) }}
+                        </x-nav-link>
+                    @endcan
                     <x-nav-link :href="route('buyer.orders.index')" :active="request()->routeIs('buyer.orders.index')">
                         {{ __(trans('navigation.orders')) }}
                     </x-nav-link>
@@ -64,10 +73,10 @@
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex"
+                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden"
+                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden"
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -76,7 +85,7 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
