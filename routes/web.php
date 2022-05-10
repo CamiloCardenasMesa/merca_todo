@@ -23,7 +23,10 @@ Route::get('guest/products/{product}', [GuestController::class, 'show'])
 
 Route::get('/products/export', [ProductsExportController::class, 'export'])
     ->name('products.export');
-    
+
+Route::get('/products/import', [ProductsImportController::class, 'import'])
+    ->name('products.import');
+
     require __DIR__.'/auth.php';
     require __DIR__.'/admin.php';
     require __DIR__.'/buyer.php';
