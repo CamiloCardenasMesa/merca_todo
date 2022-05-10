@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\ProductsExportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,10 @@ Route::get('/', [GuestController::class, 'index'])
 Route::get('guest/products/{product}', [GuestController::class, 'show'])
     ->name('guest.products.show');
 
-require __DIR__ . '/auth.php';
-require __DIR__ . '/admin.php';
-require __DIR__ . '/buyer.php';
-require __DIR__ . '/roles.php';
+Route::get('/products/export', [ProductsExportController::class, 'export'])
+    ->name('products.export');
+    
+    require __DIR__.'/auth.php';
+    require __DIR__.'/admin.php';
+    require __DIR__.'/buyer.php';
+    require __DIR__.'/roles.php';

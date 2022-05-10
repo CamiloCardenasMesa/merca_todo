@@ -24,8 +24,8 @@ class ProductsController extends Controller
     public function index(Request $request): View
     {
         if ($request->query('query')) {
-            $products = Product::where('name', 'like', '%' . $request->query('query') . '%')
-                ->orwhere('description', 'like', '%' . $request->query('query') . '%')
+            $products = Product::where('name', 'like', '%'.$request->query('query').'%')
+                ->orwhere('description', 'like', '%'.$request->query('query').'%')
                 ->paginate(8);
         } else {
             $products = Product::where('enable', true)
