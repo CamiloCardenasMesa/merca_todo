@@ -9,11 +9,15 @@
     <div class="pt-6 pb-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @can('product-create')
-            <div class="mb-6">
+            <div class="flex mb-6 justify-between">
                 <x-button-link href="{{ route('admin.products.create') }}">
                     {{ trans('buttons.create_product') }}</x-button>
-            </div>
             @endcan
+            @can('product-edit')
+            <x-button-link href="{{ route('products.export') }}">
+                    {{ trans('buttons.export_products') }}</x-button>
+            @endcan
+            </div>
             <div>
                 <x-auth-session-status :status="session('status')" />
             </div>
