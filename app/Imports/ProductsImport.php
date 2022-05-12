@@ -16,7 +16,6 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
 {
     public function model(array $row): ?Model
     {
-        /*  dd($this->categories); */
         $product = new Product();
         $product->name = Arr::get($row, 'name');
         $product->image = Storage::disk('images')->put('product_images', new File('images/imagen_de_muestra3.jpg'));
@@ -31,8 +30,6 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
 
     public function rules(): array
     {
-        $rules = Arr::except(ProductsRules::toArray(), 'image');
-
-        return $rules;
+        return Arr::except(ProductsRules::toArray(), 'image');
     }
 }
