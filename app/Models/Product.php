@@ -52,11 +52,6 @@ class Product extends Model implements Buyable
         return 1;
     }
 
-    public function getImage($options = null)
-    {
-        return $this->image;
-    }
-
     public function getDescription($options = null)
     {
         return $this->description;

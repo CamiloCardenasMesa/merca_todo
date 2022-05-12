@@ -41,7 +41,7 @@
                     </table><br>
                     <div class="flex justify-center gap-2">
                         <x-button-link href="{{ route('admin.users.index') }}">{{ trans('buttons.back') }}</x-button-link>
-                        @can('user-edit')
+                        @can(App\Constants\Permissions::USER_EDIT)
                         <x-button-link href="{{ route('admin.users.edit', $user) }}">{{ trans('buttons.edit') }}</x-button-link>
                         @endcan
                     </div>                    
