@@ -17,28 +17,30 @@ class ProductsExport implements FromQuery, ShouldAutoSize, WithMapping, WithHead
 
     public function query()
     {
-        return Product::query()
-            ->where('enable', true)
-            ->where('price', '<', 400000);
+        return Product::query();
     }
 
     public function map($product): array
     {
         return [
-        $product->id,
         $product->name,
+        $product->description,
         $product->price,
         $product->stock,
+        $product->category_id,
+        $product->enable,
         ];
     }
 
     public function headings(): array
     {
         return [
-            'ID',
-            'Name',
-            'Price',
-            'Stock',
+            'name',
+            'description',
+            'price',
+            'stock',
+            'category_id',
+            'enable',
         ];
     }
 
@@ -46,7 +48,7 @@ class ProductsExport implements FromQuery, ShouldAutoSize, WithMapping, WithHead
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-                $event->sheet->getStyle('A1:D1')->applyFromArray([
+                $event->sheet->getStyle('A1:G1')->applyFromArray([
                     'font' => [
                         'bold' => true,
                     ],
