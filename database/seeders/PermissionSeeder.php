@@ -11,7 +11,7 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         foreach (Permissions::supported() as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::findOrCreate($permission);
         }
     }
 }
