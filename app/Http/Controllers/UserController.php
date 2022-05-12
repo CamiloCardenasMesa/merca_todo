@@ -18,17 +18,17 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:'.Permissions::USER_LIST, ['only' => ['index', 'show']]);
-        $this->middleware('permission:'.Permissions::USER_CREATE, ['only' => ['create', 'store']]);
-        $this->middleware('permission:'.Permissions::USER_EDIT, ['only' => ['edit', 'update', 'toggle']]);
-        $this->middleware('permission:'.Permissions::USER_DELETE, ['only' => ['destroy']]);
+        $this->middleware('permission:' . Permissions::USER_LIST, ['only' => ['index', 'show']]);
+        $this->middleware('permission:' . Permissions::USER_CREATE, ['only' => ['create', 'store']]);
+        $this->middleware('permission:' . Permissions::USER_EDIT, ['only' => ['edit', 'update', 'toggle']]);
+        $this->middleware('permission:' . Permissions::USER_DELETE, ['only' => ['destroy']]);
     }
 
     public function index(Request $request): View
     {
         if ($request->query('query')) {
-            $users = User::where('name', 'like', '%'.$request->query('query').'%')
-            ->orwhere('email', 'like', '%'.$request->query('query').'%')
+            $users = User::where('name', 'like', '%' . $request->query('query') . '%')
+            ->orwhere('email', 'like', '%' . $request->query('query') . '%')
             ->paginate(10);
         } else {
             $users = User::orderBy('id', 'desc')->paginate(8);

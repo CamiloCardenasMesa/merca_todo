@@ -48,7 +48,7 @@ class EditUserTest extends TestCase
 
         //Arrange
         $editProductsPermission = Permission::create([
-            'name' => Permissions::USER_EDIT
+            'name' => Permissions::USER_EDIT,
         ]);
 
         $adminRole = Role::create(['name' => 'admin'])

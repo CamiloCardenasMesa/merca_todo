@@ -14,6 +14,6 @@ class ProductRequest extends FormRequest
 
     public function rules(): array
     {
-       return ProductsRules::toArray();
+        return ProductsRules::toArray();
     }
 }

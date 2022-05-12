@@ -20,7 +20,7 @@ class DeleteUsersTest extends TestCase
         $user = User::factory()->create();
         $role = Role::create(['name' => 'guest']);
         $permissions = Permission::create([
-            'name' => Permissions::USER_DELETE ]);
+            'name' => Permissions::USER_DELETE, ]);
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);
 
