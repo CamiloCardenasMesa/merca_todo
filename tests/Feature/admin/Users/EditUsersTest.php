@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Constants\Permissions;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -17,7 +18,7 @@ class EditUserTest extends TestCase
         /*  $this->withoutExceptionHandling(); */
         //Arrange
         $updatePermission = Permission::create([
-            'name' => 'user-edit',
+            'name' => Permissions::USER_EDIT,
         ]);
 
         $adminRole = Role::create(['name' => 'admin'])
@@ -47,7 +48,7 @@ class EditUserTest extends TestCase
 
         //Arrange
         $editProductsPermission = Permission::create([
-            'name' => 'user-edit',
+            'name' => Permissions::USER_EDIT,
         ]);
 
         $adminRole = Role::create(['name' => 'admin'])

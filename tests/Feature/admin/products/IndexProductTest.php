@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\admin\products;
 
+use App\Constants\Permissions;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,7 +21,7 @@ class IndexProductsTest extends TestCase
         $admin = User::factory()->create();
         $role = Role::create(['name' => 'admin_1']);
         $permissions = Permission::create([
-            'name' => 'product-list', ]);
+            'name' => Permissions::PRODUCT_LIST, ]);
         $role->syncPermissions($permissions);
         $admin->assignRole([$role->id]);
 

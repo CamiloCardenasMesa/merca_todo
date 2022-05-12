@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Constants\Permissions;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -19,7 +20,7 @@ class DeleteUsersTest extends TestCase
         $user = User::factory()->create();
         $role = Role::create(['name' => 'guest']);
         $permissions = Permission::create([
-            'name' => 'user-delete', ]);
+            'name' => Permissions::USER_DELETE, ]);
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);
 

@@ -15,17 +15,33 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    @can('role-list', 'role-create', 'role-edit', 'role-delete')
+
+                    @can(
+                        App\Constants\Permissions::ROLE_LIST,
+                        App\Constants\Permissions::ROLE_CREATE, 
+                        App\Constants\Permissions::ROLE_EDIT, 
+                        App\Constants\Permissions::ROLE_DELETE,
+                    )
                         <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
                             {{ __(trans('navigation.roles')) }}
                         </x-nav-link>
                     @endcan
-                    @can('user-list', 'user-create', 'user-edit', 'user-delete')
+                    @can(
+                        App\Constants\Permissions::USER_LIST,
+                        App\Constants\Permissions::USER_CREATE, 
+                        App\Constants\Permissions::USER_EDIT, 
+                        App\Constants\Permissions::USER_DELETE,
+                    )
                         <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                             {{ __(trans('navigation.users')) }}
                         </x-nav-link>
                     @endcan
-                    @can('product-list', 'product-create', 'product-edit', 'product-delete')
+                    @can(
+                        App\Constants\Permissions::PRODUCT_LIST,
+                        App\Constants\Permissions::PRODUCT_CREATE, 
+                        App\Constants\Permissions::PRODUCT_EDIT, 
+                        App\Constants\Permissions::PRODUCT_DELETE,
+                    )
                         <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
                             {{ __(trans('navigation.product_list')) }}
                         </x-nav-link>

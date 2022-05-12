@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\ProductUpdateOrStoreActionContract;
+use App\Constants\Permissions;
 use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -15,21 +16,21 @@ class ProductsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:product-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:product-edit', ['only' => ['edit', 'update', 'toggle']]);
-        $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:' . Permissions::PRODUCT_LIST, ['only' => ['index', 'show']]);
+        $this->middleware('permission:' . Permissions::PRODUCT_CREATE, ['only' => ['create', 'store']]);
+        $this->middleware('permission:' . Permissions::PRODUCT_EDIT, ['only' => ['edit', 'update', 'toggle']]);
+        $this->middleware('permission:' . Permissions::PRODUCT_DELETE, ['only' => ['destroy']]);
     }
 
     public function index(Request $request): View
     {
         if ($request->query('query')) {
             $products = Product::where('name', 'like', '%' . $request->query('query') . '%')
-                ->orwhere('description', 'like', '%' . $request->query('query') . '%')
+                ->orWhere('description', 'like', '%' . $request->query('query') . '%')
+                ->where('enable', true)
                 ->paginate(8);
         } else {
-            $products = Product::where('enable', true)
-                ->orderBy('id', 'desc')
+            $products = Product::orderBy('id', 'desc')
                 ->paginate(8);
         }
 
@@ -75,7 +76,7 @@ class ProductsController extends Controller
     {
         $product->delete();
 
-        Storage::disk('public')->delete($product->image);
+        Storage::disk('images')->delete($product->image);
 
         return redirect()->route('admin.products.index')
                          ->with('status', 'Product deleted successfully.');

@@ -22,4 +22,6 @@ return [
     'continue_shopping' => 'Continuar comprando',
     'checkout' => 'Finalizar compra',
     'add_products' => 'Agregar productos',
+    'export_products' => 'Exportar Productos',
+    'import_products' => 'Importar Productos',
 ];

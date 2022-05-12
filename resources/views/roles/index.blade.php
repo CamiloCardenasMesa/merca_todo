@@ -7,7 +7,7 @@
     
     <div class="pt-6 pb-14">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @can('role-create')
+            @can(App\Constants\Permissions::ROLE_CREATE)
             <div class="mb-6">
                 <x-button-link href="{{ route('roles.create') }}">{{ trans('buttons.create_role') }}
                 </x-button>
@@ -23,13 +23,13 @@
                             <tr class="bg-gray-100">
                                 <th class="border border-gray-300 px-4 py-2">ID</th>
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('auth.role') }}</th>
-                                @can('role-list')
+                                @can(App\Constants\Permissions::ROLE_LIST)
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                                 @endcan
-                                @can('role-edit')
+                                @can(App\Constants\Permissions::ROLE_EDIT)
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
                                 @endcan
-                                @can('role-delete')
+                                @can(App\Constants\Permissions::ROLE_DELETE)
                                     <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.delete') }}</th>
                                 @endcan
                             </tr>
@@ -39,19 +39,19 @@
                             <tr>
                                 <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->id }}</td>
                                 <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->name }}</td>
-                                @can('role-list')
+                                @can(App\Constants\Permissions::ROLE_LIST)
                                     <td class="border border-gray-300 px-4 py-2 text-center">
                                         <x-button-link href="{{ route('roles.show', $role->id) }}">
                                             {{ trans('buttons.show') }}</x-button-link>
                                     </td>
                                 @endcan
-                                @can('role-edit')
+                                @can(App\Constants\Permissions::ROLE_EDIT)
                                     <td class="border border-gray-300 px-4 py-2 text-center">
                                         <x-button-link href="{{ route('roles.edit', $role->id) }}">
                                             {{ trans('buttons.edit') }}</x-button-link>
                                     </td>
                                 @endcan
-                                @can('role-delete')
+                                @can(App\Constants\Permissions::ROLE_DELETE)
                                     <td class="border border-gray-300 px-4 py-2 text-center">
                                         <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
                                             @csrf

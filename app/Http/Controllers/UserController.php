@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\Permissions;
 use App\Http\Requests\Admin\Users\StoreUserRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Models\User;
@@ -17,10 +18,10 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'show']]);
-        $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:user-edit', ['only' => ['edit', 'update', 'toggle']]);
-        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:' . Permissions::USER_LIST, ['only' => ['index', 'show']]);
+        $this->middleware('permission:' . Permissions::USER_CREATE, ['only' => ['create', 'store']]);
+        $this->middleware('permission:' . Permissions::USER_EDIT, ['only' => ['edit', 'update', 'toggle']]);
+        $this->middleware('permission:' . Permissions::USER_DELETE, ['only' => ['destroy']]);
     }
 
     public function index(Request $request): View

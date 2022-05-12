@@ -8,7 +8,7 @@
 
     <div class="pt-6 pb-14">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @can('user-create')
+            @can(App\Constants\Permissions::USER_CREATE)
                 <div class="mb-6">
                     <x-button-link href="{{ route('admin.users.create') }}">{{ trans('buttons.create_user') }}
                         </x-button>
@@ -25,14 +25,14 @@
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('auth.name') }}</th>
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('auth.email') }}</th>
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('auth.role') }}</th>
-                                @can('user-list')
+                                @can(App\Constants\Permissions::USER_LIST)
                                     <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                                 @endcan
-                                @can('user-edit')
+                                @can(App\Constants\Permissions::USER_EDIT)
                                     <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
                                     <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.state') }}</th>
                                 @endcan
-                                @can('user-delete')
+                                @can(App\Constants\Permissions::USER_DELETE)
                                     <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.delete') }}</th>
                                 @endcan
                             </tr>
@@ -49,13 +49,13 @@
                                             @endforeach
                                         @endif
                                     </td>
-                                    @can('user-list')
+                                    @can(App\Constants\Permissions::USER_LIST)
                                         <td class="border border-gray-300 px-4 py-2 text-center">
                                             <x-button-link href="{{ route('admin.users.show', $user) }}">
                                                 {{ trans('buttons.show') }}</x-button-link>
                                         </td>
                                     @endcan
-                                    @can('user-edit')
+                                    @can(App\Constants\Permissions::USER_EDIT)
                                         <td class="border border-gray-300 px-4 py-2 text-center">
                                             <x-button-link href="{{ route('admin.users.edit', $user) }}">
                                                 {{ trans('buttons.edit') }}</x-button-link>
@@ -71,7 +71,7 @@
                                             </form>
                                         </td>
                                     @endcan
-                                    @can('user-delete')
+                                    @can(App\Constants\Permissions::USER_DELETE)
                                         <td class="border border-gray-300 px-4 py-2 text-center">
                                             <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                                 @csrf

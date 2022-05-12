@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants\Permissions;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,10 +14,10 @@ class RoleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index', 'store']]);
-        $this->middleware('permission:role-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:role-edit', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:' . Permissions::ROLE_LIST, ['only' => ['index', 'store']]);
+        $this->middleware('permission:' . Permissions::ROLE_CREATE, ['only' => ['create', 'store']]);
+        $this->middleware('permission:' . Permissions::ROLE_EDIT, ['only' => ['edit', 'update']]);
+        $this->middleware('permission:' . Permissions::ROLE_DELETE, ['only' => ['destroy']]);
     }
 
     public function index(Request $request): View

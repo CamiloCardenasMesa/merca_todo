@@ -24,7 +24,7 @@
                             <div class="rounded-lg p-2 bg-gray-100 border border-gray-300 ">
                                 @foreach ($rolePermissions as $permission)
                                     <div class="bg-gray-100 text-left py-2 px-4">
-                                        <li>{{ $permission->description }}</li>
+                                        <li>{{ $permission->name }}</li>
                                     </div>
                                 @endforeach
                             </div>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="flex justify-center gap-2 mt-6">
                     <x-button-link href="{{ route('roles.index') }}">{{ trans('buttons.back') }}</x-button-link>
-                    @can('role-edit')
+                    @can(App\Constants\Permissions::ROLE_EDIT)
                     <x-button-link href="{{ route('roles.edit', $role) }}">{{ trans('buttons.edit') }}</x-button-link>
                     @endcan
                 </div>

@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Admin\products;
 
+use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -16,21 +18,28 @@ class ShowProductsTest extends TestCase
 
     public function testAdminUserCanRenderShowProductsScreen(): void
     {
-        $this->withoutExceptionHandling();
         //Arrange
-        $admin = User::factory()->create();
-        $role = Role::create(['name' => 'admin_1']);
-        $permissions = Permission::create([
-            'name' => 'product-edit', ]);
-        $role->syncPermissions($permissions);
-        $admin->assignRole([$role->id]);
+        $UserPermission = Permission::create([
+            'name' => Permissions::PRODUCT_LIST,
+        ]);
 
-        $category = Category::factory()->create();
+        $adminRole = Role::create(['name' => 'admin'])
+        ->givePermissionTo($UserPermission);
 
-        $productshow = Product::factory()->for($category)->create();
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
+
+        $category = Category::factory()
+            ->create();
+
+        $productshow = Product::factory()
+            ->for($category)
+            ->create();
 
         //Act or Request
-        $response = $this->actingAs($admin)->get(route('admin.products.show', $productshow));
+        $response = $this->actingAs($admin)
+            ->get(route('admin.products.show', $productshow));
 
         //Assert
         $response->assertOk();
@@ -41,14 +50,20 @@ class ShowProductsTest extends TestCase
 
     public function testNotAdminUserCantRenderShowProductsScreen(): void
     {
-        $guestRole = Role::create(['name' => 'guest']);
+        $buyerRole = Role::create([
+            'name' => Roles::BUYER,
+        ]);
 
-        $guest = User::factory()->create()->assignRole($guestRole);
+        $guest = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
 
-        $productshow = Product::factory()->create();
+        $productshow = Product::factory()
+            ->create();
 
         //Act or Request
-        $response = $this->actingAs($guest)->get(route('admin.products.show', $productshow));
+        $response = $this->actingAs($guest)
+            ->get(route('admin.products.show', $productshow));
 
         //Assert
         $response->assertForbidden();
