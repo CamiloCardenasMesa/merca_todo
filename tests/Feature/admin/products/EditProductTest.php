@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Constants\Permissions;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -22,7 +23,7 @@ class EditProductTest extends TestCase
         $admin = User::factory()->create();
         $role = Role::create(['name' => 'admin_1']);
         $permissions = Permission::create([
-            'name' => 'product-edit', ]);
+            'name' => Permissions::PRODUCT_EDIT, ]);
         $role->syncPermissions($permissions);
         $admin->assignRole([$role->id]);
 
@@ -61,7 +62,7 @@ class EditProductTest extends TestCase
         $admin = User::factory()->create();
         $role = Role::create(['name' => 'admin']);
         $permissions = Permission::create([
-            'name' => 'product-edit', ]);
+            'name' => Permissions::PRODUCT_EDIT, ]);
         $role->syncPermissions($permissions);
         $admin->assignRole([$role->id]);
 

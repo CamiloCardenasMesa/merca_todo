@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Admin\user;
 
+use App\Constants\Permissions;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -16,7 +17,7 @@ class ShowUserTest extends TestCase
     {
         //Arrange
         $showUserPermission = Permission::create([
-            'name' => 'user-list',
+            'name' => Permissions::USER_LIST,
         ]);
 
         $adminRole = Role::create(['name' => 'guest'])
@@ -38,7 +39,7 @@ class ShowUserTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $showUserPermission = Permission::create([
-            'name' => 'user-edit',
+            'name' => Permissions::USER_EDIT,
         ]);
 
         $guest = Role::create(['name' => 'buyer'])

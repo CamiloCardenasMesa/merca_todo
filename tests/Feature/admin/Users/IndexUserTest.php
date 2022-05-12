@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Admin\user;
 
+use App\Constants\Permissions;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -17,7 +18,7 @@ class IndexUserTest extends TestCase
         //Arrange
 
         $UserPermission = Permission::create([
-            'name' => 'user-delete',
+            'name' => Permissions::USER_DELETE,
         ]);
 
         $adminRole = Role::create(['name' => 'admin'])
@@ -42,7 +43,7 @@ class IndexUserTest extends TestCase
         $user = User::factory()->create();
         $role = Role::create(['name' => 'buyer']);
         $permissions = Permission::create([
-            'name' => 'user-list', ]);
+            'name' => Permissions::USER_LIST, ]);
         $role->syncPermissions($permissions);
         $user->assignRole($role);
 

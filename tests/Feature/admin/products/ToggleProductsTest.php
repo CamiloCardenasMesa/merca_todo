@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\admin\products;
 
+use App\Constants\Permissions;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,7 +18,7 @@ class ToggleProductsTest extends TestCase
     {
         //Arrange
         $showUserPermission = Permission::create([
-            'name' => 'product-edit',
+            'name' => Permissions::PRODUCT_EDIT,
         ]);
 
         $adminRole = Role::create(['name' => 'admin'])

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\admin\Users;
 
+use App\Constants\Permissions;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -16,7 +17,7 @@ class ToggleUsersTest extends TestCase
     {
         //Arrange
         $showUserPermission = Permission::create([
-            'name' => 'user-edit',
+            'name' => Permissions::USER_EDIT,
         ]);
 
         $adminRole = Role::create(['name' => 'admin'])
