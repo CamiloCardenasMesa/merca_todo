@@ -3,6 +3,7 @@
 namespace Tests\Feature\Admin\user;
 
 use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -16,18 +17,20 @@ class IndexUserTest extends TestCase
     public function testAdminUserCanRenderUsersListScreen(): void
     {
         //Arrange
-
         $UserPermission = Permission::create([
-            'name' => Permissions::USER_DELETE,
+            'name' => Permissions::USER_LIST,
         ]);
 
         $adminRole = Role::create(['name' => 'admin'])
         ->givePermissionTo($UserPermission);
 
-        $admin = User::factory()->create()->assignRole($adminRole);
+        $admin = User::factory()
+            ->create()
+            ->assignRole($adminRole);
 
         //Act or Request
-        $response = $this->actingAs($admin)->get(route('admin.users.index'));
+        $response = $this->actingAs($admin)
+            ->get(route('admin.users.index'));
 
         //Assert
         $response->assertOk();
@@ -38,20 +41,21 @@ class IndexUserTest extends TestCase
 
     public function testNotAdminUserCantRenderUsersListScreen(): void
     {
-        $this->withoutExceptionHandling();
         //Arrange
-        $user = User::factory()->create();
-        $role = Role::create(['name' => 'buyer']);
-        $permissions = Permission::create([
-            'name' => Permissions::USER_LIST, ]);
-        $role->syncPermissions($permissions);
-        $user->assignRole($role);
+        $buyerRole = Role::create([
+            'name' => Roles::BUYER,
+        ]);
+
+        $user = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
 
         //Act or Request
-        $response = $this->actingAs($user)->get(route('admin.users.index', $user));
+        $response = $this->actingAs($user)
+            ->get(route('admin.users.index', $user));
 
         //Assert
-        /* $response->assertForbidden(); */
+        $response->assertForbidden();
         $this->assertAuthenticated();
         $this->assertDatabaseCount('users', 1);
     }

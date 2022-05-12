@@ -3,6 +3,7 @@
 namespace Tests\Feature\Admin\user;
 
 use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -37,24 +38,20 @@ class ShowUserTest extends TestCase
 
     public function testNotAdminUserCantRenderShowUserScreen(): void
     {
-        $this->withoutExceptionHandling();
-        $showUserPermission = Permission::create([
-            'name' => Permissions::USER_EDIT,
+        $buyerRole = Role::create([
+            'name' => Roles::BUYER,
         ]);
 
-        $guest = Role::create(['name' => 'buyer'])
-        ->givePermissionTo($showUserPermission);
-
-        $buyer = User::factory()->create()->assignRole($guest);
-
-        $user = User::factory()->create();
+        $buyer = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
 
         //Act or Request
-        $response = $this->actingAs($buyer)->get(route('admin.users.show', $user));
+        $response = $this->actingAs($buyer)->get(route('admin.users.show', $buyer));
 
         //Assert
-        /* $response->assertForbidden(); */
-        $this->assertDatabaseCount('users', 2);
+        $response->assertForbidden();
+        $this->assertDatabaseCount('users', 1);
         $this->assertAuthenticated();
     }
 }
