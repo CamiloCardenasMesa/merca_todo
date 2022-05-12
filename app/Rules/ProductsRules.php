@@ -12,7 +12,8 @@ class ProductsRules implements Rules
             'description' => 'required|string',
             'price' => 'required|integer|min:10000|max:10000000',
             'stock' => 'required|integer|max:10000',
-            'category' => 'name|exists:categories,id',
+            'category_id' => 'required|integer|min:1|max:3',
+            'enable' => 'true|false|0|1',
         ];
     }
 }

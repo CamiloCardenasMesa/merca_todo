@@ -23,4 +23,5 @@ return [
     'checkout' => 'Checkout',
     'add_products' => 'Add Products',
     'export_products' => 'Export Products',
+    'import_products' => 'Import Products',
 ];
