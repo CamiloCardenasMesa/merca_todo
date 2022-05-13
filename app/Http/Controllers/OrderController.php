@@ -23,7 +23,7 @@ class OrderController extends Controller
 
     public function show(Order $order, WebcheckoutService $webcheckoutService): View
     {
-        if ($order->state === States::APPROVED || $order->state === States::REJECTED) {
+        if ($order->state === States::PENDING || $order->state === States::REJECTED) {
             $response = $webcheckoutService->getInformation($order->session_id);
 
             if ($response['status']['status'] !== States::PENDING) {
