@@ -13,4 +13,8 @@ return [
     'quantity' => 'Cantidad',
     'header' => 'Crea un nuevo producto con este formulario',
     'delete' => 'Estas seguro que deseas eliminar este producto?',
+    'add_product' => 'Producto agregado exitosamente',
+    'update_product' => 'El producto ha sido actualizado correctamente',
+    'delete_product' => 'El producto ha sido eliminado del carrito',
+
 ];

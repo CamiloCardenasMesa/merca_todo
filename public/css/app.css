@@ -680,6 +680,9 @@ select {
 .mt-4 {
   margin-top: 1rem;
 }
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -713,9 +716,6 @@ select {
 .mb-12 {
   margin-bottom: 3rem;
 }
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
 .mt-8 {
   margin-top: 2rem;
 }
@@ -725,8 +725,8 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
-.mb-10 {
-  margin-bottom: 2.5rem;
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 .block {
   display: block;
@@ -879,11 +879,11 @@ select {
 .gap-4 {
   gap: 1rem;
 }
-.gap-10 {
-  gap: 2.5rem;
-}
 .gap-2 {
   gap: 0.5rem;
+}
+.gap-10 {
+  gap: 2.5rem;
 }
 .gap-1 {
   gap: 0.25rem;

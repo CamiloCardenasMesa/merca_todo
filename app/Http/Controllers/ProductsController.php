@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\ProductUpdateOrStoreActionContract;
+use App\Actions\ProductUpdateOrStoreAction;
 use App\Constants\Permissions;
 use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Models\Category;
@@ -16,17 +16,17 @@ class ProductsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:' . Permissions::PRODUCT_LIST, ['only' => ['index', 'show']]);
-        $this->middleware('permission:' . Permissions::PRODUCT_CREATE, ['only' => ['create', 'store']]);
-        $this->middleware('permission:' . Permissions::PRODUCT_EDIT, ['only' => ['edit', 'update', 'toggle']]);
-        $this->middleware('permission:' . Permissions::PRODUCT_DELETE, ['only' => ['destroy']]);
+        $this->middleware('permission:'.Permissions::PRODUCT_LIST, ['only' => ['index', 'show']]);
+        $this->middleware('permission:'.Permissions::PRODUCT_CREATE, ['only' => ['create', 'store']]);
+        $this->middleware('permission:'.Permissions::PRODUCT_EDIT, ['only' => ['edit', 'update', 'toggle']]);
+        $this->middleware('permission:'.Permissions::PRODUCT_DELETE, ['only' => ['destroy']]);
     }
 
     public function index(Request $request): View
     {
         if ($request->query('query')) {
-            $products = Product::where('name', 'like', '%' . $request->query('query') . '%')
-                ->orWhere('description', 'like', '%' . $request->query('query') . '%')
+            $products = Product::where('name', 'like', '%'.$request->query('query').'%')
+                ->orWhere('description', 'like', '%'.$request->query('query').'%')
                 ->where('enable', true)
                 ->paginate(8);
         } else {
@@ -51,7 +51,7 @@ class ProductsController extends Controller
 
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-        ProductUpdateOrStoreActionContract::execute($request, $product);
+        ProductUpdateOrStoreAction::execute($request, $product);
 
         return redirect()->route('admin.products.index')
                          ->with('status', 'Product updated successfully.');
@@ -66,7 +66,7 @@ class ProductsController extends Controller
 
     public function store(ProductRequest $request): RedirectResponse
     {
-        ProductUpdateOrStoreActionContract::execute($request);
+        ProductUpdateOrStoreAction::execute($request);
 
         return redirect()->route('admin.products.index')
                          ->with('status', 'Product created successfully.');
