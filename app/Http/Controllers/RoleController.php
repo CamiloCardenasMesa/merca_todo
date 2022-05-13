@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Constants\Permissions;
+use App\Http\Requests\Admin\Role\RoleStoreRequest;
+use App\Http\Requests\Admin\Role\RoleUpdateRequest;
+use App\Models\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-    public function __construct()
+    /* public function __construct()
     {
-        $this->middleware('permission:' . Permissions::ROLE_LIST, ['only' => ['index', 'store']]);
-        $this->middleware('permission:' . Permissions::ROLE_CREATE, ['only' => ['create', 'store']]);
-        $this->middleware('permission:' . Permissions::ROLE_EDIT, ['only' => ['edit', 'update']]);
-        $this->middleware('permission:' . Permissions::ROLE_DELETE, ['only' => ['destroy']]);
-    }
+        $this->authorizeResource(Role::class, 'role');
+    } */
 
     public function index(Request $request): View
     {
@@ -35,13 +33,8 @@ class RoleController extends Controller
         return view('roles.create', compact('permission'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(RoleStoreRequest $request): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required|unique:roles,name',
-            'permission' => 'required',
-        ]);
-
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
@@ -71,13 +64,8 @@ class RoleController extends Controller
         return view('roles.edit', compact('role', 'permission', 'rolePermissions'));
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(RoleUpdateRequest $request, $id): RedirectResponse
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'permission' => 'required',
-        ]);
-
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
@@ -90,7 +78,9 @@ class RoleController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        DB::table('roles')->where('id', $id)->delete();
+        DB::table('roles')
+            ->where('id', $id)
+            ->delete();
 
         return redirect()->route('roles.index')
                         ->with('status', 'Role deleted successfully');
