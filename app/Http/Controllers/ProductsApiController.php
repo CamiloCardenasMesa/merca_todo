@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\ProductUpdateOrStoreActionContract;
+use App\Actions\ProductUpdateOrStoreAction;
 use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Http\Resources\ProductsResource;
 use App\Models\Product;
@@ -19,7 +19,7 @@ class ProductsApiController extends Controller
 
     public function store(ProductRequest $request)
     {
-        $product = ProductUpdateOrStoreActionContract::execute($request);
+        $product = ProductUpdateOrStoreAction::execute($request);
 
         return new ProductsResource($product);
     }
@@ -34,7 +34,7 @@ class ProductsApiController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $product = ProductUpdateOrStoreActionContract::execute($request, $product);
+        $product = ProductUpdateOrStoreAction::execute($request, $product);
 
         return new ProductsResource($product);
     }
