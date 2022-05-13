@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Buyer;
 
-use App\Rules\UpdateCartRules;
+use App\Rules\StoreCartRules;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCartRequest extends FormRequest
+class StoreCartRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,6 +14,6 @@ class UpdateCartRequest extends FormRequest
 
     public function rules(): array
     {
-        return UpdateCartRules::toArray();
+        return StoreCartRules::toArray();
     }
 }

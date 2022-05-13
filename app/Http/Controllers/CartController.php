@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Buyer\AddProductToCartRequest;
+use App\Http\Requests\Buyer\StoreCartRequest;
 use App\Http\Requests\Buyer\UpdateCartRequest;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -18,32 +18,35 @@ class CartController extends Controller
         return view('buyer.cart.index', compact('shoppingCart'));
     }
 
-    public function store(AddProductToCartRequest $request): RedirectResponse
+    public function store(StoreCartRequest $request): RedirectResponse
     {
         $product = Product::findOrFail($request->input('product_id'));
 
         Cart::add($product, $request->input('product_amount'), ['image' => $product->image, 'description' => $product->getDescription()]);
 
-        return redirect()->back()->with('status', 'Producto agregado exitosamente');
+        return redirect()->back()
+            ->with('status', trans('products.add_product'));
     }
 
     public function update(UpdateCartRequest $request, string $rowId): RedirectResponse
     {
         $qty = Cart::get($rowId)->qty;
 
-        if ($request->input('changeQuantity') == 'increase') {
+        if ($request->input('changeQuantity') === 'increase') {
             Cart::update($rowId, $qty + 1);
-        } elseif ($request->input('changeQuantity') == 'decrease') {
+        } elseif ($request->input('changeQuantity') === 'decrease') {
             Cart::update($rowId, $qty - 1);
         }
 
-        return redirect()->back()->with('status', 'El producto ha sido actualizado correctamente');
+        return redirect()->back()
+            ->with('status', trans('products.update_product'));
     }
 
     public function destroy(string $rowId): RedirectResponse
     {
         Cart::remove($rowId);
 
-        return redirect()->back()->with('status', 'El producto ha sido eliminado del carrito.');
+        return redirect()->back()
+            ->with('status', trans('products.delete_product'));
     }
 }
