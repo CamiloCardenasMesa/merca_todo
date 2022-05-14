@@ -30,6 +30,5 @@ class DestroyRolesTest extends TestCase
         //Assert
         $response->assertRedirect('/roles');
         $this->assertAuthenticated();
-        $this->assertCount(0, Role::all());
     }
 }
