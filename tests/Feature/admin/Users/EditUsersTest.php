@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
@@ -13,15 +14,14 @@ class EditUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testAdminUserCanUpdateUsersListScreen(): void
+    public function testAdminUserCanUpdateAnUser(): void
     {
-        /*  $this->withoutExceptionHandling(); */
         //Arrange
         $updatePermission = Permission::create([
             'name' => Permissions::USER_EDIT,
         ]);
 
-        $adminRole = Role::create(['name' => 'admin'])
+        $adminRole = Role::create(['name' => Roles::ADMIN])
         ->givePermissionTo($updatePermission);
 
         $admin = User::factory()->create()->assignRole($adminRole);
@@ -30,22 +30,22 @@ class EditUserTest extends TestCase
 
         //Act or Request
         $response = $this->actingAs($admin)->put(route('admin.users.update', $updatedUser), [
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'name' => 'nametst',
+            'email' => 'email@example.com',
+            'password' => '123456',
+            'enable' => true,
         ]);
-        /*  dd($response); */
+
         $updatedUser = $updatedUser->fresh();
 
         //Assert
-        $response->assertRedirect('/');
+        $response->assertRedirect('admin.users.index');
         $this->assertAuthenticated();
-        $this->assertCount(2, User::all());
-        $this->assertEquals('$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', $updatedUser->password);
+        $this->assertCount(1, User::all());
     }
 
     public function testAdminUserCanRenderedEditUsersView()
     {
-        $this->withoutExceptionHandling();
-
         //Arrange
         $editProductsPermission = Permission::create([
             'name' => Permissions::USER_EDIT,
