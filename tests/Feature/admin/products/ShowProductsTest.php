@@ -70,4 +70,29 @@ class ShowProductsTest extends TestCase
         $this->assertDatabaseCount('products', 1);
         $this->assertAuthenticated();
     }
+
+    public function testNotAdminUserCantRenderProductDisable(): void
+    {
+        $UserPermission = Permission::create([
+            'name' => Permissions::USER_LIST,
+        ]);
+
+        $buyerRole = Role::create([
+            'name' => Roles::GUEST,
+        ])->givePermissionTo($UserPermission);
+
+        $guest = User::factory()
+            ->create()
+            ->assignRole($buyerRole);
+
+        $product = Product::factory()
+            ->create();
+
+        $response = $this->actingAs($guest)
+            ->get(route('admin.products.show', !$product->enable));
+
+        //Assert
+        $response->assertForbidden();
+        $this->assertAuthenticated();
+    }
 }
