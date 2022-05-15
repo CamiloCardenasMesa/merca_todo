@@ -12,7 +12,7 @@
         </div>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-8 min-h-screen bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
                 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -56,7 +56,7 @@
                                     @endif
                                 </div>
                                 <div>
-                                    <x-button-link href="{{ route('dashboard') }}">
+                                    <x-button-link href="{{ route('welcome') }}">
                                         {{ trans('buttons.search_products') }}</x-button-link>
                                 </div>
                             </div>

@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <form action="{{ route('admin.products.index') }}" method="GET">
-            <x-input type="text" name="query" placeholder="{{ trans('placeholders.dashboard_search') }}" />
+            <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
             <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
         </form>
     </x-slot>
 
-    <div class="pt-6 pb-12">
+    <div class="pt-6 pb-12 bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @can(App\Constants\Permissions::PRODUCT_CREATE)
             <div class="flex mb-6 justify-between">

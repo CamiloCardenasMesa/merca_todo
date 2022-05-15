@@ -4,14 +4,14 @@
             {{ trans('auth.role_list') }}
         </h2>
     </x-slot>
-    
-    <div class="pt-6 pb-14">
+
+    <div class="pt-6 pb-14 bg-gray-100 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @can(App\Constants\Permissions::ROLE_CREATE)
-            <div class="mb-6">
-                <x-button-link href="{{ route('roles.create') }}">{{ trans('buttons.create_role') }}
-                </x-button>
-            </div>
+                <div class="mb-6">
+                    <x-button-link href="{{ route('roles.create') }}">{{ trans('buttons.create_role') }}
+                        </x-button>
+                </div>
             @endcan
             <div>
                 <x-auth-session-status :status="session('status')" />
@@ -23,11 +23,11 @@
                             <tr class="bg-gray-100">
                                 <th class="border border-gray-300 px-4 py-2">ID</th>
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('auth.role') }}</th>
-                                @can(App\Constants\Permissions::ROLE_LIST)
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
+                                @can('view', App\Models\Role::class)
+                                    <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                                 @endcan
                                 @can(App\Constants\Permissions::ROLE_EDIT)
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
                                 @endcan
                                 @can(App\Constants\Permissions::ROLE_DELETE)
                                     <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.delete') }}</th>
@@ -35,35 +35,35 @@
                             </tr>
                         </thead>
                         @foreach ($roles as $role)
-                        <tbody>
-                            <tr>
-                                <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->id }}</td>
-                                <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->name }}</td>
-                                @can(App\Constants\Permissions::ROLE_LIST)
-                                    <td class="border border-gray-300 px-4 py-2 text-center">
-                                        <x-button-link href="{{ route('roles.show', $role->id) }}">
-                                            {{ trans('buttons.show') }}</x-button-link>
-                                    </td>
-                                @endcan
-                                @can(App\Constants\Permissions::ROLE_EDIT)
-                                    <td class="border border-gray-300 px-4 py-2 text-center">
-                                        <x-button-link href="{{ route('roles.edit', $role->id) }}">
-                                            {{ trans('buttons.edit') }}</x-button-link>
-                                    </td>
-                                @endcan
-                                @can(App\Constants\Permissions::ROLE_DELETE)
-                                    <td class="border border-gray-300 px-4 py-2 text-center">
-                                        <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
-                                            @csrf
-                                            {{ method_field('DELETE') }}
-                                            <x-button href="{{ route('roles.index', $role->id) }}"
-                                                onclick="return confirm ('{{ trans('auth.delete_role') }}')">
-                                                {{ trans('buttons.delete') }}</x-button>
-                                        </form>
-                                    </td>
-                                @endcan
-                            </tr>
-                        </tbody>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->id }}</td>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->name }}</td>
+                                    @can('view', $role)
+                                        <td class="border border-gray-300 px-4 py-2 text-center">
+                                            <x-button-link href="{{ route('roles.show', $role->id) }}">
+                                                {{ trans('buttons.show') }}</x-button-link>
+                                        </td>
+                                    @endcan
+                                    @can('update', $role)
+                                        <td class="border border-gray-300 px-4 py-2 text-center">
+                                            <x-button-link href="{{ route('roles.edit', $role->id) }}">
+                                                {{ trans('buttons.edit') }}</x-button-link>
+                                        </td>
+                                    @endcan
+                                    @can(App\Constants\Permissions::ROLE_DELETE)
+                                        <td class="border border-gray-300 px-4 py-2 text-center">
+                                            <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <x-button href="{{ route('roles.index', $role->id) }}"
+                                                    onclick="return confirm ('{{ trans('auth.delete_role') }}')">
+                                                    {{ trans('buttons.delete') }}</x-button>
+                                            </form>
+                                        </td>
+                                    @endcan
+                                </tr>
+                            </tbody>
                         @endforeach
                     </table>
                 </div>

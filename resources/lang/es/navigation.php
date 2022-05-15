@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'dashboard' => 'Dashboard',
+    'welcome' => 'Inicio',
     'users' => 'Usuarios',
     'product_list' => 'Productos',
     'orders' => 'Historial de compras',

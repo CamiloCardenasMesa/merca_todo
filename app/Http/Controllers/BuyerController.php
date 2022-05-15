@@ -22,13 +22,13 @@ class BuyerController extends Controller
                 ->paginate(8);
         }
 
-        return view('dashboard', compact('products'));
+        return view('welcome', compact('products'));
     }
 
     public function show(Product $product): View|RedirectResponse
     {
         if (!$product->enable) {
-            return redirect()->route('dashboard')
+            return redirect()->route('welcome')
                          ->with('status', 'Sorry! this product is not available at the moment');
         }
 

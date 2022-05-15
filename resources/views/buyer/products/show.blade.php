@@ -12,7 +12,7 @@
     </x-slot>
 
     
-    <div class="py-8">
+    <div class="py-8 bg-gray-100 min-h-screen ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
                 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -45,7 +45,7 @@
                                     </form>
                                         <br>
                                     <div class="my-2">
-                                        <x-button-link href="{{route('dashboard')}}">{{ trans('buttons.back') }}</x-button-link>
+                                        <x-button-link href="{{route('welcome')}}">{{ trans('buttons.back') }}</x-button-link>
                                     </div>
                                 </div>
                             </div> 
