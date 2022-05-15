@@ -3,11 +3,10 @@
 namespace App\Policies;
 
 use App\Constants\Permissions;
-use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-/* class RolePolicy
+class RolePolicy
 {
     use HandlesAuthorization;
 
@@ -16,9 +15,9 @@ use Illuminate\Auth\Access\HandlesAuthorization;
         return $user->can(Permissions::ROLE_LIST);
     }
 
-    public function view(User $user, Role $role): bool
+    public function view(User $user): bool
     {
-        return $user->can(Permissions::ROLE_LIST, $role);
+        return $user->can(Permissions::ROLE_LIST);
     }
 
     public function create(User $user): bool
@@ -26,14 +25,13 @@ use Illuminate\Auth\Access\HandlesAuthorization;
         return $user->can(Permissions::ROLE_CREATE);
     }
 
-    public function update(User $user, Role $role)
+    public function update(User $user)
     {
-        return $user->can(Permissions::ROLE_EDIT, $role);
+        return $user->can(Permissions::ROLE_EDIT);
     }
 
-    public function delete(User $user, Role $role)
+    public function delete(User $user)
     {
-        return $user->can(Permissions::ROLE_DELETE, $role);
+        return $user->can(Permissions::ROLE_DELETE);
     }
 }
- */
