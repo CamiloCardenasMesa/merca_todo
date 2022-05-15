@@ -4,14 +4,15 @@ namespace App\Actions;
 
 use App\Contracts\StoreOrUpdateProductContract;
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ProductUpdateOrStoreAction implements StoreOrUpdateProductContract
 {
-    public static function execute(Request $request, ?Model $model = null): Model
+    public static function execute(Request $request, ?Product $product = null): Product
     {
-        $product = $model ?? new Product();
+        if (!$product) { 
+            $product = new Product();
+        }
         $product->name = $request->input('name');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
