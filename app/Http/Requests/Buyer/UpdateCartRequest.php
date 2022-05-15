@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Buyer;
 
-use App\Rules\UpdateCartRules;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCartRequest extends FormRequest
@@ -14,6 +13,8 @@ class UpdateCartRequest extends FormRequest
 
     public function rules(): array
     {
-        return UpdateCartRules::toArray();
+        return [
+            'changeQuantity' => ['required', 'string'],
+        ];
     }
 }

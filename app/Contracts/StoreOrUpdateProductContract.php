@@ -3,7 +3,6 @@
 namespace App\Contracts;
 
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 interface StoreOrUpdateProductContract

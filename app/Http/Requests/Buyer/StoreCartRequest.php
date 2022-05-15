@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Buyer;
 
-use App\Rules\StoreCartRules;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreCartRequest extends FormRequest
@@ -14,6 +13,9 @@ class StoreCartRequest extends FormRequest
 
     public function rules(): array
     {
-        return StoreCartRules::toArray();
+        return [
+            'product_id' => ['required', 'integer'],
+            'product_amount' => ['required', 'integer'],
+        ];
     }
 }

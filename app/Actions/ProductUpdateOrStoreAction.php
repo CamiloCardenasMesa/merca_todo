@@ -10,7 +10,7 @@ class ProductUpdateOrStoreAction implements StoreOrUpdateProductContract
 {
     public static function execute(Request $request, ?Product $product = null): Product
     {
-        if (!$product) { 
+        if (!$product) {
             $product = new Product();
         }
         $product->name = $request->input('name');
