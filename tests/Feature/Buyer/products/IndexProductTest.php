@@ -19,11 +19,11 @@ class IndexProductTest extends TestCase
         $buyer->assignrole($role);
 
         //Act or Request
-        $response = $this->actingAs($buyer)->get(route('dashboard'));
+        $response = $this->actingAs($buyer)->get(route('welcome'));
 
         //Assert
         $response->assertOk();
-        $response->assertViewIs('dashboard');
+        $response->assertViewIs('welcome');
         $response->assertViewHas('products');
         $this->assertAuthenticated();
     }

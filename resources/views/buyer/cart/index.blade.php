@@ -5,13 +5,13 @@
                 {{ trans('cart.shopping_cart') }} 🛒
             </div>
             <div>
-                <x-button-link href="{{ route('dashboard') }}">{{ trans('buttons.continue_shopping') }}
+                <x-button-link href="{{ route('welcome') }}">{{ trans('buttons.continue_shopping') }}
                 </x-button-link>
             </div>
         </div>
     </x-slot>
 
-    <div class="py-8">
+    <div class="py-8 bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
                 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -92,7 +92,7 @@
                             {{ trans('cart.empty_cart') }}
                         </div>
                         <div class="pt-2 mb-6">
-                            <x-button-link href="{{ route('dashboard') }}">{{ trans('buttons.add_products') }}
+                            <x-button-link href="{{ route('welcome') }}">{{ trans('buttons.add_products') }}
                             </x-button-link>
                         </div>
                     </div>

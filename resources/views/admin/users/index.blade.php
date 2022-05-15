@@ -6,7 +6,7 @@
         </form>
     </x-slot>
 
-    <div class="pt-6 pb-14">
+    <div class="pt-6 pb-14 bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @can(App\Constants\Permissions::USER_CREATE)
                 <div class="mb-6">

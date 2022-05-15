@@ -98,6 +98,7 @@ class UserController extends Controller
 
     public function toggle(User $user): RedirectResponse
     {
+        /* $this->authorize('update', $user); */
         $user->enable = !$user->enable;
 
         $user->save();

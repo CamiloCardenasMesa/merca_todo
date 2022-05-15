@@ -62,7 +62,7 @@ class WebcheckoutTest extends TestCase
                     'total' => '1000000',
                 ],
             ],
-            'returnUrl' => route('dashboard'),
+            'returnUrl' => route('welcome'),
             'expiration' => date('c', strtotime('+2 days')),
         ];
     }

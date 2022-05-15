@@ -2,10 +2,10 @@
 
 namespace App\Contracts;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 interface StoreOrUpdateProductContract
 {
-    public static function execute(Request $request, ?Model $model = null): Model;
+    public static function execute(Request $request, ?Product $product = null): Product;
 }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ProductsExportController;
 use App\Http\Controllers\ProductsImportController;
 use Illuminate\Support\Facades\Route;
@@ -15,12 +14,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [GuestController::class, 'index'])
-    ->name('welcome');
-
-Route::get('guest/products/{product}', [GuestController::class, 'show'])
-    ->name('guest.products.show');
 
 Route::get('/products/export', [ProductsExportController::class, 'export'])
     ->name('products.export');
