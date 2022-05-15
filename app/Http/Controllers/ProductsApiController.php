@@ -6,41 +6,46 @@ use App\Actions\ProductUpdateOrStoreAction;
 use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Http\Resources\ProductsResource;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductsApiController extends Controller
 {
-    public function index()
+    public function index(): AnonymousResourceCollection
     {
-        $products = Product::all();
+        $products = Product::paginate(8);
 
         return ProductsResource::collection($products);
     }
 
-    public function store(ProductRequest $request)
+    public function store(ProductRequest $request): RedirectResponse
     {
         $product = ProductUpdateOrStoreAction::execute($request);
 
-        return new ProductsResource($product);
+        return redirect()->route('buyer.products.show', $product);
     }
 
-    public function show($id)
+    public function show(Product $product): ProductsResource
     {
-        $product = Product::find($id);
+        $productShow = $product;
 
-        return new ProductsResource($product);
+        return new ProductsResource($productShow);
     }
 
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, Product $product): ProductsResource
     {
-        $product = Product::find($id);
-        $product = ProductUpdateOrStoreAction::execute($request, $product);
+        $productUpdated = ProductUpdateOrStoreAction::execute($request, $product);
 
-        return new ProductsResource($product);
+        return new ProductsResource($productUpdated);
     }
 
-    public function destroy($id)
+    public function destroy(Product $product): JsonResponse
     {
-        return Product::destroy($id);
+        $product->delete();
+
+        return response()->json([
+            'message' => 'Product deleted',
+        ]);
     }
 }
