@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Models\Product;
-use App\Rules\ProductsRules;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\File;
 use Illuminate\Support\Arr;
@@ -30,6 +29,14 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
 
     public function rules(): array
     {
-        return Arr::except(ProductsRules::toArray(), 'image');
+        return [
+            'name' => 'required|max:190|string',
+            'image' => 'mimes:jpeg,jpg,png,gif|max:1000',
+            'description' => 'required|string',
+            'price' => 'required|integer|min:10000|max:10000000',
+            'stock' => 'required|integer|max:10000',
+            'category_id' => 'required|integer|min:1|max:3',
+            'enable' => 'boolean',
+        ];
     }
 }
