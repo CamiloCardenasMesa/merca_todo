@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Http\Resources\ProductsResource;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ProductsApiController extends Controller
@@ -19,11 +18,11 @@ class ProductsApiController extends Controller
         return ProductsResource::collection($products);
     }
 
-    public function store(ProductRequest $request): RedirectResponse
+    public function store(ProductRequest $request): ProductsResource
     {
         $product = ProductUpdateOrStoreAction::execute($request);
 
-        return redirect()->route('buyer.products.show', $product);
+        return new ProductsResource($product);
     }
 
     public function show(Product $product): ProductsResource
@@ -33,9 +32,9 @@ class ProductsApiController extends Controller
         return new ProductsResource($productShow);
     }
 
-    public function update(ProductRequest $request, Product $product): ProductsResource
+    public function update(ProductRequest $request, Product $productUpdated): ProductsResource
     {
-        $productUpdated = ProductUpdateOrStoreAction::execute($request, $product);
+        ProductUpdateOrStoreAction::execute($request, $productUpdated);
 
         return new ProductsResource($productUpdated);
     }
