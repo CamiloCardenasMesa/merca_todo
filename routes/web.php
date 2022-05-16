@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductsExportController;
+use App\Http\Controllers\ProductsImportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/products/export', [ProductsExportController::class, 'export'])
+    ->name('products.export');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/products/import/show', [ProductsImportController::class, 'showImport'])
+    ->name('products.import.show');
 
-require __DIR__.'/auth.php';
+Route::post('/products/import', [ProductsImportController::class, 'storeImport'])
+    ->name('import.store');
+
+    require __DIR__ . '/auth.php';
+    require __DIR__ . '/admin.php';
+    require __DIR__ . '/buyer.php';

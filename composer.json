@@ -6,13 +6,21 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "bumbummen99/shoppingcart": "^4.1",
+        "friendsofphp/php-cs-fixer": "^3.8",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
-        "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/sanctum": "^2.15",
+        "laravel/tinker": "^2.5",
+        "laravelcollective/html": "^6.3",
+        "maatwebsite/excel": "^3.1",
+        "myclabs/php-enum": "^1.8",
+        "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
+        "beyondcode/laravel-dump-server": "^1.7",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.6",
@@ -51,6 +59,7 @@
         "test-dox": "vendor/bin/phpunit --stop-on-error --stop-on-failure --testdox --coverage-clover phpunit.coverage.xml --log-junit phpunit.report.xml",
         "phpcs": "vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php",
         "phpcs_validate" : "vendor/bin/php-cs-fixer fix --dry-run --diff"
+
     },
     "extra": {
         "laravel": {
