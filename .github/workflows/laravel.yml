@@ -2,9 +2,9 @@ name: merca_todo
 
 on:
   push:
-    branches: [ develop, main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ develop, main ]
+    branches: [ main, develop ]
 
 jobs:
   laravel-tests:
@@ -33,11 +33,7 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-<<<<<<< HEAD
       run: composer test-dox
-=======
-      run: composer test-dox
->>>>>>> develop
     - name: Execute phpcs
       run: composer phpcs_validate
     - name: Prepare paths for SonarQube analysis
