@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <div class="font-semibold text-xl text-gray-800 leading-tight">
+            <div class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
                 {{ trans('order.order_reference') }}
                 {{ $order->reference = str_pad($order->id, 6, '0', STR_PAD_LEFT) }}
             </div>
@@ -12,7 +12,7 @@
         </div>
     </x-slot>
 
-    <div class="py-8 min-h-screen bg-gray-100">
+    <div class="font-oswald tracking-wide py-8 min-h-screen bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
                 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -24,8 +24,8 @@
                             <div class="flex flex-col justify-center">
                                 <div>
                                     @if ($order->state === 'PENDING')
-                                        <div class="text-yellow-500 font-sans font-semibold text-2xl my-2">
-                                            Estado de la transacción: {{ $order->state }}
+                                        <div class="text-yellow-500 font-semibold text-2xl my-2">
+                                            ESTADO DE LA TRANSACCIÓN {{ $order->state }}
                                         </div>
                                         <span>Su pago está pendiente, le avisaremos cuando sea aprobada o puede
                                             reintentar el pago</span>
@@ -34,7 +34,7 @@
                                             </x-button-link>
                                         </div>
                                     @elseif ($order->state === 'REJECTED')
-                                        <div class="text-red-700 font-sans font-semibold text-2xl my-2">
+                                        <div class="text-red-700 font-semibold text-2xl my-2">
                                             Estado de la transacción: {{ $order->state }}
                                         </div>
                                         <span>Su pago fue rechazado, lo invitamos a reintentar el pago</span>
@@ -43,7 +43,7 @@
                                                 pago</x-button-link>
                                         </div>
                                     @else
-                                        <div class="text-green-400 font-sans font-semibold  text-2xl my-2">
+                                        <div class="text-green-400 font-semibold text-2xl my-2">
                                             Estado de la transacción: {{ $order->state }}
                                         </div>
                                         <div class="text-2xl mb-6">

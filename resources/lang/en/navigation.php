@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'welcome' => 'Home',
-    'users' => 'Users',
-    'product_list' => 'Products List',
-    'orders' => 'Orders',
-    'roles' => 'Roles',
+    'welcome' => 'HOME',
+    'users' => 'USERS',
+    'product_list' => 'PRODUCTS LIST',
+    'orders' => 'ORDERS',
+    'roles' => 'ROLES',
 ];

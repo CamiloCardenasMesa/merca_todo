@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
             {{ trans('order.purchase_orders') }}
         </h2>
     </x-slot>
