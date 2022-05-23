@@ -25,4 +25,5 @@ return [
     'export_products' => 'Export Products',
     'import_products' => 'Import Products',
     'download' => 'Download',
+    'retry_payment' => 'Retry payment',
 ];
