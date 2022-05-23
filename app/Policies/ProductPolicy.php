@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Constants\Permissions;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -40,5 +39,4 @@ class ProductPolicy
     {
         return $user->can(Permissions::PRODUCT_EDIT);
     }
-
 }
