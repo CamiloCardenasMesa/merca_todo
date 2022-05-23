@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Actions\ProductUpdateOrStoreAction;
-use App\Constants\Permissions;
 use App\Http\Requests\Admin\Products\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
@@ -16,17 +15,14 @@ class ProductsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:' . Permissions::PRODUCT_LIST, ['only' => ['index', 'show']]);
-        $this->middleware('permission:' . Permissions::PRODUCT_CREATE, ['only' => ['create', 'store']]);
-        $this->middleware('permission:' . Permissions::PRODUCT_EDIT, ['only' => ['edit', 'update', 'toggle']]);
-        $this->middleware('permission:' . Permissions::PRODUCT_DELETE, ['only' => ['destroy']]);
+        $this->authorizeResource(Product::class, 'product');
     }
 
     public function index(Request $request): View
     {
         if ($request->query('query')) {
-            $products = Product::where('name', 'like', '%' . $request->query('query') . '%')
-                ->orWhere('description', 'like', '%' . $request->query('query') . '%')
+            $products = Product::where('name', 'like', '%'.$request->query('query').'%')
+                ->orWhere('description', 'like', '%'.$request->query('query').'%')
                 ->where('enable', true)
                 ->paginate(8);
         } else {
