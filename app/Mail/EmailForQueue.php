@@ -11,24 +11,12 @@ class EmailForQueue extends Mailable
     use Queueable;
     use SerializesModels;
 
-    protected $title;
-
-    public function __construct($title)
+    public function __construct()
     {
-        $this->title = $title;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
-        return $this->from('GeneralManager@gmail.com', 'Valentina')
-            ->subject($this->title)
-            ->with([
-                'title' => $this->title,
-            ]);
+        return $this->view('emails.email');
     }
 }
