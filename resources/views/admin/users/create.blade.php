@@ -14,38 +14,25 @@
                     <form action="{{ route('admin.users.store') }}" method="POST">
                         @csrf
                         <div class="grid grid-cols-1 gap-4">
-                            <div class="grid grid-rows-1 gap-1 mb-2">
-                            <div class="row">
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Name:</strong>
-                                        {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Email:</strong>
-                                        {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Password:</strong>
-                                        {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Confirm Password:</strong>
-                                        {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="form-group">
-                                        <strong>Role:</strong>
-                                        {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
-                                    </div>
-                                </div>
+                            <div class="grid grid-rows-1 gap-1 mb-2"><br>
+                                <x-label for="name">{{ trans('auth.name') }}</x-label>
+                                <x-input type="text" name="name" value="" />
+
+                                <x-label for="email">{{ trans('auth.email') }}</x-label>
+                                <x-input type="text" name="email" value="" />
+
+                                <x-label for="password">{{ trans('auth.password') }}</x-label>
+                                <x-input type="text" name="password"/>
+
+                                <x-label for="password">{{ trans('auth.confirm_password') }}</x-label>
+                                <x-input type="text" name="confirm-password"/>
+                                
+                                <x-label for="roles">{{ trans('auth.role') }}</x-label>
+                                <select class="rounded-md border-gray-300" name="roles" id="roles">
+                                    @foreach ($roles as $userRole)
+                                        <option value="{{ $userRole }}">{{ $userRole }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="mx-auto mb-4">
                                 <x-button>{{ trans('buttons.save') }}</x-button>
@@ -57,3 +44,4 @@
         </div>
     </div>
 </x-app-layout>
+
