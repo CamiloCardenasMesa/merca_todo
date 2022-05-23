@@ -4,8 +4,10 @@
             <div class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
                     {{ __($product->name) }} 
             </div>
-            <x-cart-button href="{{ route('buyer.cart.index') }}">
-                ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</x-cart-button>
+            <div>
+                <x-cart-button href="{{ route('buyer.cart.index') }}">
+                    ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})</x-cart-button>
+            </div>
         </div>
     </x-slot>
     <div class="py-8 bg-gray-100 min-h-screen">
