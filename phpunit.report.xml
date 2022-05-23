@@ -1,146 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="" tests="51" assertions="151" errors="1" warnings="1" failures="0" skipped="0" time="9.703136">
-    <testsuite name="Unit" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.431248">
-      <testsuite name="Tests\Unit\CategoryTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\CategoryTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.272158">
-        <testcase name="testCategoryHasManyProducts" class="Tests\Unit\CategoryTest" classname="Tests.Unit.CategoryTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\CategoryTest.php" line="11" assertions="1" time="0.272158"/>
+  <testsuite name="" tests="6" assertions="6" errors="0" warnings="0" failures="1" skipped="0" time="3.717465">
+    <testsuite name="Unit" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.271551">
+      <testsuite name="Tests\Unit\CategoryTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\CategoryTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.200895">
+        <testcase name="testCategoryHasManyProducts" class="Tests\Unit\CategoryTest" classname="Tests.Unit.CategoryTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\CategoryTest.php" line="11" assertions="1" time="0.200895"/>
       </testsuite>
-      <testsuite name="Tests\Unit\ProductHasManyProductOrderTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\ProductHasManyProductOrderTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.050762">
-        <testcase name="testProductOrderHasOneProduct" class="Tests\Unit\ProductHasManyProductOrderTest" classname="Tests.Unit.ProductHasManyProductOrderTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\ProductHasManyProductOrderTest.php" line="11" assertions="1" time="0.050762"/>
+      <testsuite name="Tests\Unit\ProductHasManyProductOrderTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\ProductHasManyProductOrderTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.021671">
+        <testcase name="testProductOrderHasOneProduct" class="Tests\Unit\ProductHasManyProductOrderTest" classname="Tests.Unit.ProductHasManyProductOrderTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\ProductHasManyProductOrderTest.php" line="11" assertions="1" time="0.021671"/>
       </testsuite>
-      <testsuite name="Tests\Unit\ProductsOrderTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\ProductsOrderTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.050519">
-        <testcase name="testOrderHasManyProductsOrders" class="Tests\Unit\ProductsOrderTest" classname="Tests.Unit.ProductsOrderTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\ProductsOrderTest.php" line="11" assertions="1" time="0.050519"/>
+      <testsuite name="Tests\Unit\ProductsOrderTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\ProductsOrderTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.022459">
+        <testcase name="testOrderHasManyProductsOrders" class="Tests\Unit\ProductsOrderTest" classname="Tests.Unit.ProductsOrderTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\ProductsOrderTest.php" line="11" assertions="1" time="0.022459"/>
       </testsuite>
-      <testsuite name="Tests\Unit\UserOrdersTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\UserOrdersTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.057809">
-        <testcase name="testUserHasManyOrders" class="Tests\Unit\UserOrdersTest" classname="Tests.Unit.UserOrdersTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\UserOrdersTest.php" line="11" assertions="1" time="0.057809"/>
+      <testsuite name="Tests\Unit\UserOrdersTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\UserOrdersTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.026527">
+        <testcase name="testUserHasManyOrders" class="Tests\Unit\UserOrdersTest" classname="Tests.Unit.UserOrdersTest" file="D:\Camilo\Programación\merca_todo\tests\Unit\UserOrdersTest.php" line="11" assertions="1" time="0.026527"/>
       </testsuite>
     </testsuite>
-    <testsuite name="Feature" tests="47" assertions="147" errors="1" warnings="1" failures="0" skipped="0" time="9.271887">
-      <testsuite name="Tests\Feature\Auth\AuthenticationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\AuthenticationTest.php" tests="3" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="3.364434">
-        <testcase name="test_login_screen_can_be_rendered" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\AuthenticationTest.php" line="14" assertions="1" time="3.047612"/>
-        <testcase name="test_users_can_authenticate_using_the_login_screen" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\AuthenticationTest.php" line="21" assertions="3" time="0.176063"/>
-        <testcase name="test_users_can_not_authenticate_with_invalid_password" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\AuthenticationTest.php" line="34" assertions="1" time="0.140759"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Auth\EmailVerificationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\EmailVerificationTest.php" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.279163">
-        <testcase name="test_email_verification_screen_can_be_rendered" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\EmailVerificationTest.php" line="17" assertions="1" time="0.084775"/>
-        <testcase name="test_email_can_be_verified" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\EmailVerificationTest.php" line="28" assertions="4" time="0.097304"/>
-        <testcase name="test_email_is_not_verified_with_invalid_hash" class="Tests\Feature\Auth\EmailVerificationTest" classname="Tests.Feature.Auth.EmailVerificationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\EmailVerificationTest.php" line="49" assertions="1" time="0.097085"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Auth\PasswordConfirmationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordConfirmationTest.php" tests="3" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.362179">
-        <testcase name="test_confirm_password_screen_can_be_rendered" class="Tests\Feature\Auth\PasswordConfirmationTest" classname="Tests.Feature.Auth.PasswordConfirmationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordConfirmationTest.php" line="13" assertions="1" time="0.080136"/>
-        <testcase name="test_password_can_be_confirmed" class="Tests\Feature\Auth\PasswordConfirmationTest" classname="Tests.Feature.Auth.PasswordConfirmationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordConfirmationTest.php" line="22" assertions="2" time="0.143228"/>
-        <testcase name="test_password_is_not_confirmed_with_invalid_password" class="Tests\Feature\Auth\PasswordConfirmationTest" classname="Tests.Feature.Auth.PasswordConfirmationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordConfirmationTest.php" line="34" assertions="1" time="0.138815"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Auth\PasswordResetTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordResetTest.php" tests="4" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.410715">
-        <testcase name="test_reset_password_link_screen_can_be_rendered" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordResetTest.php" line="15" assertions="1" time="0.084322"/>
-        <testcase name="test_reset_password_link_can_be_requested" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordResetTest.php" line="22" assertions="1" time="0.118693"/>
-        <testcase name="test_reset_password_screen_can_be_rendered" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordResetTest.php" line="33" assertions="2" time="0.105446"/>
-        <testcase name="test_password_can_be_reset_with_valid_token" class="Tests\Feature\Auth\PasswordResetTest" classname="Tests.Feature.Auth.PasswordResetTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\PasswordResetTest.php" line="50" assertions="2" time="0.102254"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Auth\RegistrationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\RegistrationTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.306051">
-        <testcase name="test_registration_screen_can_be_rendered" class="Tests\Feature\Auth\RegistrationTest" classname="Tests.Feature.Auth.RegistrationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\RegistrationTest.php" line="13" assertions="1" time="0.094820"/>
-        <testcase name="test_new_users_can_register" class="Tests\Feature\Auth\RegistrationTest" classname="Tests.Feature.Auth.RegistrationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\RegistrationTest.php" line="20" assertions="3" time="0.211231"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Buyer\Cart\DestroyCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\DestroyCartTest.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.113717">
-        <testcase name="testProductCanBeDeleted" class="Tests\Feature\Buyer\Cart\DestroyCartTest" classname="Tests.Feature.Buyer.Cart.DestroyCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\DestroyCartTest.php" line="15" assertions="3" time="0.113717"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Buyer\Cart\IndexCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\IndexCartTest.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.180978">
-        <testcase name="testIndexCartViewCanBeRendered" class="Tests\Feature\Buyer\Cart\IndexCartTest" classname="Tests.Feature.Buyer.Cart.IndexCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\IndexCartTest.php" line="15" assertions="4" time="0.180978"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Buyer\Cart\StoreCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\StoreCartTest.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.087445">
-        <testcase name="testAddProductToCart" class="Tests\Feature\Buyer\Cart\StoreCartTest" classname="Tests.Feature.Buyer.Cart.StoreCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\StoreCartTest.php" line="13" assertions="3" time="0.087445"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Buyer\Cart\UpdateCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\UpdateCartTest.php" tests="2" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.188126">
-        <testcase name="testCartItemCanIncreaseQuantity" class="Tests\Feature\Buyer\Cart\UpdateCartTest" classname="Tests.Feature.Buyer.Cart.UpdateCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\UpdateCartTest.php" line="15" assertions="3" time="0.089351"/>
-        <testcase name="testCartItemCanDecreaseQuantity" class="Tests\Feature\Buyer\Cart\UpdateCartTest" classname="Tests.Feature.Buyer.Cart.UpdateCartTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\Cart\UpdateCartTest.php" line="30" assertions="3" time="0.098775"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Buyer\IndexProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\products\IndexProductTest.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.127674">
-        <testcase name="testProductsListCanBeRendered" class="Tests\Feature\Buyer\IndexProductTest" classname="Tests.Feature.Buyer.IndexProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\products\IndexProductTest.php" line="14" assertions="4" time="0.127674"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Buyer\products\ShowProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\products\ShowProductTest.php" tests="1" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.124102">
-        <testcase name="testShowProductsScreenCanBeRendered" class="Tests\Feature\Buyer\products\ShowProductTest" classname="Tests.Feature.Buyer.products.ShowProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Buyer\products\ShowProductTest.php" line="15" assertions="5" time="0.124102"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\ExampleTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\ExampleTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.094810">
-        <testcase name="test_example" class="Tests\Feature\ExampleTest" classname="Tests.Feature.ExampleTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\ExampleTest.php" line="14" assertions="1" time="0.094810"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Http\Controllers\GuestControllerTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Http\Controllers\GuestControllerTest.php" tests="2" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.173138">
-        <testcase name="testWelcomeViewCanBeRendered" class="Tests\Feature\Http\Controllers\GuestControllerTest" classname="Tests.Feature.Http.Controllers.GuestControllerTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Http\Controllers\GuestControllerTest.php" line="13" assertions="4" time="0.079827"/>
-        <testcase name="testGuestBuyerProductShowViewCanBeRendered" class="Tests\Feature\Http\Controllers\GuestControllerTest" classname="Tests.Feature.Http.Controllers.GuestControllerTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Http\Controllers\GuestControllerTest.php" line="23" assertions="6" time="0.093311"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Webcheckout\WebcheckoutTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Webcheckout\WebcheckoutTest.php" tests="3" assertions="20" errors="0" warnings="0" failures="0" skipped="0" time="0.925501">
-        <testcase name="testItCanGetInformationRequest" class="Tests\Feature\Webcheckout\WebcheckoutTest" classname="Tests.Feature.Webcheckout.WebcheckoutTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Webcheckout\WebcheckoutTest.php" line="12" assertions="5" time="0.049934"/>
-        <testcase name="testItCanGetCreateSessionRequest" class="Tests\Feature\Webcheckout\WebcheckoutTest" classname="Tests.Feature.Webcheckout.WebcheckoutTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Webcheckout\WebcheckoutTest.php" line="18" assertions="11" time="0.050715"/>
-        <testcase name="testItCanCreateSessionFromServiceCorrectly" class="Tests\Feature\Webcheckout\WebcheckoutTest" classname="Tests.Feature.Webcheckout.WebcheckoutTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Webcheckout\WebcheckoutTest.php" line="33" assertions="4" time="0.824852"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\Roles\CreateRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\CreateRolesTest.php" tests="2" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.296965">
-        <testcase name="testAdminUserCanShowCreateRoleView" class="Tests\Feature\admin\Roles\CreateRolesTest" classname="Tests.Feature.admin.Roles.CreateRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\CreateRolesTest.php" line="16" assertions="3" time="0.148207"/>
-        <testcase name="testAdminUserCanCreateRole" class="Tests\Feature\admin\Roles\CreateRolesTest" classname="Tests.Feature.admin.Roles.CreateRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\CreateRolesTest.php" line="40" assertions="4" time="0.148758"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\Roles\DestroyRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\DestroyRolesTest.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.109817">
-        <testcase name="testAdminUserCanDeleteRole" class="Tests\Feature\admin\Roles\DestroyRolesTest" classname="Tests.Feature.admin.Roles.DestroyRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\DestroyRolesTest.php" line="16" assertions="3" time="0.109817"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\Roles\EditRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\EditRolesTest.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.145705">
-        <testcase name="testAdminUserCanShowEditRoleView" class="Tests\Feature\admin\Roles\EditRolesTest" classname="Tests.Feature.admin.Roles.EditRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\EditRolesTest.php" line="16" assertions="4" time="0.145705"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\Roles\IndexRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\IndexRolesTest.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.141189">
-        <testcase name="testAdminUserCanRenderRoleList" class="Tests\Feature\admin\Roles\IndexRolesTest" classname="Tests.Feature.admin.Roles.IndexRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\IndexRolesTest.php" line="16" assertions="4" time="0.141189"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\Roles\ShowRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\ShowRolesTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000952">
-        <testcase name="Warning" assertions="0" time="0.000952">
-          <warning type="PHPUnit\Framework\Warning">Warning
-No tests found in class "Tests\Feature\admin\Roles\ShowRolesTest".</warning>
-        </testcase>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\Roles\UpdateRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\UpdateRolesTest.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.130046">
-        <testcase name="testAdminUserEditRoles" class="Tests\Feature\admin\Roles\UpdateRolesTest" classname="Tests.Feature.admin.Roles.UpdateRolesTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Roles\UpdateRolesTest.php" line="16" assertions="4" time="0.130046"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\Roles\CreateUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\CreateUserTest.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.140231">
-        <testcase name="testAdminUserCanShowCreateUserView" class="Tests\Feature\admin\Roles\CreateUserTest" classname="Tests.Feature.admin.Roles.CreateUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\CreateUserTest.php" line="16" assertions="3" time="0.140231"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\DeleteUsersTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\DeleteUsersTest.php" tests="1" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.143492">
-        <testcase name="testAdminUserCanDeleteUsers" class="Tests\Feature\DeleteUsersTest" classname="Tests.Feature.DeleteUsersTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\DeleteUsersTest.php" line="16" assertions="4" time="0.143492"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\EditUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\EditUsersTest.php" tests="1" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.157471">
-        <testcase name="testAdminUserCanRenderedEditUsersView" class="Tests\Feature\EditUserTest" classname="Tests.Feature.EditUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\EditUsersTest.php" line="16" assertions="3" time="0.157471"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Admin\user\IndexUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\IndexUserTest.php" tests="2" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.267017">
-        <testcase name="testAdminUserCanRenderUsersListScreen" class="Tests\Feature\Admin\user\IndexUserTest" classname="Tests.Feature.Admin.user.IndexUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\IndexUserTest.php" line="17" assertions="4" time="0.167554"/>
-        <testcase name="testNotAdminUserCantRenderUsersListScreen" class="Tests\Feature\Admin\user\IndexUserTest" classname="Tests.Feature.Admin.user.IndexUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\IndexUserTest.php" line="42" assertions="3" time="0.099464"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\Admin\user\ShowUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\ShowUserTest.php" tests="2" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.235710">
-        <testcase name="testAdminUserCanRenderShowUserScreen" class="Tests\Feature\Admin\user\ShowUserTest" classname="Tests.Feature.Admin.user.ShowUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\ShowUserTest.php" line="17" assertions="4" time="0.135619"/>
-        <testcase name="testNotAdminUserCantRenderShowUserScreen" class="Tests\Feature\Admin\user\ShowUserTest" classname="Tests.Feature.Admin.user.ShowUserTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\ShowUserTest.php" line="39" assertions="3" time="0.100091"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\Users\ToggleUsersTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\ToggleUsersTest.php" tests="1" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.125462">
-        <testcase name="testAdminUserCanEnableUsers" class="Tests\Feature\admin\Users\ToggleUsersTest" classname="Tests.Feature.admin.Users.ToggleUsersTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\Users\ToggleUsersTest.php" line="16" assertions="5" time="0.125462"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\products\CreateProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\products\CreateProductTest.php" tests="2" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.356558">
-        <testcase name="testProductCreateViewCanRender" class="Tests\Feature\admin\products\CreateProductTest" classname="Tests.Feature.admin.products.CreateProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\products\CreateProductTest.php" line="19" assertions="2" time="0.198988"/>
-        <testcase name="testAdminUserCanCreateProducts" class="Tests\Feature\admin\products\CreateProductTest" classname="Tests.Feature.admin.products.CreateProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\products\CreateProductTest.php" line="38" assertions="8" time="0.157570"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\admin\DeleteProductsTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\products\DeleteProductsTest.php" tests="1" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.177768">
-        <testcase name="testAdminUserCanDeleteProducts" class="Tests\Feature\admin\DeleteProductsTest" classname="Tests.Feature.admin.DeleteProductsTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\products\DeleteProductsTest.php" line="18" assertions="5" time="0.177768"/>
-      </testsuite>
-      <testsuite name="Tests\Feature\EditProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\products\EditProductTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.105471">
-        <testcase name="testAdminUserCanEditProducts" class="Tests\Feature\EditProductTest" classname="Tests.Feature.EditProductTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\admin\products\EditProductTest.php" line="19" assertions="0" time="0.105471">
-          <error type="Illuminate\Database\QueryException">Tests\Feature\EditProductTest::testAdminUserCanEditProducts
-Illuminate\Database\QueryException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 (SQL: insert into `categories` (`name`, `updated_at`, `created_at`) values (Saepe aperiam ea est numquam natus quod. Deserunt laudantium facere necessitatibus qui. Necessitatibus aut voluptatibus quam tenetur dolores. Ut molestiae nobis molestiae amet laborum consequatur., 2022-05-14 09:43:44, 2022-05-14 09:43:44))
+    <testsuite name="Feature" tests="2" assertions="2" errors="0" warnings="0" failures="1" skipped="0" time="3.445913">
+      <testsuite name="Tests\Feature\Auth\AuthenticationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\AuthenticationTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="1" skipped="0" time="3.445913">
+        <testcase name="test_login_screen_can_be_rendered" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\AuthenticationTest.php" line="14" assertions="1" time="3.356023"/>
+        <testcase name="test_users_can_authenticate_using_the_login_screen" class="Tests\Feature\Auth\AuthenticationTest" classname="Tests.Feature.Auth.AuthenticationTest" file="D:\Camilo\Programación\merca_todo\tests\Feature\Auth\AuthenticationTest.php" line="21" assertions="1" time="0.089890">
+          <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\Auth\AuthenticationTest::test_users_can_authenticate_using_the_login_screen
+The user is not authenticated
+Failed asserting that false is true.
 
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Connection.php:712
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Connection.php:672
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Connection.php:502
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Connection.php:454
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Query\Processors\Processor.php:32
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:3028
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:1657
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1196
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:1160
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:999
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:314
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Collections\Traits\EnumeratesValues.php:244
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:317
-D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Factories\Factory.php:261
-D:\Camilo\Programación\merca_todo\tests\Feature\admin\products\EditProductTest.php:30</error>
+D:\Camilo\Programación\merca_todo\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\InteractsWithAuthentication.php:49
+D:\Camilo\Programación\merca_todo\tests\Feature\Auth\AuthenticationTest.php:30</failure>
         </testcase>
       </testsuite>
     </testsuite>
