@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Constants\Permissions;
 use App\Http\Requests\Admin\Users\StoreUserRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Models\User;
@@ -18,17 +17,14 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:' . Permissions::USER_LIST, ['only' => ['index', 'show']]);
-        $this->middleware('permission:' . Permissions::USER_CREATE, ['only' => ['create', 'store']]);
-        $this->middleware('permission:' . Permissions::USER_EDIT, ['only' => ['edit', 'update', 'toggle']]);
-        $this->middleware('permission:' . Permissions::USER_DELETE, ['only' => ['destroy']]);
+        $this->authorizeResource(User::class, 'user');
     }
 
     public function index(Request $request): View
     {
         if ($request->query('query')) {
-            $users = User::where('name', 'like', '%' . $request->query('query') . '%')
-            ->orwhere('email', 'like', '%' . $request->query('query') . '%')
+            $users = User::where('name', 'like', '%'.$request->query('query').'%')
+            ->orwhere('email', 'like', '%'.$request->query('query').'%')
             ->paginate(10);
         } else {
             $users = User::orderBy('id', 'desc')->paginate(8);
@@ -42,7 +38,7 @@ class UserController extends Controller
         return view('admin.users.show', compact('user'));
     }
 
-    public function create()
+    public function create(): View
     {
         $roles = Role::pluck('name', 'name')->all();
 
@@ -59,15 +55,6 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index')
                 ->with('status', 'User created successfully');
-    }
-
-    public function edit($id): View
-    {
-        $user = User::find($id);
-        $roles = Role::pluck('name', 'name')->all();
-        $userRole = $user->roles->pluck('name', 'name')->all();
-
-        return view('admin.users.edit', compact('user', 'roles', 'userRole'));
     }
 
     public function update(UpdateUserRequest $request, $id): RedirectResponse
@@ -88,6 +75,15 @@ class UserController extends Controller
                 ->with('status', 'User updated successfully');
     }
 
+    public function edit($id): View
+    {
+        $user = User::find($id);
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
+
+        return view('admin.users.edit', compact('user', 'roles', 'userRole'));
+    }
+
     public function destroy(User $user): RedirectResponse
     {
         $user->delete();
@@ -98,7 +94,6 @@ class UserController extends Controller
 
     public function toggle(User $user): RedirectResponse
     {
-        /* $this->authorize('update', $user); */
         $user->enable = !$user->enable;
 
         $user->save();
