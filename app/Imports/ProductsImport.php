@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Models\Product;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\File;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
@@ -13,7 +12,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 
 class ProductsImport implements ToModel, WithHeadingRow, WithValidation
 {
-    public function model(array $row): ?Model
+    public function model(array $row): ?Product
     {
         $product = new Product();
         $product->name = Arr::get($row, 'name');

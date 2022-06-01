@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <div class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ trans('cart.shopping_cart') }} 🛒
+            <div class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+                {{ trans('cart.shopping_cart') }}
             </div>
             <div>
                 <x-button-link href="{{ route('welcome') }}">{{ trans('buttons.continue_shopping') }}
@@ -11,7 +11,7 @@
         </div>
     </x-slot>
 
-    <div class="py-8 bg-gray-100">
+    <div class="py-8 bg-gray-100 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
                 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -22,19 +22,19 @@
                         <div class="gap-4 justify-between ">
                             @foreach ($shoppingCart as $cartItem)
                                 <div
-                                    class="items-center grid-cols-2 md:grid-cols-1 gap-8 bg-gray-100 p-8 shadow-md hover:shadow-gray-500 mb-8">
+                                    class=" font-oswald items-center grid-cols-2 md:grid-cols-1 gap-8 bg-gray-100 p-8 shadow-md hover:shadow-gray-500 mb-8">
                                     <div class="mb-8">
                                         <img src="{{ asset('storage/' . $cartItem->options->image) }}" alt="image">
                                     </div>
                                     <div>
-                                        <div class="font-sans text-2xl font-bold py-2 leading-6">
+                                        <div class="text-4xl font-bold py-2 leading-10">
                                             {{ $cartItem->name }}
                                         </div>
-                                        <div class="my-4 text-red-700 font-bold">
-                                            $ {{ $cartItem->price * $cartItem->qty }}
-                                        </div>
-                                        <div class="py-2">
+                                        <div class="py-2 tracking-wider">
                                             {{ $cartItem->options->description }}
+                                        </div>
+                                        <div class="my-4 text-red-700 font-bold text-2xl">
+                                            $ {{ $cartItem->price * $cartItem->qty }}
                                         </div>
                                         <div class="text text-center flex flex-grow gap-4 py-4 ">
                                             <form action="{{ route('buyer.cart.update', $cartItem->rowId) }}"
@@ -70,11 +70,11 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class=" items-center gap-4 p-10 font-bold grid-rows-3">
-                            <div class="font-sans text-2xl text-red-800">
+                        <div class="font-oswald items-center gap-4 p-10 grid-rows-3">
+                            <div class="text-3xl font-bold text-red-800">
                                 Subtotal: ${{ Cart::pricetotal() }}
                             </div><br>
-                            <div>
+                            <div class="tracking-wider">
                                 <p> Este pedido no tiene incluido impuestos aplicables, gastos de envío, cupones u
                                     ofertas.</p><br>
                             </div>

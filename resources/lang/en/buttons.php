@@ -24,4 +24,6 @@ return [
     'add_products' => 'Add Products',
     'export_products' => 'Export Products',
     'import_products' => 'Import Products',
+    'download' => 'Download',
+    'retry_payment' => 'Retry payment',
 ];

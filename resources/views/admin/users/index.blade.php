@@ -44,8 +44,8 @@
                                     <td class="border border-gray-300 px-4 py-2 text-left">{{ $user->email }}</td>
                                     <td class="border border-gray-300 px-4 py-2 text-left">
                                         @if (!empty($user->getRoleNames()))
-                                            @foreach ($user->getRoleNames() as $v)
-                                                <label class="badge badge-success">{{ $v }}</label>
+                                            @foreach ($user->getRoleNames() as $role)
+                                                <label class="badge badge-success">{{ $role }}</label>
                                             @endforeach
                                         @endif
                                     </td>
@@ -61,7 +61,6 @@
                                                 {{ trans('buttons.edit') }}</x-button-link>
                                         </td>
                                         <td class="border border-gray-300 px-4 py-2 text-center">
-                                            <x-auth-validation-errors :errors="$errors" />
                                             <form action="{{ route('admin.users.toggle', $user) }}" method="POST">
                                                 @csrf
                                                 {{ method_field('PUT') }}
@@ -77,7 +76,7 @@
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <x-button href="{{ route('admin.users.index', $user) }}"
-                                                    onclick="return confirm ('{{ trans('auth.delete_user')}}')">
+                                                    onclick="return confirm ('{{ trans('auth.delete_user') }}')">
                                                     {{ trans('buttons.delete') }}</x-button>
                                             </form>
                                         </td>

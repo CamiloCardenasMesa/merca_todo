@@ -34,9 +34,9 @@ class ProductsApiController extends Controller
 
     public function update(ProductRequest $request, Product $productUpdated): ProductsResource
     {
-        ProductUpdateOrStoreAction::execute($request, $productUpdated);
+        $product = ProductUpdateOrStoreAction::execute($request, $productUpdated);
 
-        return new ProductsResource($productUpdated);
+        return new ProductsResource($product);
     }
 
     public function destroy(Product $product): JsonResponse
