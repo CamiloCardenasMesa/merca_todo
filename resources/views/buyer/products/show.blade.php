@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between">
             <div class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
-                    {{ __($product->name) }} 
+                    {{ ucwords($product->name) }} 
             </div>
             <div>
                 <x-cart-button href="{{ route('buyer.cart.index') }}">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="flex flex-col justify-center">  
                                 <div class="text-4xl my-2">
-                                    {{ $product->name }}
+                                    {{ ucwords($product->name) }}
                                 </div>
                                 <div class="my-6 tracking-wider">
                                     {{ $product->description }}

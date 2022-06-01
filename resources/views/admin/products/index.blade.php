@@ -53,7 +53,7 @@
                                     <img src="{{ asset('storage/' . $product->image) }}" width="150px"
                                         alt="image">
                                 </td>
-                                <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->name }}
+                                <td class="border border-gray-300 px-4 py-2 text-center">{{ ucwords($product->name) }}
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->price }}
                                 </td>

@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="justify-between font-oswald"> 
                                         <div class="text-2xl py-2 leading-7">
-                                            {{ $product->name }}
+                                            {{ ucwords($product->name) }}
                                         </div>
                                         <div class="my-2 text-red-700 font-bold">
                                             $ {{ $product->price }}

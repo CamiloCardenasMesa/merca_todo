@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __($product->name) }}
+            {{ ucwords($product->name) }}
         </h2>
     </x-slot>
 
@@ -30,7 +30,7 @@
                         <tr>
                             <td class="border border-gray-300 px-4 py-2 text-center"><img src="{{ asset('storage/' .$product->image) }}" alt="image"></td>
                             <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->id }}</th>
-                            <td class="border border-gray-300 px-4 py-2 text-left">{{ $product->name }}</td>
+                            <td class="border border-gray-300 px-4 py-2 text-left">{{ ucwords($product->name) }}</td>
                             <td class="border border-gray-300 px-4 py-2 text-left">{{ $product->description }}</td>
                             <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->price }}</td>
                             <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->stock }}</td>
