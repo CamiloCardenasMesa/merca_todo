@@ -19,7 +19,7 @@ class CreateOrderAction
         $order->reference = Str::uuid();
         $order->currency = 'COP';
         $order->state = States::PENDING;
-        $order->total = (int)Cart::priceTotalFloat();
+        $order->total = (int) Cart::priceTotalFloat();
         $order->user_id = Auth::user()->id;
 
         $order->save();
@@ -30,6 +30,8 @@ class CreateOrderAction
             $productOrder->quantity = $cartItem->qty;
             $productOrder->order_id = $order->id;
             $productOrder->product_id = $cartItem->id;
+
+            $productOrder->save();
         }
 
         return $order;
