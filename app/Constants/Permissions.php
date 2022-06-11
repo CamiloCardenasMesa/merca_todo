@@ -18,6 +18,8 @@ class Permissions extends Enum
     public const ROLE_CREATE = 'role-create';
     public const ROLE_EDIT = 'role-edit';
     public const ROLE_DELETE = 'role-delete';
+    public const ORDER_LIST = 'order-list';
+    public const ORDER_SHOW = 'order-show';
 
     public static function supported(): array
     {

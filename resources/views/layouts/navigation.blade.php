@@ -46,9 +46,14 @@
                             {{ __(trans('navigation.product_list')) }}
                         </x-nav-link>
                     @endcan
+                    @can(
+                        App\Constants\Permissions::ORDER_LIST,
+                        App\Constants\Permissions::ORDER_SHOW,
+                    )
                     <x-nav-link :href="route('buyer.orders.index')" :active="request()->routeIs('buyer.orders.index')">
                         {{ __(trans('navigation.orders')) }}
                     </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
