@@ -33,4 +33,18 @@ class CreateSessionRequest extends GetInformationRequest
             'userAgent' => substr(app(Request::class)->header('User-Agent'), 0, 255),
         ]);
     }
+
+    public function payer(): array
+    {
+        return [
+            'document' => 'required',
+            'document_type' => 'required',
+            'name' => 'required',
+            'surname' => 'required',
+            'company' => '',
+            'email' => 'required',
+            'mobile' => 'required',
+            'address' => '',
+        ];
+    }
 }
