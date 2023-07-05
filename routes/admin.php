@@ -62,9 +62,9 @@ Route::delete('/products/{product}', [ProductsController::class, 'destroy'])
     ->middleware('auth', 'verified')
     ->name('admin.products.destroy');
 
- Route::put('/products/{product}', [ProductsController::class, 'update'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.update');
+Route::put('/products/{product}', [ProductsController::class, 'update'])
+   ->middleware('auth', 'verified')
+   ->name('admin.products.update');
 
 Route::put('/products/{product}/toggle', [ProductsController::class, 'toggle'])
     ->middleware('auth', 'verified')

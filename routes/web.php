@@ -24,6 +24,6 @@ Route::get('/products/import/show', [ProductsImportController::class, 'showImpor
 Route::post('/products/import', [ProductsImportController::class, 'storeImport'])
     ->name('import.store');
 
-    require __DIR__ . '/auth.php';
-    require __DIR__ . '/admin.php';
-    require __DIR__ . '/buyer.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
+require __DIR__ . '/buyer.php';
