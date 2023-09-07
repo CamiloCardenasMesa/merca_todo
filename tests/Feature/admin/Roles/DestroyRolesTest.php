@@ -28,7 +28,7 @@ class DestroyRolesTest extends TestCase
 
         //Assert
         $response->assertRedirect('roles');
-        
+
         $this->assertAuthenticated();
     }
 }
