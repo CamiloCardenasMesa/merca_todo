@@ -12,10 +12,6 @@
 
                 <!-- Navigation Links -->
                 <div class=" font-oswald text-5xl tracking-wide hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
-                        {{ trans('navigation.welcome') }}
-                    </x-nav-link>
-
                     @can(
                         App\Constants\Permissions::ROLE_LIST,
                         App\Constants\Permissions::ROLE_CREATE, 
