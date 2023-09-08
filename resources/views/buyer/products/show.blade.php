@@ -5,7 +5,7 @@
                 {{ ucwords($product->name) }} 
             </div>
             <div class="flex">
-                <x-auth-session-status :status="session('status')" />
+                <x-auth-session-status class="mr-2" :status="session('status')" />
                 <x-cart-button href="{{ route('buyer.cart.index') }}">
                     ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
                 </x-cart-button>

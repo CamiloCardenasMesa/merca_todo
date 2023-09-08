@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <div class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+            <div class="flex justify-between font-semibold font-oswald text-4xl text-gray-800 leading-tight">
                 {{ trans('cart.shopping_cart') }}
             </div>
-            <div>
+            <div class="flex">
                 <x-button-link href="{{ route('welcome') }}">{{ trans('buttons.continue_shopping') }}
                 </x-button-link>
             </div>
