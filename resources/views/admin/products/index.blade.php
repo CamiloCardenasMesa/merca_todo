@@ -1,9 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <form action="{{ route('admin.products.index') }}" method="GET">
-            <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
-            <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
-        </form>
+        <div class="flex justify-between">
+            <form class="flex justify-between" action="{{ route('admin.products.index') }}" method="GET">
+                <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
+                <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
+            </form>
+            <x-auth-session-status class="flex text-center" :status="session('status')" />
+        </div>
     </x-slot>
 
     <div class="pt-6 pb-12 bg-gray-100">
@@ -23,9 +26,6 @@
                 @endcan
             </div>
         </div>    
-            <div>
-                <x-auth-session-status :status="session('status')" />
-            </div>
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
             <div class="p-8 bg-white border-b border-gray-200">
                 <table class="container">

@@ -1,9 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <form action="{{ route('admin.users.index') }}" method="GET">
-            <x-input type="text" name="query" placeholder="{{ trans('placeholders.user_search') }}" />
-            <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
-        </form>
+        <div class="flex justify-between">
+            <form class="flex justify-between" action="{{ route('admin.users.index') }}" method="GET">
+                <x-input type="text" name="query" placeholder="{{ trans('placeholders.user_search') }}" />
+                <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
+            </form>
+        </div>
     </x-slot>
 
     <div class="pt-6 pb-14 bg-gray-100">

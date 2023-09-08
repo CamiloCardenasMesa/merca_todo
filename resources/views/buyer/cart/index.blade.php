@@ -5,7 +5,9 @@
                 {{ trans('cart.shopping_cart') }}
             </div>
             <div class="flex">
-                <x-button-link href="{{ route('welcome') }}">{{ trans('buttons.continue_shopping') }}
+                <x-auth-session-status class="mr-2" :status="session('status')" />
+                <x-button-link href="{{ route('welcome') }}">
+                    {{ trans('buttons.continue_shopping') }}
                 </x-button-link>
             </div>
         </div>
@@ -13,9 +15,6 @@
 
     <div class="py-8 bg-gray-100 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div>
-                <x-auth-session-status class="mb-4" :status="session('status')" />
-            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 @if (count($shoppingCart))
                     <div class="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 bg-white border-b border-gray-200">

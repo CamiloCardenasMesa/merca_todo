@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ trans('auth.role_list') }}
-        </h2>
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ trans('auth.role_list') }}
+            </h2>
+            <x-auth-session-status :status="session('status')" />
+        </div>
     </x-slot>
 
     <div class="pt-6 pb-14 bg-gray-100 min-h-screen">
@@ -13,9 +16,6 @@
                         </x-button>
                 </div>
             @endcan
-            <div>
-                <x-auth-session-status :status="session('status')" />
-            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-8 bg-white border-b border-gray-200">
                     <table class="container">
