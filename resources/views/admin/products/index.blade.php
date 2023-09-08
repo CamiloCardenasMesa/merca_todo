@@ -50,8 +50,9 @@
                         <tbody>
                             <tr>
                                 <td class="border border-gray-300 text text-center">
-                                    <img src="{{ asset('storage/' . $product->image) }}" width="150px"
-                                        alt="image">
+                                    <div class="flex w-1/3">
+                                        <img src="{{ asset('storage/' . $product->image) }}" alt="image">
+                                    </div>
                                 </td>
                                 <td class="border border-gray-300 px-4 py-2 text-center">{{ ucwords($product->name) }}
                                 </td>
