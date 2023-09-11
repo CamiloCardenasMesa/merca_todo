@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class=" font-oswald text-5xl tracking-wide hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="font-oswald text-5xl tracking-wide hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @can(
                         App\Constants\Permissions::ROLE_LIST,
                         App\Constants\Permissions::ROLE_CREATE, 
