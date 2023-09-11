@@ -31,7 +31,7 @@
                                             <img src="{{ asset('storage/' . $product->image) }}"alt="image">
                                         </a>
                                     </div>
-                                    <div class="justify-between font-oswald"> 
+                                    <div class="justify-between"> 
                                         <div class="text-2xl py-2 leading-7">
                                             {{ ucwords($product->name) }}
                                         </div>
