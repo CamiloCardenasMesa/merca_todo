@@ -5,20 +5,18 @@
                 <x-input type="text" name="query" placeholder="{{ trans('placeholders.user_search') }}" />
                 <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
             </form>
+            <x-auth-session-status class="flex text-center" :status="session('status')" />
         </div>
     </x-slot>
-
     <div class="pt-6 pb-14 bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @can(App\Constants\Permissions::USER_CREATE)
                 <div class="mb-6">
-                    <x-button-link href="{{ route('admin.users.create') }}">{{ trans('buttons.create_user') }}
-                        </x-button>
+                    <x-button-link href="{{ route('admin.users.create') }}">
+                        {{ trans('buttons.create_user') }}
+                    </x-button>
                 </div>
             @endcan
-            <div>
-                <x-auth-session-status :status="session('status')" />
-            </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-8 bg-white border-b border-gray-200">
                     <table class="container">
@@ -54,13 +52,15 @@
                                     @can(App\Constants\Permissions::USER_LIST)
                                         <td class="border border-gray-300 px-4 py-2 text-center">
                                             <x-button-link href="{{ route('admin.users.show', $user) }}">
-                                                {{ trans('buttons.show') }}</x-button-link>
+                                                {{ trans('buttons.show') }}
+                                            </x-button-link>
                                         </td>
                                     @endcan
                                     @can(App\Constants\Permissions::USER_EDIT)
                                         <td class="border border-gray-300 px-4 py-2 text-center">
                                             <x-button-link href="{{ route('admin.users.edit', $user) }}">
-                                                {{ trans('buttons.edit') }}</x-button-link>
+                                                {{ trans('buttons.edit') }}
+                                            </x-button-link>
                                         </td>
                                         <td class="border border-gray-300 px-4 py-2 text-center">
                                             <form action="{{ route('admin.users.toggle', $user) }}" method="POST">
@@ -77,9 +77,9 @@
                                             <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
-                                                <x-button href="{{ route('admin.users.index', $user) }}"
-                                                    onclick="return confirm ('{{ trans('auth.delete_user') }}')">
-                                                    {{ trans('buttons.delete') }}</x-button>
+                                                <x-button href="{{ route('admin.users.index', $user) }}" onclick="return confirm ('{{ trans('auth.delete_user') }}')">
+                                                    {{ trans('buttons.delete') }}
+                                                </x-button>
                                             </form>
                                         </td>
                                     @endcan

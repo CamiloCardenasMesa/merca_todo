@@ -3,10 +3,9 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ trans('auth.header') }}
         </h2>
+        <x-auth-session-status class="flex text-center" :status="session('status')" />
     </x-slot>
-    <div>
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-    </div>
+
     <div class="py-12 min-h-screen bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
