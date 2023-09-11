@@ -38,34 +38,34 @@ Route::put('/admin/users/{user}/toggle', [UserController::class, 'toggle'])
 
 //Products Routes
 
-Route::get('/products', [ProductsController::class, 'index'])
+Route::get('/admin/products', [ProductsController::class, 'index'])
     ->middleware('auth', 'verified')
     ->name('admin.products.index');
 
-Route::get('/products/create', [ProductsController::class, 'create'])
+Route::get('/admin/products/create', [ProductsController::class, 'create'])
     ->middleware('auth', 'verified')
     ->name('admin.products.create');
 
-Route::get('/products/{product}', [ProductsController::class, 'show'])
+Route::get('/admin/products/{product}', [ProductsController::class, 'show'])
     ->middleware('auth', 'verified')
     ->name('admin.products.show');
 
-Route::post('/products/store', [ProductsController::class, 'store'])
+Route::post('/admin/products/store', [ProductsController::class, 'store'])
     ->middleware('auth', 'verified')
     ->name('admin.products.store');
 
-Route::get('/products/{product}/edit', [ProductsController::class, 'edit'])
+Route::get('/admin/products/{product}/edit', [ProductsController::class, 'edit'])
     ->middleware('auth', 'verified')
     ->name('admin.products.edit');
 
-Route::delete('/products/{product}', [ProductsController::class, 'destroy'])
+Route::delete('/admin/products/{product}', [ProductsController::class, 'destroy'])
     ->middleware('auth', 'verified')
     ->name('admin.products.destroy');
 
-Route::put('/products/{product}', [ProductsController::class, 'update'])
+Route::put('/admin/products/{product}', [ProductsController::class, 'update'])
    ->middleware('auth', 'verified')
    ->name('admin.products.update');
 
-Route::put('/products/{product}/toggle', [ProductsController::class, 'toggle'])
+Route::put('/admin/products/{product}/toggle', [ProductsController::class, 'toggle'])
     ->middleware('auth', 'verified')
     ->name('admin.products.toggle');
