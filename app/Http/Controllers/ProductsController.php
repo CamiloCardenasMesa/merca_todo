@@ -84,6 +84,7 @@ class ProductsController extends Controller
 
         $product->save();
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')
+                         ->with('status', 'Product updated successfully.');
     }
 }
