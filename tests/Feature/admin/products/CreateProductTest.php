@@ -49,7 +49,7 @@ class CreateProductTest extends TestCase
         $category = Category::factory()->create();
 
         //Act or Request
-        $response = $this->actingAs($user)->post('/products/store', [
+        $response = $this->actingAs($user)->post('admin/products/store', [
             'name' => 'Test name',
             'image' => UploadedFile::fake()->image('products.jpg'),
             'description' => 'Test description',
@@ -61,7 +61,7 @@ class CreateProductTest extends TestCase
         $product = Product::first();
 
         //Assert
-        $response->assertRedirect('/products');
+        $response->assertRedirect('admin/products');
         $this->assertEquals('Test name', $product->name);
         $this->assertEquals('Test description', $product->description);
         $this->assertEquals(10000, $product->price);

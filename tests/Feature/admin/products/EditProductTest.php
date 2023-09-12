@@ -46,7 +46,7 @@ class EditProductTest extends TestCase
         $product = $product->fresh();
 
         //Assert
-        $response->assertRedirect('/products');
+        $response->assertRedirect('admin/products');
         $this->assertAuthenticated();
         $this->assertEquals('Test name', $product->name);
         $this->assertEquals('Test description', $product->description);

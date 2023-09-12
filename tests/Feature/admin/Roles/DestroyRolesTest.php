@@ -27,7 +27,7 @@ class DestroyRolesTest extends TestCase
         $response = $this->actingAs($admin)->delete(route('roles.destroy', $admin));
 
         //Assert
-        $response->assertRedirect('roles');
+        $response->assertRedirect('/admin/roles');
 
         $this->assertAuthenticated();
     }
