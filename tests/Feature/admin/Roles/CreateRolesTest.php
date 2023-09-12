@@ -59,7 +59,7 @@ class CreateRolesTest extends TestCase
         $userCreated->fresh();
 
         //Assert
-        $response->assertRedirect('roles');
+        $response->assertRedirect('admin/roles');
         $this->assertNotEquals($userCreated, $admin);
         $this->assertAuthenticated();
     }
