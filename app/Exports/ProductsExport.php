@@ -28,13 +28,13 @@ class ProductsExport implements FromQuery, ShouldAutoSize, WithMapping, WithHead
     public function map($product): array
     {
         return [
-        $product->id,
-        $product->name,
-        $product->description,
-        $product->price,
-        $product->stock,
-        $product->category_id,
-        $product->enable,
+            $product->id,
+            $product->name,
+            $product->description,
+            $product->price,
+            $product->stock,
+            $product->category_id,
+            $product->enable,
         ];
     }
 

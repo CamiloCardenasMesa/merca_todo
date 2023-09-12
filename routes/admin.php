@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductsExportController;
+use App\Http\Controllers\ProductsImportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +28,7 @@ Route::middleware(['auth', 'verified'])->prefix('/admin/products')->name('admin.
     Route::put('/{product}', [ProductsController::class, 'update'])->name('update');
     Route::delete('/{product}', [ProductsController::class, 'destroy'])->name('destroy');
     Route::put('/toggle/{product}', [ProductsController::class, 'toggle'])->name('toggle');
+    Route::get('/export/index', [ProductsExportController::class, 'export'])->name('export');
+    Route::get('/import/index', [ProductsImportController::class, 'import'])->name('import');
+    Route::get('/import/store', [ProductsImportController::class, 'storeImport'])->name('import.store');
 });
