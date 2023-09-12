@@ -13,9 +13,12 @@ use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
-    public function __construct()
+    protected $productAction;
+
+    public function __construct(ProductUpdateOrStoreAction $productAction)
     {
         $this->authorizeResource(Product::class, 'product');
+        $this->productAction = $productAction;
     }
 
     public function index(Request $request): View
@@ -47,10 +50,10 @@ class ProductsController extends Controller
 
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-        ProductUpdateOrStoreAction::execute($request, $product);
+        $this->productAction->execute($request, $product);
 
         return redirect()->route('admin.products.index')
-                         ->with('status', 'Product updated successfully.');
+            ->with('status', 'Product updated successfully.');
     }
 
     public function create()
@@ -62,10 +65,10 @@ class ProductsController extends Controller
 
     public function store(ProductRequest $request): RedirectResponse
     {
-        ProductUpdateOrStoreAction::execute($request);
+        $this->productAction->execute($request);
 
         return redirect()->route('admin.products.index')
-                         ->with('status', 'Product created successfully.');
+            ->with('status', 'Product created successfully.');
     }
 
     public function destroy(Product $product): RedirectResponse
