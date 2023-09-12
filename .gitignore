@@ -21,3 +21,4 @@ test/coverage
 report
 .php-cs-fixer.cache
 app/Constants/Permissions.php
+.php-cs-fixer.cache
