@@ -23,15 +23,11 @@ class ProductsController extends Controller
 
     public function index(Request $request): View
     {
-        if ($request->query('query')) {
-            $products = Product::where('name', 'like', '%' . $request->query('query') . '%')
-                ->orWhere('description', 'like', '%' . $request->query('query') . '%')
-                ->where('enable', true)
-                ->paginate(8);
-        } else {
-            $products = Product::orderBy('id', 'desc')
-                ->paginate(8);
-        }
+        $query = $request->query('query');
+
+        $products = Product::searchByNameOrDescription($query)
+            ->orderBy('id', 'desc')
+            ->paginate(8);
 
         return view('admin.products.index', compact('products'));
     }
