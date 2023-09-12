@@ -98,6 +98,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')
+                         ->with('status', 'User updated successfully.');
     }
 }
