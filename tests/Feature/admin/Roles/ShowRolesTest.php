@@ -33,7 +33,7 @@ class ShowRolesTest extends TestCase
 
         //Assert
         $response->assertOk();
-        $response->assertViewIs('roles.show'); 
+        $response->assertViewIs('roles.show');
         $response->assertViewHas('role');
         $this->assertAuthenticated();
     }
