@@ -13,16 +13,6 @@
                 <!-- Navigation Links -->
                 <div class="font-oswald text-5xl tracking-wide hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @can(
-                        App\Constants\Permissions::ROLE_LIST,
-                        App\Constants\Permissions::ROLE_CREATE, 
-                        App\Constants\Permissions::ROLE_EDIT, 
-                        App\Constants\Permissions::ROLE_DELETE,
-                    )
-                        <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
-                            {{ __(trans('navigation.roles')) }}
-                        </x-nav-link>
-                    @endcan
-                    @can(
                         App\Constants\Permissions::USER_LIST,
                         App\Constants\Permissions::USER_CREATE, 
                         App\Constants\Permissions::USER_EDIT, 
@@ -49,6 +39,16 @@
                     <x-nav-link :href="route('buyer.orders.index')" :active="request()->routeIs('buyer.orders.index')">
                         {{ __(trans('navigation.orders')) }}
                     </x-nav-link>
+                    @endcan
+                    @can(
+                        App\Constants\Permissions::ROLE_LIST,
+                        App\Constants\Permissions::ROLE_CREATE, 
+                        App\Constants\Permissions::ROLE_EDIT, 
+                        App\Constants\Permissions::ROLE_DELETE,
+                    )
+                        <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                            {{ __(trans('navigation.roles')) }}
+                        </x-nav-link>
                     @endcan
                 </div>
             </div>
