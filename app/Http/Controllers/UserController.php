@@ -70,7 +70,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('admin.users.index')
-                ->with('status', 'User updated successfully');
+            ->with('status', 'User updated successfully');
     }
 
     public function edit($id): View

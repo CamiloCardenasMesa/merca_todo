@@ -19,5 +19,4 @@ test/coverage
 .DS_Store
 /storage/debugbar
 report
-.php-cs-fixer.cache
 app/Constants/Permissions.php
