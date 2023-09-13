@@ -22,13 +22,11 @@ class UserController extends Controller
 
     public function index(Request $request): View
     {
-        if ($request->query('query')) {
-            $users = User::where('name', 'like', '%' . $request->query('query') . '%')
-            ->orwhere('email', 'like', '%' . $request->query('query') . '%')
-            ->paginate(10);
-        } else {
-            $users = User::orderBy('id', 'desc')->paginate(8);
-        }
+        $query = $request->query('query');
+
+        $users = User::searchByNameOrEmail($query)
+            ->orderBy('id', 'desc')
+            ->paginate(8);
 
         return view('admin.users.index', compact('users'));
     }
@@ -54,7 +52,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('admin.users.index')
-                ->with('status', 'User created successfully');
+            ->with('status', 'User created successfully');
     }
 
     public function update(UpdateUserRequest $request, $id): RedirectResponse
@@ -89,7 +87,7 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')
-                        ->with('status', 'User deleted successfully');
+            ->with('status', 'User deleted successfully');
     }
 
     public function toggle(User $user): RedirectResponse
@@ -99,6 +97,6 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('admin.users.index')
-                         ->with('status', 'User updated successfully.');
+            ->with('status', 'User updated successfully.');
     }
 }
