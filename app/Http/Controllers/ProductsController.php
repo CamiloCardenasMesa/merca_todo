@@ -74,7 +74,7 @@ class ProductsController extends Controller
         Storage::disk('images')->delete($product->image);
 
         return redirect()->route('admin.products.index')
-                         ->with('status', 'Product deleted successfully.');
+            ->with('status', 'Product deleted successfully.');
     }
 
     public function toggle(Product $product): RedirectResponse
@@ -84,6 +84,6 @@ class ProductsController extends Controller
         $product->save();
 
         return redirect()->route('admin.products.index')
-                         ->with('status', 'Product updated successfully.');
+            ->with('status', 'Product updated successfully.');
     }
 }
