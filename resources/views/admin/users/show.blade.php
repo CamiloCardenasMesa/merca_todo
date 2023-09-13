@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __($user->name) }}
+        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+            {{ trans('users.user') . $user->name }}
         </h2>
     </x-slot>
 
@@ -44,9 +44,9 @@
                         @can(App\Constants\Permissions::USER_EDIT)
                         <x-button-link href="{{ route('admin.users.edit', $user) }}">{{ trans('buttons.edit') }}</x-button-link>
                         @endcan
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 </x-app-layout>

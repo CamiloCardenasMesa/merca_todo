@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __($role->name) }}
+        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+            {{ $role->name }}
         </h2>
     </x-slot>
 <div class="py-12 min-h-screen bg-gray-100">
@@ -23,7 +23,7 @@
 
                             @foreach($permission as $value)
                             {{-- <label type="checkbox" id="{{ $value->id }}" value="{{ $value->name }}" >{{ $value->name }}</label> --}}
-                           <div>     
+                           <div>
                                 <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
                                     {{ $value->name }}</label>
                                     <br/>
@@ -34,7 +34,7 @@
                                 <x-button>{{ trans('buttons.save') }}</x-button>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </form>
             </div>
         </div>

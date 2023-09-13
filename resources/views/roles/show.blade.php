@@ -1,17 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __($role->name) }}
+        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+            {{ $role->name }}
         </h2>
     </x-slot>
 
     <div class="py-12 min-h-screen bg-gray-100 ">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-sm sm:rounded-lg">
-                <div class="px-10 pb-8 pt-10 bg-white border-b border-gray-200">
-                    <div class="bg-gray-100 border border-gray-300 px-4 py-2 text-center font-bold rounded-lg">
-                        {{ $role->name }}   
-                    </div>
+                <div class="px-10 pb-8 bg-white border-b border-gray-200">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <div class="bg-white text-center my-4">

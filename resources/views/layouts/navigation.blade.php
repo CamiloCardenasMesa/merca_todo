@@ -14,40 +14,43 @@
                 <div class="font-oswald text-5xl tracking-wide hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     @can(
                         App\Constants\Permissions::USER_LIST,
-                        App\Constants\Permissions::USER_CREATE, 
-                        App\Constants\Permissions::USER_EDIT, 
+                        App\Constants\Permissions::USER_CREATE,
+                        App\Constants\Permissions::USER_EDIT,
                         App\Constants\Permissions::USER_DELETE,
                     )
                         <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
-                            {{ __(trans('navigation.users')) }}
+                            {{ trans('navigation.users') }}
                         </x-nav-link>
                     @endcan
+
                     @can(
                         App\Constants\Permissions::PRODUCT_LIST,
-                        App\Constants\Permissions::PRODUCT_CREATE, 
-                        App\Constants\Permissions::PRODUCT_EDIT, 
+                        App\Constants\Permissions::PRODUCT_CREATE,
+                        App\Constants\Permissions::PRODUCT_EDIT,
                         App\Constants\Permissions::PRODUCT_DELETE,
                     )
                         <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
-                            {{ __(trans('navigation.product_list')) }}
+                            {{ trans('navigation.product_list') }}
                         </x-nav-link>
                     @endcan
+
                     @can(
                         App\Constants\Permissions::ORDER_LIST,
                         App\Constants\Permissions::ORDER_SHOW,
                     )
                     <x-nav-link :href="route('buyer.orders.index')" :active="request()->routeIs('buyer.orders.index')">
-                        {{ __(trans('navigation.orders')) }}
+                        {{ trans('navigation.orders') }}
                     </x-nav-link>
                     @endcan
+
                     @can(
                         App\Constants\Permissions::ROLE_LIST,
-                        App\Constants\Permissions::ROLE_CREATE, 
-                        App\Constants\Permissions::ROLE_EDIT, 
+                        App\Constants\Permissions::ROLE_CREATE,
+                        App\Constants\Permissions::ROLE_EDIT,
                         App\Constants\Permissions::ROLE_DELETE,
                     )
                         <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
-                            {{ __(trans('navigation.roles')) }}
+                            {{ trans('navigation.roles') }}
                         </x-nav-link>
                     @endcan
                 </div>
@@ -115,11 +118,11 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-       
+
         <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
             {{ __('Welcome') }}
         </x-nav-link>
-        
+
         <!-- Responsive Settings Options -->
         @auth
             <div class="pt-4 pb-1 border-t border-gray-200">

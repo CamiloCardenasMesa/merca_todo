@@ -1,11 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
             {{ ucwords($product->name) }}
         </h2>
     </x-slot>
 
-    
     <div class="py-12 min-h-screen bg-gray-100">
         <div>
             <x-auth-session-status :status="session('status')" />
@@ -29,7 +28,7 @@
                     <tbody>
                         <tr>
                             <td class="border border-gray-300 px-4 py-2 text-center"><img src="{{ asset('storage/' .$product->image) }}" alt="image"></td>
-                            <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->id }}</th>
+                            <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->id }}</td>
                             <td class="border border-gray-300 px-4 py-2 text-left">{{ ucwords($product->name) }}</td>
                             <td class="border border-gray-300 px-4 py-2 text-left">{{ $product->description }}</td>
                             <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->price }}</td>
@@ -41,9 +40,10 @@
                     </tbody>
                 </table><br>
                     <div class="flex justify-center">
-                        <a href="{{route('admin.products.index')}}"> <x-button>{{ trans('buttons.back') }}</x-button>
-                    </div> 
+                        <a href="{{route('admin.products.index')}}">
+                        <x-button>{{ trans('buttons.back') }}</x-button>
+                    </div>
             </div>
         </div>
-    </div>  
+    </div>
 </x-app-layout>

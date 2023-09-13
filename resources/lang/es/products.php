@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'product_name' => 'Producto: ',
     'image' => 'Imagen',
     'current_image' => 'Imagen actual',
     'name' => 'Nombre',
@@ -17,6 +18,7 @@ return [
     'update_product' => 'El producto ha sido actualizado correctamente',
     'delete_product' => 'El producto ha sido eliminado del carrito',
     'download_file' => 'Tu archivo está listo para descargar',
+    'import' => 'Importar archivo de productos',
     'thanks' => 'Gracias por utilizar nuestros servicios',
     'verify_download' => 'Su descarga está siendo procesada, una vez termine enviaremos una notificación a tu correo.',
 ];

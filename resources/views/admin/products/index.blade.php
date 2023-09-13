@@ -1,24 +1,26 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <form class="flex justify-between" action="{{ route('admin.products.index') }}" method="GET">
-                <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
-                <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
-            </form>
             <x-auth-session-status class="flex text-center" :status="session('status')" />
         </div>
     </x-slot>
 
-    <div class="pt-6 pb-12 bg-gray-100">
+    <div class="pb-12 bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @can(App\Constants\Permissions::PRODUCT_CREATE)
-            <div class="flex mb-6 justify-between">
-                <x-button-link href="{{ route('admin.products.create') }}">{{ trans('buttons.create_product') }}</x-button>
-            @endcan
-                <div class="flex gap-2 justify-between">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex justify-between">
+                    <form action="{{ route('admin.products.index') }}" method="GET">
+                        <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
+                        <x-button>{{ trans('buttons.search') }}</x-button>
+                    </form>
+                </div>
+                @can(App\Constants\Permissions::PRODUCT_CREATE)
+                <div>
+                    <x-button-link href="{{ route('admin.products.create') }}">{{ trans('buttons.create_product') }}</x-button-link>
+                    @endcan
                     @can(App\Constants\Permissions::PRODUCT_EDIT)
-                        <x-button-link href="{{ route('admin.products.import') }}">{{ trans('buttons.import_products') }}</x-button>
-                        <x-button-link href="{{ route('admin.products.export') }}">{{ trans('buttons.export_products') }}</x-button>
+                        <x-button-link href="{{ route('admin.products.import') }}">{{ trans('buttons.import_products') }}</x-button-link>
+                        <x-button-link href="{{ route('admin.products.export') }}">{{ trans('buttons.export_products') }}</x-button-link>
                     @endcan
                 </div>
             </div>
@@ -56,40 +58,43 @@
                                     <td class="border border-gray-300 px-4 py-2 text-center">
                                         {{ $product->price }}
                                     </td>
+
                                     @can(App\Constants\Permissions::PRODUCT_LIST)
-                                        <td class="border border-gray-300 px-4 py-2 text-center">
-                                            <x-button-link href="{{ route('admin.products.show', $product) }}">
-                                                {{ trans('buttons.show') }}
-                                            </x-button-link>
-                                        </td>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
+                                        <x-button-link href="{{ route('admin.products.show', $product) }}">
+                                            {{ trans('buttons.show') }}
+                                        </x-button-link>
+                                    </td>
                                     @endcan
+
                                     @can(App\Constants\Permissions::PRODUCT_EDIT)
-                                        <td class="border border-gray-300 px-4 py-2 text-center">
-                                            <x-button-link href="{{ route('admin.products.edit', $product) }}">
-                                                {{ trans('buttons.edit') }}
-                                            </x-button-link>
-                                        </td>
-                                        <td class="border border-gray-300 px-4 py-2 text-center">
-                                            <x-auth-validation-errors :errors="$errors" />
-                                            <form action="{{ route('admin.products.toggle', $product) }}" method="POST">
-                                                @csrf
-                                                {{ method_field('PUT') }}
-                                                <x-button type="submit">
-                                                    {{ $product->enable ? trans('buttons.disable') : trans('buttons.enable') }}
-                                                </x-button>
-                                            </form>
-                                        </td>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
+                                        <x-button-link href="{{ route('admin.products.edit', $product) }}">
+                                            {{ trans('buttons.edit') }}
+                                        </x-button-link>
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
+                                        <x-auth-validation-errors :errors="$errors" />
+                                        <form action="{{ route('admin.products.toggle', $product) }}" method="POST">
+                                            @csrf
+                                            {{ method_field('PUT') }}
+                                            <x-button type="submit">
+                                                {{ $product->enable ? trans('buttons.disable') : trans('buttons.enable') }}
+                                            </x-button>
+                                        </form>
+                                    </td>
                                     @endcan
+
                                     @can(App\Constants\Permissions::PRODUCT_DELETE)
-                                        <td class="border border-gray-300 px-4 py-2 text-center">
-                                            <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
-                                                @csrf
-                                                {{ method_field('DELETE') }}
-                                                <x-button onclick="return confirm ('{{ trans('products.delete') }}')">
-                                                    {{ trans('buttons.delete') }}
-                                                </x-button>
-                                            </form>
-                                        </td>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
+                                        <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
+                                            @csrf
+                                            {{ method_field('DELETE') }}
+                                            <x-button onclick="return confirm ('{{ trans('products.delete') }}')">
+                                                {{ trans('buttons.delete') }}
+                                            </x-button>
+                                        </form>
+                                    </td>
                                     @endcan
                                 </tr>
                             </tbody>

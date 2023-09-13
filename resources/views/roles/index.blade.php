@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight" >
                 {{ trans('auth.role_list') }}
             </h2>
             <x-auth-session-status :status="session('status')" />
@@ -12,8 +12,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @can(App\Constants\Permissions::ROLE_CREATE)
                 <div class="mb-6">
-                    <x-button-link href="{{ route('roles.create') }}">{{ trans('buttons.create_role') }}
-                        </x-button>
+                    <x-button-link href="{{ route('roles.create') }}">
+                        {{ trans('buttons.create_role') }}
+                    </x-button-link>
                 </div>
             @endcan
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">

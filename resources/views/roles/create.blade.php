@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight" >
             {{ trans('auth.header_role') }}
         </h2>
     </x-slot>
@@ -18,13 +18,13 @@
                             <div class="grid gap-1"><br>
                                 <x-label for="name">{{ trans('auth.role') }}</x-label>
                                 <x-input type="text" name="name" placeholder="{{ trans('placeholders.create_role') }}"/><br>
-    
+
                                 <div class="mb-6">
                                     <strong>{{ trans('auth.permissions') }}</strong>
                                 </div>
-    
+
                                 @foreach($permission as $value)
-                                    <div>     
+                                    <div>
                                         <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
                                             {{ $value->name }}</label>
                                     </div>
