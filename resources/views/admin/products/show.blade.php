@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12 min-h-screen bg-gray-100">
+    <div class="py-8 min-h-screen bg-gray-100">
         <div>
             <x-auth-session-status :status="session('status')" />
         </div>
