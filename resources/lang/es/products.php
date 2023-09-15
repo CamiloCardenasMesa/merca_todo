@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'welcome' => 'Bienvenido',
     'product_list' => 'Lista de productos',
     'product_name' => 'Producto: ',
     'image' => 'Imagen',
@@ -21,5 +22,5 @@ return [
     'download_file' => 'Tu archivo está listo para descargar',
     'import' => 'Importar archivo de productos',
     'thanks' => 'Gracias por utilizar nuestros servicios',
-    'verify_download' => 'Su descarga está siendo procesada, una vez termine enviaremos una notificación a tu correo.',
+    'verify_download' => 'Tu descarga está siendo procesada, una vez termine enviaremos una notificación a tu correo.',
 ];
