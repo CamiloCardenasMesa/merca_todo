@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 // User Routes
 Route::middleware(['auth', 'verified'])->prefix('/admin/users')->name('admin.users.')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::get('/create', [UserController::class, 'create'])->name('create');
     Route::post('/store', [UserController::class, 'store'])->name('store');
     Route::get('/{user}', [UserController::class, 'show'])->name('show');

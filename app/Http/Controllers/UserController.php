@@ -99,4 +99,8 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')
             ->with('status', 'User updated successfully.');
     }
+    public function dashboard()
+    {
+        return view('admin.users.dashboard');
+    }
 }

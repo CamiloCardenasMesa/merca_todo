@@ -48,8 +48,8 @@
                             <tbody>
                                 <tr>
                                     <td class="border border-gray-300 text text-center">
-                                        <div class="flex w-1/3">
-                                            <img src="{{ asset('storage/' . $product->image) }}" alt="image">
+                                        <div class="flex items-center justify-center  w-full">
+                                            <img width="120px" src="{{ asset('storage/' . $product->image) }}" alt="image">
                                         </div>
                                     </td>
                                     <td class="border border-gray-300 px-4 py-2 text-center">
