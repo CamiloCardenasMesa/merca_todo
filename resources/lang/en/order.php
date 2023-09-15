@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'empty_order' => 'You don`t have orders yet',
     'order_reference' => 'Order Reference:',
     'purchase_orders' => 'Purchase orders',
     'reference' => 'Reference',

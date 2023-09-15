@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'empty_order' => 'Aún no tienes órdenes de compra',
     'order_reference' => 'Referencia de pago: ',
     'purchase_orders' => 'Órdenes de compra',
     'reference' => 'Referencia',
