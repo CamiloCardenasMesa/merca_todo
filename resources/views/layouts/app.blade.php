@@ -34,9 +34,16 @@
                 <nav x-data="{ open: false }" class="fi-sidebar-nav flex flex-col gap-y-7 overflow-y-auto overflow-x-hidden px-6 py-8">
                     <ul class="-mx-2 flex flex-col gap-y-7">
                         <li>
+                            @can(
+                                App\Constants\Permissions::USER_LIST,
+                                App\Constants\Permissions::PRODUCT_LIST,
+                                App\Constants\Permissions::ORDER_LIST,
+                                App\Constants\Permissions::ROLE_LIST
+                            )
                             <x-nav-link :href="route('admin.users.dashboard')" :active="request()->routeIs('admin.users.dashboard')">
                                 Dashboard
                             </x-nav-link>
+                            @endcan
                         </li>
                         <li>
                             <div>
