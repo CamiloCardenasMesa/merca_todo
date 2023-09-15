@@ -55,23 +55,7 @@
                                 <li class="flex">
                                     <a>
                                         <div>
-                                        @can(
-                                           App\Constants\Permissions::USER_LIST,
-                                           App\Constants\Permissions::USER_CREATE,
-                                           App\Constants\Permissions::USER_EDIT,
-                                           App\Constants\Permissions::USER_DELETE,
-                                       )
-                                            <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
-                                                {{ trans('navigation.users') }}
-                                            </x-nav-link>
-                                        @endcan
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="flex">
-                                    <a>
-                                        <div>
-                                        @can(
+                                            @can(
                                             App\Constants\Permissions::PRODUCT_LIST,
                                             App\Constants\Permissions::PRODUCT_CREATE,
                                             App\Constants\Permissions::PRODUCT_EDIT,
@@ -93,6 +77,22 @@
                                         )
                                             <x-nav-link :href="route('buyer.orders.index')" :active="request()->routeIs('buyer.orders.index')">
                                                 {{ trans('navigation.orders') }}
+                                            </x-nav-link>
+                                        @endcan
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="flex">
+                                    <a>
+                                        <div>
+                                        @can(
+                                           App\Constants\Permissions::USER_LIST,
+                                           App\Constants\Permissions::USER_CREATE,
+                                           App\Constants\Permissions::USER_EDIT,
+                                           App\Constants\Permissions::USER_DELETE,
+                                        )
+                                            <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
+                                                {{ trans('navigation.users') }}
                                             </x-nav-link>
                                         @endcan
                                         </div>
