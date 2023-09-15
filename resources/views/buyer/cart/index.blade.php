@@ -1,9 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <div class="flex justify-between font-semibold font-oswald text-4xl text-gray-800 leading-tight">
-                {{ trans('cart.shopping_cart') }}
-            </div>
+            {{ trans('cart.shopping_cart') }}
             <div class="flex">
                 <x-auth-session-status class="mr-2" :status="session('status')" />
                 <x-button-link href="{{ route('welcome') }}">
@@ -13,9 +11,9 @@
         </div>
     </x-slot>
 
-    <div class="bg-gray-100 min-h-screen">
+    <div class="bg-gray-100 min-h-screen pb-9">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 @if (count($shoppingCart))
                     <div class="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 bg-white border-b border-gray-200">
                         <div class="gap-4 justify-between ">
@@ -86,12 +84,13 @@
                         </div>
                     </div>
                 @else
-                    <div class="text text-center pt-6">
+                    <div class="grid justify-center text-center py-6 gap-3">
                         <div class="text-2xl">
                             {{ trans('cart.empty_cart') }}
                         </div>
-                        <div class="pt-2 mb-6">
-                            <x-button-link href="{{ route('welcome') }}">{{ trans('buttons.add_products') }}
+                        <div>
+                            <x-button-link href="{{ route('welcome') }}">
+                                {{ trans('buttons.add_products') }}
                             </x-button-link>
                         </div>
                     </div>
