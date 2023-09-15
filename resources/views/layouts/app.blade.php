@@ -41,7 +41,7 @@
                                 App\Constants\Permissions::ROLE_LIST
                             )
                             <x-nav-link :href="route('admin.users.dashboard')" :active="request()->routeIs('admin.users.dashboard')">
-                                Dashboard
+                                {{ trans('navigation.dashboard') }}
                             </x-nav-link>
                             @endcan
                         </li>
