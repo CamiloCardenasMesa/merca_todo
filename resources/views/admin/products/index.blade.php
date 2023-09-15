@@ -1,32 +1,34 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <x-auth-session-status class="flex text-center" :status="session('status')" />
+            {{ trans('products.product_list') }}
+            <x-auth-session-status :status="session('status')" />
         </div>
     </x-slot>
 
-    <div class="pb-12 bg-gray-100">
+    <div class="bg-gray-100 min-h-screen pb-9">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex justify-between">
-                    <form action="{{ route('admin.products.index') }}" method="GET">
-                        <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
-                        <x-button>{{ trans('buttons.search') }}</x-button>
-                    </form>
-                </div>
-                @can(App\Constants\Permissions::PRODUCT_CREATE)
-                <div>
-                    <x-button-link href="{{ route('admin.products.create') }}">{{ trans('buttons.create_product') }}</x-button-link>
-                    @endcan
-                    @can(App\Constants\Permissions::PRODUCT_EDIT)
-                        <x-button-link href="{{ route('admin.products.import') }}">{{ trans('buttons.import_products') }}</x-button-link>
-                        <x-button-link href="{{ route('admin.products.export') }}">{{ trans('buttons.export_products') }}</x-button-link>
-                    @endcan
-                </div>
-            </div>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6">
                 <div class="p-8 bg-white border-b border-gray-200">
-                    <table class="container">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <form action="{{ route('admin.products.index') }}" method="GET">
+                                <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
+                                <x-button>{{ trans('buttons.search') }}</x-button>
+                            </form>
+                        </div>
+                        <div>
+                            @can(App\Constants\Permissions::PRODUCT_CREATE)
+                            <x-button-link href="{{ route('admin.products.create') }}">{{ trans('buttons.create_product') }}</x-button-link>
+                            @endcan
+                            
+                            @can(App\Constants\Permissions::PRODUCT_EDIT)
+                            <x-button-link href="{{ route('admin.products.import') }}">{{ trans('buttons.import_products') }}</x-button-link>
+                            <x-button-link href="{{ route('admin.products.export') }}">{{ trans('buttons.export_products') }}</x-button-link>
+                            @endcan
+                        </div>
+                    </div>
+                    <table class="container mt-8">
                         <thead>
                             <tr class="bg-gray-100">
                                 <th class="border border-gray-300">{{ trans('products.image') }}</th>

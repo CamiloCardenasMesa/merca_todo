@@ -4,12 +4,13 @@
         <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
             {{ trans('products.product_name') . $product->name }}
         </h2>
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
     </x-slot>
-    <div class="py-8 min-h-screen bg-gray-100">
+    <div class="pb-12 min-h-screen bg-gray-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="px-12 py-6 bg-white border-b border-gray-200">
-                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <form action="{{ route('admin.products.update', $product) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')

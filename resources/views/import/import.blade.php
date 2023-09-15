@@ -1,12 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+        <div class="flex justify-between">
             {{ trans('products.import') }}
-        </h2>
+            <x-auth-session-status :status="session('status')" />
+        </div>
     </x-slot>
-    <div class="pt-6 pb-12">
+
+    <div class="bg-gray-100 min-h-screen pb-9">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
+            <div class="flex justify-between items-center pb-4">
                 <div class="p-8 bg-white border-b border-gray-200">
                     @if (isset($errors) && $errors->any())
                         <div class="alert alert-danger mb-10 " role="alert">

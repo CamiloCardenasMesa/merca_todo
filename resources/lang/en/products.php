@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'product_list' => 'Product list',
     'product_name' => 'Product: ',
     'image' => 'Image',
     'current_image' => 'Current image',

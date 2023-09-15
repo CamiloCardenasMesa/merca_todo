@@ -1,19 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
-            {{ $role->name }}
+            {{ trans('users.permissions_of') . $role->name }}
         </h2>
     </x-slot>
 
-    <div class="py-12 min-h-screen bg-gray-100 ">
+    <div class="bg-gray-100 min-h-screen pb-9">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white shadow-sm sm:rounded-lg">
-                <div class="px-10 pb-8 bg-white border-b border-gray-200">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
+                <div class="p-8 bg-white border-b border-gray-200">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <div class="bg-white text-center my-4">
-                                <p>{{ trans('auth.permissions') }}</p>
-                            </div>
                             @if (!count($rolePermissions))
                                 <div class="rounded-lg p-2 bg-gray-100 border border-gray-300 text-center">
                                     <strong>{{ trans('auth.role_permissions') }}</strong>

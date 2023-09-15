@@ -13,7 +13,7 @@
         </div>
     </x-slot>
 
-    <div class="py-8 bg-gray-100 min-h-screen">
+    <div class="bg-gray-100 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 @if (count($shoppingCart))

@@ -1,25 +1,33 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <form class="flex justify-between" action="{{ route('admin.users.index') }}" method="GET">
-                <x-input type="text" name="query" placeholder="{{ trans('placeholders.user_search') }}" />
-                <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
-            </form>
-            <x-auth-session-status class="flex text-center" :status="session('status')" />
+            {{ trans('users.users_list') }}
+            <x-auth-session-status :status="session('status')" />
         </div>
     </x-slot>
-    <div class="pt-6 pb-14 bg-gray-100">
+
+    <div class="bg-gray-100 min-h-screen pb-9">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @can(App\Constants\Permissions::USER_CREATE)
-                <div class="mb-6">
-                    <x-button-link href="{{ route('admin.users.create') }}">
-                        {{ trans('buttons.create_user') }}
-                    </x-button>
-                </div>
-            @endcan
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
                 <div class="p-8 bg-white border-b border-gray-200">
-                    <table class="container">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <form action="{{ route('admin.users.index') }}" method="GET">
+                                <x-input type="text" name="query" placeholder="{{ trans('placeholders.user_search') }}" />
+                                <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
+                            </form>
+                        </div>
+                        <div>
+                            @can(App\Constants\Permissions::USER_CREATE)
+                            <div>
+                                <x-button-link href="{{ route('admin.users.create') }}">
+                                {{ trans('buttons.create_user') }}
+                                </x-button>
+                            </div>
+                             @endcan
+                        </div>
+                    </div>
+                    <table class="container mt-8">
                         <thead>
                             <tr class="bg-gray-100 ">
                                 <th class="border border-gray-300 px-4 py-2">{{ trans('auth.name') }}</th>

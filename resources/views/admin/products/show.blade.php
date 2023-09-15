@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
-            {{ ucwords($product->name) }}
+            {{ trans('products.product_name') . ucwords($product->name) }}
         </h2>
     </x-slot>
 
-    <div class="py-8 min-h-screen bg-gray-100">
+    <div class="pb-12 min-h-screen bg-gray-100">
         <div>
             <x-auth-session-status :status="session('status')" />
         </div>

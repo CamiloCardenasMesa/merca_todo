@@ -4,7 +4,7 @@
             {{ trans('auth.header_role') }}
         </h2>
     </x-slot>
-    <div class="py-12 min-h-screen bg-gray-100">
+    <div class="bg-gray-100 min-h-screen pb-9">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
                 <x-auth-session-status :status="session('status')" />
