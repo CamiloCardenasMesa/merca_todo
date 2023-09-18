@@ -18,7 +18,7 @@ class EditRolesTest extends TestCase
         $this->withoutExceptionHandling();
         //Arrange
         $updatePermission = Permission::create([
-            'name' => Permissions::ROLE_EDIT, ]);
+            'name' => Permissions::ROLE_EDIT]);
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($updatePermission);

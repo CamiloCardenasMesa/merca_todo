@@ -55,7 +55,7 @@ class UserController extends Controller
             ->with('status', 'User created successfully');
     }
 
-    public function update(UpdateUserRequest $request, $id): RedirectResponse
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $input = $request->all();
         if (!empty($input['password'])) {
@@ -63,9 +63,9 @@ class UserController extends Controller
         } else {
             $input = Arr::except($input, ['password']);
         }
-        $user = User::find($id);
+        $user = User::find($user->id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
 
         $user->assignRole($request->input('roles'));
 
@@ -73,9 +73,9 @@ class UserController extends Controller
             ->with('status', 'User updated successfully');
     }
 
-    public function edit($id): View
+    public function edit(User $user): View
     {
-        $user = User::find($id);
+        $user = User::find($user->id);
         $roles = Role::pluck('name', 'name')->all();
         $userRole = $user->roles->pluck('name', 'name')->all();
 
