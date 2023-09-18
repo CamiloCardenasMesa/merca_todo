@@ -27,8 +27,6 @@ class ProductPolicy
 
     public function update(User $user): bool
     {
-        dump('llega a producto policy');
-
         return $user->can(Permissions::PRODUCT_EDIT);
     }
 
