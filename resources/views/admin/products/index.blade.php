@@ -76,7 +76,6 @@
                                         </x-button-link>
                                     </td>
                                     <td class="border border-gray-300 px-4 py-2 text-center">
-                                        <x-auth-validation-errors :errors="$errors" />
                                         <form action="{{ route('admin.products.toggle', $product) }}" method="POST">
                                             @csrf
                                             {{ method_field('PUT') }}
