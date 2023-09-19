@@ -1,21 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
-            <div class="flex">
-                <x-auth-session-status class="mr-2" :status="session('status')" />
-            </div>
-            <form class="flex justify-between" action="{{ route('welcome') }}" method="GET">
-                <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
-                <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
-            </form>
+        <div>
+            {{ trans('navigation.dashboard') }}
         </div>
     </x-slot>
-    <section >
-        <div class="flex flex-grow items-center justify-center bg-gray-300">
-            <p>
-                Voy a construir el main de la vista dashboard para ver como funcionan los slots para
-                replicar en los otros main
-            </p>
+    <div class="bg-gray-100 min-h-screen pb-9">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-9">
+            <div class="p-9 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-green-300">1</div>
+                <div class="bg-red-300">2</div>
+                <div class="bg-blue-300">3</div>
+            </div>
         </div>
-    </section>
+    </div>
 </x-app-layout>

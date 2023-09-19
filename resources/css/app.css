@@ -7,3 +7,9 @@
 .font-oswald {
     font-family: 'Oswald', sans-serif;
 }
+
+@layer {
+    svg {
+        @apply text-white;
+    }
+}
