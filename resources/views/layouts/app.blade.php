@@ -22,9 +22,9 @@
 <body >
     <div class="flex">
         @auth
-        <aside id="nav-menu" class="text-white hidden w-56 md:block bg-gray-800">
+        <aside id="nav-menu" class="text-white hidden w-64 md:block bg-gray-800">
             <header class="bg-gray-200 flex items-center px-6 h-16 border-spacing-0">
-                <div class="flex items-center">
+                <div class="flex items-center pl-3">
                     <a href="{{ route('welcome') }}">
                         <img src="{{ asset('images/logo_mercatodo.png') }}" alt="MercaTodo logo" width="140">
                     </a>
@@ -41,7 +41,7 @@
                             <ul class="flex flex-col flex-grow gap-y-1 text-white font-medium">
                                 <li>
                                     <a href={{ route('admin.users.dashboard') }}>
-                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out">
+                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out px-2">
                                             @can(
                                                 App\Constants\Permissions::USER_LIST,
                                                 App\Constants\Permissions::PRODUCT_LIST,
@@ -61,7 +61,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('admin.products.index') }}">
-                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out">
+                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out px-2">
                                             @can(
                                             App\Constants\Permissions::PRODUCT_LIST,
                                             App\Constants\Permissions::PRODUCT_CREATE,
@@ -80,7 +80,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('buyer.orders.index') }}">
-                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out">
+                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out px-2">
                                             @can(
                                                 App\Constants\Permissions::ORDER_LIST,
                                                 App\Constants\Permissions::ORDER_SHOW,
@@ -97,7 +97,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('admin.users.index') }}">
-                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out">
+                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out px-2">
                                             @can(
                                                 App\Constants\Permissions::USER_LIST,
                                                 App\Constants\Permissions::USER_CREATE,
@@ -116,7 +116,7 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('roles.index') }}">
-                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out">
+                                        <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 transition duration-150 ease-in-out px-2">
                                             @can(
                                                 App\Constants\Permissions::ROLE_LIST,
                                                 App\Constants\Permissions::ROLE_CREATE,
@@ -137,7 +137,7 @@
                         </div> 
                     </nav>
                 </div>
-            </aside>
+        </aside>
         @endauth
 
         <div class="flex flex-col flex-grow">
