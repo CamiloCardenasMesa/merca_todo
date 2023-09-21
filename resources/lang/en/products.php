@@ -14,6 +14,7 @@ return [
     'created_at' => 'Created at',
     'updated_at' => 'Updated at',
     'quantity' => 'Quantity',
+    'search_failure' => 'No results for your search, try with another word',
     'header' => 'Create a new product with this form',
     'delete' => 'Are you sure you want to remove this product?',
     'add_product' => 'Product successfully added',

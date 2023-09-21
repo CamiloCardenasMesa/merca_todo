@@ -14,6 +14,7 @@ return [
     'created_at' => 'Fecha de creación',
     'updated_at' => 'Fecha de actualización',
     'quantity' => 'Cantidad',
+    'search_failure' => 'No hay resultados para tu búsqueda, inténtalo con otra palabra',
     'header' => 'Crea un nuevo producto con este formulario',
     'delete' => 'Estas seguro que deseas eliminar este producto?',
     'add_product' => 'Producto agregado exitosamente',
