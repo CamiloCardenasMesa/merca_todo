@@ -838,6 +838,10 @@ select{
   margin-top: 2.25rem;
 }
 
+.mb-9{
+  margin-bottom: 2.25rem;
+}
+
 .block{
   display: block;
 }
@@ -890,8 +894,16 @@ select{
   height: 2.25rem;
 }
 
+.h-full{
+  height: 100%;
+}
+
 .min-h-screen{
   min-height: 100vh;
+}
+
+.min-h-full{
+  min-height: 100%;
 }
 
 .w-16{
@@ -914,12 +926,12 @@ select{
   width: 1.25rem;
 }
 
-.w-6{
-  width: 1.5rem;
+.w-56{
+  width: 14rem;
 }
 
-.w-64{
-  width: 16rem;
+.w-6{
+  width: 1.5rem;
 }
 
 .w-8{
@@ -934,8 +946,8 @@ select{
   width: 100%;
 }
 
-.w-56{
-  width: 14rem;
+.w-64{
+  width: 16rem;
 }
 
 .max-w-6xl{
@@ -1044,10 +1056,6 @@ select{
   align-items: center;
 }
 
-.justify-start{
-  justify-content: flex-start;
-}
-
 .justify-end{
   justify-content: flex-end;
 }
@@ -1093,12 +1101,16 @@ select{
        column-gap: 0.5rem;
 }
 
+.gap-y-1{
+  row-gap: 0.25rem;
+}
+
 .gap-y-3{
   row-gap: 0.75rem;
 }
 
-.gap-y-1{
-  row-gap: 0.25rem;
+.gap-y-4{
+  row-gap: 1rem;
 }
 
 .space-x-8 > :not([hidden]) ~ :not([hidden]){
@@ -1257,6 +1269,10 @@ select{
   padding: 0.5rem;
 }
 
+.p-3{
+  padding: 0.75rem;
+}
+
 .p-4{
   padding: 1rem;
 }
@@ -1298,11 +1314,6 @@ select{
   padding-right: 1.5rem;
 }
 
-.px-8{
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .py-1{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1328,6 +1339,11 @@ select{
   padding-bottom: 2rem;
 }
 
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .pb-1{
   padding-bottom: 0.25rem;
 }
@@ -1338,10 +1354,6 @@ select{
 
 .pb-4{
   padding-bottom: 1rem;
-}
-
-.pb-8{
-  padding-bottom: 2rem;
 }
 
 .pb-9{
@@ -1998,10 +2010,5 @@ select{
   .lg\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
-  }
-
-  .lg\:px-9{
-    padding-left: 2.25rem;
-    padding-right: 2.25rem;
   }
 }
