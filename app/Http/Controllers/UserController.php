@@ -26,7 +26,7 @@ class UserController extends Controller
 
         $users = User::searchByNameOrEmail($query)
             ->orderBy('id', 'desc')
-            ->paginate(8);
+            ->paginate(25);
 
         return view('admin.users.index', compact('users'));
     }

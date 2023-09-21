@@ -27,7 +27,7 @@ class ProductsController extends Controller
 
         $products = Product::searchByNameOrDescription($query)
             ->orderBy('id', 'desc')
-            ->paginate(8);
+            ->paginate(25);
 
         return view('admin.products.index', compact('products'));
     }
