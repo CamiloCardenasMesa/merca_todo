@@ -39,7 +39,7 @@ class CartController extends Controller
         }
 
         return redirect()->back()
-            ->with('status', trans('products.update_product'));
+            ->with('status', trans('cart.updated_cart'));
     }
 
     public function destroy(string $rowId): RedirectResponse

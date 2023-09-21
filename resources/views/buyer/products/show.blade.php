@@ -6,7 +6,7 @@
             </div>
             <div class="flex">
                 <x-auth-session-status class="mr-2" :status="session('status')" />
-                <x-cart-button href="{{ route('buyer.cart.index') }}">
+                <x-cart-button class="text-sm p-3" href="{{ route('buyer.cart.index') }}">
                     ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
                 </x-cart-button>
             </div>
