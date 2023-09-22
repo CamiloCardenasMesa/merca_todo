@@ -3,9 +3,8 @@
         {{ trans('order.purchase_orders') }}
     </x-slot>
 
-<x-article-layout>
-    @if (count($orders))
-        <div class="p-8 bg-white border-b border-gray-200">
+    <x-article-layout>
+        @if (count($orders))
             <table class="container">
                 <thead>
                     <tr class="bg-gray-100 text-center">
@@ -33,18 +32,17 @@
                     </tbody>
                 @endforeach
             </table>
-        </div>
-    @else
-        <div class="grid justify-center text-center gap-3">
-            <div class="font-oswald text-3xl text-gray-800 leading-tight">
-                {{ trans('order.empty_order') }}
+        @else
+            <div class="grid justify-center text-center gap-3">
+                <div class="font-oswald text-3xl text-gray-800 leading-tight">
+                    {{ trans('order.empty_order') }}
+                </div>
+                <div>
+                    <x-button-link href="{{ route('welcome') }}">
+                        {{ trans('buttons.add_products') }}
+                    </x-button-link>
+                </div>
             </div>
-            <div>
-                <x-button-link href="{{ route('welcome') }}">
-                    {{ trans('buttons.add_products') }}
-                </x-button-link>
-            </div>
-        </div>
-    @endif
-</x-article-layout>
+        @endif
+    </x-article-layout>
 </x-app-layout>
