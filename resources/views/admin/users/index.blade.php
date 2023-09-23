@@ -30,7 +30,7 @@
                     <th class="border border-gray-300 px-4 py-2">{{ trans('auth.name') }}</th>
                     <th class="border border-gray-300 px-4 py-2">{{ trans('auth.email') }}</th>
                     <th class="border border-gray-300 px-4 py-2">{{ trans('auth.role') }}</th>
-                    @can(App\Constants\Permissions::USER_LIST)
+                    @can(App\Constants\Permissions::USER_SHOW)
                         <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                     @endcan
                     @can(App\Constants\Permissions::USER_EDIT)
@@ -54,7 +54,7 @@
                                 @endforeach
                             @endif
                         </td>
-                        @can(App\Constants\Permissions::USER_LIST)
+                        @can(App\Constants\Permissions::USER_SHOW)
                             <td class="border border-gray-300 px-4 py-2 text-center">
                                 <x-button-link href="{{ route('admin.users.show', $user) }}">
                                     {{ trans('buttons.show') }}

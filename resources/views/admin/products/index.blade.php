@@ -32,7 +32,7 @@
                         <th class="border border-gray-300">{{ trans('products.image') }}</th>
                         <th class="border border-gray-300 px-4 py-2">{{ trans('products.name') }}</th>
                         <th class="border border-gray-300 px-4 py-2">{{ trans('products.price') }}</th>
-                        @can(App\Constants\Permissions::PRODUCT_LIST)
+                        @can(App\Constants\Permissions::PRODUCT_SHOW)
                             <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                         @endcan
                         @can(App\Constants\Permissions::PRODUCT_EDIT)
@@ -59,7 +59,7 @@
                                 {{ $product->price }}
                             </td>
 
-                            @can(App\Constants\Permissions::PRODUCT_LIST)
+                            @can(App\Constants\Permissions::PRODUCT_SHOW)
                             <td class="border border-gray-300 px-4 py-2 text-center">
                                 <x-button-link href="{{ route('admin.products.show', $product) }}">
                                     {{ trans('buttons.show') }}

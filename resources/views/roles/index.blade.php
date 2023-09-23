@@ -8,22 +8,18 @@
 
     <x-article-layout>
         <div class="flex items-center">
-            <div>
-                @can(App\Constants\Permissions::ROLE_CREATE)
-                <div>
-                    <x-button-link href="{{ route('roles.create') }}">
-                        {{ trans('buttons.create_role') }}
-                    </x-button-link>
-                </div>
-                @endcan
-            </div>
+            @can(App\Constants\Permissions::ROLE_CREATE)
+                <x-button-link class="mb-3" href="{{ route('roles.create') }}">
+                    {{ trans('buttons.create_role') }}
+                </x-button-link>
+            @endcan
         </div>
-        <table class="container mt-8">
+        <table class="container">
             <thead>
                 <tr class="bg-gray-100">
                     <th class="border border-gray-300 px-4 py-2">ID</th>
                     <th class="border border-gray-300 px-4 py-2">{{ trans('auth.role') }}</th>
-                    @can('view', App\Models\Role::class)
+                    @can(App\Constants\Permissions::ROLE_SHOW)
                         <th class="border border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                     @endcan
                     @can(App\Constants\Permissions::ROLE_EDIT)
@@ -39,10 +35,11 @@
                     <tr>
                         <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->id }}</td>
                         <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->name }}</td>
-                        @can('view', $role)
+                        @can(App\Constants\Permissions::ROLE_SHOW)
                             <td class="border border-gray-300 px-4 py-2 text-center">
                                 <x-button-link href="{{ route('roles.show', $role->id) }}">
-                                    {{ trans('buttons.show') }}</x-button-link>
+                                    {{ trans('buttons.show') }}
+                                </x-button-link>
                             </td>
                         @endcan
                         @can('update', $role)
