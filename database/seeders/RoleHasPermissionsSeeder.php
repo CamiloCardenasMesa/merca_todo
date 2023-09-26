@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Constants\Roles;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -10,7 +11,7 @@ class RoleHasPermissionsSeeder extends Seeder
 {
     public function run(): void
     {
-        $admin = Role::findByName('admin');
+        $admin = Role::findByName(Roles::ADMIN);
         $admin->syncPermissions(Permission::all());
     }
 }
