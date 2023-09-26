@@ -26,7 +26,7 @@ class BuyerController extends Controller
     {
         if (!$product->enable) {
             return redirect()->route('welcome')
-                         ->with('status', 'Sorry! this product is not available at the moment');
+                ->with('status', trans('products.not_available'));
         }
 
         return view('buyer.products.show', compact('product'));

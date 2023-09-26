@@ -24,7 +24,7 @@
                 @endcan
             </div>
         </div>
-        <table class="container mt-8">
+        <table class="container mt-4">
             <thead>
                 <tr class="bg-gray-100 ">
                     <th class="border border-gray-300 px-4 py-2">{{ trans('auth.name') }}</th>
@@ -50,7 +50,9 @@
                         <td class="border border-gray-300 px-4 py-2 text-left">
                             @if (!empty($user->getRoleNames()))
                                 @foreach ($user->getRoleNames() as $role)
-                                    <label class="badge badge-success">{{ $role }}</label>
+                                    <label class="badge badge-success">
+                                        {{ trans('role.' . $role) }}
+                                    </label>
                                 @endforeach
                             @endif
                         </td>

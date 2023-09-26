@@ -52,7 +52,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('admin.users.index')
-            ->with('status', 'User created successfully');
+            ->with('status', trans('users.created'));
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
@@ -70,7 +70,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('admin.users.index')
-            ->with('status', 'User updated successfully');
+            ->with('status', trans('users.updated'));
     }
 
     public function edit(User $user): View
@@ -87,7 +87,7 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')
-            ->with('status', 'User deleted successfully');
+            ->with('status', trans('users.deleted'));
     }
 
     public function toggle(User $user): RedirectResponse
@@ -97,7 +97,7 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('admin.users.index')
-            ->with('status', 'User updated successfully.');
+            ->with('status', trans('users.updated'));
     }
     public function dashboard()
     {

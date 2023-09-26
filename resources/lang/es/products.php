@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'created' => 'Producto creado corréctamente',
+    'updated' => 'Producto actualizado corréctamente',
+    'deleted' => 'Producto eliminado corréctamente',
+    'not_available' => 'El producto no se encuentra disponible en este momento',
     'welcome' => 'Bienvenido',
     'product_list' => 'Lista de productos',
     'product_name' => 'Producto: ',
@@ -17,9 +21,7 @@ return [
     'search_failure' => 'No hay resultados para tu búsqueda, inténtalo con otra palabra',
     'header' => 'Crea un nuevo producto con este formulario',
     'delete' => 'Estas seguro que deseas eliminar este producto?',
-    'add_product' => 'Producto agregado exitosamente',
     'update_product' => 'El producto ha sido actualizado correctamente',
-    'delete_product' => 'El producto ha sido eliminado del carrito',
     'download_file' => 'Tu archivo está listo para descargar',
     'import' => 'Importar archivo de productos',
     'thanks' => 'Gracias por utilizar nuestros servicios',

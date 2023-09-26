@@ -42,7 +42,13 @@
 
                         <div class="flex flex-grow flex-col">
                             <x-label for="roles">{{ trans('auth.role') }}</x-label>
-                            <x-select name="roles" id="roles" :options="$roles" />
+                            <x-select name="roles" id="roles" 
+                                :options="[
+                                    'admin' => __('role.admin'),
+                                    'guest' => __('role.guest'),
+                                    'buyer' => __('role.buyer'),
+                                ]" 
+                            />
                         </div>
                     </div>
                     <div class="mt-9">

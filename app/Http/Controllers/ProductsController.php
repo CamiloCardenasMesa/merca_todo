@@ -49,13 +49,12 @@ class ProductsController extends Controller
         $this->productAction->execute($request, $product);
 
         return redirect()->route('admin.products.index')
-            ->with('status', 'Product updated successfully.');
+            ->with('status', trans('products.updated'));
     }
 
     public function create()
     {
         $categories = Category::all();
-
         return view('admin.products.create', compact('categories'));
     }
 
@@ -64,7 +63,7 @@ class ProductsController extends Controller
         $this->productAction->execute($request);
 
         return redirect()->route('admin.products.index')
-            ->with('status', 'Product created successfully.');
+            ->with('status', trans('products.created'));
     }
 
     public function destroy(Product $product): RedirectResponse
@@ -74,7 +73,7 @@ class ProductsController extends Controller
         Storage::disk('images')->delete($product->image);
 
         return redirect()->route('admin.products.index')
-            ->with('status', 'Product deleted successfully.');
+            ->with('status', trans('products.deleted'));
     }
 
     public function toggle(Product $product): RedirectResponse
@@ -84,6 +83,6 @@ class ProductsController extends Controller
         $product->save();
 
         return redirect()->route('admin.products.index')
-            ->with('status', 'Product updated successfully.');
+            ->with('status', trans('products.updated'));
     }
 }

@@ -24,11 +24,13 @@
                     <td class="border border-gray-300 px-4 py-2 text-center">{{ $user->name }}</td>
                     <td class="border border-gray-300 px-4 py-2 text-center">{{ $user->email }}</td>
                     <td class="border border-gray-300 px-4 py-2 text-center">
-                        @if(!empty($user->getRoleNames()))
-                        @foreach($user->getRoleNames() as $v)
-                            <label class="badge badge-success">{{ $v }}</label>
-                        @endforeach
-                    @endif
+                        @if (!empty($user->getRoleNames()))
+                            @foreach ($user->getRoleNames() as $role)
+                                <label>
+                                    {{ trans('role.' . $role) }}
+                                </label>
+                            @endforeach
+                        @endif
                     </td>
                     <td class="border border-gray-300 px-4 py-2 text-center">{{ $user->email_verified_at }}</td>
                     <td class="border border-gray-300 px-4 py-2 text-center">{{ $user->created_at }}</td>

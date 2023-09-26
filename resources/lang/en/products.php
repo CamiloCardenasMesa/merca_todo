@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'created' => 'Product created successfully',
+    'updated' => 'Product updated successfully',
+    'deleted' => 'Product deleted successfully',
+    'not_available' => 'Sorry! this product is not available at the moment',
     'welcome' => 'Welcome',
     'product_list' => 'Product list',
     'product_name' => 'Product: ',
@@ -17,9 +21,7 @@ return [
     'search_failure' => 'No results for your search, try with another word',
     'header' => 'Create a new product with this form',
     'delete' => 'Are you sure you want to remove this product?',
-    'add_product' => 'Product successfully added',
     'update_product' => 'Product has been successfully updated',
-    'delete_product' => 'Product has been removed from your cart',
     'import' => 'Import Products file',
     'download_file' => 'Your file is ready for download',
     'thanks' => 'Thank you for using our services',

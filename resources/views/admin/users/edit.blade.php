@@ -33,11 +33,13 @@
                     
                     <div class="flex flex-grow flex-col">
                         <x-label for="roles">{{ trans('auth.role') }}</x-label>
-                        <select class="rounded-md border-gray-300" name="roles" id="roles">
-                            @foreach ($roles as $userRole)
-                                <option value="{{ $userRole }}">{{ $userRole }}</option>
-                            @endforeach
-                        </select>
+                        <x-select name="roles" id="roles" 
+                            :options="[
+                                'admin' => __('role.admin'),
+                                'guest' => __('role.guest'),
+                                'buyer' => __('role.buyer'),
+                            ]" 
+                        />
                     </div>
                 </div>
 
