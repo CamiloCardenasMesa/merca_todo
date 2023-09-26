@@ -9,6 +9,9 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&family=Martian+Mono:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -24,7 +27,7 @@
         {{-- @if(App\Http\Controllers\BuyerController::userHasPermission()) --}}
         @auth
             <aside id="nav-menu" class="text-white hidden w-64 md:block bg-gray-800">   
-                <header class="bg-gray-200 flex items-center px-6 h-16 border-spacing-0">
+                <header class="bg-[#737282] flex items-center px-6 h-16 border-spacing-0">
                     <div class="flex items-center pl-3">
                         <a href="{{ route('welcome') }}">
                             <img src="{{ asset('images/logo_mercatodo.png') }}" alt="MercaTodo logo" width="140">
@@ -147,8 +150,8 @@
         {{-- @endif --}}
 
         <div class="flex flex-col flex-grow">
-            <div class="bg-gray-200 px-6">
-                <div class="bg-gray-200 sm:px-6 lg:px-8">
+            <div class="bg-[#737282] px-6">
+                <div class="bg-[#737282] sm:px-6 lg:px-8">
                     <nav class= "flex items-center justify-between max-w-7xl h-16 mx-auto sm:px-6 lg:px-8">
                         @guest
                             <a class="flex flex-col items-center" href="{{ route('welcome') }}">
@@ -210,8 +213,8 @@
                     </nav>
                 </div>
             </div>
-            <div class="bg-gray-100 px-6">
-                <main class="bg-gray-100 sm:px-6 lg:px-8">
+            <div class="bg-[#EBEBF1] px-6">
+                <main class="sm:px-6 lg:px-8 bg-mi-color">
                     <header class="max-w-7xl py-6 mx-auto sm:px-6 lg:px-8">
                         <div>
                             <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">

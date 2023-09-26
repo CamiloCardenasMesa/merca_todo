@@ -11,7 +11,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 <div class="flex flex-grow flex-col">
                     <x-label for="image">{{ trans('products.image') }}</x-label>
-                    <input class="file:rounded-md file:shadow-sm file:border-gray-100" type="file" name="image" id="image" required />
+                    <input class="file:rounded-md file:shadow-sm file:border-gray-200 cursor-pointer" type="file"
+                        name="image" id="image" required />
                     @error('image')
                         <small>*{{ $message }}</small>
                     @enderror
@@ -27,7 +28,9 @@
 
                 <div class="flex flex-grow flex-col">
                     <x-label for="description">{{ trans('products.description') }}</x-label>
-                    <textarea  class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="description" id="description">{{ old('description') }}</textarea>
+                    <textarea
+                        class="rounded-md border-gray-200 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                        name="description" id="description">{{ old('description') }}</textarea>
                     @error('description')
                         <small>*{{ $message }}</small>
                     @enderror
@@ -56,7 +59,6 @@
                             <option value={{ $category->id }}> {{ $category->name }} </option>
                         @endforeach
                     </select>
-                    {{-- <x-select name="categories" :options="$categories" /> --}}
                 </div>
             </div>
             <div class="flex items-center justify-center mt-9">

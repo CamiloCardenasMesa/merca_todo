@@ -26,7 +26,8 @@
                                 @foreach($permission as $value)
                                     <div>
                                         <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
-                                            {{ $value->name }}</label>
+                                            {{ $value->name }}
+                                        </label>
                                     </div>
                                 @endforeach
                                 <div class="flex justify-center gap-2 mt-6">
