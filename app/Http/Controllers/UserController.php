@@ -33,7 +33,8 @@ class UserController extends Controller
 
     public function show(User $user): View
     {
-        return view('admin.users.show', compact('user'));
+        $role = $user->getRoleNames()->first();
+        return view('admin.users.show', compact('user', 'role'));
     }
 
     public function create(): View
@@ -58,18 +59,21 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $input = $request->all();
+
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
             $input = Arr::except($input, ['password']);
         }
+
         $user = User::find($user->id);
         $user->update($input);
+
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
 
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('admin.users.index')
+        return redirect()->route('admin.users.show', $user)
             ->with('status', trans('users.updated'));
     }
 
