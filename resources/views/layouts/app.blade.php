@@ -41,7 +41,7 @@
                             </svg>
                         </div>
                         <nav>
-                            <div class="p-6">
+                            <div class="py-9 px-6 ">
                                 <ul class="flex flex-col flex-grow gap-y-1 text-white font-medium">
                                     @can(
                                         App\Constants\Permissions::USER_LIST,
@@ -213,9 +213,9 @@
                     </nav>
                 </div>
             </div>
-            <div class="bg-[#EBEBF1] px-6">
+            <div class="bg-[#EBEBF1] px-6 pb-9">
                 <main class="sm:px-6 lg:px-8 bg-mi-color">
-                    <header class="max-w-7xl py-6 mx-auto sm:px-6 lg:px-8">
+                    <header class="max-w-7xl pt-9 pb-5 mx-auto sm:px-6 lg:px-8">
                         <div>
                             <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
                                 {{ $header }}

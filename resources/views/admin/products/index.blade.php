@@ -26,9 +26,9 @@
                     @endcan
                 </div>
             </div>
-            <table class="container mt-8">
+            <table class="container mt-4">
                 <thead>
-                    <tr class="bg-[#EBEBF1]">
+                    <tr class="bg-gray-100">
                         <th class="border-t border-l border-gray-300">{{ trans('products.image') }}</th>
                         <th class="border-t border-gray-300 px-4 py-2">{{ trans('products.name') }}</th>
                         <th class="border-t border-gray-300 px-4 py-2">{{ trans('products.price') }}</th>
