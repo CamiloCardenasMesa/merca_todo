@@ -14,6 +14,11 @@ class CreateAdminUserSeeder extends Seeder
             'name' => 'Valentina Luna',
             'email' => 'GeneralManager@gmail.com',
             'password' =>'programacion123',
+            'phone' => '3016569188',
+            'birthday' => '1998-05-30',
+            'address' => 'Calle 51 # 82 - 190 bloque 8 apto 911',
+            'city' => 'Medellín',
+            'country' => 'Colombia', 
         ]);
 
         $user->assignRole(Roles::ADMIN);

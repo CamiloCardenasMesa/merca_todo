@@ -17,9 +17,7 @@
             <div>
                 @can(App\Constants\Permissions::USER_CREATE)
                     <div>
-                        <x-button-link href="{{ route('admin.users.create') }}">
-                        {{ trans('buttons.create_user') }}
-                        </x-button>
+                        <x-button-link href="{{ route('admin.users.create') }}">{{ trans('buttons.create_user') }}</x-button>
                     </div>
                 @endcan
             </div>

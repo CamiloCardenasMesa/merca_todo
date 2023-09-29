@@ -8,4 +8,12 @@ return [
     'permissions_of' => 'Permissions of: ',
     'name' => 'Name',
     'user' => 'User: ',
+    'phone' => 'Phone',
+    'birthday' => 'Birthday',
+    'address' => 'Address',
+    'city' => 'City',
+    'country' => 'Country',
+    'enable' => 'Enable',
+    'disable' => 'Disable',
+    'status' => 'Status',
 ];
