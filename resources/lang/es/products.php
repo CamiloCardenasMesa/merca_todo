@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'created' => 'Producto creado corréctamente',
-    'updated' => 'Producto actualizado corréctamente',
-    'deleted' => 'Producto eliminado corréctamente',
+    'created' => 'Producto creado correctamente',
+    'updated' => 'Producto actualizado correctamente',
+    'deleted' => 'Producto eliminado correctamente',
     'not_available' => 'El producto no se encuentra disponible en este momento',
     'welcome' => 'Bienvenido',
     'product_list' => 'Lista de productos',
