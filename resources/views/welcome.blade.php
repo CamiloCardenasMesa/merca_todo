@@ -2,14 +2,12 @@
     <x-slot name="header">
         <div class="flex justify-between">
             {{ trans('products.welcome') }}
-            <div class="flex">
-                <x-auth-session-status class="mr-2" :status="session('status')" />
-                <x-cart-button class="text-sm p-3" href="{{ route('buyer.cart.index') }}">
-                    ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
-                </x-cart-button>
-            </div>
+            <x-cart-button class="text-sm" href="{{ route('buyer.cart.index') }}">
+                ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
+            </x-cart-button>
         </div>
     </x-slot>
+
 
     <x-article-layout>
         @if ($products->isEmpty())
@@ -24,11 +22,12 @@
                 </div>
             </div>
         @else
-            <div class="flex justify-between items-center mb-9">
-                <form class="flex justify-between" action="{{ route('welcome') }}" method="GET">
+            <div class="flex flex-col items-start mb-6 gap-6 justify-between lg:flex-row lg:items-center">
+                <form class="flex" action="{{ route('welcome') }}" method="GET">
                     <x-input type="text" name="query" placeholder="{{ trans('placeholders.welcome_search') }}" />
                     <x-button class="ml-2">{{ trans('buttons.search') }}</x-button>
                 </form>
+                <x-auth-session-status class="pb-2 pt-1" :status="session('status')" />
             </div>
         @endif
         <div class="container">

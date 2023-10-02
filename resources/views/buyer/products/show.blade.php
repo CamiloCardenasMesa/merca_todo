@@ -1,18 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <div class="flex justify-between font-semibold font-oswald text-4xl text-gray-800 leading-tight">
-                {{ ucwords($product->name) }} 
-            </div>
-            <div class="flex">
-                <x-auth-session-status class="mr-2" :status="session('status')" />
-                <x-cart-button class="text-sm p-3" href="{{ route('buyer.cart.index') }}">
-                    ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
-                </x-cart-button>
-            </div>
+            {{ ucwords($product->name) }} 
+            <x-cart-button class="text-sm" href="{{ route('buyer.cart.index') }}">
+                ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
+            </x-cart-button>
         </div>
     </x-slot>
     <x-article-layout>
+        <div class="flex justify-start">
+            <x-auth-session-status :status="session('status')" />
+        </div>
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 p-12 border">
                 <div class="flex flex-col justify-center">
