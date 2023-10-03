@@ -8,11 +8,13 @@ class select extends Component
 {
     public $name;
     public $options;
+    public $value;
 
-    public function __construct($name, $options)
+    public function __construct($name, $options, $value = null)
     {
         $this->name = $name;
         $this->options = $options;
+        $this->value = $value;
     }
 
     public function render()
