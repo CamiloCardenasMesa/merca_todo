@@ -79,11 +79,8 @@ class UserController extends Controller
 
     public function edit(User $user): View
     {
-        $user = User::find($user->id);
-        $roles = Role::pluck('name', 'name')->all();
-        $userRole = $user->roles->pluck('name', 'name')->all();
-
-        return view('admin.users.edit', compact('user', 'roles', 'userRole'));
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     public function destroy(User $user): RedirectResponse

@@ -56,14 +56,14 @@
                 </div>
                 
                 <div class="flex flex-grow flex-col">
-                    <x-label for="roles">{{ trans('auth.role') }}</x-label>
-                    <x-select name="roles" id="roles" 
-                        :options="[
-                            'admin' => __('role.admin'),
-                            'guest' => __('role.guest'),
-                            'buyer' => __('role.buyer'),
-                        ]" 
-                    />
+                    <x-label for="role">{{ trans('auth.role') }}</x-label>
+                    <select id="role" name="roles" >
+                        @foreach ($roles as $role)
+                            <option value="{{ $role->name }}" {{ $role->name == old('roles', $user->getRoleNames()->first()) ? 'selected' : '' }}>
+                                {{ trans('role.' . $role->name ) }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </x-section>
             <div class="flex items-center justify-start mt-6 gap-3">
