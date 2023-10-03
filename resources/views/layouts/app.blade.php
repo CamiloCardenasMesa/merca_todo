@@ -85,18 +85,20 @@
         <div class="flex">
             {{-- navigation bar --}}
             @auth
-            <aside id="nav-menu" class="text-white md:block hidden bg-gray-800 w-72">   
-                <div class="flex-1">
-                    <div id="nav-close" class="p-2 flex sm:hidden justify-end text-2xl cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+            @if ($userHasPermissions)
+                <aside id="nav-menu" class="text-white md:block hidden bg-gray-800 w-72">   
+                    <div class="flex-1">
+                        <div id="nav-close" class="p-2 flex sm:hidden justify-end text-2xl cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </div>
+                        <div>
+                            @include('layouts.navigation')
+                        </div>
                     </div>
-                    <div>
-                        @include('layouts.navigation')
-                    </div>
-                </div>
-            </aside>
+                </aside>
+                @endif
             @endauth
 
             {{-- main --}}
