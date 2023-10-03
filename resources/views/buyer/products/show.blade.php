@@ -8,8 +8,8 @@
         </div>
     </x-slot>
     <x-article-layout>
-        <div class="flex justify-start">
-            <x-auth-session-status :status="session('status')" />
+        <div class="flex justify-end">
+            <x-auth-session-status class="mb-6 pb-2 pt-1" :status="session('status')" />
         </div>
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 p-12 border">
