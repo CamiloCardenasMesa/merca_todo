@@ -18,7 +18,7 @@ class CreateAdminUserSeeder extends Seeder
             'birthday' => '1998-05-30',
             'address' => 'Calle 51 # 82 - 190 bloque 8 apto 911',
             'city' => 'Medellín',
-            'country' => 'Colombia', 
+            'country' => 'Colombia',
         ]);
 
         $user->assignRole(Roles::ADMIN);

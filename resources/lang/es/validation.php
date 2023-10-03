@@ -156,8 +156,8 @@ return [
         'city' => 'ciudad',
         'country' => 'país',
         'role' => 'rol',
-        'permission' => "permisos",
+        'permission' => 'permisos',
         'price' => 'precio',
-        'stock' => 'existencias'
+        'stock' => 'existencias',
     ],
 ];

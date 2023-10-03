@@ -18,10 +18,10 @@ class UpdateUserRequest extends FormRequest
             'email' => 'required|email',
             'password' => 'same:confirm-password',
             'roles' => 'required',
-            'phone' => 'nullable|string', 
-            'birthday' => 'nullable|date_format:Y-m-d', 
-            'address' => 'nullable|string', 
-            'city' => 'nullable|string',   
+            'phone' => 'nullable|string',
+            'birthday' => 'nullable|date_format:Y-m-d',
+            'address' => 'nullable|string',
+            'city' => 'nullable|string',
             'country' => 'nullable|string',
         ];
     }
