@@ -12,7 +12,7 @@
             @method('PUT')
             <div class="flex flex-col lg:flex-row gap-6">
                 <div class="flex basis-2/6">
-                    <div class="flex flex-col bg-gray-100 justify-between">
+                    <div class="flex flex-col bg-gray-100 rounded-lg justify-between">
                         <img class="rounded-lg shadow-sm" src="{{ asset('storage/' .$product->image) }}" alt="image">
                         <div class="p-2 md:p-6 lg:px-6 lg:py-5">
                             <x-label for="product_image">{{ trans('products.image') }}</x-label>
