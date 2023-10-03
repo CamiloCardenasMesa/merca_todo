@@ -55,7 +55,7 @@
     
                     <div class="flex flex-grow flex-col">
                         <x-label for="categories">{{ trans('products.category') }}</x-label>
-                        <select class="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="category_id" id="category_id">
+                        <select class="rounded-md border-gray-200 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="category_id" id="category_id">
                             @foreach ($categories as $category)
                                 <option value={{ $category->id }}> {{ $category->name }} </option>
                             @endforeach

@@ -57,7 +57,7 @@
                 
                 <div class="flex flex-grow flex-col">
                     <x-label for="role">{{ trans('auth.role') }}</x-label>
-                    <select id="role" name="roles" >
+                    <select class="rounded-md border-gray-200 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="role" name="roles" >
                         @foreach ($roles as $role)
                             <option value="{{ $role->name }}" {{ $role->name == old('roles', $user->getRoleNames()->first()) ? 'selected' : '' }}>
                                 {{ trans('role.' . $role->name ) }}
