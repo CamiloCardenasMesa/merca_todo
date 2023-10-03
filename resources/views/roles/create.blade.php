@@ -12,8 +12,8 @@
             <x-section>
                 <div class="grid"><br>
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                        <x-label for="name">{{ trans('auth.role') }}</x-label>
-                        <x-input type="text" name="name" placeholder="{{ trans('placeholders.create_role') }}"/><br>
+                        <x-label for="role">{{ trans('auth.role') }}</x-label>
+                        <x-input id="role" type="text" name="role" placeholder="{{ trans('placeholders.create_role') }}"/><br>
 
                         <div class="mb-6">
                             <strong>{{ trans('auth.permissions') }}</strong>
