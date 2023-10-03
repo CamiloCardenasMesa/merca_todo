@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
@@ -12,11 +11,13 @@
             @csrf
             @method('PUT')
             <div class="flex flex-col lg:flex-row gap-6">
-                <div class="basis-2/5">
-                    <div>
+                <div class="flex basis-2/6">
+                    <div class="flex flex-col bg-gray-100 justify-between">
                         <img class="rounded-lg shadow-sm" src="{{ asset('storage/' .$product->image) }}" alt="image">
-                        <x-label for="product_image">{{ trans('products.image') }}</x-label>
-                        <x-input class="rounded-md border-gray-300" id="product_image" type="file" name="image" value="{{$product->image}}"/>
+                        <div class="p-2 md:p-6 lg:px-6 lg:py-5">
+                            <x-label for="product_image">{{ trans('products.image') }}</x-label>
+                            <x-input class="rounded-md border-gray-300" id="product_image" type="file" name="image" value="{{$product->image}}"/>
+                        </div>
                     </div>
                 </div>
                 <div class="flex-1">
@@ -27,26 +28,20 @@
                         </textarea>
                     </div>
                     <x-section>
-                        <div class="flex flex-grow flex-col">
-                            <x-label for="name">{{ trans('products.name') }}</x-label>
-                            <x-input id="name" type="text" name="name" value="{{old('name', $product->name)}}"/>
-                        </div>
-    
-                        <div class="flex flex-grow flex-col">
-                            <x-label for="price">{{ trans('products.price') }}</x-label>
-                            <x-input id="price" type="text" name="price" value="{{ old('price', $product->price) }}"/>
-                        </div>
-    
-                        <div class="flex flex-grow flex-col">
-                            <x-label for="stock">{{ trans('products.stock') }}</x-label>
-                            <x-input id="stock" type="text" name="stock" value="{{ old('stock', $product->stock) }}"/>
-                        </div>
-    
+                        @foreach (['name', 'price', 'stock'] as $field)
+                            <div class="flex flex-grow flex-col">
+                                <x-label for="{{ $field }}">{{ trans('products.' . $field) }}</x-label>
+                                <x-input id="{{ $field }}" type="{{ $field == 'price' || $field == 'stock' ? 'number' : 'text' }}" name="{{ $field }}" value="{{ old($field, $product->$field) }}"/>
+                            </div>
+                        @endforeach
+                    
                         <div class="flex flex-grow flex-col">
                             <x-label for="category_id">{{ trans('products.category') }}</x-label>
-                            <select id="category_id" class="rounded-md border-gray-300" name="category_id" id="category_id">
+                            <select id="category_id" name="category_id" class="rounded-md border-gray-200 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}"> {{$category->name }} </option>
+                                    <option value="{{ $category->id }}" {{ $category->id == old('category_id', $product->category_id) ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
