@@ -34,7 +34,7 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->id }}</td>
-                        <td class="border border-gray-300 px-4 py-2 text-center">{{ $role->name }}</td>
+                        <td class="border border-gray-300 px-4 py-2 text-center">{{ trans('role.' . $role->name) }}</td>
                         @can(App\Constants\Permissions::ROLE_SHOW)
                             <td class="border border-gray-300 px-4 py-2 text-center">
                                 <x-button-link href="{{ route('roles.show', $role->id) }}">
