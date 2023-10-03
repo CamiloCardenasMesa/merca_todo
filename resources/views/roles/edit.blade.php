@@ -10,13 +10,14 @@
             @csrf
             @method('PATCH')
             <x-section>
-                <x-auth-validation-errors :errors="$errors" />
                 <div>
-                    <div>
-                        <x-label for="name">{{ trans('auth.name') }}</x-label>
-                        <x-input type="text" name="name" value="{{ $role->name }}"/>
-                    </div><br>
-                    <strong>{{ trans('auth.permissions') }}</strong>
+                    <x-auth-validation-errors class="mb-6" :errors="$errors" />
+                    <div class="mb-6">
+                        <x-label for="name">{{ trans('auth.role') }}</x-label>
+                        <x-input id="name" type="text" name="name" value="{{ $role->name }}"/>
+                    </div>
+                    <x-label value="{{ trans('auth.permissions') }}" />
+
                     @foreach($permission as $value)
                     <div>
                         <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
