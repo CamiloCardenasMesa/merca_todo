@@ -104,13 +104,14 @@
             {{-- main --}}
             <div class="bg-[#EBEBF1] px-6 pb-9 w-full overflow-auto">
                 {{-- hamburquer --}}
-                
                 <div class="h-6 my-3">
-                    <div id="hamburger" class="rounded-md flex sm:hidden justify-start items-center text-2xl cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </div>    
+                    @if ($userHasPermissions)
+                        <div id="hamburger" class="rounded-md flex sm:hidden justify-start items-center text-2xl cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                        </div>    
+                    @endif
                 </div>
             
 
