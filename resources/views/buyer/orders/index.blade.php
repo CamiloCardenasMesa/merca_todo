@@ -36,16 +36,11 @@
                 @endforeach
             </table>
         @else
-            <div class="grid justify-center text-center gap-3">
-                <div class="font-oswald text-3xl text-gray-800 leading-tight">
-                    {{ trans('order.empty_order') }}
-                </div>
-                <div>
-                    <x-button-link href="{{ route('welcome') }}">
-                        {{ trans('buttons.add_products') }}
-                    </x-button-link>
-                </div>
-            </div>
+            <x-search-failure 
+                :search-failure-text="trans('order.empty_order')"  
+                :back-button-text="trans('buttons.add_products')"
+                :route="route('welcome')"
+            />
         @endif
     </x-article-layout>
 </x-app-layout>

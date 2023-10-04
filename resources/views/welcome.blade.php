@@ -2,25 +2,16 @@
     <x-slot name="header">
         <div class="flex justify-between">
             {{ trans('products.welcome') }}
-            <x-cart-button class="text-sm" href="{{ route('buyer.cart.index') }}">
-                ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
-            </x-cart-button>
         </div>
     </x-slot>
 
-
     <x-article-layout>
         @if ($products->isEmpty())
-            <div class="grid justify-center text-center gap-3">
-                <div class="font-oswald text-3xl text-gray-800 leading-tight">
-                    {{ trans('products.search_failure') }}
-                </div>
-                <div>
-                    <x-button-link href="{{ route('welcome') }}">
-                        {{ trans('buttons.back') }}
-                    </x-button-link>
-                </div>
-            </div>
+            <x-search-failure 
+                :search-failure-text="trans('products.search_failure')"
+                :route="route('welcome')"
+                :back-button-text="trans('buttons.back')"
+            />
         @else
             <div class="flex flex-col items-start mb-6 gap-6 justify-between lg:flex-row lg:items-center">
                 <form class="flex" action="{{ route('welcome') }}" method="GET">
@@ -35,14 +26,14 @@
                 @foreach ($products as $product)
                     <div
                         class="bg-gray-100 flex flex-col justify-between transition duration-500 
-                                ease-in-out border-collapse 
-                                shadow-md hover:shadow-gray-500 ">
-                        <div class="">
+                                ease-in-out
+                                shadow-md shadow-gray-250 hover:shadow-gray-400">
+                        <div>
                             <a href="{{ route('buyer.products.show', $product) }}">
                                 <img src="{{ asset('storage/' . $product->image) }}"alt="image" />
                             </a>
                         </div>
-                        <div class="grid grid-cols-1 gap-y-3 p-6">
+                        <div class="grid grid-cols-1 gap-y-2 p-6">
                             <div class="font-oswald text-3xl">
                                 {{ ucwords($product->name) }}
                             </div>
