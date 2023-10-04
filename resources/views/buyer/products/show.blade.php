@@ -2,17 +2,12 @@
     <x-slot name="header">
         <div class="flex justify-between">
             {{ ucwords($product->name) }} 
-            <x-cart-button class="text-sm" href="{{ route('buyer.cart.index') }}">
-                ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
-            </x-cart-button>
+            <x-auth-session-status :status="session('status')" />
         </div>
     </x-slot>
     <x-article-layout>
-        <div class="flex justify-end">
-            <x-auth-session-status class="mb-6 pb-2 pt-1" :status="session('status')" />
-        </div>
         <div class="container">
-            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 p-12 border">
+            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 p-9 border-gray-500 shadow-sm rounded-lg">
                 <div class="flex flex-col justify-center">
                     <img  width="500px" src="{{ asset('storage/'.$product->image) }}" alt="image">
                 </div>
@@ -23,10 +18,10 @@
                     <div class="my-6 tracking-wider">
                         {{ $product->description }}
                     </div>
-                    <div class="text-red-700 font-bold text-2xl mb-2">
+                    <div class="text-red-700 font-medium text-2xl">
                         $ {{ $product->price }}
                     </div>
-                    <div>
+                    <div class="mt-6">
                         <form action="{{route('buyer.cart.store')}}" method="POST">
                             @csrf
                             <input type="hidden" value="{{ $product->id }}" name="product_id">
