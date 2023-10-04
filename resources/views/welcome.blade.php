@@ -27,7 +27,7 @@
                     <div
                         class="bg-gray-100 flex flex-col justify-between transition duration-500 
                                 ease-in-out
-                                shadow-md shadow-gray-250 hover:shadow-gray-400">
+                                shadow-md shadow-gray-250 hover:shadow-gray-400 overflow-auto">
                         <div>
                             <a href="{{ route('buyer.products.show', $product) }}">
                                 <img src="{{ asset('storage/' . $product->image) }}"alt="image" />
@@ -55,7 +55,7 @@
             </div>
         </div>
     </x-article-layout>
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-6">
         {{ $products->links() }}
     </div>
 </x-app-layout>
