@@ -30,39 +30,41 @@
                 <div class="overflow-auto">
                     <table class="container mt-4">
                         <thead>
-                            <tr class="bg-gray-100">
-                                <th class="border-t border-l border-gray-300">{{ trans('products.image') }}</th>
-                                <th class="border-t border-gray-300 px-4 py-2">{{ trans('products.name') }}</th>
-                                <th class="border-t border-gray-300 px-4 py-2">{{ trans('products.price') }}</th>
+                            <tr class="bg-gray-100 text-left border border-gray-300">
+                                <th class="border-b border-gray-300 lg:px-4 py-2 text-center px-6">{{ trans('products.image') }}</th>
+                                <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.name') }}</th>
+                                <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.price') }}</th>
+                                <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.category') }}</th>
                                 @can(App\Constants\Permissions::PRODUCT_SHOW)
-                                    <th class="border-t border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
+                                    <th class="border-b border-gray-300 px-4 py-2">{{ trans('buttons.show') }}</th>
                                 @endcan
                                 @can(App\Constants\Permissions::PRODUCT_EDIT)
-                                    <th class="border-t border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
-                                    <th class="border-t border-gray-300 px-4 py-2">{{ trans('buttons.state') }}</th>
+                                    <th class="border-b border-gray-300 px-4 py-2">{{ trans('buttons.edit') }}</th>
+                                    <th class="border-b border-gray-300 px-4 py-2">{{ trans('buttons.state') }}</th>
                                 @endcan
                                 @can(App\Constants\Permissions::PRODUCT_DELETE)
-                                    <th class="border-t border-r border-gray-300 px-4 py-2">{{ trans('buttons.delete') }}</th>
+                                    <th class="border-b border-r border-gray-300 px-4 py-2">{{ trans('buttons.delete') }}</th>
                                 @endcan
                             </tr>
                         </thead>
-                        @foreach ($products as $product)
-                            <tbody>
-                                <tr>
-                                    <td class="border-t border-l border-gray-300 text text-center">
-                                        <div class="flex items-center justify-center  w-full">
-                                            <img width="120px" src="{{ asset('storage/' . $product->image) }}" alt="image">
-                                        </div>
+                        <tbody>
+                            @foreach ($products as $product)
+                                <tr class="even:bg-gray-100 odd:bg-white">
+                                    <td class="border-b pl-6 py-4">
+                                        <img class="rounded-full h-16 w-16" src="{{ asset('storage/' . $product->image) }}" alt="image">
                                     </td>
-                                    <td class="border-t border-gray-300 px-4 py-2 text-center">
+                                    <td class="border-b px-4 w-1/4">
                                         {{ ucwords($product->name) }}
                                     </td>
-                                    <td class="border-t border-gray-300 px-4 py-2 text-center">
-                                        {{ $product->price }}
+                                    <td class="border-b px-4">
+                                        $ {{ $product->price }}
+                                    </td>
+                                    <td class="border-b px-4">
+                                        {{ $product->category->name }}
                                     </td>
         
                                     @can(App\Constants\Permissions::PRODUCT_SHOW)
-                                    <td class="border-t border-gray-300 px-4 py-2 text-center">
+                                    <td class="border-b borde px-4">
                                         <x-button-link href="{{ route('admin.products.show', $product) }}">
                                             {{ trans('buttons.show') }}
                                         </x-button-link>
@@ -70,12 +72,12 @@
                                     @endcan
         
                                     @can(App\Constants\Permissions::PRODUCT_EDIT)
-                                    <td class="border-t border-gray-300 px-4 py-2 text-center">
+                                    <td class="border-b px-4">
                                         <x-button-link href="{{ route('admin.products.edit', $product) }}">
                                             {{ trans('buttons.edit') }}
                                         </x-button-link>
                                     </td>
-                                    <td class="border-t border-gray-300 px-4 py-2 text-center">
+                                    <td class="border-b px-4">
                                         <form action="{{ route('admin.products.toggle', $product) }}" method="POST">
                                             @csrf
                                             {{ method_field('PUT') }}
@@ -87,7 +89,7 @@
                                     @endcan
         
                                     @can(App\Constants\Permissions::PRODUCT_DELETE)
-                                    <td class="border-t border-r border-gray-300 px-4 py-2 text-center">
+                                    <td class="border-b border-r px-4">
                                         <form action="{{ route('admin.products.destroy', $product) }}" method="POST">
                                             @csrf
                                             {{ method_field('DELETE') }}
@@ -98,8 +100,8 @@
                                     </td>
                                     @endcan
                                 </tr>
-                            </tbody>
-                        @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             @else

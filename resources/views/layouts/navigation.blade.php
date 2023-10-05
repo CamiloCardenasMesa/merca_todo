@@ -2,27 +2,6 @@
     <div class="sm:py-0 md:py-9 lg:py-12 px-6">
         <ul class="flex flex-col flex-grow gap-y-1 font-medium">
             @can(
-                App\Constants\Permissions::USER_LIST,
-                App\Constants\Permissions::PRODUCT_LIST,
-                App\Constants\Permissions::ORDER_LIST,
-                App\Constants\Permissions::ROLE_LIST
-            )
-            <li>
-                <a href={{ route('admin.users.dashboard') }}>
-                    <div class="flex items-center gap-x-2 py-2 rounded-md hover:bg-gray-700 px-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" />
-                            </svg>                                              
-                            <div>
-                                {{ trans('navigation.dashboard') }}
-                            </div>
-                        </div>
-                    </a>
-                </li>
-            @endcan
-
-            @can(
             App\Constants\Permissions::PRODUCT_LIST,
             App\Constants\Permissions::PRODUCT_CREATE,
             App\Constants\Permissions::PRODUCT_EDIT,

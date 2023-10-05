@@ -23,8 +23,8 @@
 <body>
     <div class="flex flex-col">
         {{-- header --}}
-        <div class="bg-[#737282] max-w-full ">
-            <div class="bg-[#737282] flex justify-between ">
+        <div class="bg-[#27333D] max-w-full ">
+            <div class="bg-[#27333D] flex justify-between ">
                 <header class="flex items-center pl-6 lg:pl-8 h-16">
                     <div class="flex items-center">
                         <a href="{{ route('welcome') }}">
@@ -81,7 +81,7 @@
             {{-- navigation bar --}}
             @auth
             @if ($userHasPermissions)
-                <aside id="nav-menu" class="text-white md:block hidden bg-gray-800 w-72">   
+                <aside id="nav-menu" class="text-white md:block hidden bg-[#212130] w-72">   
                     <div class="flex-1">
                         <div id="nav-close" class="p-2 flex sm:hidden justify-end text-2xl cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
@@ -121,7 +121,7 @@
             </div>
         </div>
     </div>
-    <footer class="p-4 bg-gray-100 md:p-8 lg:p-10">
+    <footer class="bg-[#EBEBF1] p-4 md:p-8 lg:p-10 items-center justify-center" style="background-image: url('{{ asset('images/fondis.png') }}')">
         <div class="mx-auto max-w-screen-xl text-center">
             <a href="{{ route('welcome') }}" class="inline-flex justify-center items-center">
                 <img src="{{ asset('images/login_logo_mercatodo.png') }}" alt="mercatodo" class="h-16" >    
