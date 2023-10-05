@@ -13,13 +13,19 @@ class ProductFactory extends Factory
 
     public function definition(): array
     {
+        $instrumentsPath = public_path('images\instruments');
+
+        $imageFiles = glob($instrumentsPath . '\*.{jpg,png,gif}', GLOB_BRACE);
+
+        $randomImage = $imageFiles[array_rand($imageFiles)];
+
         return [
-            'name' => $this->faker->word(),
-            'description' => $this->faker->paragraph(5),
+            'name' => $this->faker->sentence(3, true),
+            'description' => $this->faker->paragraph(10, 10),
             'price' => $this->faker->randomNumber(6),
             'stock' => $this->faker->numberBetween(2, 10),
             'enable' => true,
-            'image' => Storage::disk('images')->put('product_images', new File('public/images/imagen_de_muestra2.jpg')),
+            'image' => Storage::disk('images')->putFile('product_images', new File($randomImage)),
         ];
     }
 }
