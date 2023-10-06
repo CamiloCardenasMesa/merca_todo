@@ -23,59 +23,55 @@
 <body>
     <div class="flex flex-col">
         {{-- header --}}
-        <div class="bg-[#27333D] max-w-full ">
-            <div class="bg-[#27333D] flex justify-between ">
-                <header class="flex items-center pl-6 lg:pl-8 h-16">
-                    <div class="flex items-center">
-                        <a href="{{ route('welcome') }}">
-                            <img class="h-20 md:h-28 lg:h-30" src="{{ asset('images/logo_mercatodo.png') }}" alt="MercaTodo logo">
-                        </a>
-                    </div>
-                </header>
-                <div class="flex items-center">
-                    <div class="flex justify-end">
-                        @auth
-                            <x-dropdown align="right" width="48">
-                                <x-slot name="trigger">
-                                    <button
-                                        class="flex items-center text-sm font-medium text-white hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-500 focus:border-gray-300 transition duration-150 ease-in-out">
-                                        <div>{{ Auth::user()->name }}</div>
-
-                                        <div class="ml-1">
-                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </x-slot>
-
-                                <x-slot name="content">
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                                            {{ trans('auth.logout') }}
-                                        </x-dropdown-link>
-                                    </form>
-                                </x-slot>
-                            </x-dropdown>
-                        @endauth
-                        @guest
-                            <div>
-                                <a href="{{ route('login') }}" class="text-sm mr-2 font-medium text-white">{{ trans('auth.login') }}</a>
-                            </div>
-                            <div>
-                                <a href="{{ route('register') }}" class="mx-2 text-sm font-medium text-white">{{ trans('auth.register') }}</a>
-                            </div>
-                        @endguest
-                    </div>
-                    <x-cart-button class="text-sm" href="{{ route('buyer.cart.index') }}">
-                        ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
-                    </x-cart-button>
-                </div>
+        <header class="bg-[#27333D] flex justify-between">
+            <div class="flex items-center pl-6 lg:pl-8 h-16">
+                <a href="{{ route('welcome') }}">
+                    <img class="h-20 md:h-28 lg:h-30" src="{{ asset('images/logo_mercatodo.png') }}" alt="MercaTodo logo">
+                </a>
             </div>
-        </div>
+            <div class="flex items-center">
+                <div class="flex justify-end">
+                    @auth
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <button
+                                    class="flex items-center text-sm font-medium text-white hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-500 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>{{ Auth::user()->name }}</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        {{ trans('auth.logout') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot>
+                        </x-dropdown>
+                    @endauth
+                    @guest
+                        <div>
+                            <a href="{{ route('login') }}" class="text-sm mr-2 font-medium text-white">{{ trans('auth.login') }}</a>
+                        </div>
+                        <div>
+                            <a href="{{ route('register') }}" class="mx-2 text-sm font-medium text-white">{{ trans('auth.register') }}</a>
+                        </div>
+                    @endguest
+                </div>
+                <x-cart-button class="text-sm" href="{{ route('buyer.cart.index') }}">
+                    ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }})
+                </x-cart-button>
+            </div>
+        </header>
 
         <div class="flex">
             {{-- navigation bar --}}
