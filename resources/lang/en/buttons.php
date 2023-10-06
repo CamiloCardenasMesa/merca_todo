@@ -4,7 +4,7 @@ return [
     'show' => 'Show',
     'search_products' => 'Search for other products',
     'edit' => 'Edit',
-    'state' => 'State',
+    'state' => 'Off/On',
     'delete' => 'Delete',
     'save' => 'Save',
     'enable' => 'Enable',

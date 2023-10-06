@@ -104,7 +104,6 @@
                 @endif
             </div>
         
-
             <main class="sm:px-6 lg:px-8 bg-mi-color">
                 <header class="max-w-7xl sm:pt-0 pb-6 mx-auto sm:px-6 lg:px-8">
                     <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
