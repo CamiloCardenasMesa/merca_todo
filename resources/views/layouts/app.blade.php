@@ -21,16 +21,14 @@
     
 </head>
 <body>
-    <div class="flex flex-col">
-        {{-- header --}}
-        <header class="bg-[#27333D] flex justify-between">
-            <div class="flex items-center pl-6 lg:pl-8 h-16">
-                <a href="{{ route('welcome') }}">
-                    <img class="h-20 md:h-28 lg:h-30" src="{{ asset('images/logo_mercatodo.png') }}" alt="MercaTodo logo">
-                </a>
-            </div>
+    {{-- header --}}
+    <nav class="bg-[#27333D]">
+        <header class="flex items-center justify-between h-16 mx-auto px-6 lg:px-8 @if(auth()->check()) md:mr-10 lg:mr-12 @else max-w-7xl @endif">
+            <a href="{{ route('welcome') }}">
+                <img class="h-20 md:h-28 lg:h-30" src="{{ asset('images/logo_mercatodo.png') }}" alt="MercaTodo logo">
+            </a>
             <div class="flex items-center">
-                <div class="flex justify-end">
+                <div class="flex">
                     @auth
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
@@ -60,10 +58,10 @@
                     @endauth
                     @guest
                         <div>
-                            <a href="{{ route('login') }}" class="text-sm mr-2 font-medium text-white">{{ trans('auth.login') }}</a>
+                            <a href="{{ route('login') }}" class="text-sm font-medium text-white">{{ trans('auth.login') }}</a>
                         </div>
                         <div>
-                            <a href="{{ route('register') }}" class="mx-2 text-sm font-medium text-white">{{ trans('auth.register') }}</a>
+                            <a href="{{ route('register') }}" class="ml-2 text-sm font-medium text-white">{{ trans('auth.register') }}</a>
                         </div>
                     @endguest
                 </div>
@@ -72,51 +70,52 @@
                 </x-cart-button>
             </div>
         </header>
+    </nav>
 
-        <div class="flex">
-            {{-- navigation bar --}}
-            @auth
-            @if ($userHasPermissions)
-                <aside id="nav-menu" class="text-white md:block hidden bg-[#212130] w-72">   
-                    <div class="flex-1">
-                        <div id="nav-close" class="p-2 flex sm:hidden justify-end text-2xl cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </div>
-                        <div>
-                            @include('layouts.navigation')
-                        </div>
+    <div class="flex">
+        {{-- navigation bar --}}
+        @auth
+        @if ($userHasPermissions)
+            <aside id="nav-menu" class="text-white md:block hidden bg-[#212130] w-72">   
+                <div class="flex-1">
+                    <div id="nav-close" class="p-2 flex sm:hidden justify-end text-2xl cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
                     </div>
-                </aside>
-                @endif
-            @endauth
-
-            {{-- main --}}
-            <div class="bg-[#EBEBF1] px-6 pb-6 w-full overflow-auto">
-                {{-- hamburquer --}}
-                <div class="h-6 my-3">
-                    @if ($userHasPermissions)
-                        <div id="hamburger" class="rounded-md inline-flex sm:hidden justify-start items-center text-2xl cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </div>    
-                    @endif
+                    <div>
+                        @include('layouts.navigation')
+                    </div>
                 </div>
-            
+            </aside>
+            @endif
+        @endauth
 
-                <main class="sm:px-6 lg:px-8 bg-mi-color">
-                    <header class="max-w-7xl sm:pt-0 pb-6 mx-auto sm:px-6 lg:px-8">
-                        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
-                            {{ $header }}
-                        </h2>
-                    </header>
-                    {{ $slot }}
-                </main>
+        {{-- main --}}
+        <div class="bg-[#EBEBF1] px-6 pb-6 w-full overflow-auto">
+            {{-- hamburquer --}}
+            <div class="h-6 my-3">
+                @if ($userHasPermissions)
+                    <div id="hamburger" class="rounded-md inline-flex sm:hidden justify-start items-center text-2xl cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </div>    
+                @endif
             </div>
+        
+
+            <main class="sm:px-6 lg:px-8 bg-mi-color">
+                <header class="max-w-7xl sm:pt-0 pb-6 mx-auto sm:px-6 lg:px-8">
+                    <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+                        {{ $header }}
+                    </h2>
+                </header>
+                {{ $slot }}
+            </main>
         </div>
     </div>
+
     <footer class="bg-[#EBEBF1] p-4 md:p-8 lg:p-10 items-center justify-center" style="background-image: url('{{ asset('images/fondis.png') }}')">
         <div class="mx-auto max-w-screen-xl text-center">
             <a href="{{ route('welcome') }}" class="inline-flex justify-center items-center">
