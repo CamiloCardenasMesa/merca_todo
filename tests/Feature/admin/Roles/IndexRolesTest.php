@@ -33,7 +33,7 @@ class IndexRolesTest extends TestCase
 
         //Assert
         $response->assertOk();
-        $response->assertViewIs('roles.index');
+        $response->assertViewIs('admin.roles.index');
         $response->assertViewHas('roles');
         $this->assertAuthenticated();
     }

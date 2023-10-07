@@ -32,7 +32,7 @@ class EditRolesTest extends TestCase
 
         //Assert
         $response->assertOk();
-        $response->assertViewIs('roles.edit');
+        $response->assertViewIs('admin.roles.edit');
         $response->assertViewHas('role');
         $this->assertAuthenticated();
     }
