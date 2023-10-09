@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class select extends Component
+class Select extends Component
 {
     public $name;
     public $options;
