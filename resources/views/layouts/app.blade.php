@@ -25,7 +25,7 @@
     <nav class="bg-[#27333D]">
         <header class="flex items-center justify-between h-16 mx-auto px-6 lg:px-8 @if(auth()->check()) md:mr-10 lg:mr-12 @else max-w-7xl @endif">
             <a href="{{ route('welcome') }}">
-                <img class="h-20 md:h-28 lg:h-30" src="{{ asset('images/logo_mercatodo.png') }}" alt="MercaTodo logo">
+                <img class="h-10 md:h-12 lg:h-14" src="{{ asset('images/login_logo_mercatodo.png') }}" alt="MercaTodo logo">
             </a>
             <div class="flex items-center">
                 <div class="flex">
