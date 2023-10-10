@@ -710,6 +710,10 @@ select{
   border-width: 0;
 }
 
+.fixed{
+  position: fixed;
+}
+
 .absolute{
   position: absolute;
 }
@@ -724,6 +728,10 @@ select{
 
 .right-0{
   right: 0px;
+}
+
+.top-0{
+  top: 0px;
 }
 
 .z-0{
@@ -773,6 +781,10 @@ select{
   margin-left: -1px;
 }
 
+.-mt-px{
+  margin-top: -1px;
+}
+
 .mb-1{
   margin-bottom: 0.25rem;
 }
@@ -807,6 +819,10 @@ select{
 
 .ml-1{
   margin-left: 0.25rem;
+}
+
+.ml-12{
+  margin-left: 3rem;
 }
 
 .ml-2{
@@ -849,6 +865,10 @@ select{
   margin-top: 1.5rem;
 }
 
+.mt-8{
+  margin-top: 2rem;
+}
+
 .block{
   display: block;
 }
@@ -871,6 +891,10 @@ select{
 
 .hidden{
   display: none;
+}
+
+.h-10{
+  height: 2.5rem;
 }
 
 .h-16{
@@ -957,8 +981,16 @@ select{
   width: 2rem;
 }
 
+.w-auto{
+  width: auto;
+}
+
 .w-full{
   width: 100%;
+}
+
+.max-w-6xl{
+  max-width: 72rem;
 }
 
 .max-w-7xl{
@@ -967,6 +999,10 @@ select{
 
 .max-w-screen-xl{
   max-width: 1280px;
+}
+
+.max-w-xl{
+  max-width: 36rem;
 }
 
 .flex-1{
@@ -1179,6 +1215,10 @@ select{
   border-right-width: 1px;
 }
 
+.border-t{
+  border-top-width: 1px;
+}
+
 .border-gray-200{
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
@@ -1386,6 +1426,10 @@ select{
   padding-top: 1.5rem;
 }
 
+.pt-8{
+  padding-top: 2rem;
+}
+
 .text-left{
   text-align: left;
 }
@@ -1461,6 +1505,10 @@ select{
   line-height: 1.25rem;
 }
 
+.leading-7{
+  line-height: 1.75rem;
+}
+
 .leading-tight{
   line-height: 1.25;
 }
@@ -1475,6 +1523,21 @@ select{
 
 .tracking-widest{
   letter-spacing: 0.1em;
+}
+
+.text-gray-200{
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.text-gray-300{
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.text-gray-400{
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .text-gray-500{
@@ -2024,6 +2087,11 @@ select{
 
 @media (prefers-color-scheme: dark){
 
+  .dark\:bg-gray-900{
+    --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+  }
+
   .dark\:text-gray-400{
     --tw-text-opacity: 1;
     color: rgb(156 163 175 / var(--tw-text-opacity));
@@ -2114,8 +2182,8 @@ select{
     display: block;
   }
 
-  .md\:h-28{
-    height: 7rem;
+  .md\:h-12{
+    height: 3rem;
   }
 
   .md\:grid-cols-1{
@@ -2153,6 +2221,10 @@ select{
 
   .lg\:mr-12{
     margin-right: 3rem;
+  }
+
+  .lg\:h-14{
+    height: 3.5rem;
   }
 
   .lg\:grid-cols-1{
