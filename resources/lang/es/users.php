@@ -16,4 +16,6 @@ return [
     'enable' => 'Habilitado',
     'disable' => 'Deshabilitado',
     'status' => 'Estado',
+    'delete' => 'Estás seguro que quieres eliminar este usuario?',
+
 ];

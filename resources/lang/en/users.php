@@ -16,4 +16,5 @@ return [
     'enable' => 'Enable',
     'disable' => 'Disable',
     'status' => 'Status',
+    'delete' => 'Are you sure you want to remove this user?',
 ];
