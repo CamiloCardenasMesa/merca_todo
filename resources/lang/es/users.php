@@ -13,9 +13,9 @@ return [
     'address' => 'Dirección',
     'city' => 'Ciudad',
     'country' => 'País',
-    'enable' => 'Habilitado',
-    'disable' => 'Deshabilitado',
+    'enabled' => 'El usuario ha sido habilitado',
+    'disabled' => 'El usuario ha sido deshabilitado',
     'status' => 'Estado',
     'delete' => 'Estás seguro que quieres eliminar este usuario?',
-
+    'toggle' => 'Este usuario no puede ser deshabilitado',
 ];

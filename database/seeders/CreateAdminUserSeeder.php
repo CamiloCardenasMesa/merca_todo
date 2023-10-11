@@ -21,6 +21,6 @@ class CreateAdminUserSeeder extends Seeder
             'country' => 'Colombia',
         ]);
 
-        $user->assignRole(Roles::ADMIN);
+        $user->assignRole(Roles::SUPER_ADMIN);
     }
 }

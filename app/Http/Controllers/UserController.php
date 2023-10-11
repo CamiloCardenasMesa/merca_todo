@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
+use App\Constants\Roles;
 
 class UserController extends Controller
 {
@@ -40,7 +41,6 @@ class UserController extends Controller
     public function create(): View
     {
         $roles = Role::all()->pluck('name', 'name');
-
         return view('admin.users.create', compact('roles'));
     }
 
@@ -93,15 +93,15 @@ class UserController extends Controller
 
     public function toggle(User $user): RedirectResponse
     {
-        $user->enable = !$user->enable;
+        if ($user->hasRole(Roles::SUPER_ADMIN)) {
+            return redirect()->back()
+                ->with('status', trans('users.toggle'));
+        }
 
+        $user->enable = !$user->enable;
         $user->save();
 
         return redirect()->route('admin.users.index')
-            ->with('status', trans('users.updated'));
-    }
-    public function dashboard()
-    {
-        return view('admin.users.dashboard');
+            ->with('status', $user->enable ? trans('users.enabled') : trans('users.disabled'));
     }
 }

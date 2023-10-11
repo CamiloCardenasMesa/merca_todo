@@ -13,8 +13,9 @@ return [
     'address' => 'Address',
     'city' => 'City',
     'country' => 'Country',
-    'enable' => 'Enable',
-    'disable' => 'Disable',
+    'enabled' => 'The user has been enabled',
+    'disabled' => 'The user has been disabled',
     'status' => 'Status',
     'delete' => 'Are you sure you want to remove this user?',
+    'toggle' => 'This user cannot be disabled',
 ];
