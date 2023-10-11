@@ -28,11 +28,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $credentials = $request->only('email', 'password');
 
-        $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            if (auth()->user()->enable) {
+                $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+                return redirect()->intended(RouteServiceProvider::HOME);
+            } else {
+                Auth::logout();
+                return redirect()->route('login')
+                    ->with('status', trans('auth.account_disabled'));
+            }
+        }
+
+        return back()->withErrors([
+            'email' => trans('auth.login_error')
+        ]);
     }
 
     /**
