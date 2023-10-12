@@ -150,6 +150,7 @@ return [
         'email' => 'correo electrónico',
         'description' => 'descripción',
         'password' => 'contraseña',
+        'confirm_password' => 'confirmar contraseña',
         'phone' => 'teléfono',
         'address' => 'dirección',
         'birthday' => 'cumpleaños',

@@ -13,6 +13,8 @@ return [
     'address' => 'Dirección',
     'city' => 'Ciudad',
     'country' => 'País',
+    'enable' => "Habilitado",
+    'disable' => "Deshabilitado",
     'enabled' => 'El usuario ha sido habilitado',
     'disabled' => 'El usuario ha sido deshabilitado',
     'status' => 'Estado',

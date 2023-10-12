@@ -7,6 +7,7 @@ return [
     'state' => 'Estado',
     'delete' => 'Eliminar',
     'save' => 'Guardar',
+    'cancel' => 'Cancelar',
     'enable' => 'Habilitar',
     'disable' => 'Deshabilitar',
     'back' => 'Volver',
