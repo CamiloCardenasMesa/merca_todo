@@ -27,20 +27,20 @@
 
                 <div class="flex flex-grow flex-col">
                     <x-label for="password">{{ trans('auth.password') }}</x-label>
-                    <x-input type="password" name="password" id="password"/>
+                    <x-input type="password" name="password" id="password" value="{{ old('password') }}"/>
                     @error('password')
                         <small>*{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="flex flex-grow flex-col">
-                    <x-label for="confirm-password">{{ trans('auth.confirm_password') }}</x-label>
-                    <x-input type="password" name="confirm-password" id="confirm-password"/>
+                    <x-label for="confirm_password">{{ trans('auth.confirm_password') }}</x-label>
+                    <x-input type="password" name="confirm_password" id="confirm_password"/>
                 </div>
 
                 <div class="flex flex-grow flex-col">
                     <x-label for="phone">{{ trans('users.phone') }}</x-label>
-                    <x-input type="text" name="phone" id="phone"/>
+                    <x-input type="text" name="phone" id="phone" value="{{ old('phone') }}" />
                     @error('phone')
                         <small>*{{ $message }}</small>
                     @enderror
@@ -48,7 +48,7 @@
 
                 <div class="flex flex-grow flex-col">
                     <x-label for="address">{{ trans('users.address') }}</x-label>
-                    <x-input type="text" name="address" id="address"/>
+                    <x-input type="text" name="address" id="address" value="{{ old('address') }}"/>
                     @error('address')
                         <small>*{{ $message }}</small>
                     @enderror
@@ -56,7 +56,7 @@
 
                 <div class="flex flex-grow flex-col">
                     <x-label for="birthday">{{ trans('users.birthday') }}</x-label>
-                    <x-input type="date" name="birthday" id="birthday"/>
+                    <x-input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" />
                     @error('birthday')
                         <small>*{{ $message }}</small>
                     @enderror
@@ -64,7 +64,7 @@
 
                 <div class="flex flex-grow flex-col">
                     <x-label for="city">{{ trans('users.city') }}</x-label>
-                    <x-input type="text" name="city" id="city"/>
+                    <x-input type="text" name="city" id="city" value="{{ old('city') }}"/>
                     @error('city')
                         <small>*{{ $message }}</small>
                     @enderror
@@ -72,7 +72,7 @@
 
                 <div class="flex flex-grow flex-col">
                     <x-label for="country">{{ trans('users.country') }}</x-label>
-                    <x-input type="text" name="country" id="country"/>
+                    <x-input type="text" name="country" id="country" value="{{ old('country') }}"/>
                     @error('country')
                         <small>*{{ $message }}</small>
                     @enderror

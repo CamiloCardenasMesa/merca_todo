@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
-            {{ ucwords($user->name) }}
+           Estás editando al usuario {{ ucwords($user->name) }}
         </h2>
     </x-slot>
     <x-article-layout>
@@ -26,8 +26,8 @@
                 </div>
                 
                 <div class="flex flex-grow flex-col">
-                    <x-label for="confirm-password">{{ trans('auth.confirm_password') }}</x-label>
-                    <x-input type="password" name="confirm-password"/>
+                    <x-label for="confirm_password">{{ trans('auth.confirm_password') }}</x-label>
+                    <x-input type="password" name="confirm_password"/>
                 </div>
 
                 <div class="flex flex-grow flex-col">
@@ -67,7 +67,7 @@
                 </div>
             </x-section>
             <div class="flex items-center justify-start mt-6 gap-3">
-                <x-button-link href="{{ route('admin.users.index') }}">{{ trans('buttons.back') }}</x-button-link>
+                <x-button-link href="{{ route('admin.users.index') }}">{{ trans('buttons.cancel') }}</x-button-link>
                 <x-button>{{ trans('buttons.save') }}</x-button>
             </div>
         </form>
