@@ -23,10 +23,9 @@ class UpdateUserRequest extends FormRequest
                 'email',
                 Rule::unique('users', 'email')->ignore($user->id),
             ],
-            'password' => 'nullable|confirmed',
+            'password' => 'same:confirm_password',
             'roles' => 'required',
             'phone' => [
-                'required',
                 Rule::unique('users', 'phone')->ignore($user->id),
             ],
             'birthday' => 'nullable|date_format:Y-m-d',
