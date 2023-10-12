@@ -17,7 +17,7 @@ class DeleteImages extends Command
 
     public function handle(): void
     {
-        $disk = Storage::disk('images'); 
+        $disk = Storage::disk('images');
         $files = $disk->files('product_images');
 
         foreach ($files as $file) {

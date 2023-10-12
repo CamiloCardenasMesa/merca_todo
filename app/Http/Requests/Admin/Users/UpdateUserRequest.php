@@ -35,5 +35,4 @@ class UpdateUserRequest extends FormRequest
             'country' => 'nullable|string',
         ];
     }
-
 }

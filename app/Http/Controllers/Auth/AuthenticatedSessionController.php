@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         return back()->withErrors([
-            'email' => trans('auth.login_error')
+            'email' => trans('auth.login_error'),
         ]);
     }
 

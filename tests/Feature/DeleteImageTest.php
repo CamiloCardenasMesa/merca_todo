@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use Illuminate\Support\Facades\Artisan;
-use Tests\TestCase;
 use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
 
 class DeleteImageTest extends TestCase
 {
@@ -31,8 +31,3 @@ class DeleteImageTest extends TestCase
         $this->assertFalse($disk->exists($imagePath));
     }
 }
-
-
-
-
-
