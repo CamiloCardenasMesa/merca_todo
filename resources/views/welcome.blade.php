@@ -39,7 +39,7 @@
                             <form class="flex" action="{{ route('buyer.cart.store') }}" method="POST">
                                 @csrf
                                 <input type="hidden" value="{{ $product->id }}" name="product_id">
-                                <x-input class="w-16 h-9 mr-2" type="number" min="1" name="product_amount" required />
+                                <x-input class="w-16 h-9 mr-2" type="number" min="1" max="10" name="product_amount" required />
                                 <x-add-to-cart />
                             </form>
                         </div>
