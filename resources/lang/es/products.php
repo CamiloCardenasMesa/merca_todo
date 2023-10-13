@@ -6,6 +6,8 @@ return [
     'deleted' => 'Producto eliminado correctamente',
     'enable' => 'Habilitado',
     'disable' => 'Deshabilitado',
+    'enabled' => 'El producto ha sido habilitado',
+    'disabled' => 'El producto ha sido deshabilitado',
     'status' => 'Estado',
     'not_available' => 'El producto no se encuentra disponible en este momento',
     'welcome' => 'Bienvenido',

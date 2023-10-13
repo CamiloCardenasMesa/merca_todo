@@ -6,6 +6,8 @@ return [
     'deleted' => 'Product deleted successfully',
     'enable' => 'Enable',
     'disable' => 'Disable',
+    'enabled' => 'The product has been enabled',
+    'disabled' => 'The product has been disabled',
     'status' => 'Status',
     'not_available' => 'Sorry! this product is not available at the moment',
     'welcome' => 'Welcome',

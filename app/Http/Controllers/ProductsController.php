@@ -83,6 +83,6 @@ class ProductsController extends Controller
         $product->save();
 
         return redirect()->route('admin.products.index')
-            ->with('status', trans('products.updated'));
+            ->with('status', $product->enable ? trans('products.enabled') : trans('products.disabled'));
     }
 }
