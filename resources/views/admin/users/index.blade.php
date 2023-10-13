@@ -9,7 +9,7 @@
     <x-article-layout>
         @if (count($users))
             <div class="flex justify-between grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
-                <x-search-item route="{{ route('admin.users.index') }}" placeholder="{{ trans('placeholders.user_search') }}" />
+                <x-search-bar route="{{ route('admin.users.index') }}" placeholder="{{ trans('placeholders.user_search') }}" />
                 <div class="flex items-center lg:justify-end sm:justify-start">
                     @can(App\Constants\Permissions::USER_CREATE)
                         <x-button-actions

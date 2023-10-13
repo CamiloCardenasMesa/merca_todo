@@ -14,7 +14,7 @@
             />
         @else
             <div class="flex flex-col items-start justify-between lg:flex-row lg:items-center">
-                <x-search-item route="{{ route('welcome') }}" placeholder="{{ trans('placeholders.welcome_search') }}"/>
+                <x-search-bar route="{{ route('welcome') }}" placeholder="{{ trans('placeholders.welcome_search') }}"/>
                 <x-auth-session-status :status="session('status')" />
             </div>
         @endif

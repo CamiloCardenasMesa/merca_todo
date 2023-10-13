@@ -10,7 +10,7 @@
         <div class="bg-[#EBEBF1] border-b border-gray-200">
             @if (count($products))
                 <div class="grid grid-cols-1 items-center md:grid-cols-1 lg:grid-cols-2 gap-2">
-                    <x-search-item route="{{ route('admin.products.index') }}" placeholder="{{ trans('placeholders.welcome_search') }}"/>
+                    <x-search-bar route="{{ route('admin.products.index') }}" placeholder="{{ trans('placeholders.welcome_search') }}"/>
                     <div class="flex gap-2 justify-between md:justify-start lg:justify-end">
                         @can(App\Constants\Permissions::PRODUCT_CREATE)
                             <x-button-actions 
