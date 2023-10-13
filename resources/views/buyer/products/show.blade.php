@@ -27,7 +27,7 @@
                             <input type="hidden" value="{{ $product->id }}" name="product_id">
                             <x-label for="product_amount" :value="__(trans('products.quantity'))" /> 
                         <div class="flex flex-row mb-2">
-                                <x-input class="w-16 h-9 mr-2" type="number" min="1" name="product_amount" required />
+                                <x-input class="w-16 h-9 mr-2" type="number" min="1" max="10" name="product_amount" required />
                                 <x-add-to-cart />
                             </form>
                         </div>
