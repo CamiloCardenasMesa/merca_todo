@@ -7,7 +7,7 @@ use MyCLabs\Enum\Enum;
 class Permissions extends Enum
 {
     public const USER_LIST = 'user-list';
-    public const USER_SHOW = 'user_show';
+    public const USER_SHOW = 'user-show';
     public const USER_CREATE = 'user-create';
     public const USER_EDIT = 'user-edit';
     public const USER_DELETE = 'user-delete';
