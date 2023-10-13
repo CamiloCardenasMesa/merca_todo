@@ -392,7 +392,7 @@ video {
   display: none;
 }
 
-[type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{
+[type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -409,7 +409,7 @@ video {
   --tw-shadow: 0 0 #0000;
 }
 
-[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{
+[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
   --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
@@ -438,6 +438,11 @@ input::placeholder,textarea::placeholder{
 
 ::-webkit-date-and-time-value{
   min-height: 1.5em;
+  text-align: inherit;
+}
+
+::-webkit-datetime-edit{
+  display: inline-flex;
 }
 
 ::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{
@@ -452,17 +457,17 @@ select{
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
   -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+          print-color-adjust: exact;
 }
 
-[multiple]{
+[multiple],[size]:where(select:not([size="1"])){
   background-image: initial;
   background-position: initial;
   background-repeat: unset;
   background-size: initial;
   padding-right: 0.75rem;
   -webkit-print-color-adjust: unset;
-          color-adjust: unset;
+          print-color-adjust: unset;
 }
 
 [type='checkbox'],[type='radio']{
@@ -471,7 +476,7 @@ select{
           appearance: none;
   padding: 0;
   -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+          print-color-adjust: exact;
   display: inline-block;
   vertical-align: middle;
   background-origin: border-box;
@@ -554,6 +559,7 @@ select{
 }
 
 [type='file']:focus{
+  outline: 1px solid ButtonText;
   outline: 1px auto -webkit-focus-ring-color;
 }
 
