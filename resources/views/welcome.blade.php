@@ -8,9 +8,9 @@
     <x-article-layout>
         @if ($products->isEmpty())
             <x-search-failure 
-                :search-failure-text="trans('products.search_failure')"
-                :route="route('welcome')"
-                :back-button-text="trans('buttons.back')"
+                search-failure-text="{{ trans('products.search_failure') }}"
+                route="{{ route('welcome') }}"
+                back-button-text="{{ trans('buttons.back') }}"
             />
         @else
             <div class="flex flex-col items-start justify-between lg:flex-row lg:items-center">

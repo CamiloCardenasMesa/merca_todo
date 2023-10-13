@@ -1,3 +1,5 @@
+@props(['searchFailureText', 'route', 'backButtonText'])
+
 <div class="bg-gray-100 p-6 grid justify-center text-center gap-3">
     <div class="text-gray-800 text-lg">
         {{ $searchFailureText }}

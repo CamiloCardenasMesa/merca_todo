@@ -1,3 +1,5 @@
+@props(['name', 'label', 'value'])
+
 <div class="flex flex-col">
     <x-label for="{{ $name }}">
         {{ $label }}

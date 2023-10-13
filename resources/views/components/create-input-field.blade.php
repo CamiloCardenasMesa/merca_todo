@@ -1,3 +1,5 @@
+@props(['name', 'type', 'label', 'value', 'fieldsNonRequired', 'message', 'options', 'option'])
+
 @php
     $commonClasses = "rounded-md border-gray-200 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50";
     $fieldsNonRequired = [ 

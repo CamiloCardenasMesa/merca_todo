@@ -1,3 +1,5 @@
+@props(['route', 'svgPath', 'text', 'hoverBgClass'])
+
 <a href="{{ $route }}">
     <div class="inline-flex group p-2 border shadow border-gray-500 rounded-xl {{ $hoverBgClass }} text-gray-500 hover:text-white hover:border-white transition-all">
         <span class="hidden group-hover:inline-block px-1">{{ $text }}</span>

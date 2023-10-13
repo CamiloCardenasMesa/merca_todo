@@ -1,3 +1,5 @@
+@props(['route', 'placeholder'])
+
 <form class="flex items-center" action="{{ $route }}" method="GET">
     <input class="rounded-l-md border border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="query" placeholder="{{ $placeholder }}" />
     <button type="submit" class="inline-flex bg-white p-2 my-2 border border-gray-300 rounded-r-md shadow-sm transition-all duration-300 text-gray-500 hover:text-white hover:bg-green-500 hover:border-indigo-300 hover:ring hover:ring-indigo-200 focus:ring-opacity-50">

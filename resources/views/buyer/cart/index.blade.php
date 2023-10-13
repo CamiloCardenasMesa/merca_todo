@@ -86,9 +86,9 @@
             </div>
         @else
             <x-search-failure
-                :search-failure-text="trans('cart.empty_cart')"  
-                :back-button-text="trans('buttons.add_products')"
-                :route="route('welcome')"
+                search-failure-text="{{ trans('cart.empty_cart') }}"  
+                back-button-text="{{ trans('buttons.add_products') }}"
+                route="{{ route('welcome') }}"
             />
         @endif
     </x-article-layout>

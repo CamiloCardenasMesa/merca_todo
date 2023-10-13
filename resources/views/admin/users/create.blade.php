@@ -9,15 +9,15 @@
         <form action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <x-section>    
-                <x-input-field label="{{ trans('auth.name') }}" type="text" name="name" />
-                <x-input-field label="{{ trans('auth.email') }}" type="email" name="email" />
-                <x-input-field label="{{ trans('auth.password') }}" type="password" name="password"/>
-                <x-input-field label="{{ trans('auth.confirm_password') }}" type="password" name="confirm_password" />
-                <x-input-field label="{{ trans('users.phone') }}" type="text" name="phone"/>
-                <x-input-field label="{{ trans('users.address') }}" type="text" name="address"/>
-                <x-input-field label="{{ trans('users.birthday') }}" type="date" name="birthday"/>
-                <x-input-field label="{{ trans('users.city') }}" type="text" name="city" />
-                <x-input-field label="{{ trans('users.country') }}" type="text" name="country" />
+                <x-create-input-field label="{{ trans('auth.name') }}" type="text" name="name" />
+                <x-create-input-field label="{{ trans('auth.email') }}" type="email" name="email" />
+                <x-create-input-field label="{{ trans('auth.password') }}" type="password" name="password"/>
+                <x-create-input-field label="{{ trans('auth.confirm_password') }}" type="password" name="confirm_password" />
+                <x-create-input-field label="{{ trans('users.phone') }}" type="text" name="phone"/>
+                <x-create-input-field label="{{ trans('users.address') }}" type="text" name="address"/>
+                <x-create-input-field label="{{ trans('users.birthday') }}" type="date" name="birthday"/>
+                <x-create-input-field label="{{ trans('users.city') }}" type="text" name="city" />
+                <x-create-input-field label="{{ trans('users.country') }}" type="text" name="country" />
                 <div class="flex flex-grow flex-col">
                     <x-label for="roles">{{ trans('auth.role') }}</x-label>
                     <x-select name="roles" id="roles" 
