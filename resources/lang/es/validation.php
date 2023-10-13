@@ -146,6 +146,7 @@ return [
     */
 
     'attributes' => [
+        'image' => 'imagen',
         'name' => 'nombre',
         'email' => 'correo electrónico',
         'description' => 'descripción',

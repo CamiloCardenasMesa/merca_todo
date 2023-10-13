@@ -10,51 +10,15 @@
             @csrf
             @method('PUT')
             <x-section>
-                <div class="flex flex-grow flex-col">
-                    <x-label for="name">{{ trans('auth.name') }}</x-label>
-                    <x-input type="text" name="name" value="{{ $user->name }}"/>
-                </div>
-                
-                <div class="flex flex-grow flex-col">
-                    <x-label for="email">{{ trans('auth.email') }}</x-label>
-                    <x-input type="email" name="email" value="{{ $user->email }}"/>
-                </div>
-                
-                <div class="flex flex-grow flex-col">
-                    <x-label for="password">{{ trans('auth.password') }}</x-label>
-                    <x-input type="password" name="password"/>
-                </div>
-                
-                <div class="flex flex-grow flex-col">
-                    <x-label for="confirm_password">{{ trans('auth.confirm_password') }}</x-label>
-                    <x-input type="password" name="confirm_password"/>
-                </div>
-
-                <div class="flex flex-grow flex-col">
-                    <x-label for="phone">{{ trans('users.phone') }}</x-label>
-                    <x-input type="text" name="phone" value="{{ $user->phone }}"/>
-                </div>
-
-                <div class="flex flex-grow flex-col">
-                    <x-label for="address">{{ trans('users.address') }}</x-label>
-                    <x-input type="text" name="address" value="{{ $user->address }}"/>
-                </div>
-                
-                <div class="flex flex-grow flex-col">
-                    <x-label for="birthday">{{ trans('users.birthday') }}</x-label>
-                    <x-input type="date" name="birthday" value="{{ $user->birthday }}"/>
-                </div>
-                
-                <div class="flex flex-grow flex-col">
-                    <x-label for="city">{{ trans('users.city') }}</x-label>
-                    <x-input type="text" name="city" value="{{ $user->city }}"/>
-                </div>
-                
-                <div class="flex flex-grow flex-col">
-                    <x-label for="country">{{ trans('users.country') }}</x-label>
-                    <x-input type="text" name="country" value="{{ $user->country }}"/>
-                </div>
-                
+                <x-edit-input-field label="{{ trans('auth.name') }}" type="text" name="name"  value="{{ $user->name }}" />
+                <x-edit-input-field label="{{ trans('auth.email') }}" type="email" name="email" value="{{ $user->email }}"/>
+                <x-edit-input-field label="{{ trans('auth.password') }}" type="password" name="password"/>
+                <x-edit-input-field label="{{ trans('auth.confirm_password') }}" type="password" name="confirm_password"/>
+                <x-edit-input-field label="{{ trans('users.phone') }}" type="text" name="phone"  value="{{ $user->phone }}"/>
+                <x-edit-input-field label="{{ trans('users.address') }}" type="text" name="address"  value="{{ $user->address }}"/>
+                <x-edit-input-field label="{{ trans('users.birthday') }}" type="date" name="birthday"  value="{{ $user->birthday }}"/>
+                <x-edit-input-field label="{{ trans('users.city') }}" type="text" name="city"  value="{{ $user->city }}" />
+                <x-edit-input-field label="{{ trans('users.country') }}" type="text" name="country"  value="{{ $user->country }}" />
                 <div class="flex flex-grow flex-col">
                     <x-label for="role">{{ trans('auth.role') }}</x-label>
                     <select class="rounded-md border-gray-200 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="role" name="roles" >
