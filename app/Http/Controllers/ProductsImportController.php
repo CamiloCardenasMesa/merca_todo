@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ProductsImportController extends Controller
 {
-    public function showImport()
+    public function import()
     {
         return view('import.import');
     }

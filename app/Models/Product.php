@@ -56,4 +56,14 @@ class Product extends Model implements Buyable
     {
         return $this->description;
     }
+
+    public static function searchByNameOrDescription($query)
+    {
+        return empty($query)
+            ? static::query()
+            : static::where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('name', 'like', '%' . $query . '%')
+                    ->orWhere('description', 'like', '%' . $query . '%');
+            });
+    }
 }

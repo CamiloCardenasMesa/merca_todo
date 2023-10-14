@@ -1,43 +1,48 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
-            {{ trans('order.purchase_orders') }}
-        </h2>
+        {{ trans('order.purchase_orders') }}
     </x-slot>
 
-    <div class="pt-6 pb-14 bg-gray-100 min-h-screen">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
-                <div class="p-8 bg-white border-b border-gray-200">
-                    <table class="container">
-                        <thead>
-                            <tr class="bg-gray-100 text-center">
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('order.reference') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('order.transaction_status') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('order.total') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('order.created_at') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('order.updated_at') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ trans('order.show') }}</th>
-                            </tr>
-                        </thead>  
-                        @foreach ($orders as $order)
-                            <tbody>
-                                <tr class="text-center">
-                                    <td class="border border-gray-300 px-4 py-2">{{ $order->reference = str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</td>
-                                    <td class="border border-gray-300 px-4 py-2">{{ $order->state }}</td>
-                                    <td class="border border-gray-300 px-4 py-2">{{ $order->total }}</td>
-                                    <td class="border border-gray-300 px-4 py-2">{{ $order->created_at }}</td>
-                                    <td class="border border-gray-300 px-4 py-2">{{ $order->updated_at }}</td>
-
-                                    <td class="border border-gray-300 px-4 py-2 text-center">
-                                        <x-button-link href="{{ route('buyer.orders.show', $order) }}">{{ trans('buttons.show') }}</x-button-link>
-                                    </td>
-                                </tr>                                              
-                            </tbody>
-                        @endforeach
-				    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-article-layout>
+        @if (count($orders))
+            <table class="container">
+                <thead>
+                    <tr class="bg-gray-100 text-left border-y border-gray-300 text-gray-600">
+                        <th class="border-b border-gray-300 px-4 py-2">{{ trans('order.reference') }}</th>
+                        <th class="border-b border-gray-300 px-4 py-2">{{ trans('order.transaction_status') }}</th>
+                        <th class="border-b border-gray-300 px-4 py-2">{{ trans('order.total') }}</th>
+                        <th class="border-b border-gray-300 px-4 py-2">{{ trans('order.created_at') }}</th>
+                        <th class="border-b border-gray-300 px-4 py-2">{{ trans('order.updated_at') }}</th>
+                        
+                        @can(App\Constants\Permissions::ORDER_SHOW)
+                        <th class="border-b border-gray-300 pr-4 py-2">{{ trans('order.show') }}</th>
+                        @endcan
+                    </tr>
+                </thead>  
+                <tbody>
+                    @foreach ($orders as $order)
+                        <tr class="even:bg-gray-100 odd:bg-white text-gray-700">
+                            <td class="border-b px-4">{{ $order->reference = str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</td>
+                            <td class="border-b px-4">{{ $order->state }}</td>
+                            <td class="border-b px-4">$ {{ $order->total }}</td>
+                            <td class="border-b px-4">{{ $order->created_at }}</td>
+                            <td class="border-b px-4">{{ $order->updated_at }}</td>
+                            
+                            @can(App\Constants\Permissions::ORDER_SHOW)
+                            <td class="border-b">
+                                <x-show-button route="{{ route('buyer.orders.show', $order) }}" />
+                            </td>                           
+                            @endcan
+                        </tr>                                              
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <x-search-failure 
+                search-failure-text="{{ trans('order.empty_order') }}"  
+                back-button-text="{{ trans('buttons.add_products') }}"
+                route="{{ route('welcome') }}"
+            />
+        @endif
+    </x-article-layout>
 </x-app-layout>

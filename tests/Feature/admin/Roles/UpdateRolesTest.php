@@ -35,7 +35,7 @@ class UpdateRolesTest extends TestCase
         $userUpdated = $userUpdated->fresh();
 
         //Assert
-        $response->assertRedirect('/roles');
+        $response->assertRedirect('admin/roles');
         $this->assertEquals($userUpdated->name, 'guest');
         $this->assertAuthenticated();
     }

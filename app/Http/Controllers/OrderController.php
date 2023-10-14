@@ -28,7 +28,6 @@ class OrderController extends Controller
 
             if ($response['status']['status'] !== States::PENDING) {
                 $order->state = $response['status']['status'];
-
                 $order->save();
             }
         }

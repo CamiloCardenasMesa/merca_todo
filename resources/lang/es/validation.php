@@ -145,5 +145,21 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'image' => 'imagen',
+        'name' => 'nombre',
+        'email' => 'correo electrónico',
+        'description' => 'descripción',
+        'password' => 'contraseña',
+        'confirm_password' => 'confirmar contraseña',
+        'phone' => 'teléfono',
+        'address' => 'dirección',
+        'birthday' => 'cumpleaños',
+        'city' => 'ciudad',
+        'country' => 'país',
+        'role' => 'rol',
+        'permission' => 'permisos',
+        'price' => 'precio',
+        'stock' => 'existencias',
+    ],
 ];

@@ -10,32 +10,32 @@ class ProductPolicy
 {
     use HandlesAuthorization;
 
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return $user->can(Permissions::PRODUCT_LIST);
     }
 
-    public function view(User $user)
+    public function view(User $user): bool
     {
         return $user->can(Permissions::PRODUCT_LIST);
     }
 
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return $user->can(Permissions::PRODUCT_CREATE);
     }
 
-    public function update(User $user)
+    public function update(User $user): bool
     {
         return $user->can(Permissions::PRODUCT_EDIT);
     }
 
-    public function delete(User $user)
+    public function delete(User $user): bool
     {
         return $user->can(Permissions::PRODUCT_DELETE);
     }
 
-    public function toggle(User $user)
+    public function toggle(User $user): bool
     {
         return $user->can(Permissions::PRODUCT_EDIT);
     }

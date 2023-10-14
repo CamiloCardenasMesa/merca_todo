@@ -13,22 +13,21 @@ use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
-    public function __construct()
+    protected $productAction;
+
+    public function __construct(ProductUpdateOrStoreAction $productAction)
     {
         $this->authorizeResource(Product::class, 'product');
+        $this->productAction = $productAction;
     }
 
     public function index(Request $request): View
     {
-        if ($request->query('query')) {
-            $products = Product::where('name', 'like', '%' . $request->query('query') . '%')
-                ->orWhere('description', 'like', '%' . $request->query('query') . '%')
-                ->where('enable', true)
-                ->paginate(8);
-        } else {
-            $products = Product::orderBy('id', 'desc')
-                ->paginate(8);
-        }
+        $query = $request->query('query');
+
+        $products = Product::searchByNameOrDescription($query)
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
         return view('admin.products.index', compact('products'));
     }
@@ -47,25 +46,24 @@ class ProductsController extends Controller
 
     public function update(ProductRequest $request, Product $product): RedirectResponse
     {
-        ProductUpdateOrStoreAction::execute($request, $product);
+        $this->productAction->execute($request, $product);
 
         return redirect()->route('admin.products.index')
-                         ->with('status', 'Product updated successfully.');
+            ->with('status', trans('products.updated'));
     }
 
     public function create()
     {
         $categories = Category::all();
-
         return view('admin.products.create', compact('categories'));
     }
 
     public function store(ProductRequest $request): RedirectResponse
     {
-        ProductUpdateOrStoreAction::execute($request);
+        $this->productAction->execute($request);
 
         return redirect()->route('admin.products.index')
-                         ->with('status', 'Product created successfully.');
+            ->with('status', trans('products.created'));
     }
 
     public function destroy(Product $product): RedirectResponse
@@ -75,7 +73,7 @@ class ProductsController extends Controller
         Storage::disk('images')->delete($product->image);
 
         return redirect()->route('admin.products.index')
-                         ->with('status', 'Product deleted successfully.');
+            ->with('status', trans('products.deleted'));
     }
 
     public function toggle(Product $product): RedirectResponse
@@ -84,6 +82,7 @@ class ProductsController extends Controller
 
         $product->save();
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')
+            ->with('status', $product->enable ? trans('products.enabled') : trans('products.disabled'));
     }
 }

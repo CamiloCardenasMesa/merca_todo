@@ -21,14 +21,14 @@ class DestroyRolesTest extends TestCase
 
         $adminRole = Role::create(['name' => 'admin'])
             ->givePermissionTo($deletePermission);
-
         $admin = User::factory()->create()->assignRole($adminRole);
 
         //Act or Request
         $response = $this->actingAs($admin)->delete(route('roles.destroy', $admin));
 
         //Assert
-        $response->assertRedirect('/roles');
+        $response->assertRedirect('admin/roles');
+
         $this->assertAuthenticated();
     }
 }

@@ -25,7 +25,7 @@ class CartController extends Controller
         Cart::add($product, $request->input('product_amount'), ['image' => $product->image, 'description' => $product->getDescription()]);
 
         return redirect()->back()
-            ->with('status', trans('products.add_product'));
+            ->with('status', trans('cart.add_product'));
     }
 
     public function update(UpdateCartRequest $request, string $rowId): RedirectResponse
@@ -39,7 +39,7 @@ class CartController extends Controller
         }
 
         return redirect()->back()
-            ->with('status', trans('products.update_product'));
+            ->with('status', trans('cart.updated_cart'));
     }
 
     public function destroy(string $rowId): RedirectResponse
@@ -47,6 +47,6 @@ class CartController extends Controller
         Cart::remove($rowId);
 
         return redirect()->back()
-            ->with('status', trans('products.delete_product'));
+            ->with('status', trans('cart.delete_product'));
     }
 }

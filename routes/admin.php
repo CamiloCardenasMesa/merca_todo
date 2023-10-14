@@ -1,71 +1,35 @@
 <?php
 
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductsExportController;
+use App\Http\Controllers\ProductsImportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin/users', [UserController::class, 'index'])
-    ->middleware('auth', 'verified')
-    ->name('admin.users.index');
+// User Routes
+Route::middleware(['auth', 'verified'])->prefix('/admin/users')->name('admin.users.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/create', [UserController::class, 'create'])->name('create');
+    Route::post('/store', [UserController::class, 'store'])->name('store');
+    Route::get('/{user}', [UserController::class, 'show'])->name('show');
+    Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
+    Route::put('/{user}', [UserController::class, 'update'])->name('update');
+    Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy');
+    Route::put('/{user}/toggle', [UserController::class, 'toggle'])->name('toggle');
+});
 
-Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])
-    ->middleware('auth', 'verified')
-    ->name('admin.users.destroy');
-
-Route::get('/admin/users/create', [UserController::class, 'create'])
-    ->middleware('auth', 'verified')
-    ->name('admin.users.create');
-
-Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])
-    ->middleware('auth', 'verified')
-    ->name('admin.users.edit');
-
-Route::put('/admin/users/{user}', [UserController::class, 'update'])
-    ->middleware('auth', 'verified')
-    ->name('admin.users.update');
-
-Route::get('/admin/users/{user}', [UserController::class, 'show'])
-    ->middleware('auth', 'verified')
-    ->name('admin.users.show');
-
-Route::post('/admin/users/store', [UserController::class, 'store'])
-    ->middleware('auth', 'verified')
-    ->name('admin.users.store');
-
-Route::put('/admin/users/{user}/toggle', [UserController::class, 'toggle'])
-    ->middleware('auth', 'verified')
-    ->name('admin.users.toggle');
-
-//Products Routes
-
-Route::get('/products', [ProductsController::class, 'index'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.index');
-
-Route::get('/products/create', [ProductsController::class, 'create'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.create');
-
-Route::get('/products/{product}', [ProductsController::class, 'show'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.show');
-
-Route::post('/products/store', [ProductsController::class, 'store'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.store');
-
-Route::get('/products/{product}/edit', [ProductsController::class, 'edit'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.edit');
-
-Route::delete('/products/{product}', [ProductsController::class, 'destroy'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.destroy');
-
- Route::put('/products/{product}', [ProductsController::class, 'update'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.update');
-
-Route::put('/products/{product}/toggle', [ProductsController::class, 'toggle'])
-    ->middleware('auth', 'verified')
-    ->name('admin.products.toggle');
+// Products Routes
+Route::middleware(['auth', 'verified'])->prefix('/admin/products')->name('admin.products.')->group(function () {
+    Route::get('/', [ProductsController::class, 'index'])->name('index');
+    Route::get('/create', [ProductsController::class, 'create'])->name('create');
+    Route::post('/store', [ProductsController::class, 'store'])->name('store');
+    Route::get('/{product}', [ProductsController::class, 'show'])->name('show');
+    Route::get('/edit/{product}', [ProductsController::class, 'edit'])->name('edit');
+    Route::put('/{product}', [ProductsController::class, 'update'])->name('update');
+    Route::delete('/{product}', [ProductsController::class, 'destroy'])->name('destroy');
+    Route::put('/toggle/{product}', [ProductsController::class, 'toggle'])->name('toggle');
+    Route::get('/export/index', [ProductsExportController::class, 'export'])->name('export');
+    Route::get('/import/index', [ProductsImportController::class, 'import'])->name('import');
+    Route::get('/import/store', [ProductsImportController::class, 'storeImport'])->name('import.store');
+});

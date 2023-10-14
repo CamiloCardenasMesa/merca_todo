@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\admin;
+namespace Tests\Feature\Admin\products;
 
 use App\Constants\Permissions;
 use App\Models\Product;
@@ -17,7 +17,6 @@ class DeleteProductsTest extends TestCase
 
     public function testAdminUserCanDeleteProducts(): void
     {
-
         //Arrange
         $admin = User::factory()->create();
         $role = Role::create(['name' => 'admin_1']);
@@ -32,7 +31,7 @@ class DeleteProductsTest extends TestCase
         $response = $this->actingAs($admin)->delete(route('admin.products.destroy', $productDeleted));
 
         //Assert
-        $response->assertRedirect('/products');
+        $response->assertRedirect('admin/products');
         $this->assertAuthenticated();
         $this->assertFalse(Storage::disk('public')->exists($productDeleted->product_image));
         $this->assertCount(0, Product::all());
