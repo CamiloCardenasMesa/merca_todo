@@ -58,7 +58,7 @@
                     @endauth
                     @guest
                         <div>
-                            <a href="{{ route('login') }}" class="text-sm font-medium text-white">{{ trans('auth.login') }}</a>
+                            <a href="{{ route('login') }}" class="text-sm font-medium">{{ trans('auth.login') }}</a>
                         </div>
                         <div>
                             <a href="{{ route('register') }}" class="ml-2 text-sm font-medium text-white">{{ trans('auth.register') }}</a>
@@ -76,9 +76,9 @@
         {{-- navigation bar --}}
         @auth
         @if ($userHasPermissions)
-            <aside id="nav-menu" class="text-white md:block hidden bg-[#212130] w-72">   
+            <aside id="nav-menu" class="text-white md:block hidden bg-[#212130] w-80">   
                 <div class="flex-1">
-                    <div id="nav-close" class="p-2 flex sm:hidden justify-end text-2xl cursor-pointer">
+                    <div id="nav-close" class="flex p-2 sm:hidden justify-end text-2xl cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -105,7 +105,7 @@
             </div>
         
             <main class="sm:px-6 lg:px-8 bg-mi-color">
-                <header class="max-w-7xl sm:pt-0 pb-6 mx-auto sm:px-6 lg:px-8">
+                <header class="max-w-7xl sm:pt-0 pb-4 mx-auto sm:px-6 lg:px-8">
                     <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
                         {{ $header }}
                     </h2>
