@@ -1,6 +1,6 @@
 <nav>
-    <div class="sm:py-0 md:py-9 lg:py-12 px-6">
-        <ul class="flex flex-col flex-grow gap-y-1 font-medium">
+    <div class="my-2 sm:py-0 md:py-9 lg:py-12">
+        <ul class="flex flex-col flex-grow gap-y-3 font-medium">
             @can(
             App\Constants\Permissions::PRODUCT_LIST,
             App\Constants\Permissions::PRODUCT_CREATE,

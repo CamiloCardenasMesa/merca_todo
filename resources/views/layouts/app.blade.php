@@ -7,33 +7,27 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <!-- Logo -->
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
 </head>
 <body>
-    {{-- header --}}
-    <nav class="bg-[#27333D]">
+    <nav class="bg-dark-blue">
         <header class="flex items-center justify-between h-16 mx-auto px-6 lg:px-8 @if(auth()->check()) md:mr-10 lg:mr-12 @else max-w-7xl @endif">
             <a href="{{ route('welcome') }}">
                 <img class="h-10 md:h-12 lg:h-14" src="{{ asset('images/login_logo_mercatodo.png') }}" alt="MercaTodo logo">
             </a>
             <div class="flex items-center">
-                <div class="flex">
+                <div class="flex text-white">
                     @auth
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
-                                    class="flex items-center text-sm font-medium text-white hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-500 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    class="flex items-center text-sm font-medium hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-500 focus:border-gray-300 transition duration-150 ease-in-out">
                                     <div>{{ Auth::user()->name }}</div>
 
                                     <div class="ml-1">
@@ -61,7 +55,7 @@
                             <a href="{{ route('login') }}" class="text-sm font-medium">{{ trans('auth.login') }}</a>
                         </div>
                         <div>
-                            <a href="{{ route('register') }}" class="ml-2 text-sm font-medium text-white">{{ trans('auth.register') }}</a>
+                            <a href="{{ route('register') }}" class="ml-2 text-sm font-medium">{{ trans('auth.register') }}</a>
                         </div>
                     @endguest
                 </div>
@@ -76,9 +70,9 @@
         {{-- navigation bar --}}
         @auth
         @if ($userHasPermissions)
-            <aside id="nav-menu" class="text-white md:block hidden bg-[#212130] w-80">   
+            <aside id="nav-menu" class="text-white md:block hidden bg-aside-gray px-3 lg:px-6 w-80">   
                 <div class="flex-1">
-                    <div id="nav-close" class="flex p-2 sm:hidden justify-end text-2xl cursor-pointer">
+                    <div id="nav-close" class="flex py-2 sm:hidden text-dark-blue justify-end text-2xl cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -118,7 +112,7 @@
     <footer class="bg-[#EBEBF1] p-4 md:p-8 lg:p-10 items-center justify-center" style="background-image: url('{{ asset('images/fondis.png') }}')">
         <div class="mx-auto max-w-screen-xl text-center">
             <a href="{{ route('welcome') }}" class="inline-flex justify-center items-center">
-                <img src="{{ asset('images/login_logo_mercatodo.png') }}" alt="mercatodo" class="h-16" >    
+                <img src="{{ asset('images/login_logo_mercatodo.png') }}" alt="mercatodo" class="h-16" />    
             </a>
             <p class="mb-6 mt-2 text-gray-500 dark:text-gray-400">{{ trans('navigation.footer_messagge') }}</p>
             <ul class="flex justify-center items-center my-5 space-x-5">
@@ -142,7 +136,7 @@
             </ul>
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">©<a href="#" class="hover:underline">Camilo Cardenas Mesa</a>{{ trans('navigation.footer_rights') }}</span>
         </div>
-      </footer>
+    </footer>
 </body>
 <script src="{{ asset('js/main.js') }}"></script>
 </html>
