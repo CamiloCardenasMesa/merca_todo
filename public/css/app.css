@@ -1980,11 +1980,6 @@ select{
   text-decoration-line: underline;
 }
 
-.hover\:shadow-gray-300:hover{
-  --tw-shadow-color: #d1d5db;
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
 .hover\:shadow-gray-400:hover{
   --tw-shadow-color: #9ca3af;
   --tw-shadow: var(--tw-shadow-colored);
@@ -2050,14 +2045,14 @@ select{
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
-.focus\:bg-green-600:focus{
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
-}
-
 .focus\:bg-indigo-100:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(224 231 255 / var(--tw-bg-opacity));
+}
+
+.focus\:bg-primary-yellow:focus{
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 227 127 / var(--tw-bg-opacity));
 }
 
 .focus\:text-gray-800:focus{
@@ -2070,9 +2065,9 @@ select{
   color: rgb(55 48 163 / var(--tw-text-opacity));
 }
 
-.focus\:text-white:focus{
+.focus\:text-medium-blue:focus{
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(75 75 110 / var(--tw-text-opacity));
 }
 
 .focus\:outline-none:focus{
