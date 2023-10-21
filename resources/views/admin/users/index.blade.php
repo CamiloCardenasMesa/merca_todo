@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="overflow-auto">
-                <table class="container mt-2">
+                <table class="container mt-3">
                     <thead>
                         <tr class="bg-gray-200 text-left border-y border-gray-300 text-gray-600">
                             <th class="border-b border-gray-300 px-4 py-2">{{ trans('auth.name') }}</th>
