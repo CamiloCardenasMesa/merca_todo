@@ -27,7 +27,7 @@
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
-                                    class="flex items-center text-sm font-medium hover:text-green-500 hover:border-gray-300 focus:outline-none focus:text-green-500 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    class="flex items-center text-sm font-medium hover:text-primary-yellow hover:border-gray-300 focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
                                     <div>{{ Auth::user()->name }}</div>
 
                                     <div class="ml-1">
@@ -100,7 +100,7 @@
         
             <main class="sm:px-6 lg:px-8 bg-mi-color">
                 <header class="max-w-7xl sm:pt-0 pb-4 mx-auto sm:px-6 lg:px-8">
-                    <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+                    <h2 class="font-semibold font-oswald text-4xl text-dark-blue leading-tight">
                         {{ $header }}
                     </h2>
                 </header>
@@ -109,7 +109,7 @@
         </div>
     </div>
 
-    <footer class="bg-[#EBEBF1] p-4 md:p-8 lg:p-10 items-center justify-center" style="background-image: url('{{ asset('images/fondis.png') }}')">
+    <footer class="bg-primary-gray p-4 md:p-8 lg:p-10 items-center justify-center" style="background-image: url('{{ asset('images/fondis.png') }}')">
         <div class="mx-auto max-w-screen-xl text-center">
             <a href="{{ route('welcome') }}" class="inline-flex justify-center items-center">
                 <img src="{{ asset('images/login_logo_mercatodo.png') }}" alt="mercatodo" class="h-16" />    

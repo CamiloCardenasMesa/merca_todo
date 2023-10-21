@@ -1323,6 +1323,11 @@ select{
   background-color: rgb(0 180 204 / var(--tw-bg-opacity));
 }
 
+.bg-primary-gray{
+  --tw-bg-opacity: 1;
+  background-color: rgb(235 235 241 / var(--tw-bg-opacity));
+}
+
 .bg-red-300{
   --tw-bg-opacity: 1;
   background-color: rgb(252 165 165 / var(--tw-bg-opacity));
@@ -1703,11 +1708,6 @@ select{
   --tw-ring-color: rgb(209 213 219 / var(--tw-ring-opacity));
 }
 
-.ring-green-400{
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(74 222 128 / var(--tw-ring-opacity));
-}
-
 .ring-opacity-5{
   --tw-ring-opacity: 0.05;
 }
@@ -1921,11 +1921,6 @@ select{
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-700:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-green-500:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
@@ -1961,14 +1956,14 @@ select{
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.hover\:text-green-500:hover{
-  --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
-}
-
 .hover\:text-medium-blue:hover{
   --tw-text-opacity: 1;
   color: rgb(75 75 110 / var(--tw-text-opacity));
+}
+
+.hover\:text-primary-yellow:hover{
+  --tw-text-opacity: 1;
+  color: rgb(245 227 127 / var(--tw-text-opacity));
 }
 
 .hover\:text-red-900:hover{
@@ -2030,11 +2025,6 @@ select{
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
-.focus\:border-green-400:focus{
-  --tw-border-opacity: 1;
-  border-color: rgb(74 222 128 / var(--tw-border-opacity));
-}
-
 .focus\:border-indigo-300:focus{
   --tw-border-opacity: 1;
   border-color: rgb(165 180 252 / var(--tw-border-opacity));
@@ -2073,11 +2063,6 @@ select{
 .focus\:text-gray-800:focus{
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
-}
-
-.focus\:text-green-500:focus{
-  --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 
 .focus\:text-indigo-800:focus{
@@ -2120,11 +2105,6 @@ select{
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.active\:bg-gray-900:active{
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-}
-
 .active\:text-gray-500:active{
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -2133,10 +2113,6 @@ select{
 .active\:text-gray-700:active{
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
-.disabled\:opacity-25:disabled{
-  opacity: 0.25;
 }
 
 .group:hover .group-hover\:inline-block{
