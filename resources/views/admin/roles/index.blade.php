@@ -24,15 +24,15 @@
                         <th class="border-b border-gray-300 px-4 py-2">{{ trans('auth.role') }}</th>
                         
                         @can(App\Constants\Permissions::ROLE_SHOW)
-                        <th class="border-b border-gray-300 py-2">{{ trans('buttons.show') }}</th>
+                        <th class="border-b border-gray-300 p-2">{{ trans('buttons.show') }}</th>
                         @endcan
                         
                         @can(App\Constants\Permissions::ROLE_EDIT)
-                        <th class="border-b border-gray-300 py-2">{{ trans('buttons.edit') }}</th>
+                        <th class="border-b border-gray-300 p-2">{{ trans('buttons.edit') }}</th>
                         @endcan
                         
                         @can(App\Constants\Permissions::ROLE_DELETE)
-                        <th class="border-b border-gray-300 py-2">{{ trans('buttons.delete') }}</th>
+                        <th class="border-b border-gray-300 p-2">{{ trans('buttons.delete') }}</th>
                         @endcan
                     </tr>
                 </thead>
@@ -43,19 +43,19 @@
                             <td class="border-b px-4 py-2 ">{{ trans('role.' . $role->name) }}</td>
                             
                             @can(App\Constants\Permissions::ROLE_SHOW)
-                            <td class="border-b">
+                            <td class="border-b px-2">
                                 <x-show-button route="{{ route('roles.show', $role) }}" />
                             </td>
                             @endcan
                             
                             @can(App\Constants\Permissions::ROLE_EDIT)
-                            <td class="border-b">
+                            <td class="border-b px-2">
                                 <x-edit-button route="{{ route('roles.edit', $role) }}" />
                             </td> 
                             @endcan
                            
                             @can(App\Constants\Permissions::ROLE_DELETE)
-                            <td class="border-b">
+                            <td class="border-b px-2">
                                 <x-delete-button route="{{ route('roles.destroy', $role) }}" textConfirm="return confirm('{{ trans('auth.delete_role') }}')" />
                             </td> 
                             @endcan

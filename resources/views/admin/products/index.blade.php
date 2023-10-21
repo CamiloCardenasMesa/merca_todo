@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="overflow-auto">
-                    <table class="container mt-2">
+                    <table class="container mt-3">
                         <thead>
                             <tr class="bg-gray-200 text-left border-y border-gray-300 text-gray-600">
                                 <th class="border-b border-gray-300 px-6 lg:px-6 py-2">{{ trans('products.image') }}</th>
@@ -43,16 +43,16 @@
                                 <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.category') }}</th>
                                 <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.stock') }}</th>
                                 @can(App\Constants\Permissions::PRODUCT_SHOW)
-                                    <th class="border-b border-gray-300 py-2">{{ trans('buttons.show') }}</th>
+                                    <th class="border-b border-gray-300 px-2">{{ trans('buttons.show') }}</th>
                                 @endcan
                                 @can(App\Constants\Permissions::PRODUCT_EDIT)
-                                    <th class="border-b border-gray-300 py-2">{{ trans('buttons.edit') }}</th>
+                                    <th class="border-b border-gray-300 px-2">{{ trans('buttons.edit') }}</th>
                                 @endcan
                                 @can(App\Constants\Permissions::PRODUCT_DELETE)
-                                    <th class="border-b border-gray-300 py-2">{{ trans('buttons.delete') }}</th>
+                                    <th class="border-b border-gray-300 px-2">{{ trans('buttons.delete') }}</th>
                                 @endcan
                                 @can(App\Constants\Permissions::PRODUCT_EDIT)
-                                    <th class="border-b border-gray-300 py-2">{{ trans('buttons.state') }}</th>
+                                    <th class="border-b border-gray-300 px-2">{{ trans('buttons.state') }}</th>
                                 @endcan
                             </tr>
                         </thead>
@@ -68,21 +68,21 @@
                                     <td class="border-b px-4">{{ $product->stock }}</td>
 
                                     @can(App\Constants\Permissions::PRODUCT_SHOW)
-                                        <td class="border-b">
+                                        <td class="border-b px-2">
                                             <x-show-button route="{{ route('admin.products.show', $product) }}" />
                                         </td>                               
                                     @endcan
                                     @can(App\Constants\Permissions::PRODUCT_EDIT)
-                                        <td class="border-b">
+                                        <td class="border-b px-2">
                                             <x-edit-button route="{{ route('admin.products.edit', $product) }}" />
                                         </td>                                    
                                     @endcan
                                     @can(App\Constants\Permissions::PRODUCT_DELETE)
-                                        <td class="border-b">
+                                        <td class="border-b px-2">
                                             <x-delete-button route="{{ route('admin.products.destroy', $product) }}" textConfirm="return confirm('{{ trans('products.delete') }}')" />
                                         </td>                                    @endcan    
                                     @can(App\Constants\Permissions::PRODUCT_EDIT)
-                                        <td class="border-b">
+                                        <td class="border-b px-2">
                                             <x-toggle-button route="{{ route('admin.products.toggle', $product) }}" status="{{ $product->enable ? 'checked' : '' }}" />
                                         </td>                                   
                                      @endcan
