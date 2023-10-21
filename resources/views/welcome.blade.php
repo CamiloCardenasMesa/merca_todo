@@ -18,7 +18,7 @@
                 <x-auth-session-status :status="session('status')" />
             </div>
         @endif
-        <div class="container mt-2">
+        <div class="container mt-3">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach ($products as $product)
                     <div class="bg-gray-100 flex flex-col justify-between transition duration-500 
