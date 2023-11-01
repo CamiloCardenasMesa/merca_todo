@@ -27,17 +27,18 @@ $ cd merca_todo
 ```bash
 $ git fetch --all
 ```
-- Install PHP dependencies through the package manager. [composer](https://getcomposer.org/download/):
+- Install PHP dependencies through the [composer](https://getcomposer.org/download/) package manager:
 ```bash
 $ composer install
 ```
-- Install NodeJS dependencies using the package manager [npm](https://nodejs.org/es/):
+- Install NodeJS dependencies using the [npm](https://nodejs.org/es/) package manager:
 ```bash
 $ npm install
 ```
 ## Configuration
 
 - Copy the .env.example file to .env and env.testing, and then add each environment variable:
+
 `DB_USERNAME` Database username.  
 `DB_PASSWORD` Database Password.  
 `MAIL_USERNAME` Mailtrap username for testing.  
@@ -58,10 +59,6 @@ $ php artisan migrate --seed
 - Create the connection between the public and storage directories:
 ```bash
 $ php artisan storage:link
-```
-- Generate keys for API authentication:
-```bash
-$ php artisan passport:keys
 ```
 - Run the application tests to verify if the installation and configuration were done correctly:
 ```bash
