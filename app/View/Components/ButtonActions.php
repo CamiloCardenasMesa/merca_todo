@@ -7,14 +7,12 @@ use Illuminate\View\Component;
 class ButtonActions extends Component
 {
     public $route;
-    public $hoverBgClass;
     public $svgPath;
     public $text;
 
-    public function __construct($route, $hoverBgClass, $svgPath, $text)
+    public function __construct($route, $svgPath, $text)
     {
         $this->route = $route;
-        $this->hoverBgClass = $hoverBgClass;
         $this->svgPath = $svgPath;
         $this->text = $text;
     }

@@ -34,6 +34,5 @@ class RoleHasPermissionsSeeder extends Seeder
         $role = Role::findByName($roleName);
         $permissionsToSync = Permission::whereIn('name', $permissions)->get();
         $role->syncPermissions($permissionsToSync);
-        
     }
 }

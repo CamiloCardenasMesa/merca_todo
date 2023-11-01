@@ -4,9 +4,9 @@ namespace App\Services;
 
 use App\Models\User;
 
-class UserService 
+class UserService
 {
-    public function CreateUser(array $userData): User 
+    public function CreateUser(array $userData): User
     {
         $user = User::create([
             'name' => $userData['name'],

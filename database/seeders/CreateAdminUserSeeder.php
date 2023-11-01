@@ -10,7 +10,7 @@ class CreateAdminUserSeeder extends Seeder
 {
     protected $userService;
 
-    public function __construct(UserService $userService) 
+    public function __construct(UserService $userService)
     {
         $this->userService = $userService;
     }
