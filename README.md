@@ -43,7 +43,7 @@ $ npm install
 `DB_PASSWORD` Database Password.  
 `MAIL_USERNAME` Mailtrap username for testing.  
 `MAIL_PASSWORD` Mailtrap password for testing.  
-`MAIL_FROM_ADDRESS` Syste Email.  
+`MAIL_FROM_ADDRESS` System Email.  
 `LOGIN_PLACETOPAY` Login of [PlaceToPay](https://docs-gateway.placetopay.com/docs/webcheckout-docs/ZG9jOjQxMjU1Njc-autenticacion).  
 `TRANKEY_PLACETOPAY` PlaceToPay Secret Key.  
 `BASEURL_PLACETOPAY` PlaceToPay Base URL.
