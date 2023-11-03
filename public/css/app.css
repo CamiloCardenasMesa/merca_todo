@@ -748,6 +748,14 @@ select{
   z-index: 50;
 }
 
+.col-span-3{
+  grid-column: span 3 / span 3;
+}
+
+.col-span-9{
+  grid-column: span 9 / span 9;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -1070,6 +1078,10 @@ select{
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
+.grid-cols-12{
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
 .grid-cols-2{
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1084,6 +1096,10 @@ select{
 
 .flex-col{
   flex-direction: column;
+}
+
+.content-center{
+  align-content: center;
 }
 
 .items-start{
@@ -1132,11 +1148,6 @@ select{
 
 .gap-8{
   gap: 2rem;
-}
-
-.gap-x-2{
-  -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
 }
 
 .gap-y-2{
@@ -1323,9 +1334,9 @@ select{
   background-color: rgb(0 180 204 / var(--tw-bg-opacity));
 }
 
-.bg-primary-gray{
+.bg-primary-yellow{
   --tw-bg-opacity: 1;
-  background-color: rgb(235 235 241 / var(--tw-bg-opacity));
+  background-color: rgb(245 227 127 / var(--tw-bg-opacity));
 }
 
 .bg-red-300{
@@ -2264,6 +2275,14 @@ select{
 }
 
 @media (min-width: 1024px){
+
+  .lg\:col-span-10{
+    grid-column: span 10 / span 10;
+  }
+
+  .lg\:col-span-2{
+    grid-column: span 2 / span 2;
+  }
 
   .lg\:mr-12{
     margin-right: 3rem;

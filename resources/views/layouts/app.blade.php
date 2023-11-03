@@ -109,7 +109,7 @@
         </div>
     </div>
 
-    <footer class="bg-primary-gray p-4 md:p-8 lg:p-10 items-center justify-center" style="background-image: url('{{ asset('images/fondis.png') }}')">
+    <footer class="bg-primary-yellow p-4 md:p-8 lg:p-10 items-center justify-center">
         <div class="mx-auto max-w-screen-xl text-center">
             <a href="{{ route('welcome') }}" class="inline-flex justify-center items-center">
                 <img src="{{ asset('images/login_logo_mercatodo.png') }}" alt="mercatodo" class="h-16" />    
