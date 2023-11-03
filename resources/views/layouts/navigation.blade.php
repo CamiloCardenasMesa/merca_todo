@@ -1,5 +1,5 @@
 <nav>
-    <div class="my-2 sm:py-0 md:py-9 lg:py-12">
+    <div>
         <ul class="flex flex-col flex-grow gap-y-3 font-medium">
             @can(
             App\Constants\Permissions::PRODUCT_LIST,
