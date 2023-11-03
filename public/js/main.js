@@ -7,16 +7,17 @@ let isMenuOpen = false;
 const toggleMenu = () => {
     if (isMenuOpen) {
         navMenu.classList.add('hidden');
-        closeIcon.classList.add('sm:hidden');
-        hamburger.style.display = 'block';
+        closeIcon.classList.add('hidden');
+        hamburger.classList.remove('hidden');
     } else {
         navMenu.classList.remove('hidden');
-        closeIcon.classList.remove('sm:hidden');
-        hamburger.style.display = 'none';
+        closeIcon.classList.remove('hidden');
+        hamburger.classList.add('hidden');
     }
     isMenuOpen = !isMenuOpen;
 };
 
-closeIcon.addEventListener('click', toggleMenu);
+closeIcon.classList.add('hidden');
 
+closeIcon.addEventListener('click', toggleMenu);
 hamburger.addEventListener('click', toggleMenu);
