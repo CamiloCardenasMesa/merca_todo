@@ -8,13 +8,11 @@ class ButtonActions extends Component
 {
     public $route;
     public $svgPath;
-    public $text;
 
-    public function __construct($route, $svgPath, $text)
+    public function __construct($route, $svgPath)
     {
         $this->route = $route;
         $this->svgPath = $svgPath;
-        $this->text = $text;
     }
 
     /**
