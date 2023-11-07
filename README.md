@@ -64,6 +64,12 @@ $ php artisan storage:link
 ```bash
 $ php artisan test
 ```
+- Testing Application:
+
+`Email = superAdmin@email.com`
+
+`Password = password`
+
 ## Contributions
 
 You can make your contributions through pull requests. For significant changes, please create an ISSUE first.  
