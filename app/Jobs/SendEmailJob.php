@@ -2,13 +2,12 @@
 
 namespace App\Jobs;
 
-use App\Mail\EmailForQueue;
+use App\Notifications\Export;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
 
 class SendEmailJob implements ShouldQueue
 {
@@ -17,18 +16,17 @@ class SendEmailJob implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    protected $title;
-    protected $email;
+    public $user;
+    public $filePath;
 
-    public function __construct($email, $title)
+    public function __construct($user, $filePath)
     {
-        $this->title = $title;
-        $this->email = $email;
+        $this->user = $user;
+        $this->filePath = $filePath;
     }
 
     public function handle()
     {
-        $email = new EmailForQueue($this->title);
-        Mail::to($this->email)->send($email);
+        $this->user->notify(new Export($this->filePath));
     }
 }

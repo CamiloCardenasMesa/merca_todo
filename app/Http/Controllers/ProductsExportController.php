@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ProductsExport;
-use Maatwebsite\Excel\Excel;
+use App\Jobs\SendEmailJob;
 
 class ProductsExportController extends Controller
 {
-    public function export(Excel $excel)
+    public function export()
     {
-        return $excel->download(new ProductsExport(), 'products.xlsx');
+        $user = auth()->user();
+        $filePath = asset('storage/products.xlsx');
+
+        (new ProductsExport())->store('products.xlsx', 'public')->chain([
+            new SendEmailJob($user, $filePath),
+        ]);
+
+        return redirect()->back()->with('status', trans('products.verify_download'));
     }
 }

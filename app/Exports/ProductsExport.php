@@ -3,38 +3,36 @@
 namespace App\Exports;
 
 use App\Models\Product;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-class ProductsExport implements FromQuery, ShouldAutoSize, WithMapping, WithHeadings, WithEvents
+class ProductsExport implements FromQuery, ShouldAutoSize, WithMapping, WithHeadings, WithEvents, WithChunkReading, ShouldQueue
 {
     use Exportable;
 
     public function query()
     {
         return Product::query()
-            ->where('enable', true)
-            ->whereBetween('created_at', ['2022-05-21 02:01:51', '2022-05-22 02:01:51'])
-            ->whereYear('created_at', '2022')
-            ->whereMonth('created_at', '<=', '05')
-            ->where('stock', '>=', '5');
+            ->where('enable', true);
     }
 
     public function map($product): array
     {
         return [
-        $product->id,
-        $product->name,
-        $product->description,
-        $product->price,
-        $product->stock,
-        $product->category_id,
-        $product->enable,
+            $product->id,
+            $product->name,
+            $product->description,
+            $product->price,
+            $product->stock,
+            $product->category_id,
+            $product->enable,
         ];
     }
 
@@ -62,5 +60,10 @@ class ProductsExport implements FromQuery, ShouldAutoSize, WithMapping, WithHead
                 ]);
             },
         ];
+    }
+
+    public function chunkSize(): int
+    {
+        return 1000;
     }
 }

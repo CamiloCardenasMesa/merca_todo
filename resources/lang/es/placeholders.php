@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'welcome_search' => 'Busca aquí tu instrumento',
+    'welcome_search' => 'Busca tu instrumento',
     'user_search' => 'Busca un usuario',
     'role_search' => 'Busca un Rol',
-    'create_role' => 'Dale un nombre a tu nuevo Rol',
+    'create_role' => 'Nombre del nuevo Rol',
 ];

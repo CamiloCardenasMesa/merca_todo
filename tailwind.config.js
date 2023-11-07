@@ -15,8 +15,16 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Roboto', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary-yellow': '#F5E37F',
+                'primary-blue': '#00B4CC',
+                'medium-blue': '#4b4b6e',
+                'dark-blue': '#212130',
+                'primary-gray': '#EBEBF1',
+                'aside-gray': '#dddde5',
+            }
         },
     },
 

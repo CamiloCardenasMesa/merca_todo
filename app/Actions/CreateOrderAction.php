@@ -30,6 +30,8 @@ class CreateOrderAction
             $productOrder->quantity = $cartItem->qty;
             $productOrder->order_id = $order->id;
             $productOrder->product_id = $cartItem->id;
+
+            $productOrder->save();
         }
 
         return $order;

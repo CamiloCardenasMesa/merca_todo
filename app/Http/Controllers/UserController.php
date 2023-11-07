@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Http\Requests\Admin\Users\StoreUserRequest;
 use App\Http\Requests\Admin\Users\UpdateUserRequest;
 use App\Models\User;
@@ -18,34 +18,29 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('permission:' . Permissions::USER_LIST, ['only' => ['index', 'show']]);
-        $this->middleware('permission:' . Permissions::USER_CREATE, ['only' => ['create', 'store']]);
-        $this->middleware('permission:' . Permissions::USER_EDIT, ['only' => ['edit', 'update', 'toggle']]);
-        $this->middleware('permission:' . Permissions::USER_DELETE, ['only' => ['destroy']]);
+        $this->authorizeResource(User::class, 'user');
     }
 
     public function index(Request $request): View
     {
-        if ($request->query('query')) {
-            $users = User::where('name', 'like', '%' . $request->query('query') . '%')
-            ->orwhere('email', 'like', '%' . $request->query('query') . '%')
+        $query = $request->query('query');
+
+        $users = User::searchByNameOrEmail($query)
+            ->orderBy('id', 'desc')
             ->paginate(10);
-        } else {
-            $users = User::orderBy('id', 'desc')->paginate(8);
-        }
 
         return view('admin.users.index', compact('users'));
     }
 
     public function show(User $user): View
     {
-        return view('admin.users.show', compact('user'));
+        $role = $user->getRoleNames()->first();
+        return view('admin.users.show', compact('user', 'role'));
     }
 
-    public function create()
+    public function create(): View
     {
-        $roles = Role::pluck('name', 'name')->all();
-
+        $roles = Role::all()->pluck('name', 'name');
         return view('admin.users.create', compact('roles'));
     }
 
@@ -58,34 +53,34 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('admin.users.index')
-                ->with('status', 'User created successfully');
+            ->with('status', trans('users.created'));
     }
 
-    public function edit($id): View
-    {
-        $user = User::find($id);
-        $roles = Role::pluck('name', 'name')->all();
-        $userRole = $user->roles->pluck('name', 'name')->all();
-
-        return view('admin.users.edit', compact('user', 'roles', 'userRole'));
-    }
-
-    public function update(UpdateUserRequest $request, $id): RedirectResponse
+    public function update(UpdateUserRequest $request, User $user): RedirectResponse
     {
         $input = $request->all();
+
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
             $input = Arr::except($input, ['password']);
         }
-        $user = User::find($id);
+
+        $user = User::find($user->id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
+
+        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
 
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('admin.users.index')
-                ->with('status', 'User updated successfully');
+        return redirect()->route('admin.users.show', $user)
+            ->with('status', trans('users.updated'));
+    }
+
+    public function edit(User $user): View
+    {
+        $roles = Role::all();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     public function destroy(User $user): RedirectResponse
@@ -93,16 +88,20 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index')
-                        ->with('status', 'User deleted successfully');
+            ->with('status', trans('users.deleted'));
     }
 
     public function toggle(User $user): RedirectResponse
     {
-        /* $this->authorize('update', $user); */
-        $user->enable = !$user->enable;
+        if ($user->hasRole(Roles::SUPER_ADMIN)) {
+            return redirect()->back()
+                ->with('status', trans('users.toggle'));
+        }
 
+        $user->enable = !$user->enable;
         $user->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')
+            ->with('status', $user->enable ? trans('users.enabled') : trans('users.disabled'));
     }
 }

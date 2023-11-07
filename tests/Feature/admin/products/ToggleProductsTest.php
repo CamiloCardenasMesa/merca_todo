@@ -30,7 +30,7 @@ class ToggleProductsTest extends TestCase
 
         $response = $this->actingAs($admin)->put(route('admin.products.toggle', $product));
 
-        $response->assertRedirect('/products');
+        $response->assertRedirect('admin/products');
         $this->assertAuthenticated();
         $this->assertFalse(!$product->enable);
         $this->assertTrue($product->enable);

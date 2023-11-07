@@ -19,7 +19,7 @@ class IndexProductsTest extends TestCase
         $this->withoutExceptionHandling();
         //Arrange
         $admin = User::factory()->create();
-        $role = Role::create(['name' => 'admin_1']);
+        $role = Role::create(['name' => 'admin']);
         $permissions = Permission::create([
             'name' => Permissions::PRODUCT_LIST, ]);
         $role->syncPermissions($permissions);

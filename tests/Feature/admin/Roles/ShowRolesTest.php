@@ -33,8 +33,27 @@ class ShowRolesTest extends TestCase
 
         //Assert
         $response->assertOk();
-        $response->assertViewIs('roles.show');
+        $response->assertViewIs('admin.roles.show');
         $response->assertViewHas('role');
+        $this->assertAuthenticated();
+    }
+
+    public function testAdminUserCanDeleteRole(): void
+    {
+        //Arrange
+        $deletePermission = Permission::create([
+            'name' => Permissions::ROLE_DELETE, ]);
+
+        $adminRole = Role::create(['name' => 'admin'])
+            ->givePermissionTo($deletePermission);
+        $admin = User::factory()->create()->assignRole($adminRole);
+
+        //Act or Request
+        $response = $this->actingAs($admin)->delete(route('roles.destroy', $admin));
+
+        //Assert
+        $response->assertRedirect('admin/roles');
+
         $this->assertAuthenticated();
     }
 }

@@ -1,49 +1,39 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __($product->name) }}
+        <h2 class="font-semibold font-oswald text-4xl text-gray-800 leading-tight">
+            {{ ucwords($product->name) }}
         </h2>
     </x-slot>
 
-    
-    <div class="py-12 min-h-screen bg-gray-100">
-        <div>
-            <x-auth-session-status :status="session('status')" />
-        </div>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="p-8 bg-white  border-gray-200">
-                <table class="container">
-                    <thead>
-                        <tr class="bg-gray-100">
-                            <th class="border border-gray-300 px-4 py-2">{{ trans('products.image') }}</th>
-                            <th class="border border-gray-300 px-4 py-2">Id</th>
-                            <th class="border border-gray-300 px-4 py-2">{{ trans('products.name') }}</th>
-                            <th class="border border-gray-300 px-4 py-2">{{ trans('products.description') }}</th>
-                            <th class="border border-gray-300 px-4 py-2">{{ trans('products.price') }}</th>
-                            <th class="border border-gray-300 px-4 py-2">{{ trans('products.stock') }}</th>
-                            <th class="border border-gray-300 px-4 py-2">{{ trans('products.category') }}</th>
-                            <th class="border border-gray-300 px-4 py-2">{{ trans('products.created_at') }}</th>
-                            <th class="border border-gray-300 px-4 py-2">{{ trans('products.updated_at') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border border-gray-300 px-4 py-2 text-center"><img src="{{ asset('storage/' .$product->image) }}" alt="image"></td>
-                            <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->id }}</th>
-                            <td class="border border-gray-300 px-4 py-2 text-left">{{ $product->name }}</td>
-                            <td class="border border-gray-300 px-4 py-2 text-left">{{ $product->description }}</td>
-                            <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->price }}</td>
-                            <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->stock }}</td>
-                            <td class="border border-gray-300 px-4 py-2 text-center">{{ $product->category->name }}</td>
-                            <td class="border border-gray-300 px-4 py-2 text-left">{{ $product->created_at }}</td>
-                            <td class="border border-gray-300 px-4 py-2 text-left">{{ $product->updated_at }}</td>
-                        </tr>
-                    </tbody>
-                </table><br>
-                    <div class="flex justify-center">
-                        <a href="{{route('admin.products.index')}}"> <x-button>{{ trans('buttons.back') }}</x-button>
-                    </div> 
+    <x-article-layout>
+        <div class="flex flex-col lg:flex-row gap-6">
+            <div class="flex bg-gray-100 rounded-lg items-center basis-2/5">
+                <img class="rounded-lg" id="product_image" src="{{ asset('storage/' .$product->image) }}" alt="image" />
+            </div>
+            <div class="flex-1">
+                <div class="bg-gray-100 p-6 rounded-lg shadow-sm mb-6">
+                    <x-label for="description">{{ trans('products.description') }}</x-label>
+                    <p id="description">{{ $product->description }}</p>
+                </div>
+                <x-section>
+                    <x-disabled-input-field value="{{ $product->price }}" label="{{ trans('products.price') }}" name="price" />
+                    <x-disabled-input-field value="{{ $product->stock }}" label="{{ trans('products.stock') }}" name="stock" />
+                    <x-disabled-input-field value="{{ $product->category->name }}" label="{{ trans('products.category') }}" name="category" />
+                    <x-disabled-input-field value="{{ $product->created_at }}" label="{{ trans('products.created_at') }}" name="created_at" />
+                    <x-disabled-input-field value="{{ $product->updated_at }}" label="{{ trans('products.updated_at') }}" name="updated_at" />
+                    <x-disabled-input-field value="{{ trans('products.' . ( $product->enable ? 'enable' : 'disable')) }}" label="{{ trans('products.status') }}" name="product_enable" />
+                </x-section>
             </div>
         </div>
-    </div>  
+        <x-show-form-buttons route="{{ route('admin.products.index') }}">
+            @can(App\Constants\Permissions::PRODUCT_EDIT)
+                <x-button-actions 
+                    route="{{ route('admin.products.edit', $product) }}" 
+                    hoverBgClass="hover:bg-blue-500" 
+                    svgPath='<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />' 
+                    text="{{ trans('buttons.edit') }}"
+                />             
+            @endcan
+        </x-show-form-buttons>
+    </x-article-layout>
 </x-app-layout>

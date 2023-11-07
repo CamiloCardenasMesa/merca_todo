@@ -13,7 +13,7 @@ class ProductsApiController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {
-        $products = Product::paginate(8);
+        $products = Product::paginate(4);
 
         return ProductsResource::collection($products);
     }
