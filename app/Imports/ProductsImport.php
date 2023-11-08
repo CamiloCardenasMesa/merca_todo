@@ -16,7 +16,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
     {
         $product = new Product();
         $product->name = Arr::get($row, 'name');
-        $product->image = Storage::disk('images')->put('product_images', new File('images/instruments/imagen_de_muestra3.jpg'));
+        $product->image = Storage::disk('images')->put('product_images', new File('images/product_image.png'));
         $product->description = Arr::get($row, 'description');
         $product->price = Arr::get($row, 'price');
         $product->stock = Arr::get($row, 'stock');
