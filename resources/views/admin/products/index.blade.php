@@ -57,7 +57,7 @@
                             @foreach ($products as $product)
                                 <tr class="even:bg-gray-100 odd:bg-white text-gray-700">
                                     <td class="border-b pl-6 py-4 w-1/12">
-                                        <img class="rounded-full h-16 w-16" src="{{ asset('storage/' . $product->image) }}" alt="image">
+                                        <img class="rounded-full object-cover h-16 w-16" src="{{ asset('storage/' . $product->image) }}" alt="image">
                                     </td>
                                     <td class="border-b px-4 w-1/4">{{ ucwords($product->name) }}</td>
                                     <td class="border-b px-4">${{ $product->price }}</td>

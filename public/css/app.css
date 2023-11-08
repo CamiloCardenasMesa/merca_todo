@@ -1163,6 +1163,10 @@ select{
   overflow: hidden;
 }
 
+.break-all{
+  word-break: break-all;
+}
+
 .rounded{
   border-radius: 0.25rem;
 }
@@ -1333,6 +1337,11 @@ select{
 
 .fill-current{
   fill: currentColor;
+}
+
+.object-cover{
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-10{
