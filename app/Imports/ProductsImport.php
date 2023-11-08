@@ -26,7 +26,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
         return $product;
     }
 
-    public function rules(): array  
+    public function rules(): array
     {
         return [
             'name' => 'required|max:190|string',

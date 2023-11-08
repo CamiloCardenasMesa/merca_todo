@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Imports\ProductsImport;
-use App\Jobs\SendEmailJob;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
