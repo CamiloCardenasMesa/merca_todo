@@ -19,6 +19,7 @@ class ProductsImportController extends Controller
 
         Excel::import(new ProductsImport(), $file);
 
-        return back()->with('status', trans('products.import_success'));
+        return redirect()->route('admin.products.index')
+            ->with('status', trans('products.import_success'));
     }
 }
