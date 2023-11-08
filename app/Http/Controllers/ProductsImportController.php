@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Imports\ProductsImport;
-use App\Jobs\SendEmailJob;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -16,12 +15,15 @@ class ProductsImportController extends Controller
 
     public function storeImport(Request $request)
     {
-        $file = $request->file('import_file');
+        $file = $request->file('document');
 
-        Excel::import(new ProductsImport(), $file);
-
-        SendEmailJob::dispatch('GeneralManager@gmail.com', 'import success');
-
-        return back()->with('status', 'Excel File Import Succesfully');
+        if ($file->getClientOriginalExtension() === 'xlsx') {
+            Excel::import(new ProductsImport(), $file);
+            return redirect()->route('admin.products.index')
+                ->with('status', trans('products.import_success'));
+        } else {
+            return redirect()->back()
+                ->with('error', trans('products.upload_fail'));
+        }  
     }
 }
