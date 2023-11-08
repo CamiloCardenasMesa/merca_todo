@@ -9,8 +9,8 @@
     <x-section-layout>
         <x-form-container>
             <div class="flex flex-col items-center justify-center">
-                <x-label value="Antes que nada, descarga la plantilla:"/>
-                <x-button-link href="{{ asset('templates/import_template.xlsx') }}" download="import_template.xlsx">Descargar plantilla</x-button-link>
+                <x-label value="{{ trans('products.template_message') }}"/>
+                <x-button-link href="{{ asset('templates/import_template.xlsx') }}" download="import_template.xlsx">{{ trans('products.download_template') }}</x-button-link>
             </div>
             <div>
                 <x-auth-validation-errors :errors="$errors" class="mb-4" />

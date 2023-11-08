@@ -30,6 +30,8 @@ return [
     'import' => 'Import Products file',
     'import_success' => 'Your products have been successfully imported',
     'download_file' => 'Your file is ready for download',
+    'download_template' => 'Download template',
+    'template_message' => 'First of all, download the template:',
     'thanks' => 'Thank you for using our services',
     'verify_download' => 'Your download is being processed, once it has finished we will send you a notification to your email.',
 ];
