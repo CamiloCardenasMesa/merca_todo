@@ -17,9 +17,13 @@ class ProductsImportController extends Controller
     {
         $file = $request->file('document');
 
-        Excel::import(new ProductsImport(), $file);
-
-        return redirect()->route('admin.products.index')
-            ->with('status', trans('products.import_success'));
+        if ($file->getClientOriginalExtension() === 'xlsx') {
+            Excel::import(new ProductsImport(), $file);
+            return redirect()->route('admin.products.index')
+                ->with('status', trans('products.import_success'));
+        } else {
+            return redirect()->back()
+                ->with('error', trans('products.upload_fail'));
+        }  
     }
 }

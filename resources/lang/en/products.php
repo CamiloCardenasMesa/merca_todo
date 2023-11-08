@@ -34,4 +34,5 @@ return [
     'template_message' => 'First of all, download the template:',
     'thanks' => 'Thank you for using our services',
     'verify_download' => 'Your download is being processed, once it has finished we will send you a notification to your email.',
+    'upload_fail' => 'The file must have the extension .xlsx',
 ];

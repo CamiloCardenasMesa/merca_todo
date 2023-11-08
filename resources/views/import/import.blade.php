@@ -14,6 +14,11 @@
             </div>
             <div>
                 <x-auth-validation-errors :errors="$errors" class="mb-4" />
+                @if(session('error'))
+                    <div class="font-medium text-red-600">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <form class="justify-center" action="{{ route('admin.products.import.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <x-create-input-field label="{{ trans('products.import') }}" name="document" type="file"/>
