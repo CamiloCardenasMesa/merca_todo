@@ -6,7 +6,7 @@
         </div>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <div class="bg-[#EBEBF1] border-b border-gray-200">
             @if (count($products))
                 <div class="grid grid-cols-1 items-center md:grid-cols-1 lg:grid-cols-2 gap-2">
@@ -96,7 +96,7 @@
                 />
             @endif
         </div>
-    </x-article-layout>
+    </x-section-layout>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
         {{ $products->links() }}
     </div>      

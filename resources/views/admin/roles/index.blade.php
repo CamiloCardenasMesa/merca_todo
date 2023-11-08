@@ -6,7 +6,7 @@
         </div>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <div class="flex items-center">
             @can(App\Constants\Permissions::ROLE_CREATE)
             <x-button-actions
@@ -63,5 +63,5 @@
                 </tbody>
             </table>
         </div>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

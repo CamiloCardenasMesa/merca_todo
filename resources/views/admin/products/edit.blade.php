@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <form action="{{ route('admin.products.update', $product) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -45,5 +45,5 @@
             </div>
             <x-create-form-buttons route="{{ route('admin.products.index') }}" />
         </form>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

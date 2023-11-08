@@ -6,7 +6,7 @@
         </div>
     </x-slot>
     
-    <x-article-layout>
+    <x-section-layout>
         <x-section>
             <div class="flex flex-col items-center justify-center">
                 <x-label value="Antes que nada, descarga la plantilla:"/>
@@ -14,12 +14,12 @@
             </div>
             <div>
                 <x-auth-validation-errors :errors="$errors" class="mb-4" />
-                <form action="{{ route('admin.products.import.store') }}" method="POST" enctype="multipart/form-data">
+                <form class="justify-center" action="{{ route('admin.products.import.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <x-create-input-field label="{{ trans('products.import') }}" name="document" type="file"/>
                     <x-button class="mt-6">{{ trans('buttons.import_products') }}</x-button>
                 </form>
             </div>
         </x-section>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

@@ -8,7 +8,7 @@
         </div>             
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <x-section>
             <x-disabled-input-field value="{{ $user->email }}" label="{{ trans('auth.email') }}" name="email" />
             <x-disabled-input-field value="{{ $user->phone }}" label="{{ trans('users.phone') }}" name="phone" />
@@ -29,5 +29,5 @@
             /> 
             @endcan
         </x-show-form-buttons>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

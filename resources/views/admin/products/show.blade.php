@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <div class="flex flex-col lg:flex-row gap-6">
             <div class="flex bg-gray-100 rounded-lg items-center basis-2/5">
                 <img class="rounded-lg" id="product_image" src="{{ asset('storage/' .$product->image) }}" alt="image" />
@@ -33,5 +33,5 @@
                 />             
             @endcan
         </x-show-form-buttons>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

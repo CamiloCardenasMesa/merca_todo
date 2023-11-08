@@ -5,7 +5,7 @@
         </div>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         @if ($products->isEmpty())
             <x-search-failure 
                 search-failure-text="{{ trans('products.search_failure') }}"
@@ -47,7 +47,7 @@
                 @endforeach
             </div>
         </div>
-    </x-article-layout>
+    </x-section-layout>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pt-6">
         {{ $products->links() }}
     </div>
