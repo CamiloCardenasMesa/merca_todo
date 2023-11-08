@@ -29,7 +29,7 @@
                             <small class="text-red-500">{{ $message }}</small>
                         @enderror
                     </div>
-                    <x-section>
+                    <x-form-container>
                         <x-edit-input-field label="{{ trans('products.name') }}" type="text" name="name"  value="{{ $product->name }}" />
                         <x-edit-input-field label="{{ trans('products.price') }}" type="number" name="price"  value="{{ $product->price }}" />
                         <x-edit-input-field label="{{ trans('products.stock') }}" type="number" name="stock"  value="{{ $product->stock }}" />
@@ -40,7 +40,7 @@
                                 </option>
                             @endforeach
                         </x-edit-select-field>
-                    </x-section>
+                    </x-form-container>
                 </div>
             </div>
             <x-create-form-buttons route="{{ route('admin.products.index') }}" />

@@ -8,7 +8,7 @@
     <x-section-layout>
         <form action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <x-section>    
+            <x-form-container>    
                 <x-create-input-field label="{{ trans('auth.name') }}" type="text" name="name" />
                 <x-create-input-field label="{{ trans('auth.email') }}" type="email" name="email" />
                 <x-create-input-field label="{{ trans('auth.password') }}" type="password" name="password"/>
@@ -28,7 +28,7 @@
                         ]" 
                     />
                 </div>
-            </x-section>
+            </x-form-container>
             <x-create-form-buttons route="{{ route('admin.users.index') }}" />
         </form>
     </x-section-layout>

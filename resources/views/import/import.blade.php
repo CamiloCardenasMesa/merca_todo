@@ -7,7 +7,7 @@
     </x-slot>
     
     <x-section-layout>
-        <x-section>
+        <x-form-container>
             <div class="flex flex-col items-center justify-center">
                 <x-label value="Antes que nada, descarga la plantilla:"/>
                 <x-button-link href="{{ asset('templates/import_template.xlsx') }}" download="import_template.xlsx">Descargar plantilla</x-button-link>
@@ -20,6 +20,6 @@
                     <x-button class="mt-6">{{ trans('buttons.import_products') }}</x-button>
                 </form>
             </div>
-        </x-section>
+        </x-form-container>
     </x-section-layout>
 </x-app-layout>
