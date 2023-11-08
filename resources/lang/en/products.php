@@ -28,6 +28,7 @@ return [
     'delete' => 'Are you sure you want to remove this product?',
     'update_product' => 'Product has been successfully updated',
     'import' => 'Import Products file',
+    'import_success' => 'Your products have been successfully imported',
     'download_file' => 'Your file is ready for download',
     'thanks' => 'Thank you for using our services',
     'verify_download' => 'Your download is being processed, once it has finished we will send you a notification to your email.',

@@ -16,12 +16,10 @@ class ProductsImportController extends Controller
 
     public function storeImport(Request $request)
     {
-        $file = $request->file('import_file');
+        $file = $request->file('document');
 
         Excel::import(new ProductsImport(), $file);
 
-        SendEmailJob::dispatch('GeneralManager@gmail.com', 'import success');
-
-        return back()->with('status', 'Excel File Import Succesfully');
+        return back()->with('status', trans('products.import_success'));
     }
 }
