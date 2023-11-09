@@ -24,6 +24,6 @@ class ProductsImportController extends Controller
         } else {
             return redirect()->back()
                 ->with('error', trans('products.upload_fail'));
-        }  
+        }
     }
 }
