@@ -15,14 +15,15 @@ class ShowRolesTest extends TestCase
 
     public function testAdminUserCanRenderShowRoleScreen(): void
     {
-        $this->markTestSkipped();
+        $this->withoutExceptionHandling();
+
         //Arrange
-        $UserPermission = Permission::create([
+        $userPermission = Permission::create([
             'name' => Permissions::ROLE_LIST,
         ]);
 
         $adminRole = Role::create(['name' => 'admin'])
-        ->givePermissionTo($UserPermission);
+        ->givePermissionTo($userPermission);
 
         $admin = User::factory()
             ->create()
@@ -36,26 +37,6 @@ class ShowRolesTest extends TestCase
         $response->assertOk();
         $response->assertViewIs('admin.roles.show');
         $response->assertViewHas('role');
-        $this->assertAuthenticated();
-    }
-
-    public function testAdminUserCanDeleteRole(): void
-    {
-        $this->markTestSkipped();
-        //Arrange
-        $deletePermission = Permission::create([
-            'name' => Permissions::ROLE_DELETE, ]);
-
-        $adminRole = Role::create(['name' => 'admin'])
-            ->givePermissionTo($deletePermission);
-        $admin = User::factory()->create()->assignRole($adminRole);
-
-        //Act or Request
-        $response = $this->actingAs($admin)->delete(route('roles.destroy', $admin));
-
-        //Assert
-        $response->assertRedirect('admin/roles');
-
         $this->assertAuthenticated();
     }
 }

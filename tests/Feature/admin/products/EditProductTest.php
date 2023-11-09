@@ -3,6 +3,7 @@
 namespace Tests\Feature\Admin\products;
 
 use App\Constants\Permissions;
+use App\Constants\Roles;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
@@ -19,13 +20,16 @@ class EditProductTest extends TestCase
     public function testAdminUserCanEditProducts(): void
     {
         $this->withoutExceptionHandling();
+
         //Arrange
-        $admin = User::factory()->create();
-        $role = Role::create(['name' => 'admin_1']);
-        $permissions = Permission::create([
-            'name' => Permissions::PRODUCT_EDIT, ]);
-        $role->syncPermissions($permissions);
-        $admin->assignRole([$role->id]);
+        $permission = Permission::create([
+            'name' => Permissions::PRODUCT_EDIT,
+        ]);
+
+        $adminRole = Role::create(['name' => Roles::SUPER_ADMIN])
+            ->givePermissionTo($permission);
+
+        $admin = User::factory()->create()->assignRole($adminRole);
 
         $category = Category::factory()->create();
 
@@ -58,13 +62,16 @@ class EditProductTest extends TestCase
     public function testAdminUserCanRenderedEditProductsView()
     {
         $this->withoutExceptionHandling();
+
         //Arrange
-        $admin = User::factory()->create();
-        $role = Role::create(['name' => 'admin']);
-        $permissions = Permission::create([
-            'name' => Permissions::PRODUCT_EDIT, ]);
-        $role->syncPermissions($permissions);
-        $admin->assignRole([$role->id]);
+        $permission = Permission::create([
+            'name' => Permissions::PRODUCT_EDIT,
+        ]);
+
+        $adminRole = Role::create(['name' => Roles::SUPER_ADMIN])
+            ->givePermissionTo($permission);
+
+        $admin = User::factory()->create()->assignRole($adminRole);
 
         $product = Product::factory()->create();
 

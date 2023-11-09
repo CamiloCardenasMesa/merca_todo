@@ -14,7 +14,6 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-.env.testing
 test/coverage
 .php-cs-fixer.cache
 .DS_Store

@@ -37,7 +37,6 @@
                                 <th class="border-b border-gray-300 px-6 lg:px-6 py-2">{{ trans('products.image') }}</th>
                                 <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.name') }}</th>
                                 <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.price') }}</th>
-                                <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.category') }}</th>
                                 <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.stock') }}</th>
                                 @can(App\Constants\Permissions::PRODUCT_SHOW)
                                     <th class="border-b border-gray-300 px-2">{{ trans('buttons.show') }}</th>
@@ -61,7 +60,6 @@
                                     </td>
                                     <td class="border-b px-4 w-1/4">{{ ucwords($product->name) }}</td>
                                     <td class="border-b px-4">${{ $product->price }}</td>
-                                    <td class="border-b px-4">{{ $product->category->name }}</td>
                                     <td class="border-b px-4">{{ $product->stock }}</td>
 
                                     @can(App\Constants\Permissions::PRODUCT_SHOW)
