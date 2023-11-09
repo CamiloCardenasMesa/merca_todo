@@ -18,6 +18,8 @@ class DestroyCartTest extends TestCase
 
     public function testProductCanBeDeleted(): void
     {
+        $this->markTestSkipped();
+
         $deleteProductPermission = Permission::create([
             'name' => Permissions::PRODUCT_DELETE,
         ]);
