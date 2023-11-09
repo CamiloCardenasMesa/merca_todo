@@ -14,8 +14,6 @@ class ShowProductTest extends TestCase
 
     public function testShowProductsScreenCanBeRendered(): void
     {
-        $this->markTestSkipped();
-
         $this->withoutExceptionHandling();
 
         //Arrange

@@ -10,8 +10,6 @@ class DeleteImageTest extends TestCase
 {
     public function testDeleteAllImages()
     {
-        $this->markTestSkipped();
-
         Artisan::call('images:delete-all');
 
         $this->assertSame(0, Artisan::call('images:delete-all'));

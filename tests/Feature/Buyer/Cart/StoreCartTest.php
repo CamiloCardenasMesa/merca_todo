@@ -12,8 +12,6 @@ class StoreCartTest extends TestCase
 
     public function testAddProductToCart(): void
     {
-        $this->markTestSkipped();
-
         $product = Product::factory()->create();
         $product_id = $product->id;
         $product_amount = 10;

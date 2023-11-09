@@ -17,8 +17,6 @@ class DeleteProductsTest extends TestCase
 
     public function testAdminUserCanDeleteProducts(): void
     {
-        $this->markTestSkipped();
-
         //Arrange
         $admin = User::factory()->create();
         $role = Role::create(['name' => 'admin_1']);

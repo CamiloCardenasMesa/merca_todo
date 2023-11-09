@@ -14,8 +14,6 @@ class UpdateCartTest extends TestCase
 
     public function testCartItemCanIncreaseQuantity(): void
     {
-        $this->markTestSkipped();
-
         $user = User::factory()->create();
         $product = Product::factory()->create();
         $cartItem = Cart::add($product, 1, ['image' => $product->image, 'description' => $product->description]);
@@ -31,8 +29,6 @@ class UpdateCartTest extends TestCase
 
     public function testCartItemCanDecreaseQuantity(): void
     {
-        $this->markTestSkipped();
-
         $user = User::factory()->create();
         $product = Product::factory()->create();
         $cartItem = Cart::add($product, 2, ['image' => $product->image, 'description' => $product->description]);

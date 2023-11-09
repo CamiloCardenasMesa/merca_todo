@@ -14,8 +14,6 @@ class IndexCartTest extends TestCase
 
     public function testIndexCartViewCanBeRendered(): void
     {
-        $this->markTestSkipped();
-
         $user = User::factory()->create();
 
         $products = Product::factory()->count(5)->create();
