@@ -28,7 +28,11 @@ return [
     'delete' => 'Estas seguro que deseas eliminar este producto?',
     'update_product' => 'El producto ha sido actualizado correctamente',
     'download_file' => 'Tu archivo está listo para descargar',
+    'download_template' => 'Descargar plantilla',
+    'template_message' => 'Antes que nada, descarga la plantilla:',
     'import' => 'Importar archivo de productos',
+    'import_success' => 'Se han importado tus productos correctamente',
     'thanks' => 'Gracias por utilizar nuestros servicios',
     'verify_download' => 'Tu descarga está siendo procesada, una vez termine enviaremos una notificación a tu correo.',
+    'upload_fail' => 'El archivo debe tener la extensión .xlsx',
 ];

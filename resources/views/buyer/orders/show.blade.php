@@ -11,7 +11,7 @@
     <div>
         <x-auth-session-status class="mb-4" :status="session('status')" />
     </div>
-    <x-article-layout>
+    <x-section-layout>
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 bg-gray-100 gap-10 p-12 border">
                 <div class="flex flex-col justify-center tracking-wider">
@@ -51,5 +51,5 @@
                 </div>
             </div>
         </div>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

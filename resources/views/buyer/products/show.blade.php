@@ -5,7 +5,7 @@
             <x-auth-session-status :status="session('status')" />
         </div>
     </x-slot>
-    <x-article-layout>
+    <x-section-layout>
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 bg-gray-100 gap-10 p-9 border-gray-500 shadow-sm rounded-lg">
                 <div class="flex flex-col justify-center">
@@ -38,5 +38,5 @@
                 </div> 
             </div>
         </div>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

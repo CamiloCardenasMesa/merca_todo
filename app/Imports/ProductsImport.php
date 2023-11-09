@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Http\Validation\ProductValidationRules;
 use App\Models\Product;
 use Illuminate\Http\File;
 use Illuminate\Support\Arr;
@@ -16,7 +17,7 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
     {
         $product = new Product();
         $product->name = Arr::get($row, 'name');
-        $product->image = Storage::disk('images')->put('product_images', new File('images/imagen_de_muestra3.jpg'));
+        $product->image = Storage::disk('images')->put('product_images', new File('images/product_image.png'));
         $product->description = Arr::get($row, 'description');
         $product->price = Arr::get($row, 'price');
         $product->stock = Arr::get($row, 'stock');
@@ -28,14 +29,6 @@ class ProductsImport implements ToModel, WithHeadingRow, WithValidation
 
     public function rules(): array
     {
-        return [
-            'name' => 'required|max:190|string',
-            'image' => 'mimes:jpeg,jpg,png,gif|max:1000',
-            'description' => 'required|string',
-            'price' => 'required|integer|min:10000|max:10000000',
-            'stock' => 'required|integer|max:10000',
-            'category_id' => 'required|integer|min:1|max:3',
-            'enable' => 'boolean',
-        ];
+        return ProductValidationRules::rules();
     }
 }

@@ -14,12 +14,12 @@ class Product extends Model implements Buyable
 
     protected $fillable = [
         'name',
-        'product',
         'description',
         'price',
         'stock',
         'enable',
         'image',
+        'category_id',
     ];
 
     public function category(): BelongsTo

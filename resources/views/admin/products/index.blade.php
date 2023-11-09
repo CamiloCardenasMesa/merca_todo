@@ -6,7 +6,7 @@
         </div>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <div class="bg-[#EBEBF1] border-b border-gray-200">
             @if (count($products))
                 <div class="grid grid-cols-1 items-center md:grid-cols-1 lg:grid-cols-2 gap-2">
@@ -19,10 +19,10 @@
                             /> 
                         @endcan
                         @can(App\Constants\Permissions::PRODUCT_EDIT)
-                            {{-- <x-button-actions
+                            <x-button-actions
                                 route="{{ route('admin.products.import') }}" 
                                 svgPath='<path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m-6 3.75l3 3m0 0l3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />' 
-                            /> --}}
+                            />
                             <x-button-actions
                                 route="{{ route('admin.products.export') }}" 
                                 svgPath='<path stroke-linecap="round" stroke-linejoin="round" d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75" />' 
@@ -37,7 +37,6 @@
                                 <th class="border-b border-gray-300 px-6 lg:px-6 py-2">{{ trans('products.image') }}</th>
                                 <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.name') }}</th>
                                 <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.price') }}</th>
-                                <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.category') }}</th>
                                 <th class="border-b border-gray-300 px-4 py-2">{{ trans('products.stock') }}</th>
                                 @can(App\Constants\Permissions::PRODUCT_SHOW)
                                     <th class="border-b border-gray-300 px-2">{{ trans('buttons.show') }}</th>
@@ -57,11 +56,10 @@
                             @foreach ($products as $product)
                                 <tr class="even:bg-gray-100 odd:bg-white text-gray-700">
                                     <td class="border-b pl-6 py-4 w-1/12">
-                                        <img class="rounded-full h-16 w-16" src="{{ asset('storage/' . $product->image) }}" alt="image">
+                                        <img class="rounded-full object-cover h-16 w-16" src="{{ asset('storage/' . $product->image) }}" alt="image">
                                     </td>
                                     <td class="border-b px-4 w-1/4">{{ ucwords($product->name) }}</td>
                                     <td class="border-b px-4">${{ $product->price }}</td>
-                                    <td class="border-b px-4">{{ $product->category->name }}</td>
                                     <td class="border-b px-4">{{ $product->stock }}</td>
 
                                     @can(App\Constants\Permissions::PRODUCT_SHOW)
@@ -96,7 +94,7 @@
                 />
             @endif
         </div>
-    </x-article-layout>
+    </x-section-layout>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
         {{ $products->links() }}
     </div>      

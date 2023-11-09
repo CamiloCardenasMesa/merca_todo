@@ -31,5 +31,5 @@ Route::middleware(['auth', 'verified'])->prefix('/admin/products')->name('admin.
     Route::put('/toggle/{product}', [ProductsController::class, 'toggle'])->name('toggle');
     Route::get('/export/index', [ProductsExportController::class, 'export'])->name('export');
     Route::get('/import/index', [ProductsImportController::class, 'import'])->name('import');
-    Route::get('/import/store', [ProductsImportController::class, 'storeImport'])->name('import.store');
+    Route::post('/import/store', [ProductsImportController::class, 'storeImport'])->name('import.store');
 });

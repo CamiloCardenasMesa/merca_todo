@@ -5,6 +5,7 @@ namespace App\Actions;
 use App\Contracts\StoreOrUpdateProductContract;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductUpdateOrStoreAction implements StoreOrUpdateProductContract
 {
@@ -20,6 +21,7 @@ class ProductUpdateOrStoreAction implements StoreOrUpdateProductContract
         $product->category_id = $request->input('category_id');
 
         if ($request->hasFile('image')) {
+            Storage::disk('images')->delete($product->image);
             $file = $request->file('image');
             $fileName = $file->hashName();
             $product->image = $request->file('image')

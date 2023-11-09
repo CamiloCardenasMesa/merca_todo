@@ -5,9 +5,9 @@
         </div>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <div class="bg-green-300">1</div>
         <div class="bg-red-300">2</div>
         <div class="bg-blue-300">3</div>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

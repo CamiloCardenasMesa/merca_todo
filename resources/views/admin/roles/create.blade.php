@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <x-auth-session-status :status="session('status')" />
         <form action="{{ route('roles.store') }}" method="POST">
             @csrf
-            <x-section>
+            <x-form-container>
                 <div>
                     <x-auth-validation-errors class="mb-6" :errors="$errors" />
                     <div class="mb-6">
@@ -25,8 +25,8 @@
                         </div>
                     @endforeach
                 </div>
-            </x-section>
+            </x-form-container>
             <x-create-form-buttons route="{{ route('roles.index') }}" />
         </form>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

@@ -8,8 +8,8 @@
         </div>             
     </x-slot>
 
-    <x-article-layout>
-        <x-section>
+    <x-section-layout>
+        <x-form-container>
             <x-disabled-input-field value="{{ $user->email }}" label="{{ trans('auth.email') }}" name="email" />
             <x-disabled-input-field value="{{ $user->phone }}" label="{{ trans('users.phone') }}" name="phone" />
             <x-disabled-input-field value="{{ $user->birthday }}" label="{{ trans('users.birthday') }}" name="birthday" />
@@ -20,7 +20,7 @@
             <x-disabled-input-field value="{{ trans('users.' . ( $user->enable ? 'enable' : 'disable')) }}" label="{{ trans('users.status') }}" name="enable" />
             <x-disabled-input-field value="{{ $user->created_at }}" label="{{ trans('auth.created_at') }}" name="created_at" />
             <x-disabled-input-field value="{{ $user->updated_at }}" label="{{ trans('auth.updated_at') }}" name="updated_at" />
-        </x-section>
+        </x-form-container>
         <x-show-form-buttons route="{{ route('admin.users.index') }}">
             @can(App\Constants\Permissions::USER_EDIT)
             <x-button-actions 
@@ -29,5 +29,5 @@
             /> 
             @endcan
         </x-show-form-buttons>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

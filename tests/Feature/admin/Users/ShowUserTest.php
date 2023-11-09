@@ -21,8 +21,8 @@ class ShowUserTest extends TestCase
             'name' => Permissions::USER_LIST,
         ]);
 
-        $adminRole = Role::create(['name' => 'guest'])
-        ->givePermissionTo($showUserPermission);
+        $adminRole = Role::create(['name' => Roles::SUPER_ADMIN])
+            ->givePermissionTo($showUserPermission);
 
         $admin = User::factory()->create()->assignRole($adminRole);
 

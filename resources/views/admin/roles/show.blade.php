@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <div>
             <div class="form-group">
                 @if (!count($rolePermissions))
@@ -31,5 +31,5 @@
             /> 
         @endcan
         </x-show-form-buttons>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

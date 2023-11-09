@@ -3,7 +3,7 @@
         {{ trans('order.purchase_orders') }}
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         @if (count($orders))
             <table class="container">
                 <thead>
@@ -44,5 +44,5 @@
                 route="{{ route('welcome') }}"
             />
         @endif
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

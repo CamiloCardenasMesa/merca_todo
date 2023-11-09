@@ -4,11 +4,11 @@
             {{ ucwords($user->name) }}
         </h2>
     </x-slot>
-    <x-article-layout>
+    <x-section-layout>
         <form action="{{ route('admin.users.update', $user) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <x-section>
+            <x-form-container>
                 <x-edit-input-field label="{{ trans('auth.name') }}" type="text" name="name"  value="{{ $user->name }}" />
                 <x-edit-input-field label="{{ trans('auth.email') }}" type="email" name="email" value="{{ $user->email }}"/>
                 <x-edit-input-field label="{{ trans('auth.password') }}" type="password" name="password"/>
@@ -25,8 +25,8 @@
                         </option>
                     @endforeach
                 </x-edit-select-field>
-            </x-section>
+            </x-form-container>
             <x-create-form-buttons route="{{ route('admin.users.index') }}" />
         </form>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

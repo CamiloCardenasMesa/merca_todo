@@ -11,7 +11,7 @@
         </div>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         @if (count($shoppingCart))
             <div class="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 bg-white border-b border-gray-200">
                 <div class="gap-4 justify-between ">
@@ -91,5 +91,5 @@
                 route="{{ route('welcome') }}"
             />
         @endif
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         <form action="{{ route('roles.update', $role->id) }}" method="POST">
             @csrf
             @method('PATCH')
-            <x-section>
+            <x-form-container>
                 <div>
                     <div class="mb-6">
                         <x-edit-input-field label="{{ trans('users.name') }}" type="text" name="name" value="{{ $role->name }}" />
@@ -24,8 +24,8 @@
                         </div>
                     @endforeach
                 </div>
-            </x-section>
+            </x-form-container>
             <x-create-form-buttons route="{{ route('roles.index') }}" />
         </form>
-    </x-article-layout>
+    </x-section-layout>
 </x-app-layout>

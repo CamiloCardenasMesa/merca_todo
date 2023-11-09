@@ -6,7 +6,7 @@
         </div> 
     </x-slot>
 
-    <x-article-layout>
+    <x-section-layout>
         @if (count($users))
             <div class="flex justify-between grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4">
                 <x-search-bar route="{{ route('admin.users.index') }}" placeholder="{{ trans('placeholders.user_search') }}" />
@@ -96,7 +96,7 @@
                 route="{{ route('admin.users.index') }}"
             />
         @endif
-    </x-article-layout>
+    </x-section-layout>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
         {{ $users->links() }}
     </div>  
