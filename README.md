@@ -1,5 +1,5 @@
 
-# Acerca
+# About
 
 MercaTodo is an e-commerce platform built using the [Laravel](https://laravel.com/) framework as a study project of the Junior PHP Developer School offered by [Evertec](https://www.evertecinc.com/). It includes the following features:
 
