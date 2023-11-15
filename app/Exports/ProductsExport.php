@@ -13,7 +13,14 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-class ProductsExport implements FromQuery, ShouldAutoSize, WithMapping, WithHeadings, WithEvents, WithChunkReading, ShouldQueue
+class ProductsExport implements
+    FromQuery,
+    ShouldAutoSize,
+    WithMapping,
+    WithHeadings,
+    WithEvents,
+    WithChunkReading,
+    ShouldQueue
 {
     use Exportable;
 

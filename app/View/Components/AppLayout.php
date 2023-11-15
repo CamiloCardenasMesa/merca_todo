@@ -15,11 +15,13 @@ class AppLayout extends Component
     {
         $user = Auth::user();
 
-        $this->userHasPermissions = $user && Permission::where('guard_name', 'web')->whereHas('roles', function ($query) use ($user) {
-            $query->whereHas('users', function ($query) use ($user) {
-                $query->where('users.id', $user->id);
-            });
-        })->count() > 0;
+        $this->userHasPermissions = $user && Permission::where('guard_name', 'web')
+            ->whereHas('roles', function ($query) use ($user) {
+                $query->whereHas('users', function ($query) use ($user) {
+                    $query->where('users.id', $user->id);
+                });
+            })
+            ->count() > 0;
     }
 
     public function render(): View
