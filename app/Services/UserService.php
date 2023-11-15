@@ -6,7 +6,7 @@ use App\Models\User;
 
 class UserService
 {
-    public function CreateUser(array $userData): User
+    public function createUser(array $userData): User
     {
         return User::create([
             'name' => $userData['name'],

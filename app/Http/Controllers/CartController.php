@@ -22,7 +22,11 @@ class CartController extends Controller
     {
         $product = Product::findOrFail($request->input('product_id'));
 
-        Cart::add($product, $request->input('product_amount'), ['image' => $product->image, 'description' => $product->getDescription()]);
+        Cart::add(
+            $product,
+            $request->input('product_amount'),
+            ['image' => $product->image, 'description' => $product->getDescription()]
+        );
 
         return redirect()->back()
             ->with('status', trans('cart.add_product'));

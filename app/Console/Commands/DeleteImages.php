@@ -10,11 +10,6 @@ class DeleteImages extends Command
     protected $signature = 'images:delete-all';
     protected $description = 'Delete all images from the "images" disk';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): void
     {
         $disk = Storage::disk('images');

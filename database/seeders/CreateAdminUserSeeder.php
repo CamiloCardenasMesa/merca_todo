@@ -28,7 +28,7 @@ class CreateAdminUserSeeder extends Seeder
             'country' => 'Colombia',
         ];
 
-        $superAdmin = $this->userService->CreateUser($superAdminData);
+        $superAdmin = $this->userService->createUser($superAdminData);
         $superAdmin->assignRole(Roles::SUPER_ADMIN);
 
         $adminData = [
@@ -42,7 +42,7 @@ class CreateAdminUserSeeder extends Seeder
             'country' => 'Far Far Away',
         ];
 
-        $admin = $this->userService->CreateUser($adminData);
+        $admin = $this->userService->createUser($adminData);
         $admin->assignRole(Roles::ADMIN);
     }
 }
