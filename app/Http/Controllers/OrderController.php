@@ -35,8 +35,10 @@ class OrderController extends Controller
         return view('buyer.orders.show', compact('order'));
     }
 
-    public function store(WebcheckoutService $webcheckoutService, CreateSessionAction $createSessionAction): RedirectResponse
-    {
+    public function store(
+        WebcheckoutService $webcheckoutService,
+        CreateSessionAction $createSessionAction
+    ): RedirectResponse {
         $order = CreateOrderAction::create();
 
         $response = $createSessionAction::execute($webcheckoutService, $order);
@@ -51,8 +53,11 @@ class OrderController extends Controller
         return Redirect::to($order->process_url);
     }
 
-    public function retry(Order $order, WebcheckoutService $webcheckoutService, CreateSessionAction $createSessionAction): RedirectResponse
-    {
+    public function retry(
+        Order $order,
+        WebcheckoutService $webcheckoutService,
+        CreateSessionAction $createSessionAction
+    ): RedirectResponse {
         $order->load('productsOrder');
 
         $response = $createSessionAction::execute($webcheckoutService, $order);
