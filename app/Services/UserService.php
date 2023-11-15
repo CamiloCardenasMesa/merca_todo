@@ -8,7 +8,7 @@ class UserService
 {
     public function CreateUser(array $userData): User
     {
-        $user = User::create([
+        return User::create([
             'name' => $userData['name'],
             'email' => $userData['email'],
             'password' => bcrypt($userData['password']),
@@ -18,7 +18,5 @@ class UserService
             'city' => $userData['city'],
             'country' => $userData['country'],
         ]);
-
-        return $user;
     }
 }
