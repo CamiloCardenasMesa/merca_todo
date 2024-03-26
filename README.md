@@ -76,6 +76,3 @@ You can make your contributions through pull requests. For significant changes, 
 
 Make sure to update the tests accordingly.
 
-## License
-
-**MercaTodo**  is a project under the MIT license. [MIT license](https://opensource.org/licenses/MIT).
